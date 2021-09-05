@@ -194,15 +194,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../items/" class="md-tabs__link">
         Items
       </a>
     </li>
@@ -212,13 +210,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../modules/" class="md-tabs__link">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
         Modules
       </a>
     </li>
@@ -484,14 +484,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       <label class="md-nav__link" for="__nav_3">
         Items
@@ -501,6 +499,74 @@
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           Items
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../items/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../items/client/" class="md-nav__link">
+        Creating new items
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../items/server/" class="md-nav__link">
+        Server item handling
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Modules
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Modules" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Modules
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -520,72 +586,6 @@
         Index
       </a>
       
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="client/" class="md-nav__link">
-        Creating new items
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="server/" class="md-nav__link">
-        Server item handling
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
-      
-      <label class="md-nav__link" for="__nav_4">
-        Modules
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Modules" data-md-level="1">
-        <label class="md-nav__title" for="__nav_4">
-          <span class="md-nav__icon md-icon"></span>
-          Modules
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../modules/" class="md-nav__link">
-        Index
-      </a>
     </li>
   
 
@@ -616,7 +616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modules/utils/" class="md-nav__link">
+      <a href="utils/" class="md-nav__link">
         Index
       </a>
     </li>
@@ -628,7 +628,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modules/utils/inventorysearch/" class="md-nav__link">
+      <a href="utils/inventorysearch/" class="md-nav__link">
         Utils.InventorySearch
       </a>
     </li>
@@ -640,7 +640,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modules/utils/playanim/" class="md-nav__link">
+      <a href="utils/playanim/" class="md-nav__link">
         Utils.PlayAnim
       </a>
     </li>
@@ -652,7 +652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modules/utils/playanimadvanced/" class="md-nav__link">
+      <a href="utils/playanimadvanced/" class="md-nav__link">
         Utils.PlayAnimAdvanced
       </a>
     </li>
@@ -686,23 +686,7 @@
                 
                   <h1>Index</h1>
                 
-                <p><a href="https://github.com/overextended/linden_inventory/tree/main/modules/items">View module files</a></p>
-<p>The Items modules functionality is spread across several files.</p>
-<p>Client:</p>
-<ul>
-<li>Registers new items and their use functions</li>
-</ul>
-<p>Shared:</p>
-<ul>
-<li>Loads both items and weapons data files</li>
-<li>Removes information from either the client or server that isn't necessary</li>
-</ul>
-<p>Server:</p>
-<ul>
-<li>Setting item data and item metadata</li>
-</ul>
                 
-                  
                 
               
               
@@ -727,7 +711,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../functions/shared/tablecontains/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Utils.TableContains" rel="prev">
+        <a href="../items/server/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Server item handling" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -736,20 +720,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Utils.TableContains
+              Server item handling
             </div>
           </div>
         </a>
       
       
         
-        <a href="client/" class="md-footer__link md-footer__link--next" aria-label="Next: Creating new items" rel="next">
+        <a href="utils/" class="md-footer__link md-footer__link--next" aria-label="Next: Index" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Creating new items
+              Index
             </div>
           </div>
           <div class="md-footer__button md-icon">
