@@ -379,18 +379,6 @@
   
 
           
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../functions/client/progress/" class="md-nav__link">
-        Progress.Start
-      </a>
-    </li>
-  
-
-          
         </ul>
       </nav>
     </li>
@@ -585,23 +573,21 @@
             
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
       
       <label class="md-nav__link" for="__nav_4_2">
-        Utils
+        Progress
         <span class="md-nav__icon md-icon"></span>
       </label>
-      <nav class="md-nav" aria-label="Utils" data-md-level="2">
+      <nav class="md-nav" aria-label="Progress" data-md-level="2">
         <label class="md-nav__title" for="__nav_4_2">
           <span class="md-nav__icon md-icon"></span>
-          Utils
+          Progress
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -610,9 +596,27 @@
   
   
     <li class="md-nav__item">
-      <a href="../../" class="md-nav__link">
-        Index
+      <a href="../../../progress/" class="md-nav__link">
+        Progress
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../progress/start/" class="md-nav__link">
+        Progress.Start
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -627,14 +631,37 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_2" type="checkbox" id="__nav_4_2_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" checked>
       
-      <label class="md-nav__link" for="__nav_4_2_2">
+      <label class="md-nav__link" for="__nav_4_3">
+        Utils
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Utils" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Utils
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3_1" type="checkbox" id="__nav_4_3_1" checked>
+      
+      <label class="md-nav__link" for="__nav_4_3_1">
         Client
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Client" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_2">
+        <label class="md-nav__title" for="__nav_4_3_1">
           <span class="md-nav__icon md-icon"></span>
           Client
         </label>
@@ -720,7 +747,7 @@
                 <p>Requests and plays an advanced animation on the player asynchronously.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<div class="highlight"><pre><span></span><code><span class="n">Utils</span><span class="p">.</span><span class="n">PlayAnimAdvanced</span><span class="p">(</span><span class="n">wait</span><span class="p">,</span> <span class="n">clear</span><span class="p">,</span> <span class="p">...)</span>
+<div class="highlight"><pre><span></span><code><span class="n">Utils</span><span class="p">.</span><span class="n">PlayAnimAdvanced</span><span class="p">(</span><span class="n">wait</span><span class="p">,</span> <span class="p">...)</span>
 </code></pre></div>
 </div>
 <div class="admonition summary preserve_tabs">
@@ -738,8 +765,8 @@
 <tr>
 <td>wait</td>
 <td>integer</td>
-<td>yes</td>
-<td>Clear animation after defined time, otherwise lasts until cancelled</td>
+<td>no</td>
+<td>Time to wait until clearing task and animdict</td>
 </tr>
 <tr>
 <td>args</td>
