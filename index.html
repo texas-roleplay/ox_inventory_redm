@@ -613,11 +613,13 @@
                 
                 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
 <h3 id="oxmysql">OxMySQL<a class="headerlink" href="#oxmysql" title="Permanent link">&para;</a></h3>
-<p>A new lightweight database wrapper utilising <a href="https://github.com/sidorares/node-mysql2">node-mysql2</a>, unlike the abandoned ghmattimysql and mysql-async resources. 
-- Improved performance and compatibility
-- Resolves issues when using MySQL 8.0
-- Returns callbacks immediately, removing up to 50ms overhead
-- Lua sync wrappers utilise promises to remove additional overhead</p>
+<p>A new lightweight database wrapper utilising <a href="https://github.com/sidorares/node-mysql2">node-mysql2</a>, unlike the abandoned ghmattimysql and mysql-async resources.</p>
+<ul>
+<li>Improved performance and compatibility</li>
+<li>Resolves issues when using MySQL 8.0</li>
+<li>Returns callbacks immediately, removing up to 50ms overhead</li>
+<li>Lua sync wrappers utilise promises to remove additional overhead</li>
+</ul>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>Config is currently hardcoded! Modify your connection settings inside oxmysql.js</p>
