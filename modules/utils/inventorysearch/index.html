@@ -696,12 +696,39 @@
 <div class="highlight"><pre><span></span><code><span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">InventorySearch</span><span class="p">(</span><span class="n">searchtype</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">metadata</span><span class="p">)</span>
 </code></pre></div></p>
 </div>
-<p>!!! summary "Arguments" preserve_tabs
-    | Argument   | Type         | Optional | Explanation |
-    | ---------- | ------------ | -------- | ----------- |
-    | searchtype | integer      | no       | 1: Returns slots and data, 2: Returns total count of item |
-    | items      | string/table | no       | The name of an item - or array of item names - to search for |
-    | metadata   | string/table | yes      | Required metadata values that must exist on an item to return data |</p>
+<div class="admonition summary preserve_tabs">
+<p class="admonition-title">Arguments</p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Optional</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>searchtype</td>
+<td>integer</td>
+<td>no</td>
+<td>1: Returns slots and data, 2: Returns total count of item</td>
+</tr>
+<tr>
+<td>items</td>
+<td>string/table</td>
+<td>no</td>
+<td>The name of an item - or array of item names - to search for</td>
+</tr>
+<tr>
+<td>metadata</td>
+<td>string/table</td>
+<td>yes</td>
+<td>Required metadata values that must exist on an item to return data</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="tabbed-set" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Single item data</label><div class="tabbed-content">
