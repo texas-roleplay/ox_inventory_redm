@@ -306,7 +306,7 @@
         
           <li class="md-nav__item">
   <a href="#oxmysql" class="md-nav__link">
-    oxmysql
+    OxMySQL
   </a>
   
 </li>
@@ -314,13 +314,6 @@
           <li class="md-nav__item">
   <a href="#framework" class="md-nav__link">
     Framework
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#load-order" class="md-nav__link">
-    Load order
   </a>
   
 </li>
@@ -334,19 +327,6 @@
   <a href="#common-issues" class="md-nav__link">
     Common issues
   </a>
-  
-    <nav class="md-nav" aria-label="Common issues">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#unable-to-access-inventory-after-death" class="md-nav__link">
-    Unable to access inventory after death
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -632,35 +612,47 @@
                   <h1>Getting Started</h1>
                 
                 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
-<h4 id="oxmysql">oxmysql<a class="headerlink" href="#oxmysql" title="Permanent link">&para;</a></h4>
+<h4 id="oxmysql">OxMySQL<a class="headerlink" href="#oxmysql" title="Permanent link">&para;</a></h4>
 <p>A new lightweight database wrapper utilising node-mysql2.</p>
 <p>Unlike ghmattimysql/mysql-async, we utilise [<a class="magiclink magiclink-github magiclink-repository" href="https://github.com/sidorares/node-mysql2]node-mysql2" title="GitHub Repository: sidorares/node-mysql2]node-mysql2">sidorares/node-mysql2]node-mysql2</a> and have a solution for delayed function callbacks. You can expect responses to resolve ~50ms sooner, and no additional overhead when using the Sync export wrappers.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>- Note: Config is currently hardcoded! Modify your connection settings inside oxmysql.js
-</code></pre></div>
-</td></tr></table>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Config is currently hardcoded! Modify your connection settings inside oxmysql.js</p>
+</div>
 <p><a href="https://github.com/overextended/oxmysql">Download</a> | <a href="https://overextended.github.io/oxmysql">Documentation</a></p>
 <h4 id="framework">Framework<a class="headerlink" href="#framework" title="Permanent link">&para;</a></h4>
-<p>While the inventory is technically designed for use with <strong>ESX Legacy</strong>, it will not work without modifications.
-- For your convenience, we provide a standard fork of ESX to maintain compatibility and add support when using Ox Inventory.
-    - <a href="https://github.com/overextended/es_extended">Standard fork</a></p>
-<p>If you are using a non-standard release of ESX (based on ESX Legacy), you will need to reference the <a href="https://github.com/overextended/es_extended/commit/c232ff157e219c111e7b484af2375a2859ac331d">github diff</a> for necessary changes.</p>
+<p>While the inventory is technically designed for use with <strong>ESX Legacy</strong>, it will not work without modifications.</p>
 <ul>
-<li>We also provide a modified ESX that contains some breaking changes - this is <em>not</em> recommended for beginners.<ul>
+<li>
+<p>For your convenience, we provide a standard fork of ESX to maintain compatibility and add support when using Ox Inventory.</p>
+<ul>
+<li><a href="https://github.com/overextended/es_extended">Standard fork</a></li>
+</ul>
+</li>
+<li>
+<p>We also provide a modified ESX that contains some breaking changes - this is <em>not</em> recommended for beginners.</p>
+<ul>
 <li><a href="https://github.com/overextended/es_extended/tree/ox">Experimental</a></li>
 </ul>
 </li>
 </ul>
-<h4 id="load-order">Load order<a class="headerlink" href="#load-order" title="Permanent link">&para;</a></h4>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you prefer to modify your copy of ESX Legacy you will need to reference the changes in the <a href="https://github.com/overextended/es_extended/commit/c232ff157e219c111e7b484af2375a2859ac331d">github diff</a></p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Load order</p>
 <div class="highlight"><pre><span></span><code>ensure es_extended
 ensure oxmysql
 ensure ox_inventory
 </code></pre></div>
+</div>
 <h2 id="common-issues">Common issues<a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h2>
-<h4 id="unable-to-access-inventory-after-death">Unable to access inventory after death<a class="headerlink" href="#unable-to-access-inventory-after-death" title="Permanent link">&para;</a></h4>
-<p>You have not triggered the correct event after respawning, so your PlayerData recognises you as dead (often due to an outdated esx_ambulancejob).
+<details class="help"><summary>Unable to access inventory after death</summary><p>You have not triggered the correct event after respawning, so your PlayerData recognises you as dead (often due to an outdated esx_ambulancejob).
 Modify the function or event used to respawn/revive your character to also trigger the following event.
 <div class="highlight"><pre><span></span><code><span class="n">TriggerEvent</span><span class="p">(</span><span class="s1">&#39;esx:onPlayerSpawn&#39;</span><span class="p">)</span>
 </code></pre></div></p>
+</details>
                 
                   
                 
@@ -744,7 +736,7 @@ Modify the function or event used to respawn/revive your character to also trigg
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": ".", "features": ["tabs", "navigation.instant", "navigation.tabs", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["tabs", "navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
     
     
       <script src="assets/javascripts/bundle.756773cc.min.js"></script>
