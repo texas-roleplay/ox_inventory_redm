@@ -684,31 +684,36 @@ For convenience, we provide a fork with all necessary changes.</p>
 </div>
 <p><a class="md-button md-button--primary" href="https://github.com/overextended/es_extended">Standard <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg></span></a>   <a class="md-button md-button--primary" href="https://github.com/overextended/es_extended/tree/ox">Experimental <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346 7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"/></svg></span></a></p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<p>Once you have downloaded and configured the required resources, you will need to update your server config.</p>
-<div class="admonition info">
-<p class="admonition-title">Correct load order</p>
-<p>ensure oxmysql
+<p>Once you have downloaded and configured the required resources, you will need to update your server config.
+<div class="highlight"><pre><span></span><code>ensure oxmysql
 ensure es_extended
-ensure ox_inventory</p>
-</div>
-<p>If you are using a fresh server you need to use <mark>setup/install.sql</mark> and start the server, however there are some key changes to remember,</p>
+ensure ox_inventory
+</code></pre></div></p>
+<details class="summary"><summary>Fresh ESX install</summary><ul>
+<li>Run the query inside setup/install.sql</li>
+<li>That is all?</li>
+</ul>
+</details>
+<details class="summary"><summary>Converting ESX inventories</summary><ul>
+<li>Run the query inside setup/install.sql</li>
+<li>Open fxmanifest.lua and uncomment <code>server_script 'setup/convert.lua'</code></li>
+<li>Start the server and type <code>convertinventory</code> into the server console</li>
+<li>Comment out the conversion file</li>
+</ul>
+</details>
+<details class="summary"><summary>Upgrading from linden_inventory</summary><ul>
+<li>Run the query inside setup/upgrade.sql</li>
+<li>Open fxmanifest.lua and uncomment <code>server_script 'setup/convert.lua'</code></li>
+<li>Start the server and type <code>convertinventory linden</code> into the server console</li>
+<li>Comment out the conversion file</li>
+</ul>
+</details>
+<p>Keep the following tips in mind while developing your server</p>
 <ul>
 <li>ESX loadouts do not exist - resources that use them need to remove references or be modified to look for the item</li>
 <li>Built-in stashes should replace inventories used by resources such as esx_policejob, esx_taxijob, etc.</li>
 <li>Built-in shops should replace esx_shops and the esx_policejob armory, etc.</li>
 <li>You shouldn't be using esx_trunkinventory, esx_inventoryhud, or any other resources that provide conflicting functionality</li>
-</ul>
-<p>For those of you requiring conversion from standard ESX inventories,</p>
-<ul>
-<li>Use <mark>setup/install.sql</mark></li>
-<li>Open fxmanifest.lua and uncomment <mark>server_script 'setup/convert.lua'</mark></li>
-<li>Start the server and type <mark>convertinventory</mark> into the server console</li>
-</ul>
-<p>Lastly - if you are upgrading from linden_inventory,</p>
-<ul>
-<li>Use <mark>setup/upgrade.sql</mark></li>
-<li>Open fxmanifest.lua and uncomment <mark>server_script 'setup/convert.lua'</mark></li>
-<li>Start the server and type <mark>convertinventory linden</mark> into the server console</li>
 </ul>
 <h2 id="common-issues">Common issues<a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h2>
 <details class="help"><summary>Unable to access inventory after death</summary><p>You are not triggering the correct event after respawning, so the variable to store if you are dead is set as true. This is usually due to using outdated resources for ESX 1.1.</p>
