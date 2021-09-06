@@ -377,7 +377,7 @@
   
     <li class="md-nav__item">
       <a href="items/" class="md-nav__link">
-        Index
+        Overview
       </a>
     </li>
   
@@ -389,7 +389,7 @@
   
     <li class="md-nav__item">
       <a href="items/client/" class="md-nav__link">
-        Creating new items
+        Creating usable items
       </a>
     </li>
   
@@ -443,7 +443,7 @@
   
     <li class="md-nav__item">
       <a href="modules/" class="md-nav__link">
-        Index
+        Overview
       </a>
     </li>
   
@@ -701,7 +701,7 @@ ensure ox_inventory
 <li>Comment out the conversion file</li>
 </ul>
 </details>
-<details class="summary"><summary>Upgrading from linden_inventory</summary><ul>
+<details class="summary"><summary>Upgrading from Linden Inventory</summary><ul>
 <li>Run the query inside setup/upgrade.sql</li>
 <li>Open fxmanifest.lua and uncomment <code>server_script 'setup/convert.lua'</code></li>
 <li>Start the server and type <code>convertinventory linden</code> into the server console</li>
@@ -715,6 +715,7 @@ ensure ox_inventory
 <li>Built-in shops should replace esx_shops and the esx_policejob armory, etc.</li>
 <li>You shouldn't be using esx_trunkinventory, esx_inventoryhud, or any other resources that provide conflicting functionality</li>
 </ul>
+<p><strong>You should restart your server after the first startup to ensure everything has been correctly setup.</strong></p>
 <h2 id="common-issues">Common issues<a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h2>
 <details class="help"><summary>Unable to access inventory after death</summary><p>You are not triggering the correct event after respawning, so the variable to store if you are dead is set as true. This is usually due to using outdated resources for ESX 1.1.</p>
 <p>You can either update your resource, or trigger the following event where appropriate.</p>
@@ -748,13 +749,13 @@ ensure ox_inventory
       
       
         
-        <a href="items/" class="md-footer__link md-footer__link--next" aria-label="Next: Index" rel="next">
+        <a href="items/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Index
+              Overview
             </div>
           </div>
           <div class="md-footer__button md-icon">
