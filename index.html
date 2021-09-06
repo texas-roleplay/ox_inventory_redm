@@ -318,6 +318,26 @@
     Framework
   </a>
   
+    <nav class="md-nav" aria-label="Framework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#standard" class="md-nav__link">
+    Standard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ox" class="md-nav__link">
+    Ox
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -649,6 +669,7 @@
                 
                 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
+<p><strong>Not ready for production servers - this resource is still being developed</strong></p>
 <p>This resource is being designed with ease of use and advanced functionality as a core principal, however that doesn't mean it is intended for <em>config kings</em>.<br />
 If you do not possess a basic understanding of coding - nor the ability to read documentation - then turn back now and go use a drag-n-drop resource instead.</p>
 </div>
@@ -674,10 +695,15 @@ If you do not possess a basic understanding of coding - nor the ability to read 
 <h3 id="framework">Framework<a class="headerlink" href="#framework" title="Permanent link">&para;</a></h3>
 <p>The inventory has been designed to work for a <em>modified</em> version of <strong>ESX Legacy</strong> and will not work with anything else.<br />
 For convenience, we provide a fork with all necessary changes.</p>
-<ul>
-<li>Standard: Minimal changes to maintain near-complete compatibility with other resources</li>
-<li>Ox: Experimental branch to add new features and modify existing features, regardless of breaking compatibility</li>
-</ul>
+<h4 id="standard">Standard<a class="headerlink" href="#standard" title="Permanent link">&para;</a></h4>
+<p>Minimal changes to maintain near-complete compatibility with other resources. This matches the behaviour of Linden ESX.
+- Loadouts do not exist, so errors will occur in third-party resources attempting to manipulate them
+- Inventories are slot-based and items can exist in multiple slots, which can throw off item counting
+- Resources attempting to iterate through inventories in order will not work if a slot is empty</p>
+<h4 id="ox">Ox<a class="headerlink" href="#ox" title="Permanent link">&para;</a></h4>
+<p>Experimental branch to add new features and modify existing features, regardless of breaking compatibility.
+- Jobs are loaded from a data file instead of the database
+- Grades start from 1 instead of 0, and are stored as integers rather than strings</p>
 <div class="admonition tip">
 <p class="admonition-title">Modifying your framework</p>
 <p>If you <em>insist</em> on manually applying changes to your framework, you will need to manually reference changes in the <a href="https://github.com/overextended/es_extended/commit/c232ff157e219c111e7b484af2375a2859ac331d">github diff</a>. No guide is provided.</p>
