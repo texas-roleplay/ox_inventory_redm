@@ -18,7 +18,7 @@
     
     
       
-        <title>Server item handling - 🐂 Inventory</title>
+        <title>Server module - 🐂 Inventory</title>
       
     
     
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Server item handling
+              Server module
             
           </span>
         </div>
@@ -335,7 +335,7 @@
       
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Server item handling
+        Server module
       </a>
       
     </li>
@@ -580,71 +580,43 @@
               
                 
                 
-                  <h1>Server item handling</h1>
+                  <h1>Server module</h1>
                 
-                <p>The server module provides both data and functions for use within the resource and externally.</p>
-<ul>
-<li>Triggers an event after resource initialisation to receive the item list in another resource</li>
-<li>Registers items using ESX item callbacks as usable</li>
-<li>Automatically dumps the items database into the items data file</li>
-<li>Applies default metadata values for specified items</li>
-<li>Allows lookup of item data</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="n">Items</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+                <p>The server-side items module loads general item data, provides functions for manipulating items, and completes the startup process.</p>
+<div class="admonition info">
+<p class="admonition-title">Retrieve item data</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">Items</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">Items</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 </code></pre></div>
-<p>Returns general data for the given item name, or all data if no argument is provided.</p>
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Data Type</th>
-<th>Optional</th>
-<th>Explanation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td>string</td>
-<td>yes</td>
-<td>Name of the item to receive data for</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Example</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">item</span><span class="p">,</span> <span class="n">itemtype</span> <span class="o">=</span> <span class="n">Items</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+The argument is optional and, if ignored, will return the full items list.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">item</span><span class="p">,</span> <span class="n">itemtype</span> <span class="o">=</span> <span class="n">Items</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 <span class="kr">if</span> <span class="n">item</span> <span class="kr">then</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">item</span><span class="p">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">itemtype</span><span class="p">)</span>
 <span class="kr">end</span>
 </code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Item Type</th>
-<th>Explanation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>nil</td>
-<td>Item</td>
-</tr>
-<tr>
-<td>1</td>
-<td>Weapon</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Ammo</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Component</td>
-</tr>
-</tbody>
-</table>
+| Item Type | Explanation |
+| --------- | ----------- |
+| nil       | Item        |
+| 1         | Weapon      |
+| 2         | Ammo        |
+| 3         | Component   |</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">New item metadata</p>
+<p>This function is used internally when adding or buying items to define default metadata values.
+<div class="highlight"><pre><span></span><code><span class="n">Items</span><span class="p">.</span><span class="n">Metadata</span><span class="p">(</span><span class="n">xPlayer</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+</code></pre></div>
+| Argument   | Explanation |
+| ---------- | ----------- |
+| xPlayer    | ESX Player triggering the function |
+| item       | Name of the item being manipulated |
+| metadata   | Extra metadata to be added to the item |
+| count      | Number of items to be added |</p>
+</div>
                 
                   
                 

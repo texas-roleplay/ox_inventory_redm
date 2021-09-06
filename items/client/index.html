@@ -336,7 +336,7 @@
   
     <li class="md-nav__item">
       <a href="../server/" class="md-nav__link">
-        Server item handling
+        Server module
       </a>
     </li>
   
@@ -582,51 +582,29 @@
                 
                   <h1>Creating usable items</h1>
                 
-                <p>The recommended method for registering items as usable is modifying <code>modules/items/client.lua</code> with a function.<br />
+                <p>The recommended method for registering items as usable is adding a function to ++modules/items/client.lua++.
 It is still possible to use items through ESX.RegisterUsableItem, though it is less flexible.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<div class="highlight"><pre><span></span><code><span class="n">Item</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code><span class="n">Item</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">slot</span><span class="p">)</span>
+    <span class="c1">-- Trigger on use</span>
+    <span class="n">TriggerEvent</span><span class="p">(</span><span class="s1">&#39;ox_inventory:item&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="c1">-- Trigger after use</span>
+    <span class="kr">end</span><span class="p">)</span>
+<span class="kr">end</span><span class="p">)</span>
 </code></pre></div>
-</div>
-<div class="admonition summary preserve_tabs">
-<p class="admonition-title">Arguments</p>
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Data Type</th>
-<th>Optional</th>
-<th>Explanation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td>string</td>
-<td>no</td>
-<td>The name of the item to apply the function to</td>
-</tr>
-<tr>
-<td>callback</td>
-<td>function</td>
-<td>no</td>
-<td>Creates a function to be triggered when an item is used</td>
-</tr>
-</tbody>
-</table>
+| Argument | Data Type | Optional | Explanation |
+| -------- | --------- | -------- | ----------- |
+| name     | string    | no       | The name of the item to apply the function to |
+| callback | function  | no       | Creates a function to be triggered when an item is used |</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<div class="highlight"><pre><span></span><code><span class="c1">-- Receives general data about bandages, and the slot being used</span>
-<span class="n">Item</span><span class="p">(</span><span class="s1">&#39;bandage&#39;</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">slot</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">Item</span><span class="p">(</span><span class="s1">&#39;bandage&#39;</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">slot</span><span class="p">)</span>
     <span class="kd">local</span> <span class="n">maxHealth</span> <span class="o">=</span> <span class="mi">200</span>
     <span class="kd">local</span> <span class="n">health</span> <span class="o">=</span> <span class="n">GetEntityHealth</span><span class="p">(</span><span class="n">ESX</span><span class="p">.</span><span class="n">PlayerData</span><span class="p">.</span><span class="n">ped</span><span class="p">)</span>
-    <span class="c1">-- Checks if the item meets usage requirements</span>
     <span class="kr">if</span> <span class="n">health</span> <span class="o">&lt;</span> <span class="n">maxHealth</span> <span class="kr">then</span>
-        <span class="c1">-- Triggers an event to check if the item can be used and exists on the server</span>
         <span class="n">TriggerEvent</span><span class="p">(</span><span class="s1">&#39;ox_inventory:item&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-            <span class="c1">-- When the callback function is triggered, receive server data and trigger the use effects</span>
             <span class="kr">if</span> <span class="n">data</span> <span class="kr">then</span>
                 <span class="n">SetEntityHealth</span><span class="p">(</span><span class="n">ESX</span><span class="p">.</span><span class="n">PlayerData</span><span class="p">.</span><span class="n">ped</span><span class="p">,</span> <span class="nb">math.min</span><span class="p">(</span><span class="n">maxHealth</span><span class="p">,</span> <span class="nb">math.floor</span><span class="p">(</span><span class="n">health</span> <span class="o">+</span> <span class="n">maxHealth</span> <span class="o">/</span> <span class="mi">16</span><span class="p">)))</span>
                 <span class="n">TriggerEvent</span><span class="p">(</span><span class="s1">&#39;ox_inventory:Notify&#39;</span><span class="p">,</span> <span class="p">{</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;You feel better already&#39;</span><span class="p">})</span>
@@ -678,13 +656,13 @@ It is still possible to use items through ESX.RegisterUsableItem, though it is l
       
       
         
-        <a href="../server/" class="md-footer__link md-footer__link--next" aria-label="Next: Server item handling" rel="next">
+        <a href="../server/" class="md-footer__link md-footer__link--next" aria-label="Next: Server module" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Server item handling
+              Server module
             </div>
           </div>
           <div class="md-footer__button md-icon">
