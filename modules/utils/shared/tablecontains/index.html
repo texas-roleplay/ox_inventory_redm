@@ -348,7 +348,7 @@
   
     <li class="md-nav__item">
       <a href="../../../items/" class="md-nav__link">
-        Creating items
+        Registering usable items
       </a>
     </li>
   
@@ -656,7 +656,7 @@
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="highlight"><pre><span></span><code><span class="kr">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="kr">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">ESX</span><span class="p">.</span><span class="n">GetPlayerData</span><span class="p">().</span><span class="n">Inventory</span><span class="p">)</span> <span class="kr">do</span>
-    <span class="kr">if</span> <span class="n">v</span> <span class="ow">and</span> <span class="n">v</span><span class="p">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;meat&#39;</span> <span class="ow">and</span> <span class="n">Utils</span><span class="p">.</span><span class="n">TableContains</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">metadata</span><span class="p">,</span> <span class="p">{</span><span class="n">grade</span><span class="o">=</span><span class="mi">1</span><span class="p">})</span> <span class="kr">then</span>
+    <span class="kr">if</span> <span class="n">v</span><span class="p">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;meat&#39;</span> <span class="ow">and</span> <span class="n">Utils</span><span class="p">.</span><span class="n">TableContains</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">metadata</span><span class="p">,</span> <span class="p">{</span><span class="n">grade</span><span class="o">=</span><span class="mi">1</span><span class="p">})</span> <span class="kr">then</span>
         <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="n">v</span><span class="p">.</span><span class="n">count</span>
     <span class="kr">end</span>
 <span class="kr">end</span>

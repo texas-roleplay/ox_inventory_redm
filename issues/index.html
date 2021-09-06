@@ -387,7 +387,7 @@
   
     <li class="md-nav__item">
       <a href="../modules/items/" class="md-nav__link">
-        Creating items
+        Registering usable items
       </a>
     </li>
   
@@ -673,11 +673,16 @@
                   <h1>Common issues</h1>
                 
                 <h3 id="unable-to-access-inventory-after-death">Unable to access inventory after death<a class="headerlink" href="#unable-to-access-inventory-after-death" title="Permanent link">&para;</a></h3>
-<div class="admonition failure">
-<p>You are not triggering the correct event after respawning, so the variable to store if you are dead is set as true. This is usually due to using outdated resources for ESX 1.1.</p>
-<p>You can either update your resource, or trigger the following event where appropriate.</p>
+<div class="admonition faq">
+<p class="admonition-title">Issue</p>
+<p>You are not triggering the correct event after respawning, so the variable to store if you are dead is set as true.<br />
+This is usually due to using outdated resources for ESX 1.1.</p>
+</div>
+<div class="admonition check">
+<p class="admonition-title">Solution</p>
+<p>You can either update your resource, or trigger the following event where appropriate.
 <div class="highlight"><pre><span></span><code><span class="n">TriggerEvent</span><span class="p">(</span><span class="s1">&#39;esx:onPlayerSpawn&#39;</span><span class="p">)</span>
-</code></pre></div>
+</code></pre></div></p>
 </div>
                 
                   
