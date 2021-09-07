@@ -963,7 +963,7 @@
 <td>table</td>
 <td>-</td>
 <td>no</td>
-<td>Table of items to be added to the drop</td>
+<td>An array of items to add (more below)</td>
 </tr>
 <tr>
 <td>slots</td>
@@ -982,9 +982,44 @@
 </tbody>
 </table>
 </div>
-<div class="admonition summary">
+<div class="admonition example">
 <p class="admonition-title">Defining items</p>
-<p>Documentation to be written, pending a function for easy item generation. Currently requires defining all the item variables manually.</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">TriggerEvent</span><span class="p">(</span><span class="s1">&#39;ox_inventory:customDrop&#39;</span><span class="p">,</span> <span class="s1">&#39;Carcass&#39;</span><span class="p">,</span> <span class="n">entityCoords</span><span class="p">,</span> <span class="p">{</span>
+    <span class="p">{</span><span class="s1">&#39;meat&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">{</span><span class="n">grade</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;deer&#39;</span><span class="p">}},</span>
+    <span class="p">{</span><span class="s1">&#39;hide&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">{</span><span class="n">grade</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;deer&#39;</span><span class="p">}}</span>
+<span class="p">},</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+</code></pre></div>
+Creates a "Carcass" drop on some supplied coordinates, containing meat and hide from a deer.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Optional</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>string</td>
+<td>no</td>
+<td>Name of the item to add</td>
+</tr>
+<tr>
+<td>2</td>
+<td>integer</td>
+<td>no</td>
+<td>Number of items to add</td>
+</tr>
+<tr>
+<td>3</td>
+<td>table</td>
+<td>yes</td>
+<td>Metadata table to apply to the item</td>
+</tr>
+</tbody>
+</table>
 </div>
                 
                   
