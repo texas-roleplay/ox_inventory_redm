@@ -952,18 +952,18 @@
 <td>Label text before the drop id</td>
 </tr>
 <tr>
-<td>coords</td>
-<td>vector3</td>
-<td>-</td>
-<td>no</td>
-<td>Where should the drop be created</td>
-</tr>
-<tr>
 <td>items</td>
 <td>table</td>
 <td>-</td>
 <td>no</td>
 <td>An array of items to add (more below)</td>
+</tr>
+<tr>
+<td>coords</td>
+<td>vector3</td>
+<td>-</td>
+<td>no</td>
+<td>Where should the drop be created</td>
 </tr>
 <tr>
 <td>slots</td>
@@ -984,10 +984,10 @@
 </div>
 <div class="admonition example">
 <p class="admonition-title">Defining items</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">TriggerEvent</span><span class="p">(</span><span class="s1">&#39;ox_inventory:customDrop&#39;</span><span class="p">,</span> <span class="s1">&#39;Carcass&#39;</span><span class="p">,</span> <span class="n">entityCoords</span><span class="p">,</span> <span class="p">{</span>
+<p><div class="highlight"><pre><span></span><code><span class="n">TriggerEvent</span><span class="p">(</span><span class="s1">&#39;ox_inventory:customDrop&#39;</span><span class="p">,</span> <span class="s1">&#39;Carcass&#39;</span><span class="p">,</span> <span class="p">{</span>
     <span class="p">{</span><span class="s1">&#39;meat&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">{</span><span class="n">grade</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;deer&#39;</span><span class="p">}},</span>
     <span class="p">{</span><span class="s1">&#39;hide&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">{</span><span class="n">grade</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;deer&#39;</span><span class="p">}}</span>
-<span class="p">},</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+<span class="p">},</span> <span class="n">entityCoords</span><span class="p">)</span>
 </code></pre></div>
 Creates a "Carcass" drop on some supplied coordinates, containing meat and hide from a deer.</p>
 <table>
