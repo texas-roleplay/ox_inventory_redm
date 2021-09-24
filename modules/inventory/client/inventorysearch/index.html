@@ -13,19 +13,19 @@
         <meta name="author" content="Overextended">
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.8">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
     
     
       
-        <title>Creating custom drops - 🐂 Inventory</title>
+        <title>Inventory.Search - 🐂 Inventory</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.92558b1b.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.8b42a75e.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f5d1f46.min.css">
         
           
           
@@ -44,7 +44,7 @@
     
     
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
     
     
       
@@ -63,7 +63,7 @@
     <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
-    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL("../../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -75,9 +75,13 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="🐂 Inventory" class="md-header__button md-logo" aria-label="🐂 Inventory" data-md-component="logo">
+    <a href="../../../.." title="🐂 Inventory" class="md-header__button md-logo" aria-label="🐂 Inventory" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
@@ -96,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Creating custom drops
+              Inventory.Search
             
           </span>
         </div>
@@ -154,13 +158,9 @@
       </div>
     
   </nav>
-</header>
+  
     
-    <div class="md-container" data-md-component="container">
       
-      
-        
-          
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
@@ -171,7 +171,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../../.." class="md-tabs__link">
+    <a href="../../../.." class="md-tabs__link">
       Getting Started
     </a>
   </li>
@@ -183,7 +183,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../../../issues/" class="md-tabs__link">
+    <a href="../../../../issues/" class="md-tabs__link">
       Common issues
     </a>
   </li>
@@ -200,7 +200,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../" class="md-tabs__link md-tabs__link--active">
+      <a href="../../../" class="md-tabs__link md-tabs__link--active">
         Modules
       </a>
     </li>
@@ -216,7 +216,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../misc/" class="md-tabs__link">
+      <a href="../../../../misc/" class="md-tabs__link">
         Misc
       </a>
     </li>
@@ -226,6 +226,13 @@
     </ul>
   </div>
 </nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
       
       <main class="md-main" data-md-component="main">
@@ -245,7 +252,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="🐂 Inventory" class="md-nav__button md-logo" aria-label="🐂 Inventory" data-md-component="logo">
+    <a href="../../../.." title="🐂 Inventory" class="md-nav__button md-logo" aria-label="🐂 Inventory" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
@@ -277,7 +284,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         Getting Started
       </a>
     </li>
@@ -292,7 +299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../issues/" class="md-nav__link">
+      <a href="../../../../issues/" class="md-nav__link">
         Common issues
       </a>
     </li>
@@ -314,10 +321,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
-      <label class="md-nav__link" for="__nav_3">
-        Modules
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Modules
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Modules" data-md-level="1">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
@@ -326,18 +337,21 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
     <li class="md-nav__item">
-      <a href="../../" class="md-nav__link">
+      <a href="../../../" class="md-nav__link">
         Overview
       </a>
     </li>
   
 
+            
           
             
+              
   
   
     
@@ -349,10 +363,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" checked>
       
-      <label class="md-nav__link" for="__nav_3_2">
-        Inventory
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Inventory
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Inventory" data-md-level="2">
         <label class="md-nav__title" for="__nav_3_2">
           <span class="md-nav__icon md-icon"></span>
@@ -361,18 +379,35 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
-        Server module
-      </a>
-    </li>
   
-
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2_1" type="checkbox" id="__nav_3_2_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_1">
+          Client
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Client" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Client
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
     
@@ -385,104 +420,189 @@
       
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Creating custom drops
+        Inventory.Search
       </a>
       
     </li>
   
 
-          
             
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../additem/" class="md-nav__link">
-        Inventory.AddItem
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cancarryitem/" class="md-nav__link">
-        Inventory.CanCarryItem
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../canswapitem/" class="md-nav__link">
-        Inventory.CanSwapItem
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../create/" class="md-nav__link">
-        Inventory.Create
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../getitem/" class="md-nav__link">
-        Inventory.GetItem
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../removeitem/" class="md-nav__link">
-        Inventory.RemoveItem
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../setitem/" class="md-nav__link">
-        Inventory.SetItem
-      </a>
-    </li>
-  
-
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2_2" type="checkbox" id="__nav_3_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_2">
+          Server
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Server" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Server
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server/" class="md-nav__link">
+        Server module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server/customdrop/" class="md-nav__link">
+        Creating custom drops
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server/additem/" class="md-nav__link">
+        Inventory.AddItem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server/cancarryitem/" class="md-nav__link">
+        Inventory.CanCarryItem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server/canswapitem/" class="md-nav__link">
+        Inventory.CanSwapItem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server/create/" class="md-nav__link">
+        Inventory.Create
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server/getitem/" class="md-nav__link">
+        Inventory.GetItem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server/removeitem/" class="md-nav__link">
+        Inventory.RemoveItem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server/setitem/" class="md-nav__link">
+        Inventory.SetItem
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
   
   
   
@@ -492,10 +612,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
       
-      <label class="md-nav__link" for="__nav_3_3">
-        Items
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          Items
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Items" data-md-level="2">
         <label class="md-nav__title" for="__nav_3_3">
           <span class="md-nav__icon md-icon"></span>
@@ -504,6 +628,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -513,10 +638,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_1" type="checkbox" id="__nav_3_3_1" >
       
-      <label class="md-nav__link" for="__nav_3_3_1">
-        Client
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_1">
+          Client
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Client" data-md-level="3">
         <label class="md-nav__title" for="__nav_3_3_1">
           <span class="md-nav__icon md-icon"></span>
@@ -525,36 +654,42 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
     <li class="md-nav__item">
-      <a href="../../items/client/create/" class="md-nav__link">
+      <a href="../../../items/client/create/" class="md-nav__link">
         Create items
       </a>
     </li>
   
 
+            
           
             
+              
   
   
   
     <li class="md-nav__item">
-      <a href="../../items/client/usable/" class="md-nav__link">
+      <a href="../../../items/client/usable/" class="md-nav__link">
         Register usable items
       </a>
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -564,10 +699,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_2" type="checkbox" id="__nav_3_3_2" >
       
-      <label class="md-nav__link" for="__nav_3_3_2">
-        Server
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_2">
+          Server
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Server" data-md-level="3">
         <label class="md-nav__title" for="__nav_3_3_2">
           <span class="md-nav__icon md-icon"></span>
@@ -576,42 +715,49 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
     <li class="md-nav__item">
-      <a href="../../items/server/newmetadata/" class="md-nav__link">
-        Defining default metadata
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../items/server/server/" class="md-nav__link">
+      <a href="../../../items/server/" class="md-nav__link">
         Server module
       </a>
     </li>
   
 
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
+            
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../items/server/newmetadata/" class="md-nav__link">
+        Defining default metadata
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
   
   
   
@@ -621,10 +767,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
       
-      <label class="md-nav__link" for="__nav_3_4">
-        Keyboard
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          Keyboard
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Keyboard" data-md-level="2">
         <label class="md-nav__title" for="__nav_3_4">
           <span class="md-nav__icon md-icon"></span>
@@ -633,24 +783,28 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
     <li class="md-nav__item">
-      <a href="../../keyboard/input/" class="md-nav__link">
+      <a href="../../../keyboard/input/" class="md-nav__link">
         Keyboard.Input
       </a>
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -660,10 +814,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
       
-      <label class="md-nav__link" for="__nav_3_5">
-        Progress
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          Progress
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Progress" data-md-level="2">
         <label class="md-nav__title" for="__nav_3_5">
           <span class="md-nav__icon md-icon"></span>
@@ -672,48 +830,56 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
     <li class="md-nav__item">
-      <a href="../../progress/" class="md-nav__link">
+      <a href="../../../progress/" class="md-nav__link">
         Progress.Cancel
       </a>
     </li>
   
 
+            
           
             
+              
   
   
   
     <li class="md-nav__item">
-      <a href="../../progress/active/" class="md-nav__link">
+      <a href="../../../progress/active/" class="md-nav__link">
         Progress.Active
       </a>
     </li>
   
 
+            
           
             
+              
   
   
   
     <li class="md-nav__item">
-      <a href="../../progress/start/" class="md-nav__link">
+      <a href="../../../progress/start/" class="md-nav__link">
         Progress.Start
       </a>
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -723,10 +889,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
       
-      <label class="md-nav__link" for="__nav_3_6">
-        Utils
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6">
+          Utils
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Utils" data-md-level="2">
         <label class="md-nav__title" for="__nav_3_6">
           <span class="md-nav__icon md-icon"></span>
@@ -735,6 +905,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -744,10 +915,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_1" type="checkbox" id="__nav_3_6_1" >
       
-      <label class="md-nav__link" for="__nav_3_6_1">
-        Client
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_1">
+          Client
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Client" data-md-level="3">
         <label class="md-nav__title" for="__nav_3_6_1">
           <span class="md-nav__icon md-icon"></span>
@@ -756,48 +931,42 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
     <li class="md-nav__item">
-      <a href="../../utils/client/inventorysearch/" class="md-nav__link">
-        Utils.InventorySearch
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../utils/client/playanim/" class="md-nav__link">
+      <a href="../../../utils/client/playanim/" class="md-nav__link">
         Utils.PlayAnim
       </a>
     </li>
   
 
+            
           
             
+              
   
   
   
     <li class="md-nav__item">
-      <a href="../../utils/client/playanimadvanced/" class="md-nav__link">
+      <a href="../../../utils/client/playanimadvanced/" class="md-nav__link">
         Utils.PlayAnimAdvanced
       </a>
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -807,10 +976,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_2" type="checkbox" id="__nav_3_6_2" >
       
-      <label class="md-nav__link" for="__nav_3_6_2">
-        Shared
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_2">
+          Shared
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Shared" data-md-level="3">
         <label class="md-nav__title" for="__nav_3_6_2">
           <span class="md-nav__icon md-icon"></span>
@@ -819,64 +992,74 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
     <li class="md-nav__item">
-      <a href="../../utils/shared/checktable/" class="md-nav__link">
+      <a href="../../../utils/shared/checktable/" class="md-nav__link">
         Utils.CheckTable
       </a>
     </li>
   
 
+            
           
             
+              
   
   
   
     <li class="md-nav__item">
-      <a href="../../utils/shared/copytable/" class="md-nav__link">
+      <a href="../../../utils/shared/copytable/" class="md-nav__link">
         Utils.Copy
       </a>
     </li>
   
 
+            
           
             
+              
   
   
   
     <li class="md-nav__item">
-      <a href="../../utils/shared/matchtables/" class="md-nav__link">
+      <a href="../../../utils/shared/matchtables/" class="md-nav__link">
         Utils.MatchTables
       </a>
     </li>
   
 
+            
           
             
+              
   
   
   
     <li class="md-nav__item">
-      <a href="../../utils/shared/tablecontains/" class="md-nav__link">
+      <a href="../../../utils/shared/tablecontains/" class="md-nav__link">
         Utils.TableContains
       </a>
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -897,10 +1080,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
-      <label class="md-nav__link" for="__nav_4">
-        Misc
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Misc
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Misc" data-md-level="1">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
@@ -909,18 +1096,21 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
     <li class="md-nav__item">
-      <a href="../../../misc/" class="md-nav__link">
+      <a href="../../../../misc/" class="md-nav__link">
         Index
       </a>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -930,10 +1120,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
       
-      <label class="md-nav__link" for="__nav_4_2">
-        Client
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Client
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Client" data-md-level="2">
         <label class="md-nav__title" for="__nav_4_2">
           <span class="md-nav__icon md-icon"></span>
@@ -942,46 +1136,53 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
     <li class="md-nav__item">
-      <a href="../../../misc/client/disarm/" class="md-nav__link">
+      <a href="../../../../misc/client/disarm/" class="md-nav__link">
         Disarm
       </a>
     </li>
   
 
+            
           
             
+              
   
   
   
     <li class="md-nav__item">
-      <a href="../../../misc/client/notify/" class="md-nav__link">
+      <a href="../../../../misc/client/notify/" class="md-nav__link">
         Notify
       </a>
     </li>
   
 
+            
           
             
+              
   
   
   
     <li class="md-nav__item">
-      <a href="../../../misc/client/setbusy/" class="md-nav__link">
+      <a href="../../../../misc/client/setbusy/" class="md-nav__link">
         SetBusy
       </a>
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1002,100 +1203,95 @@
               
                 
                 
-                  <h1>Creating custom drops</h1>
+                  <h1>Inventory.Search</h1>
                 
-                <p>Allows server-side creation of a drop with pre-defined items and a custom prefix.</p>
+                <p>Returns a table containing data for the searched items, the result varying based on the provided searchtype.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<div class="highlight"><pre><span></span><code><span class="n">TriggerEvent</span><span class="p">(</span><span class="s1">&#39;ox_inventory:customDrop&#39;</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">slots</span><span class="p">,</span> <span class="n">maxWeight</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code><span class="n">Inventory</span><span class="p">.</span><span class="n">Search</span><span class="p">(</span><span class="n">searchtype</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">metadata</span><span class="p">)</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">InventorySearch</span><span class="p">(</span><span class="n">searchtype</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">metadata</span><span class="p">)</span>
+</code></pre></div></p>
 <table>
 <thead>
 <tr>
 <th>Argument</th>
 <th>Type</th>
-<th>Default</th>
 <th>Optional</th>
 <th>Explanation</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>prefix</td>
-<td>string</td>
-<td>-</td>
+<td>searchtype</td>
+<td>integer</td>
 <td>no</td>
-<td>Label text before the drop id</td>
+<td>1: Returns slots and data, 2: Returns total count of item</td>
 </tr>
 <tr>
 <td>items</td>
 <td>table</td>
-<td>-</td>
 <td>no</td>
-<td>An array of items to add (more below)</td>
+<td>Array of item names to search for</td>
 </tr>
 <tr>
-<td>coords</td>
-<td>vector3</td>
-<td>-</td>
-<td>no</td>
-<td>Where should the drop be created</td>
-</tr>
-<tr>
-<td>slots</td>
-<td>integer</td>
-<td>Config.PlayerSlots</td>
+<td>metadata</td>
+<td>table</td>
 <td>yes</td>
-<td>How many slots are in the drop</td>
+<td>Metadata pairs that must exist on the found item</td>
 </tr>
 <tr>
-<td>maxWeight</td>
-<td>integer</td>
-<td>Config.DefaultWeight</td>
-<td>yes</td>
-<td>How much weight can be stored</td>
+<td>Items and metadata will accept a string, though it limits you to searching for metadata.type</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="admonition example">
-<p class="admonition-title">Defining items</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">TriggerEvent</span><span class="p">(</span><span class="s1">&#39;ox_inventory:customDrop&#39;</span><span class="p">,</span> <span class="s1">&#39;Carcass&#39;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="p">{</span><span class="s1">&#39;meat&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">{</span><span class="n">grade</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;deer&#39;</span><span class="p">}},</span>
-    <span class="p">{</span><span class="s1">&#39;hide&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">{</span><span class="n">grade</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;deer&#39;</span><span class="p">}}</span>
-<span class="p">},</span> <span class="n">entityCoords</span><span class="p">)</span>
+<p class="admonition-title">Example</p>
+<div class="tabbed-set" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Single item data</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">water</span> <span class="o">=</span> <span class="n">Utils</span><span class="p">.</span><span class="n">InventorySearch</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">)</span>
+<span class="kd">local</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="kr">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">v</span> <span class="kr">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">water</span><span class="p">)</span> <span class="kr">do</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">slot</span><span class="o">..</span><span class="s1">&#39; contains &#39;</span><span class="o">..</span><span class="n">v</span><span class="p">.</span><span class="n">count</span><span class="o">..</span><span class="s1">&#39; water &#39;</span><span class="o">..</span><span class="n">json</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">metadata</span><span class="p">))</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="n">v</span><span class="p">.</span><span class="n">count</span>
+<span class="kr">end</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You have &#39;</span><span class="o">..</span><span class="n">count</span><span class="o">..</span><span class="s1">&#39; water&#39;</span><span class="p">)</span>
 </code></pre></div>
-Creates a "Carcass" drop on some supplied coordinates, containing meat and hide from a deer.</p>
-<table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Type</th>
-<th>Optional</th>
-<th>Explanation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>string</td>
-<td>no</td>
-<td>Name of the item to add</td>
-</tr>
-<tr>
-<td>2</td>
-<td>integer</td>
-<td>no</td>
-<td>Number of items to add</td>
-</tr>
-<tr>
-<td>3</td>
-<td>table</td>
-<td>yes</td>
-<td>Metadata table to apply to the item</td>
-</tr>
-</tbody>
-</table>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Multiple items data</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">inventory</span> <span class="o">=</span> <span class="n">Utils</span><span class="p">.</span><span class="n">InventorySearch</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;meat&#39;</span><span class="p">,</span> <span class="s1">&#39;skin&#39;</span><span class="p">},</span> <span class="s1">&#39;deer&#39;</span><span class="p">)</span>
+<span class="kr">if</span> <span class="n">inventory</span> <span class="kr">then</span>
+    <span class="kr">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span> <span class="kr">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">inventory</span><span class="p">)</span> <span class="kr">do</span>
+        <span class="kd">local</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="kr">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">v</span> <span class="kr">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="kr">do</span>
+            <span class="kr">if</span> <span class="n">v</span><span class="p">.</span><span class="n">slot</span> <span class="kr">then</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">slot</span><span class="o">..</span><span class="s1">&#39; contains &#39;</span><span class="o">..</span><span class="n">v</span><span class="p">.</span><span class="n">count</span><span class="o">..</span><span class="s1">&#39; &#39;</span><span class="o">..</span><span class="n">name</span><span class="o">..</span><span class="s1">&#39; &#39;</span><span class="o">..</span><span class="n">json</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">metadata</span><span class="p">))</span>
+                <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="n">v</span><span class="p">.</span><span class="n">count</span>
+            <span class="kr">end</span>
+        <span class="kr">end</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You have &#39;</span><span class="o">..</span><span class="n">count</span><span class="o">..</span><span class="s1">&#39; &#39;</span><span class="o">..</span><span class="n">name</span><span class="p">)</span>
+    <span class="kr">end</span>
+<span class="kr">end</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><label for="__tabbed_1_3">Single item count</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">count</span> <span class="o">=</span> <span class="n">Utils</span><span class="p">.</span><span class="n">InventorySearch</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You have &#39;</span><span class="o">..</span><span class="n">count</span><span class="o">..</span> <span class="s1">&#39; water&#39;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><label for="__tabbed_1_4">Multiple items count</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">inventory</span> <span class="o">=</span> <span class="n">Utils</span><span class="p">.</span><span class="n">InventorySearch</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;meat&#39;</span><span class="p">,</span> <span class="s1">&#39;skin&#39;</span><span class="p">},</span> <span class="p">{</span><span class="n">grade</span><span class="o">=</span><span class="mi">1</span><span class="p">})</span>
+<span class="kr">if</span> <span class="n">inventory</span> <span class="kr">then</span>
+    <span class="kr">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">count</span> <span class="kr">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">inventory</span><span class="p">)</span> <span class="kr">do</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You have &#39;</span><span class="o">..</span><span class="n">count</span><span class="o">..</span><span class="s1">&#39; &#39;</span><span class="o">..</span><span class="n">name</span><span class="p">)</span>
+    <span class="kr">end</span>
+<span class="kr">end</span>
+</code></pre></div>
+</div>
+</div>
 </div>
                 
                   
@@ -1123,7 +1319,7 @@ Creates a "Carcass" drop on some supplied coordinates, containing meat and hide 
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Server module" rel="prev">
+        <a href="../../../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1132,20 +1328,20 @@ Creates a "Carcass" drop on some supplied coordinates, containing meat and hide 
               <span class="md-footer__direction">
                 Previous
               </span>
-              Server module
+              Overview
             </div>
           </div>
         </a>
       
       
         
-        <a href="../additem/" class="md-footer__link md-footer__link--next" aria-label="Next: Inventory.AddItem" rel="next">
+        <a href="../../server/" class="md-footer__link md-footer__link--next" aria-label="Next: Server module" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Inventory.AddItem
+              Server module
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -1163,10 +1359,12 @@ Creates a "Carcass" drop on some supplied coordinates, containing meat and hide 
             Copyright &copy; 2021 Overextended
           </div>
         
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
         
       </div>
       
@@ -1200,10 +1398,10 @@ Creates a "Carcass" drop on some supplied coordinates, containing meat and hide 
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["tabs", "navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.94ec81fe.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["tabs", "navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.f8263e09.min.js", "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.48dfec6c.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
       
     
   </body>
