@@ -1409,16 +1409,18 @@ ensure ox_inventory
 <p>The reasoning is fairly simple - there's now additional function references and overhead to consider. Fortunately, the new Inventory functions can be used directly and offer a great deal of improvements over the old ones.</p>
 <p>You should read through the modules section for further information, but the following should give you a decent idea.
 (Note: Work in progress and may be altered, for now you should stick to xPlayer functions)</p>
-<p>!!! example 'xPlayer.getInventoryItem and xPlayer.removeInventoryItem'
-    === "Deprecated"
-        <div class="highlight"><pre><span></span><code><span class="kr">if</span> <span class="n">xPlayer</span><span class="p">.</span><span class="n">getInventoryItem</span><span class="p">(</span><span class="s1">&#39;acetone&#39;</span><span class="p">).</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">xPlayer</span><span class="p">.</span><span class="n">getInventoryItem</span><span class="p">(</span><span class="s1">&#39;antifreeze&#39;</span><span class="p">).</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">xPlayer</span><span class="p">.</span><span class="n">getInventoryItem</span><span class="p">(</span><span class="s1">&#39;sudo&#39;</span><span class="p">).</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">9</span> <span class="kr">then</span> 
+<div class="admonition example">
+<p class="admonition-title">xPlayer.getInventoryItem and xPlayer.removeInventoryItem</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Deprecated</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="kr">if</span> <span class="n">xPlayer</span><span class="p">.</span><span class="n">getInventoryItem</span><span class="p">(</span><span class="s1">&#39;acetone&#39;</span><span class="p">).</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">xPlayer</span><span class="p">.</span><span class="n">getInventoryItem</span><span class="p">(</span><span class="s1">&#39;antifreeze&#39;</span><span class="p">).</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">xPlayer</span><span class="p">.</span><span class="n">getInventoryItem</span><span class="p">(</span><span class="s1">&#39;sudo&#39;</span><span class="p">).</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">9</span> <span class="kr">then</span> 
     <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;acetone&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
     <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;antifreeze&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
     <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;sudo&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="kr">end</span>
 </code></pre></div>
-    === "New function"
-        <div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">inventory</span> <span class="o">=</span> <span class="n">Inventory</span><span class="p">.</span><span class="n">Search</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;acetone&#39;</span><span class="p">,</span> <span class="s1">&#39;antifreeze&#39;</span><span class="p">,</span> <span class="s1">&#39;sudo&#39;</span><span class="p">})</span>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">New function</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">inventory</span> <span class="o">=</span> <span class="n">Inventory</span><span class="p">.</span><span class="n">Search</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;acetone&#39;</span><span class="p">,</span> <span class="s1">&#39;antifreeze&#39;</span><span class="p">,</span> <span class="s1">&#39;sudo&#39;</span><span class="p">})</span>
 <span class="kr">if</span> <span class="n">inventory</span> <span class="ow">and</span> <span class="n">inventory</span><span class="p">.</span><span class="n">acetone</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">inventory</span><span class="p">.</span><span class="n">antifreeze</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">inventory</span><span class="p">.</span><span class="n">sudo</span> <span class="o">&gt;</span> <span class="mi">9</span> <span class="kr">then</span>
     <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;acetone&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
     <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;antifreeze&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
@@ -1426,7 +1428,10 @@ ensure ox_inventory
     <span class="c1">-- todo: improved function for bulk removal</span>
     <span class="c1">-- Inventory.RemoveItem(1, {&#39;acetone&#39;, &#39;antifreeze&#39;, &#39;sudo&#39;}, {3, 5, 10})</span>
 <span class="kr">end</span>
-</code></pre></div></p>
+</code></pre></div>
+</div>
+</div>
+</div>
                 
                   
                 
