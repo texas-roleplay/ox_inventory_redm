@@ -70,11 +70,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#server-callbacks" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -411,7 +406,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modules/inventory/client/inventorysearch/" class="md-nav__link">
+      <a href="../modules/inventory/client/search/" class="md-nav__link">
         Inventory.Search
       </a>
     </li>
@@ -558,6 +553,20 @@
     <li class="md-nav__item">
       <a href="../modules/inventory/server/removeitem/" class="md-nav__link">
         Inventory.RemoveItem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modules/inventory/server/search/" class="md-nav__link">
+        Inventory.Search
       </a>
     </li>
   
@@ -1030,6 +1039,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../modules/utils/shared/servercallbacks/" class="md-nav__link">
+        Servercallbacks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../modules/utils/shared/tablecontains/" class="md-nav__link">
         Utils.TableContains
       </a>
@@ -1101,37 +1124,9 @@
       
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Index
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         Index
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#server-callbacks" class="md-nav__link">
-    Server Callbacks
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -1235,50 +1230,6 @@
                   <h1>Index</h1>
                 
                 <p>This category provides information on exports, commands, and events that are not covered under modules.</p>
-<h2 id="server-callbacks">Server Callbacks<a class="headerlink" href="#server-callbacks" title="Permanent link">&para;</a></h2>
-<p>We've implemented a system similar to ESX callbacks within the inventory. You can use both standard callbacks and Await callbacks.</p>
-<div class="admonition info">
-<p class="admonition-title">ox_inventory:getItemCount</p>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Standard</label><div class="tabbed-content">
-<p><div class="highlight"><pre><span></span><code><span class="n">ox</span><span class="p">.</span><span class="n">TriggerServerCallback</span><span class="p">(</span><span class="s1">&#39;ox_inventory:getItemCount&#39;</span><span class="p">,</span> <span class="n">callback</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="n">ox</span><span class="p">.</span><span class="n">TriggerServerCallback</span><span class="p">(</span><span class="s1">&#39;ox_inventory:getItemCount&#39;</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You currently have &#39;</span><span class="o">..</span><span class="n">count</span><span class="o">..</span><span class="s1">&#39; water&#39;</span><span class="p">)</span>
-<span class="kr">end</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">)</span>
-</code></pre></div></p>
-<div class="highlight"><pre><span></span><code><span class="n">ox</span><span class="p">.</span><span class="n">TriggerServerCallback</span><span class="p">(</span><span class="s1">&#39;ox_inventory:getItemCount&#39;</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Trunk contains &#39;</span><span class="o">..</span><span class="n">count</span><span class="o">..</span><span class="s1">&#39; water&#39;</span><span class="p">)</span>
-<span class="kr">end</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="n">trunkEGZ</span> <span class="mi">202</span><span class="p">)</span>
-<span class="kd">local</span> <span class="n">count</span> <span class="o">=</span> <span class="n">ox</span><span class="p">.</span><span class="n">TriggerServerCallback</span><span class="p">(</span><span class="s1">&#39;ox_inventory:getItemCount&#39;</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="s1">&#39;trunkEGZ 202&#39;</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Await</label><div class="tabbed-content">
-<p><div class="highlight"><pre><span></span><code><span class="n">ox</span><span class="p">.</span><span class="n">AwaitServerCallback</span><span class="p">(</span><span class="s1">&#39;ox_inventory:getItemCount&#39;</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You have &#39;</span><span class="o">..</span><span class="n">ox</span><span class="p">.</span><span class="n">AwaitServerCallback</span><span class="p">(</span><span class="s1">&#39;ox_inventory:getItemCount&#39;</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">)</span><span class="o">..</span><span class="s1">&#39; water&#39;</span><span class="p">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">count</span> <span class="o">=</span> <span class="n">ox</span><span class="p">.</span><span class="n">AwaitServerCallback</span><span class="p">(</span><span class="s1">&#39;ox_inventory:getItemCount&#39;</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="s1">&#39;trunkEGZ 202&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Trunk contains &#39;</span><span class="o">..</span><span class="n">count</span><span class="o">..</span><span class="s1">&#39; water&#39;</span><span class="p">)</span>
-</code></pre></div></p>
-</div>
-</div>
-</div>
-<div class="admonition info">
-<p class="admonition-title">ox_inventory:getInventory</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">ox</span><span class="p">.</span><span class="n">AwaitServerCallback</span><span class="p">(</span><span class="s1">&#39;ox_inventory:getInventory&#39;</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">inventory</span> <span class="o">=</span> <span class="n">ox</span><span class="p">.</span><span class="n">AwaitServerCallback</span><span class="p">(</span><span class="s1">&#39;ox_inventory:getInventory&#39;</span><span class="p">,</span> <span class="s1">&#39;trunkEGZ 202&#39;</span><span class="p">)</span>
-<span class="kr">if</span> <span class="n">inventory</span> <span class="kr">then</span>
-    <span class="nb">print</span><span class="p">((</span><span class="s1">&#39;Inventory %s has the %s type, is able to hold up to %sg in %s different slots.</span><span class="se">\n</span><span class="s1">Current weight: %sg&#39;</span><span class="p">):</span><span class="n">format</span><span class="p">(</span>
-        <span class="n">inventory</span><span class="p">.</span><span class="n">id</span><span class="p">,</span>
-        <span class="n">inventory</span><span class="p">.</span><span class="n">type</span><span class="p">,</span>
-        <span class="n">inventory</span><span class="p">.</span><span class="n">maxWeight</span><span class="p">,</span>
-        <span class="n">inventory</span><span class="p">.</span><span class="n">slots</span><span class="p">,</span>
-        <span class="n">inventory</span><span class="p">.</span><span class="n">weight</span>
-    <span class="p">))</span>
-<span class="kr">end</span>
-</code></pre></div></p>
-</div>
                 
                   
                 

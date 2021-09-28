@@ -322,45 +322,33 @@
     Requirements
   </a>
   
-    <nav class="md-nav" aria-label="Requirements">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#oxmysql" class="md-nav__link">
-    OxMySQL
+    #OxMySQL
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#framework" class="md-nav__link">
-    Framework
+    #Framework
   </a>
   
-    <nav class="md-nav" aria-label="Framework">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#standard" class="md-nav__link">
-    Standard
+    ## Standard
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#ox" class="md-nav__link">
-    Ox
+    ## Ox
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -368,6 +356,26 @@
   <a href="#installation" class="md-nav__link">
     Installation
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendations" class="md-nav__link">
+    Recommendations
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommendations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xplayer-functions-vs-inventory-functions" class="md-nav__link">
+    xPlayer functions vs Inventory functions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -494,7 +502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="modules/inventory/client/inventorysearch/" class="md-nav__link">
+      <a href="modules/inventory/client/search/" class="md-nav__link">
         Inventory.Search
       </a>
     </li>
@@ -641,6 +649,20 @@
     <li class="md-nav__item">
       <a href="modules/inventory/server/removeitem/" class="md-nav__link">
         Inventory.RemoveItem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="modules/inventory/server/search/" class="md-nav__link">
+        Inventory.Search
       </a>
     </li>
   
@@ -1113,6 +1135,20 @@
   
   
     <li class="md-nav__item">
+      <a href="modules/utils/shared/servercallbacks/" class="md-nav__link">
+        Servercallbacks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="modules/utils/shared/tablecontains/" class="md-nav__link">
         Utils.TableContains
       </a>
@@ -1286,7 +1322,7 @@
 If you do not possess a basic understanding of coding - nor the ability to read documentation - then turn back now and go use a drag-n-drop resource instead.</p>
 </div>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
-<h3 id="oxmysql">OxMySQL<a class="headerlink" href="#oxmysql" title="Permanent link">&para;</a></h3>
+<h2 id="oxmysql">#OxMySQL<a class="headerlink" href="#oxmysql" title="Permanent link">&para;</a></h2>
 <p>A new lightweight database wrapper utilising <a href="https://github.com/sidorares/node-mysql2">node-mysql2</a>, unlike the abandoned ghmattimysql and mysql-async resources.</p>
 <ul>
 <li>Improved performance and compatibility</li>
@@ -1303,17 +1339,17 @@ set mysql_slow_query_warning 100
 </div>
 <p><a class="md-button md-button--primary" href="https://github.com/overextended/oxmysql/releases">Download <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"/></svg></span></a> <a class="md-button md-button--primary" href="https://overextended.github.io/oxmysql">Documentation <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z"/></svg></span></a></p>
 <p><br></p>
-<h3 id="framework">Framework<a class="headerlink" href="#framework" title="Permanent link">&para;</a></h3>
+<h2 id="framework">#Framework<a class="headerlink" href="#framework" title="Permanent link">&para;</a></h2>
 <p>The inventory has been designed to work for a <em>modified</em> version of <strong>ESX Legacy</strong> and will not work with anything else.<br />
 For convenience, we provide a fork with all necessary changes.</p>
-<h4 id="standard">Standard<a class="headerlink" href="#standard" title="Permanent link">&para;</a></h4>
+<h2 id="standard">## Standard<a class="headerlink" href="#standard" title="Permanent link">&para;</a></h2>
 <p>Minimal changes to maintain near-complete compatibility with other resources. This matches the behaviour of Linden ESX.</p>
 <ul>
 <li>Loadouts do not exist, so errors will occur in third-party resources attempting to manipulate them</li>
 <li>Inventories are slot-based and items can exist in multiple slots, which can throw off item counting</li>
 <li>Resources attempting to iterate through inventories in order will not work if a slot is empty</li>
 </ul>
-<h4 id="ox">Ox<a class="headerlink" href="#ox" title="Permanent link">&para;</a></h4>
+<h2 id="ox">## Ox<a class="headerlink" href="#ox" title="Permanent link">&para;</a></h2>
 <p>Experimental branch to add new features and modify existing features, regardless of breaking compatibility.</p>
 <ul>
 <li>Jobs are loaded from a data file instead of the database</li>
@@ -1360,6 +1396,37 @@ ensure ox_inventory
 <p class="admonition-title">Attention</p>
 <p>You should restart your server after the first startup to ensure everything has been correctly setup</p>
 </div>
+<h2 id="recommendations">Recommendations<a class="headerlink" href="#recommendations" title="Permanent link">&para;</a></h2>
+<p>Ox Inventory provides a complete suite of tools to replace the built-in items and inventory system from ESX, and is not intended to be used with resources designed around it.</p>
+<ul>
+<li>ESX loadouts do not exist - resources that use them need to remove references or be modified to look for the weapon as an item</li>
+<li>Stashes from resources such as esx_policejob, esx_ambulancejob, etc. should be entirely replaced</li>
+<li>Shops from esx_shops or the armoury from esx_policejob should be removed</li>
+<li>Resources like esx_inventoryhud, esx_trunkinventory, esx_addoninventory, etc. should be removed</li>
+</ul>
+<h3 id="xplayer-functions-vs-inventory-functions">xPlayer functions vs Inventory functions<a class="headerlink" href="#xplayer-functions-vs-inventory-functions" title="Permanent link">&para;</a></h3>
+<p>All item related functions from xPlayer, such as <code>xPlayer.getInventoryItem</code>, have been modified for compatibility purposes; however they are considered deprecated and should not be used.</p>
+<p>The reasoning is fairly simple - there's now additional function references and overhead to consider. Fortunately, the new Inventory functions can be used directly and offer a great deal of improvements over the old ones.</p>
+<p>You should read through the modules section for further information, but the following should give you a decent idea.
+(Note: Work in progress and may be altered, for now you should stick to xPlayer functions)</p>
+<p>!!! example 'xPlayer.getInventoryItem and xPlayer.removeInventoryItem'
+    === "Deprecated"
+        <div class="highlight"><pre><span></span><code><span class="kr">if</span> <span class="n">xPlayer</span><span class="p">.</span><span class="n">getInventoryItem</span><span class="p">(</span><span class="s1">&#39;acetone&#39;</span><span class="p">).</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">xPlayer</span><span class="p">.</span><span class="n">getInventoryItem</span><span class="p">(</span><span class="s1">&#39;antifreeze&#39;</span><span class="p">).</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">xPlayer</span><span class="p">.</span><span class="n">getInventoryItem</span><span class="p">(</span><span class="s1">&#39;sudo&#39;</span><span class="p">).</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">9</span> <span class="kr">then</span> 
+    <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;acetone&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;antifreeze&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;sudo&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="kr">end</span>
+</code></pre></div>
+    === "New function"
+        <div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">inventory</span> <span class="o">=</span> <span class="n">Inventory</span><span class="p">.</span><span class="n">Search</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;acetone&#39;</span><span class="p">,</span> <span class="s1">&#39;antifreeze&#39;</span><span class="p">,</span> <span class="s1">&#39;sudo&#39;</span><span class="p">})</span>
+<span class="kr">if</span> <span class="n">inventory</span> <span class="ow">and</span> <span class="n">inventory</span><span class="p">.</span><span class="n">acetone</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">inventory</span><span class="p">.</span><span class="n">antifreeze</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">inventory</span><span class="p">.</span><span class="n">sudo</span> <span class="o">&gt;</span> <span class="mi">9</span> <span class="kr">then</span>
+    <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;acetone&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;antifreeze&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;sudo&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="c1">-- todo: improved function for bulk removal</span>
+    <span class="c1">-- Inventory.RemoveItem(1, {&#39;acetone&#39;, &#39;antifreeze&#39;, &#39;sudo&#39;}, {3, 5, 10})</span>
+<span class="kr">end</span>
+</code></pre></div></p>
                 
                   
                 
