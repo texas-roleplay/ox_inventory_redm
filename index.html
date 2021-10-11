@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.3">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.8b42a75e.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.5143246d.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.3f5d1f46.min.css">
@@ -334,20 +334,6 @@
         <li class="md-nav__item">
   <a href="#framework" class="md-nav__link">
     Framework
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#standard" class="md-nav__link">
-    Standard
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ox" class="md-nav__link">
-    Ox
   </a>
   
 </li>
@@ -1341,25 +1327,18 @@ set mysql_slow_query_warning 100
 <p><br></p>
 <h2 id="framework">Framework<a class="headerlink" href="#framework" title="Permanent link">&para;</a></h2>
 <p>The inventory has been designed to work for a <em>modified</em> version of <strong>ESX Legacy</strong> and will not work with anything else.<br />
-For convenience, we provide a fork with all necessary changes.</p>
-<h2 id="standard">Standard<a class="headerlink" href="#standard" title="Permanent link">&para;</a></h2>
-<p>Minimal changes to maintain near-complete compatibility with other resources. This matches the behaviour of Linden ESX.</p>
+For convenience, we provide a fork with all the necessary changes as well as several new features and performance changes.  </p>
+<p>There should be no changes which break compatibility with other resources with the exception of what is necessary to support the inventory and new item system.</p>
 <ul>
 <li>Loadouts do not exist, so errors will occur in third-party resources attempting to manipulate them</li>
 <li>Inventories are slot-based and items can exist in multiple slots, which can throw off item counting</li>
 <li>Resources attempting to iterate through inventories in order will not work if a slot is empty</li>
 </ul>
-<h2 id="ox">Ox<a class="headerlink" href="#ox" title="Permanent link">&para;</a></h2>
-<p>Experimental branch to add new features and modify existing features, regardless of breaking compatibility.</p>
-<ul>
-<li>Jobs are loaded from a data file instead of the database</li>
-<li>Grades start from 1 instead of 0, and are stored as integers rather than strings</li>
-</ul>
 <div class="admonition tip">
 <p class="admonition-title">Modifying your framework</p>
-<p>If you <em>insist</em> on manually applying changes to your framework, you will need to manually reference changes in the <a href="https://github.com/overextended/es_extended/compare/58042fb6926769aeab35fe26fa98d568971ba0be...main">github diff</a>. No guide is provided.</p>
+<p>We do not provide a guide for manually converting your ESX to support Ox Inventory; instead you will need to manually reference changes in the <a href="https://github.com/overextended/es_extended/compare/58042fb6926769aeab35fe26fa98d568971ba0be...ox">github diff</a>.</p>
 </div>
-<p><a class="md-button md-button--primary" href="https://github.com/overextended/es_extended">Standard <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg></span></a>   <a class="md-button md-button--primary" href="https://github.com/overextended/es_extended/tree/ox">Experimental <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346 7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"/></svg></span></a></p>
+<p><a class="md-button md-button--primary" href="https://github.com/overextended/es_extended">Standard <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"/></svg></span></a></p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <p>Once you have downloaded and configured the required resources, you will need to update your server config.
 <div class="highlight"><pre><span></span><code>ensure oxmysql
@@ -1407,8 +1386,7 @@ ensure ox_inventory
 <h3 id="xplayer-functions-vs-inventory-functions">xPlayer functions vs Inventory functions<a class="headerlink" href="#xplayer-functions-vs-inventory-functions" title="Permanent link">&para;</a></h3>
 <p>All item related functions from xPlayer, such as <code>xPlayer.getInventoryItem</code>, have been modified for compatibility purposes; however they are considered deprecated and should not be used.</p>
 <p>The reasoning is fairly simple - there's now additional function references and overhead to consider. Fortunately, the new Inventory functions can be used directly and offer a great deal of improvements over the old ones.</p>
-<p>You should read through the modules section for further information, but the following should give you a decent idea.
-(Note: Work in progress and may be altered, for now you should stick to xPlayer functions)</p>
+<p>You should read through the modules section for further information, but the following should give you a decent idea.</p>
 <div class="admonition example">
 <p class="admonition-title">xPlayer.getInventoryItem and xPlayer.removeInventoryItem</p>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Deprecated</label><div class="tabbed-content">
@@ -1420,13 +1398,14 @@ ensure ox_inventory
 </code></pre></div>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">New function</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">inventory</span> <span class="o">=</span> <span class="n">Inventory</span><span class="p">.</span><span class="n">Search</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;acetone&#39;</span><span class="p">,</span> <span class="s1">&#39;antifreeze&#39;</span><span class="p">,</span> <span class="s1">&#39;sudo&#39;</span><span class="p">})</span>
-<span class="kr">if</span> <span class="n">inventory</span> <span class="ow">and</span> <span class="n">inventory</span><span class="p">.</span><span class="n">acetone</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">inventory</span><span class="p">.</span><span class="n">antifreeze</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">inventory</span><span class="p">.</span><span class="n">sudo</span> <span class="o">&gt;</span> <span class="mi">9</span> <span class="kr">then</span>
-    <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;acetone&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-    <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;antifreeze&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-    <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;sudo&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-    <span class="c1">-- todo: improved function for bulk removal</span>
-    <span class="c1">-- Inventory.RemoveItem(1, {&#39;acetone&#39;, &#39;antifreeze&#39;, &#39;sudo&#39;}, {3, 5, 10})</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">Inventory</span> <span class="o">=</span> <span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">Inventory</span><span class="p">()</span>
+<span class="p">...</span>
+<span class="p">...</span>
+<span class="kd">local</span> <span class="n">items</span> <span class="o">=</span> <span class="n">Inventory</span><span class="p">.</span><span class="n">Search</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;acetone&#39;</span><span class="p">,</span> <span class="s1">&#39;antifreeze&#39;</span><span class="p">,</span> <span class="s1">&#39;sudo&#39;</span><span class="p">})</span>
+<span class="kr">if</span> <span class="n">items</span> <span class="ow">and</span> <span class="n">inventory</span><span class="p">.</span><span class="n">acetone</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">inventory</span><span class="p">.</span><span class="n">antifreeze</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">inventory</span><span class="p">.</span><span class="n">sudo</span> <span class="o">&gt;</span> <span class="mi">9</span> <span class="kr">then</span>
+    <span class="n">Inventory</span><span class="p">.</span><span class="n">RemoveItem</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;acetone&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">Inventory</span><span class="p">.</span><span class="n">RemoveItem</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;antifreeze&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">Inventory</span><span class="p">.</span><span class="n">RemoveItem</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;sudo&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="kr">end</span>
 </code></pre></div>
 </div>
@@ -1522,10 +1501,10 @@ ensure ox_inventory
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": ".", "features": ["tabs", "navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.f8263e09.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["tabs", "navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.8397ff9e.min.js", "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.4fc53ad4.min.js"></script>
+      <script src="assets/javascripts/bundle.f89c2efe.min.js"></script>
       
     
   </body>
