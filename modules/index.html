@@ -389,22 +389,50 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="inventory/customdrop/" class="md-nav__link">
+        Creating custom drops
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="inventory/customstash/" class="md-nav__link">
+        Creating custom stashes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2_1" type="checkbox" id="__nav_3_2_1" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2_3" type="checkbox" id="__nav_3_2_3" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_3_2_1">
+        <label class="md-nav__link" for="__nav_3_2_3">
           Client
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Client" data-md-level="3">
-        <label class="md-nav__title" for="__nav_3_2_1">
+        <label class="md-nav__title" for="__nav_3_2_3">
           <span class="md-nav__icon md-icon"></span>
           Client
         </label>
@@ -440,18 +468,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2_2" type="checkbox" id="__nav_3_2_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2_4" type="checkbox" id="__nav_3_2_4" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_3_2_2">
+        <label class="md-nav__link" for="__nav_3_2_4">
           Server
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Server" data-md-level="3">
-        <label class="md-nav__title" for="__nav_3_2_2">
+        <label class="md-nav__title" for="__nav_3_2_4">
           <span class="md-nav__icon md-icon"></span>
           Server
         </label>
@@ -465,20 +493,6 @@
     <li class="md-nav__item">
       <a href="inventory/server/" class="md-nav__link">
         Server module
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="inventory/server/customdrop/" class="md-nav__link">
-        Creating custom drops
       </a>
     </li>
   
@@ -656,40 +670,40 @@
   
   
   
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_1" type="checkbox" id="__nav_3_3_1" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_3_3_1">
-          Client
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Client" data-md-level="3">
-        <label class="md-nav__title" for="__nav_3_3_1">
-          <span class="md-nav__icon md-icon"></span>
-          Client
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+    <li class="md-nav__item">
+      <a href="items/create/" class="md-nav__link">
+        Defining item data
+      </a>
+    </li>
+  
+
+            
           
             
               
   
   
   
-    <li class="md-nav__item">
-      <a href="items/client/create/" class="md-nav__link">
-        Create items
-      </a>
-    </li>
-  
-
-            
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_2" type="checkbox" id="__nav_3_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_2">
+          Client
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Client" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Client
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
             
               
@@ -721,18 +735,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_2" type="checkbox" id="__nav_3_3_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_3" type="checkbox" id="__nav_3_3_3" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_3_3_2">
+        <label class="md-nav__link" for="__nav_3_3_3">
           Server
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Server" data-md-level="3">
-        <label class="md-nav__title" for="__nav_3_3_2">
+        <label class="md-nav__title" for="__nav_3_3_3">
           <span class="md-nav__icon md-icon"></span>
           Server
         </label>
@@ -1232,6 +1246,10 @@
                 <p>Ox Inventory is organised into separate files which are loaded and stored in a single environment as modules.<br />
 Most functions are included as part of a module and can only be accessed by storing a local reference to the module.</p>
 <p>This section will provide details on several functions that are utilised in several modules or available to use in other resources as exports.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Modules are not typically usable outside of the resource; if you want to use them you need to look at the <code>exports</code> listed.</p>
+</div>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>If the documentation for a function does not include an export then it is only intended for internal use.</p>
@@ -1278,13 +1296,13 @@ Most functions are included as part of a module and can only be accessed by stor
       
       
         
-        <a href="inventory/client/search/" class="md-footer__link md-footer__link--next" aria-label="Next: Inventory.Search" rel="next">
+        <a href="inventory/customdrop/" class="md-footer__link md-footer__link--next" aria-label="Next: Creating custom drops" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Inventory.Search
+              Creating custom drops
             </div>
           </div>
           <div class="md-footer__button md-icon">
