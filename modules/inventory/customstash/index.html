@@ -1249,7 +1249,8 @@
 Stashes will not always have a defined template, so it is necessary to create them on the server before a client can request it.  </p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<div class="highlight"><pre><span></span><code><span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">CreateStash</span><span class="p">(</span><span class="s1">&#39;someid&#39;</span><span class="p">,</span> <span class="s1">&#39;Inventory label&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">CreateStash</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">slots</span><span class="p">,</span> <span class="n">maxWeight</span><span class="p">,</span> <span class="n">owner</span><span class="p">,</span> <span class="n">items</span><span class="p">)</span>
+<span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">CreateStash</span><span class="p">(</span><span class="s1">&#39;someid&#39;</span><span class="p">,</span> <span class="s1">&#39;Inventory label&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="p">{</span><span class="n">cola</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bread</span><span class="o">=</span><span class="mi">3</span><span class="p">})</span>
 </code></pre></div>
 <table>
 <thead>
@@ -1299,8 +1300,8 @@ Stashes will not always have a defined template, so it is necessary to create th
 </tr>
 </tbody>
 </table>
-<p>Items should only be defined for newly created stashes and for converting key-value pairs into compatible items.
-<code>{"cola":1, "bread":3}</code> will be converted to <code>[{"slot":1,"name":"cola","count":1}, {"slot":2,"name":"bread","count":3}]</code></p>
+<p>Items should only be defined for newly created stashes and for converting key-value pairs into compatible items.<br />
+<code>{cola = 1, bread = 3}</code> will be converted to <code>{{slot = 1, name = cola, count = 1}, {slot = name = bread, count = 3}}</code></p>
 </div>
 <p>The reasoning for this function is to provide easier integration with other resources and prevention of arbitrarily created stashes defined by the client.</p>
                 
