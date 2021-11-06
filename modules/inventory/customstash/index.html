@@ -1301,7 +1301,7 @@ Stashes will not always have a defined template, so it is necessary to create th
 </tbody>
 </table>
 <p>Items should only be defined for newly created stashes and for converting key-value pairs into compatible items.<br />
-<code>{cola = 1, bread = 3}</code> will be converted to <code>{{slot = 1, name = cola, count = 1}, {slot = name = bread, count = 3}}</code></p>
+<code>{cola = 1, bread = 3}</code> will be converted to <code>{{slot = 1, name = cola, count = 1}, {slot = 2 name = bread, count = 3}}</code></p>
 </div>
 <p>The reasoning for this function is to provide easier integration with other resources and prevention of arbitrarily created stashes defined by the client.</p>
                 
