@@ -1005,109 +1005,6 @@
 
             
           
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_2" type="checkbox" id="__nav_3_6_2" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_3_6_2">
-          Shared
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Shared" data-md-level="3">
-        <label class="md-nav__title" for="__nav_3_6_2">
-          <span class="md-nav__icon md-icon"></span>
-          Shared
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../utils/shared/checktable/" class="md-nav__link">
-        Utils.CheckTable
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../utils/shared/copytable/" class="md-nav__link">
-        Utils.Copy
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../utils/shared/matchtables/" class="md-nav__link">
-        Utils.MatchTables
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../utils/shared/servercallbacks/" class="md-nav__link">
-        Servercallbacks
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../utils/shared/tablecontains/" class="md-nav__link">
-        Utils.TableContains
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -1249,8 +1146,8 @@
 Stashes will not always have a defined template, so it is necessary to create them on the server before a client can request it.  </p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<div class="highlight"><pre><span></span><code><span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">CreateStash</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">slots</span><span class="p">,</span> <span class="n">maxWeight</span><span class="p">,</span> <span class="n">owner</span><span class="p">,</span> <span class="n">items</span><span class="p">)</span>
-<span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">CreateStash</span><span class="p">(</span><span class="s1">&#39;someid&#39;</span><span class="p">,</span> <span class="s1">&#39;Inventory label&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="p">{</span><span class="n">cola</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bread</span><span class="o">=</span><span class="mi">3</span><span class="p">})</span>
+<div class="highlight"><pre><span></span><code><span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">CreateStash</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">slots</span><span class="p">,</span> <span class="n">maxWeight</span><span class="p">,</span> <span class="n">owner</span><span class="p">)</span>
+<span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">CreateStash</span><span class="p">(</span><span class="s1">&#39;someid&#39;</span><span class="p">,</span> <span class="s1">&#39;Inventory label&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
 </code></pre></div>
 <table>
 <thead>
@@ -1292,18 +1189,11 @@ Stashes will not always have a defined template, so it is necessary to create th
 <td>yes</td>
 <td>The identifier of the stash owner, or true for personal stashes</td>
 </tr>
-<tr>
-<td>items</td>
-<td>table</td>
-<td>yes</td>
-<td>Items to be loaded in the stash</td>
-</tr>
 </tbody>
 </table>
-<p>Items should only be defined for newly created stashes and for converting key-value pairs into compatible items.<br />
-<code>{cola = 1, bread = 3}</code> will be converted to <code>{{slot = 1, name = cola, count = 1}, {slot = 2 name = bread, count = 3}}</code></p>
-</div>
 <p>The reasoning for this function is to provide easier integration with other resources and prevention of arbitrarily created stashes defined by the client.</p>
+</div>
+<p>You can reference <a href="https://github.com/thelindat/esx_property/commit/0dfe120ac4401dce17946b79b12c1b6049851d98#diff-d4503a9550899ea7880582e02d5404019dbce696d1b27a7c63f18b99eddeb088">esx_property</a> for a sample of utilising this export.</p>
                 
                   
                 
