@@ -1142,12 +1142,12 @@
                 
                   <h1>Creating custom stashes</h1>
                 
-                <p>The client can request inventory data from any inventory type and id and the server will attempt to create one if there is a data template.<br />
-Stashes will not always have a defined template, so it is necessary to create them on the server before a client can request it.  </p>
+                <p>The client can request inventory data from any inventory type and id and the server will create one if the id is valid.<br />
+Stashes will not always have a defined template, so it is necessary to register them on the server before a client can request it.  </p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<div class="highlight"><pre><span></span><code><span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">CreateStash</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">slots</span><span class="p">,</span> <span class="n">maxWeight</span><span class="p">,</span> <span class="n">owner</span><span class="p">)</span>
-<span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">CreateStash</span><span class="p">(</span><span class="s1">&#39;someid&#39;</span><span class="p">,</span> <span class="s1">&#39;Inventory label&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">RegisterStash</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">slots</span><span class="p">,</span> <span class="n">maxWeight</span><span class="p">,</span> <span class="n">owner</span><span class="p">)</span>
+<span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">RegisterStash</span><span class="p">(</span><span class="s1">&#39;someid&#39;</span><span class="p">,</span> <span class="s1">&#39;Inventory label&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
 </code></pre></div>
 <table>
 <thead>

@@ -324,26 +324,39 @@
     Dependencies
   </a>
   
+    <nav class="md-nav" aria-label="Dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fxserver" class="md-nav__link">
+    FXServer
+  </a>
+  
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#oxmysql" class="md-nav__link">
     OxMySQL
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#lua-library" class="md-nav__link">
     Lua Library
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#framework" class="md-nav__link">
     Framework
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -363,8 +376,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#xplayer-functions-vs-inventory-functions" class="md-nav__link">
-    xPlayer functions vs Inventory functions
+  <a href="#xplayer-vs-inventory" class="md-nav__link">
+    xPlayer vs Inventory
   </a>
   
 </li>
@@ -1228,7 +1241,9 @@
 You must possess a basic understanding of coding and the ability to <em>read documentation</em>; otherwise you should not install this resource.</p>
 </div>
 <h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
-<h2 id="oxmysql">OxMySQL<a class="headerlink" href="#oxmysql" title="Permanent link">&para;</a></h2>
+<h3 id="fxserver">FXServer<a class="headerlink" href="#fxserver" title="Permanent link">&para;</a></h3>
+<p>Currently incompatible with the recommended build (4394 was released August 21<sup>st</sup>); you can either download the optional build or just the latest.</p>
+<h3 id="oxmysql">OxMySQL<a class="headerlink" href="#oxmysql" title="Permanent link">&para;</a></h3>
 <p>Our spin on a database wrapper utilising <a href="https://github.com/sidorares/node-mysql2">node-mysql2</a>, providing improved performance and enhanced features.</p>
 <ul>
 <li>Improved performance and compatibility</li>
@@ -1239,18 +1254,15 @@ You must possess a basic understanding of coding and the ability to <em>read doc
 </ul>
 <p><a class="md-button md-button--primary" href="https://github.com/overextended/oxmysql/releases">GitHub <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span></a>    <a class="md-button md-button--primary" href="https://overextended.github.io/oxmysql">Documentation <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z"/></svg></span></a></p>
 <p><br></p>
-<h2 id="lua-library">Lua Library<a class="headerlink" href="#lua-library" title="Permanent link">&para;</a></h2>
+<h3 id="lua-library">Lua Library<a class="headerlink" href="#lua-library" title="Permanent link">&para;</a></h3>
 <p>A resource designed to provide reusable functions that can be loaded into any resource with simple variable declarations rather than through fxmanifest.</p>
-<p>Still a work in progress.</p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Server Callbacks</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Table utilities (contains, match, iterators, etc.)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> OxMySQL library (similar to included lib, but not designed as a drop-in for mysql-async)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Native wrappers (animations, spawning, etc.)</li>
-</ul>
+<p>Still a work in progress.  </p>
+<p><strong>Currently used for</strong>
+- [x] Server Callbacks
+- [x] Table utilities (contains, matches)</p>
 <p><a class="md-button md-button--primary" href="https://github.com/project-error/pe-lualib">GitHub <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span></a></p>
 <p><br></p>
-<h2 id="framework">Framework<a class="headerlink" href="#framework" title="Permanent link">&para;</a></h2>
+<h3 id="framework">Framework<a class="headerlink" href="#framework" title="Permanent link">&para;</a></h3>
 <p>The inventory has been designed to work for a <em>modified</em> version of <strong>ESX Legacy</strong> and will not work with anything else.<br />
 For convenience, we provide a fork with all the necessary changes as well as several new features and performance changes.  </p>
 <p>There should be no changes which break compatibility with other resources with the exception of what is necessary to support the inventory and new item system.</p>
@@ -1268,6 +1280,7 @@ For convenience, we provide a fork with all the necessary changes as well as sev
 <p>Once you have downloaded and configured the required resources, you will need to update your server config.
 <div class="highlight"><pre><span></span><code>ensure oxmysql
 ensure es_extended
+ensure pe-lualib
 ensure ox_inventory
 </code></pre></div></p>
 <details class="summary"><summary>Fresh ESX install</summary><ul>
@@ -1309,8 +1322,8 @@ ensure ox_inventory
 <li>Shops from esx_shops or the armoury from esx_policejob should be removed</li>
 <li>Resources like esx_inventoryhud, esx_trunkinventory, esx_addoninventory, etc. should be removed</li>
 </ul>
-<h3 id="xplayer-functions-vs-inventory-functions">xPlayer functions vs Inventory functions<a class="headerlink" href="#xplayer-functions-vs-inventory-functions" title="Permanent link">&para;</a></h3>
-<p>All item related functions from xPlayer, such as <code>xPlayer.getInventoryItem</code>, have been modified for compatibility purposes; however they are considered deprecated and should not be used.</p>
+<h3 id="xplayer-vs-inventory">xPlayer vs Inventory<a class="headerlink" href="#xplayer-vs-inventory" title="Permanent link">&para;</a></h3>
+<p>All item related functions from xPlayer, such as <code>xPlayer.getInventoryItem</code>, have been modified for compatibility purposes; however they are considered deprecated.</p>
 <p>The reasoning is fairly simple - there's now additional function references and overhead to consider. Fortunately, the new Inventory functions can be used directly and offer a great deal of improvements over the old ones.</p>
 <p>You should read through the modules section for further information, but the following should give you a decent idea.</p>
 <div class="admonition example">
