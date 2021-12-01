@@ -17,7 +17,7 @@
     
     
       
-        <title>Inventory.SetMetadata - 🐂 Inventory</title>
+        <title>Inventory.ClearPlayerInventory - 🐂 Inventory</title>
       
     
     
@@ -99,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Inventory.SetMetadata
+              Inventory.ClearPlayerInventory
             
           </span>
         </div>
@@ -551,11 +551,19 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../clearplayerinventory/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Inventory.ClearPlayerInventory
       </a>
+      
     </li>
   
 
@@ -635,19 +643,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../setmetadata/" class="md-nav__link">
         Inventory.SetMetadata
       </a>
-      
     </li>
   
 
@@ -1180,15 +1180,16 @@
               
                 
 
-  <h1>Inventory.SetMetadata</h1>
+  <h1>Inventory.ClearPlayerInventory</h1>
 
-<p>Replaces the metadata table on an item with new values.</p>
+<p>Clears the players entire inventory.</p>
+<div class="admonition server">
+<p class="admonition-title">Server</p>
+</div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p><div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">Inventory</span> <span class="o">=</span> <span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">Inventory</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">TriggerEvent</span><span class="p">(</span><span class="s1">&#39;ox_inventory:clearPlayerInventory&#39;</span><span class="p">,</span> <span class="n">xPlayer</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="n">Inventory</span><span class="p">.</span><span class="n">SetMetadata</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">slot</span><span class="p">,</span> <span class="n">metadata</span><span class="p">)</span>
-</code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -1200,42 +1201,13 @@
 </thead>
 <tbody>
 <tr>
-<td>source</td>
-<td>integer</td>
+<td>xPlayer</td>
+<td>player</td>
 <td>no</td>
-<td>The id of the inventory being accessed</td>
-</tr>
-<tr>
-<td>slot</td>
-<td>integer</td>
-<td>no</td>
-<td>The slot being modified</td>
-</tr>
-<tr>
-<td>metadata</td>
-<td>table</td>
-<td>no</td>
-<td>New metadata values</td>
+<td>Either direct xPlayer, or Player ID</td>
 </tr>
 </tbody>
 </table>
-<p>This will replace all metadata values, so if you want to change a value you need to get the item data first.</p>
-</div>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Add item metadata</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">water</span> <span class="o">=</span> <span class="n">Inventory</span><span class="p">.</span><span class="n">Search</span><span class="p">(</span><span class="n">xPlayer</span><span class="p">.</span><span class="n">source</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">)</span>
-<span class="kr">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="kr">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">water</span><span class="p">)</span> <span class="kr">do</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">______________&#39;</span><span class="o">..</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">- index &#39;</span><span class="o">..</span><span class="n">k</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;slot: &#39;</span><span class="o">..</span><span class="n">v</span><span class="p">.</span><span class="n">slot</span><span class="p">,</span> <span class="s1">&#39;metadata: &#39;</span><span class="o">..</span><span class="n">json</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">metadata</span><span class="p">))</span>
-    <span class="n">water</span> <span class="o">=</span> <span class="n">v</span>
-<span class="kr">end</span>
-<span class="n">water</span><span class="p">.</span><span class="n">metadata</span><span class="p">.</span><span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;clean&#39;</span>
-<span class="n">Inventory</span><span class="p">.</span><span class="n">SetMetadata</span><span class="p">(</span><span class="n">xPlayer</span><span class="p">.</span><span class="n">source</span><span class="p">,</span> <span class="n">water</span><span class="p">.</span><span class="n">slot</span><span class="p">,</span> <span class="n">water</span><span class="p">.</span><span class="n">metadata</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Player 3 has &#39;</span><span class="o">..</span><span class="n">count</span><span class="o">..</span><span class="s1">&#39; water&#39;</span><span class="p">)</span>
-</code></pre></div>
-</div>
-</div>
 </div>
 
               
@@ -1255,7 +1227,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../setitem/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Inventory.SetItem" rel="prev">
+        <a href="../canswapitem/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Inventory.CanSwapItem" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1264,20 +1236,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Inventory.SetItem
+              Inventory.CanSwapItem
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../../items/create/" class="md-footer__link md-footer__link--next" aria-label="Next: Defining item data" rel="next">
+        <a href="../create/" class="md-footer__link md-footer__link--next" aria-label="Next: Inventory.Create" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Defining item data
+              Inventory.Create
             </div>
           </div>
           <div class="md-footer__button md-icon">
