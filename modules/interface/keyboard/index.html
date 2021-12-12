@@ -17,7 +17,7 @@
     
     
       
-        <title>Defining item data - 🐂 Inventory</title>
+        <title>Interface.Keyboard - 🐂 Inventory</title>
       
     
     
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Defining item data
+              Interface.Keyboard
             
           </span>
         </div>
@@ -349,12 +349,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" checked>
       
       
       
@@ -377,7 +379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../interface/active/" class="md-nav__link">
+      <a href="../active/" class="md-nav__link">
         Interface.ProgressActive
       </a>
     </li>
@@ -391,7 +393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../interface/cancel/" class="md-nav__link">
+      <a href="../cancel/" class="md-nav__link">
         Interface.CancelProgress
       </a>
     </li>
@@ -403,11 +405,19 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../interface/keyboard/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Interface.Keyboard
       </a>
+      
     </li>
   
 
@@ -419,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../interface/start/" class="md-nav__link">
+      <a href="../start/" class="md-nav__link">
         Interface.Progress
       </a>
     </li>
@@ -747,14 +757,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
       
       
       
@@ -775,19 +783,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../items/create/" class="md-nav__link">
         Defining item data
       </a>
-      
     </li>
   
 
@@ -825,7 +825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../client/" class="md-nav__link">
+      <a href="../../items/client/" class="md-nav__link">
         Client module
       </a>
     </li>
@@ -839,7 +839,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../client/usable/" class="md-nav__link">
+      <a href="../../items/client/usable/" class="md-nav__link">
         Register usable items
       </a>
     </li>
@@ -886,7 +886,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../server/" class="md-nav__link">
+      <a href="../../items/server/" class="md-nav__link">
         Server module
       </a>
     </li>
@@ -900,7 +900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../server/events/" class="md-nav__link">
+      <a href="../../items/server/events/" class="md-nav__link">
         Item events
       </a>
     </li>
@@ -914,7 +914,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../server/newmetadata/" class="md-nav__link">
+      <a href="../../items/server/newmetadata/" class="md-nav__link">
         Defining default metadata
       </a>
     </li>
@@ -1172,163 +1172,54 @@
               
                 
 
-  <h1>Defining item data</h1>
+  <h1>Interface.Keyboard</h1>
 
-<p>All static item data is loaded from files in the <code>data</code> folder rather than the database.<br />
-The item table defines a basic template to reference when working with an instance of that item type, and can contain custom data.</p>
+<p>Window component that returns values from input fields.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">Interface</span><span class="p">.</span><span class="n">Keyboard</span><span class="p">(</span><span class="n">header</span><span class="p">,</span> <span class="n">rows</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">Keyboard</span><span class="p">(</span><span class="n">header</span><span class="p">,</span> <span class="n">rows</span><span class="p">)</span>
+</code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Optional</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>header</td>
+<td>string</td>
+<td>no</td>
+<td>Header title of the window</td>
+</tr>
+<tr>
+<td>rows</td>
+<td>table</td>
+<td>no</td>
+<td>Table of strings, each adding a new row</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The function is <strong>sync</strong>, returned value is a <code>table</code> if at least one input field had a value in it upon submitting, otherwise returned value is <code>nil</code></p>
+</div>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Standard Burger</label><div class="tabbed-content">
-<p>A normal burger item, as it appears in data/items.lua
-<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s1">&#39;burger&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Burger&#39;</span><span class="p">,</span>
-    <span class="n">weight</span> <span class="o">=</span> <span class="mi">220</span><span class="p">,</span>
-    <span class="n">stack</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="n">close</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="n">client</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="n">status</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hunger</span> <span class="o">=</span> <span class="mi">200000</span> <span class="p">},</span>
-        <span class="n">anim</span> <span class="o">=</span> <span class="p">{</span> <span class="n">dict</span> <span class="o">=</span> <span class="s1">&#39;mp_player_inteat@burger&#39;</span><span class="p">,</span> <span class="n">clip</span> <span class="o">=</span> <span class="s1">&#39;mp_player_int_eat_burger_fp&#39;</span> <span class="p">},</span>
-        <span class="n">prop</span> <span class="o">=</span> <span class="p">{</span> <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;prop_cs_burger_01&#39;</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="p">{</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">0.02</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.02</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.02</span><span class="p">},</span> <span class="n">rot</span> <span class="o">=</span> <span class="p">{</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">}</span> <span class="p">},</span>
-        <span class="n">usetime</span> <span class="o">=</span> <span class="mi">2500</span><span class="p">,</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></p>
-</div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Custom Burger</label><div class="tabbed-content">
-<p>A modified burger item, with a description and custom crafting table.
-<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s1">&#39;burger&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Burger&#39;</span><span class="p">,</span>
-    <span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;Just what is the secret formula?&#39;</span>
-    <span class="n">weight</span> <span class="o">=</span> <span class="mi">220</span><span class="p">,</span>
-    <span class="n">stack</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="n">close</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="n">client</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="n">status</span> <span class="o">=</span> <span class="p">{</span> <span class="n">hunger</span> <span class="o">=</span> <span class="mi">200000</span> <span class="p">},</span>
-        <span class="n">anim</span> <span class="o">=</span> <span class="p">{</span> <span class="n">dict</span> <span class="o">=</span> <span class="s1">&#39;mp_player_inteat@burger&#39;</span><span class="p">,</span> <span class="n">clip</span> <span class="o">=</span> <span class="s1">&#39;mp_player_int_eat_burger_fp&#39;</span> <span class="p">},</span>
-        <span class="n">prop</span> <span class="o">=</span> <span class="p">{</span> <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;prop_cs_burger_01&#39;</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="p">{</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">0.02</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.02</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.02</span><span class="p">},</span> <span class="n">rot</span> <span class="o">=</span> <span class="p">{</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">}</span> <span class="p">},</span>
-        <span class="n">usetime</span> <span class="o">=</span> <span class="mi">2500</span><span class="p">,</span>
-    <span class="p">}</span>
-    <span class="n">crafting</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="p">[</span><span class="s1">&#39;bun&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="p">[</span><span class="s1">&#39;ketchup&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="p">[</span><span class="s1">&#39;mustard&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="p">[</span><span class="s1">&#39;cheese&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="p">[</span><span class="s1">&#39;pickles&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="p">[</span><span class="s1">&#39;lettuce&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="p">[</span><span class="s1">&#39;tomato&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="p">[</span><span class="s1">&#39;onion&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> 
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Keyboard</span><span class="p">.</span><span class="n">Input</span><span class="p">(</span><span class="s1">&#39;Evidence Locker&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;Locker number&#39;</span><span class="p">})</span>
+
+<span class="kr">if</span> <span class="n">data</span> <span class="kr">then</span>
+    <span class="kd">local</span> <span class="n">lockerNum</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="kr">else</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No value was entered into the field!&#39;</span><span class="p">)</span>
+<span class="kr">end</span>
 </code></pre></div>
-Combined with several new functions and events you could easily create your own crafting system.</p>
-</div>
-</div>
-</div>
-<div class="admonition summary">
-<p class="admonition-title">Standard options</p>
-<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Shared</label><div class="tabbed-content">
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Optional</th>
-<th>Default</th>
-<th>Explanation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>label</td>
-<td>no</td>
-<td>-</td>
-<td>The display text for an item</td>
-</tr>
-<tr>
-<td>weight</td>
-<td>yes</td>
-<td>0</td>
-<td>The weight of an item in grams</td>
-</tr>
-<tr>
-<td>stack</td>
-<td>yes</td>
-<td>true</td>
-<td>Does the item stack with others of the same type</td>
-</tr>
-<tr>
-<td>close</td>
-<td>yes</td>
-<td>true</td>
-<td>Does the item close the inventory if used</td>
-</tr>
-<tr>
-<td>description</td>
-<td>yes</td>
-<td>-</td>
-<td>Text to display in the item tooltip</td>
-</tr>
-<tr>
-<td>consume</td>
-<td>yes</td>
-<td>1</td>
-<td>Number of an item needed to use it, and removed after use</td>
-</tr>
-<tr>
-<td>client</td>
-<td>yes</td>
-<td>-</td>
-<td>Options accessible only to the client</td>
-</tr>
-<tr>
-<td>server</td>
-<td>yes</td>
-<td>-</td>
-<td>Options accessible only to the server</td>
-</tr>
-</tbody>
-</table>
-</div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Client</label><div class="tabbed-content">
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Explanation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>event</td>
-<td>Trigger a client event after use</td>
-</tr>
-<tr>
-<td>status</td>
-<td>Adjust esx_status values after use</td>
-</tr>
-<tr>
-<td>anim</td>
-<td>Animation during progress bar</td>
-</tr>
-<tr>
-<td>prop</td>
-<td>Attached entity during progress bar</td>
-</tr>
-<tr>
-<td>disable</td>
-<td>Disable actions during progress bar</td>
-</tr>
-<tr>
-<td>usetime</td>
-<td>Time for progress bar to complete</td>
-</tr>
-<tr>
-<td>cancel</td>
-<td>Able to cancel progress bar</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
 </div>
 
               
@@ -1348,7 +1239,7 @@ Combined with several new functions and events you could easily create your own 
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../inventory/server/setmetadata/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Inventory.SetMetadata" rel="prev">
+        <a href="../cancel/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Interface.CancelProgress" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1357,20 +1248,20 @@ Combined with several new functions and events you could easily create your own 
               <span class="md-footer__direction">
                 Previous
               </span>
-              Inventory.SetMetadata
+              Interface.CancelProgress
             </div>
           </div>
         </a>
       
       
         
-        <a href="../client/" class="md-footer__link md-footer__link--next" aria-label="Next: Client module" rel="next">
+        <a href="../start/" class="md-footer__link md-footer__link--next" aria-label="Next: Interface.Progress" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Client module
+              Interface.Progress
             </div>
           </div>
           <div class="md-footer__button md-icon">
