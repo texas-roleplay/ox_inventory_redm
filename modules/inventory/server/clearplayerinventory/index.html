@@ -1204,12 +1204,9 @@
   <h1>Inventory.ClearPlayerInventory</h1>
 
 <p>Clears the players entire inventory.</p>
-<div class="admonition server">
-<p class="admonition-title">Server</p>
-</div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<div class="highlight"><pre><span></span><code><span class="n">TriggerEvent</span><span class="p">(</span><span class="s1">&#39;ox_inventory:clearPlayerInventory&#39;</span><span class="p">,</span> <span class="n">xPlayer</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">ClearInventory</span><span class="p">(</span><span class="n">inv</span><span class="p">)</span>
 </code></pre></div>
 <table>
 <thead>
@@ -1222,10 +1219,10 @@
 </thead>
 <tbody>
 <tr>
-<td>xPlayer</td>
-<td>player</td>
+<td>inv</td>
+<td>str/int</td>
 <td>no</td>
-<td>Either direct xPlayer, or Player ID</td>
+<td>The id of the inventory to wipe</td>
 </tr>
 </tbody>
 </table>

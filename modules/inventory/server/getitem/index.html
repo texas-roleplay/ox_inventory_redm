@@ -1206,9 +1206,57 @@
 <p>Searches an inventory for an item, returning generic item data and the count.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">Inventory</span><span class="p">.</span><span class="n">GetItem</span><span class="p">(</span><span class="n">inventory</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">metadata</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">.</span><span class="n">GetItem</span><span class="p">(</span><span class="n">inv</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">returnsCount</span><span class="p">)</span>
 </code></pre></div>
-This function enhances the default functionality of <code>xPlayer.getInventoryItem</code>.</p>
+<p>This function enhances the default functionality of <code>xPlayer.getInventoryItem</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Optional</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>inv</td>
+<td>str/int</td>
+<td>no</td>
+<td>The id of the inventory to add an item to, such as playerid</td>
+</tr>
+<tr>
+<td>item</td>
+<td>string</td>
+<td>no</td>
+<td>Name of the item to get</td>
+</tr>
+<tr>
+<td>metadata</td>
+<td>table</td>
+<td>yes</td>
+<td>Specific metadata to search for</td>
+</tr>
+<tr>
+<td>returnsCount</td>
+<td>boolean</td>
+<td>yes</td>
+<td>Only return the item count</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">ox_inventory</span> <span class="o">=</span> <span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span>
+
+<span class="c1">-- retrieve the amount of water held in inventory 1</span>
+<span class="kd">local</span> <span class="n">water</span> <span class="o">=</span> <span class="n">ox_inventory</span><span class="p">:</span><span class="n">GetItem</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+
+<span class="kr">if</span> <span class="n">ox_inventory</span><span class="p">:</span><span class="n">GetItem</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;money&#39;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">5</span> <span class="kr">then</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;1 has less than $5&#39;</span><span class="p">)</span>
+<span class="kr">end</span>
+</code></pre></div>
 </div>
 
               

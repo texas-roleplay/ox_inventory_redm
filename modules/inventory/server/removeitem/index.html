@@ -1206,9 +1206,64 @@
 <p>Removes an item from the provided inventory.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">Inventory</span><span class="p">.</span><span class="n">RemoveItem</span><span class="p">(</span><span class="n">inventory</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">slot</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">RemoveItem</span><span class="p">(</span><span class="n">inv</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">slot</span><span class="p">)</span>
 </code></pre></div>
-This function enhances the default functionality of <code>xPlayer.removeInventoryItem</code>.</p>
+<p>This function enhances the default functionality of <code>xPlayer.removeInventoryItem</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Optional</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>inv</td>
+<td>str/int</td>
+<td>no</td>
+<td>The id of the inventory to remove the item from</td>
+</tr>
+<tr>
+<td>item</td>
+<td>string</td>
+<td>no</td>
+<td>Name of the item to remove</td>
+</tr>
+<tr>
+<td>count</td>
+<td>integer</td>
+<td>no</td>
+<td>Number of items to remove</td>
+</tr>
+<tr>
+<td>metadata</td>
+<td>table</td>
+<td>yes</td>
+<td>Required metadata for removal</td>
+</tr>
+<tr>
+<td>slot</td>
+<td>integer</td>
+<td>yes</td>
+<td>Try to remove the item from a specific slot</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">ox_inventory</span> <span class="o">=</span> <span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span>
+
+<span class="c1">-- check if</span>
+<span class="kd">local</span> <span class="n">bread</span> <span class="o">=</span> <span class="n">ox_inventory</span><span class="p">:</span><span class="n">GetItem</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;bread&#39;</span><span class="p">)</span>
+<span class="kr">if</span> <span class="n">bread</span><span class="p">.</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="kr">then</span>
+    <span class="n">ox_inventory</span><span class="p">:</span><span class="n">RemoveItem</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;bread&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="kr">else</span>
+    <span class="nb">print</span><span class="p">((</span><span class="s1">&#39;id 2 does only has %s %s&#39;</span><span class="p">):</span><span class="n">format</span><span class="p">(</span><span class="n">bread</span><span class="p">.</span><span class="n">count</span><span class="p">,</span> <span class="n">bread</span><span class="p">.</span><span class="n">label</span><span class="p">))</span>
+<span class="kr">end</span>
+</code></pre></div>
 </div>
 
               

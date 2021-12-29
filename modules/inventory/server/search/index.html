@@ -1206,10 +1206,8 @@
 <p>Returns a table containing data for the searched items, the result varying based on the provided searchtype.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p><div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">Inventory</span> <span class="o">=</span> <span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">Inventory</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">Search</span><span class="p">(</span><span class="n">inventory</span><span class="p">,</span> <span class="n">searchtype</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">metadata</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="n">Inventory</span><span class="p">.</span><span class="n">Search</span><span class="p">(</span><span class="n">inventory</span><span class="p">,</span> <span class="n">searchtype</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">metadata</span><span class="p">)</span>
-</code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -1251,7 +1249,9 @@
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="tabbed-set" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Single item data</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">water</span> <span class="o">=</span> <span class="n">Inventory</span><span class="p">.</span><span class="n">Search</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">ox_inventory</span> <span class="o">=</span> <span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span>
+
+<span class="kd">local</span> <span class="n">water</span> <span class="o">=</span> <span class="n">ox_inventory</span><span class="p">:</span><span class="n">Search</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">)</span>
 <span class="kd">local</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="kr">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">v</span> <span class="kr">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">water</span><span class="p">)</span> <span class="kr">do</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">slot</span><span class="o">..</span><span class="s1">&#39; contains &#39;</span><span class="o">..</span><span class="n">v</span><span class="p">.</span><span class="n">count</span><span class="o">..</span><span class="s1">&#39; water &#39;</span><span class="o">..</span><span class="n">json</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">metadata</span><span class="p">))</span>
@@ -1261,7 +1261,9 @@
 </code></pre></div>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Multiple items data</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">inventory</span> <span class="o">=</span> <span class="n">Inventory</span><span class="p">.</span><span class="n">Search</span><span class="p">(</span><span class="mi">377346</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;meat&#39;</span><span class="p">,</span> <span class="s1">&#39;skin&#39;</span><span class="p">},</span> <span class="s1">&#39;deer&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">ox_inventory</span> <span class="o">=</span> <span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span>
+
+<span class="kd">local</span> <span class="n">inventory</span> <span class="o">=</span> <span class="n">ox_inventory</span><span class="p">:</span><span class="n">Search</span><span class="p">(</span><span class="mi">377346</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;meat&#39;</span><span class="p">,</span> <span class="s1">&#39;skin&#39;</span><span class="p">},</span> <span class="s1">&#39;deer&#39;</span><span class="p">)</span>
 <span class="kr">if</span> <span class="n">inventory</span> <span class="kr">then</span>
     <span class="kr">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span> <span class="kr">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">inventory</span><span class="p">)</span> <span class="kr">do</span>
         <span class="kd">local</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1277,12 +1279,16 @@
 </code></pre></div>
 </div>
 <input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><label for="__tabbed_1_3">Single item count</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">count</span> <span class="o">=</span> <span class="n">Inventory</span><span class="p">.</span><span class="n">Search</span><span class="p">(</span><span class="s1">&#39;trunk-GEZ 461&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">ox_inventory</span> <span class="o">=</span> <span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span>
+
+<span class="kd">local</span> <span class="n">count</span> <span class="o">=</span> <span class="n">ox_inventory</span><span class="p">:</span><span class="n">Search</span><span class="p">(</span><span class="s1">&#39;trunk-GEZ 461&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Vehicle contains &#39;</span><span class="o">..</span><span class="n">count</span><span class="o">..</span> <span class="s1">&#39; water&#39;</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><label for="__tabbed_1_4">Multiple items count</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">inventory</span> <span class="o">=</span> <span class="n">Inventory</span><span class="p">.</span><span class="n">Search</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;meat&#39;</span><span class="p">,</span> <span class="s1">&#39;skin&#39;</span><span class="p">},</span> <span class="p">{</span><span class="n">grade</span><span class="o">=</span><span class="mi">1</span><span class="p">})</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">ox_inventory</span> <span class="o">=</span> <span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span>
+
+<span class="kd">local</span> <span class="n">inventory</span> <span class="o">=</span> <span class="n">ox_inventory</span><span class="p">:</span><span class="n">Search</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;meat&#39;</span><span class="p">,</span> <span class="s1">&#39;skin&#39;</span><span class="p">},</span> <span class="p">{</span><span class="n">grade</span><span class="o">=</span><span class="mi">1</span><span class="p">})</span>
 <span class="kr">if</span> <span class="n">inventory</span> <span class="kr">then</span>
     <span class="kr">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">count</span> <span class="kr">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">inventory</span><span class="p">)</span> <span class="kr">do</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Player 1 has &#39;</span><span class="o">..</span><span class="n">count</span><span class="o">..</span><span class="s1">&#39; &#39;</span><span class="o">..</span><span class="n">name</span><span class="p">)</span>

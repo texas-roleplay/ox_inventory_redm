@@ -1206,10 +1206,8 @@
 <p>Replaces the metadata table on an item with new values.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p><div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">Inventory</span> <span class="o">=</span> <span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">Inventory</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">SetMetadata</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">slot</span><span class="p">,</span> <span class="n">metadata</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="n">Inventory</span><span class="p">.</span><span class="n">SetMetadata</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">slot</span><span class="p">,</span> <span class="n">metadata</span><span class="p">)</span>
-</code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -1244,19 +1242,18 @@
 </div>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Add item metadata</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">water</span> <span class="o">=</span> <span class="n">Inventory</span><span class="p">.</span><span class="n">Search</span><span class="p">(</span><span class="n">xPlayer</span><span class="p">.</span><span class="n">source</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">ox_inventory</span> <span class="o">=</span> <span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span>
+
+<span class="kd">local</span> <span class="n">water</span> <span class="o">=</span> <span class="n">ox_inventory</span><span class="p">:</span><span class="n">Search</span><span class="p">(</span><span class="n">xPlayer</span><span class="p">.</span><span class="n">source</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">)</span>
 <span class="kr">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="kr">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">water</span><span class="p">)</span> <span class="kr">do</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">______________&#39;</span><span class="o">..</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">- index &#39;</span><span class="o">..</span><span class="n">k</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;slot: &#39;</span><span class="o">..</span><span class="n">v</span><span class="p">.</span><span class="n">slot</span><span class="p">,</span> <span class="s1">&#39;metadata: &#39;</span><span class="o">..</span><span class="n">json</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">metadata</span><span class="p">))</span>
     <span class="n">water</span> <span class="o">=</span> <span class="n">v</span>
 <span class="kr">end</span>
 <span class="n">water</span><span class="p">.</span><span class="n">metadata</span><span class="p">.</span><span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;clean&#39;</span>
-<span class="n">Inventory</span><span class="p">.</span><span class="n">SetMetadata</span><span class="p">(</span><span class="n">xPlayer</span><span class="p">.</span><span class="n">source</span><span class="p">,</span> <span class="n">water</span><span class="p">.</span><span class="n">slot</span><span class="p">,</span> <span class="n">water</span><span class="p">.</span><span class="n">metadata</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Player 3 has &#39;</span><span class="o">..</span><span class="n">count</span><span class="o">..</span><span class="s1">&#39; water&#39;</span><span class="p">)</span>
+<span class="n">ox_inventory</span><span class="p">:</span><span class="n">SetMetadata</span><span class="p">(</span><span class="n">xPlayer</span><span class="p">.</span><span class="n">source</span><span class="p">,</span> <span class="n">water</span><span class="p">.</span><span class="n">slot</span><span class="p">,</span> <span class="n">water</span><span class="p">.</span><span class="n">metadata</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">((</span><span class="s1">&#39;modified %sx water in slot %s with new metadata&#39;</span><span class="p">):</span><span class="n">format</span><span class="p">(</span><span class="n">water</span><span class="p">.</span><span class="n">count</span><span class="p">,</span> <span class="n">water</span><span class="p">.</span><span class="n">slot</span><span class="p">))</span>
 </code></pre></div>
-</div>
-</div>
 </div>
 
               

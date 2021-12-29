@@ -1206,7 +1206,7 @@
 <p>Adds an item to the specified inventory.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<div class="highlight"><pre><span></span><code><span class="n">Inventory</span><span class="p">.</span><span class="n">AddItem</span><span class="p">(</span><span class="n">inventory</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">slot</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">.</span><span class="n">AddItem</span><span class="p">(</span><span class="n">inv</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">slot</span><span class="p">)</span>
 </code></pre></div>
 <table>
 <thead>
@@ -1219,7 +1219,7 @@
 </thead>
 <tbody>
 <tr>
-<td>inventory</td>
+<td>inv</td>
 <td>str/int</td>
 <td>no</td>
 <td>The id of the inventory to add an item to, such as playerid</td>
@@ -1245,6 +1245,10 @@
 </tbody>
 </table>
 <p>This function should be used in combination with <code>Inventory.CanCarryItem</code> to ensure space is available.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">ox_inventory</span> <span class="o">=</span> <span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span>
+
+<span class="n">ox_inventory</span><span class="p">:</span><span class="n">AddItem</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;water&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">{</span><span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;Looks a little yellow..&#39;</span><span class="p">})</span>
+</code></pre></div>
 </div>
 
               

@@ -1204,7 +1204,7 @@
 <p>Allows server-side creation of a drop with pre-defined items and a custom prefix.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<div class="highlight"><pre><span></span><code><span class="n">TriggerEvent</span><span class="p">(</span><span class="s1">&#39;ox_inventory:customDrop&#39;</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">slots</span><span class="p">,</span> <span class="n">maxWeight</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">CustomDrop</span><span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">slots</span><span class="p">,</span> <span class="n">maxWeight</span><span class="p">)</span>
 </code></pre></div>
 <table>
 <thead>
@@ -1257,7 +1257,9 @@
 </div>
 <div class="admonition example">
 <p class="admonition-title">Defining items</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">TriggerEvent</span><span class="p">(</span><span class="s1">&#39;ox_inventory:customDrop&#39;</span><span class="p">,</span> <span class="s1">&#39;Carcass&#39;</span><span class="p">,</span> <span class="p">{</span>
+<p><div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">ox_inventory</span> <span class="o">=</span> <span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span>
+
+<span class="n">ox_inventory</span><span class="p">:</span><span class="n">CustomDrop</span><span class="p">(</span><span class="s1">&#39;Carcass&#39;</span><span class="p">,</span> <span class="p">{</span>
     <span class="p">{</span><span class="s1">&#39;meat&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">{</span><span class="n">grade</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;deer&#39;</span><span class="p">}},</span>
     <span class="p">{</span><span class="s1">&#39;hide&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">{</span><span class="n">grade</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;deer&#39;</span><span class="p">}}</span>
 <span class="p">},</span> <span class="n">entityCoords</span><span class="p">)</span>
