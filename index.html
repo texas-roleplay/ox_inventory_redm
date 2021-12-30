@@ -409,8 +409,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#esx-xplayer-vs-inventory" class="md-nav__link">
-    ESX xPlayer vs Inventory
+  <a href="#xplayer-vs-inventory" class="md-nav__link">
+    xPlayer vs Inventory
   </a>
   
 </li>
@@ -1449,13 +1449,13 @@ If you create your own config file you can load it with <code>exec @ox_inventory
 <li>Shops from esx_shops or the armoury from esx_policejob should be removed</li>
 <li>Resources like esx_inventoryhud, esx_trunkinventory, esx_addoninventory, etc. should be removed</li>
 </ul>
-<h3 id="esx-xplayer-vs-inventory">ESX xPlayer vs Inventory<a class="headerlink" href="#esx-xplayer-vs-inventory" title="Permanent link">&para;</a></h3>
+<h3 id="xplayer-vs-inventory">xPlayer vs Inventory<a class="headerlink" href="#xplayer-vs-inventory" title="Permanent link">&para;</a></h3>
 <p>All item related functions from xPlayer, such as <code>xPlayer.getInventoryItem</code>, have been modified for compatibility purposes; however they are considered deprecated.</p>
 <p>The reasoning is fairly simple - there's now additional function references and overhead to consider. Fortunately, the new Inventory functions can be used directly and offer a great deal of improvements over the old ones.</p>
 <p>You should read through the modules section for further information, but the following should give you a decent idea.</p>
 <div class="admonition example">
 <p class="admonition-title">xPlayer.getInventoryItem and xPlayer.removeInventoryItem</p>
-<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Deprecated</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">ESX</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code><span class="kr">if</span> <span class="n">xPlayer</span><span class="p">.</span><span class="n">getInventoryItem</span><span class="p">(</span><span class="s1">&#39;acetone&#39;</span><span class="p">).</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">xPlayer</span><span class="p">.</span><span class="n">getInventoryItem</span><span class="p">(</span><span class="s1">&#39;antifreeze&#39;</span><span class="p">).</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">xPlayer</span><span class="p">.</span><span class="n">getInventoryItem</span><span class="p">(</span><span class="s1">&#39;sudo&#39;</span><span class="p">).</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">9</span> <span class="kr">then</span> 
     <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;acetone&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
     <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;antifreeze&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
@@ -1463,19 +1463,16 @@ If you create your own config file you can load it with <code>exec @ox_inventory
 <span class="kr">end</span>
 </code></pre></div>
 </div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">New function</label><div class="tabbed-content">
-<p>Add the following code somewhere in your resource
-<div class="highlight"><pre><span></span><code><span class="n">Inventory</span> <span class="o">=</span> <span class="n">GetResourceState</span><span class="p">(</span><span class="s1">&#39;ox_inventory&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;started&#39;</span> <span class="ow">and</span> <span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">Inventory</span><span class="p">()</span>
-<span class="n">AddEventHandler</span><span class="p">(</span><span class="s1">&#39;ox_inventory:loadInventory&#39;</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
-    <span class="n">Inventory</span> <span class="o">=</span> <span class="n">module</span>
-<span class="kr">end</span><span class="p">)</span>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Inventory</label><div class="tabbed-content">
+<p>Add the following code somewhere in your resource to cache the exports metatable.
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">ox_inventory</span> <span class="o">=</span> <span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span>
 </code></pre></div></p>
-<p>You will be able to reference any functions exposed through the exported table.
-<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">items</span> <span class="o">=</span> <span class="n">Inventory</span><span class="p">.</span><span class="n">Search</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;acetone&#39;</span><span class="p">,</span> <span class="s1">&#39;antifreeze&#39;</span><span class="p">,</span> <span class="s1">&#39;sudo&#39;</span><span class="p">})</span>
+<p>You will be able to reference any functions exposed through the export.
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">items</span> <span class="o">=</span> <span class="n">ox_inventory</span><span class="p">:</span><span class="n">Search</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;acetone&#39;</span><span class="p">,</span> <span class="s1">&#39;antifreeze&#39;</span><span class="p">,</span> <span class="s1">&#39;sudo&#39;</span><span class="p">})</span>
 <span class="kr">if</span> <span class="n">items</span> <span class="ow">and</span> <span class="n">items</span><span class="p">.</span><span class="n">acetone</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">items</span><span class="p">.</span><span class="n">antifreeze</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">items</span><span class="p">.</span><span class="n">sudo</span> <span class="o">&gt;</span> <span class="mi">9</span> <span class="kr">then</span>
-    <span class="n">Inventory</span><span class="p">.</span><span class="n">RemoveItem</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;acetone&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-    <span class="n">Inventory</span><span class="p">.</span><span class="n">RemoveItem</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;antifreeze&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-    <span class="n">Inventory</span><span class="p">.</span><span class="n">RemoveItem</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;sudo&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">ox_inventory</span><span class="p">:</span><span class="n">RemoveItem</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;acetone&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">ox_inventory</span><span class="p">:</span><span class="n">RemoveItem</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;antifreeze&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">ox_inventory</span><span class="p">:</span><span class="n">RemoveItem</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;sudo&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="kr">end</span>
 </code></pre></div></p>
 </div>
