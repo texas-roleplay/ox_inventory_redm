@@ -17,7 +17,7 @@
     
     
       
-        <title>Creating custom property stashes - 🐂 Inventory</title>
+        <title>Creating custom stashes - 🐂 Inventory</title>
       
     
     
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Creating custom property stashes
+              Creating custom stashes
             
           </span>
         </div>
@@ -1140,7 +1140,7 @@
       
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Creating custom property stashes
+        Creating custom stashes
       </a>
       
     </li>
@@ -1262,46 +1262,119 @@
               
                 
 
-  <h1>Creating custom property stashes</h1>
+  <h1>Creating custom stashes</h1>
 
-<p>First we must define our stash and it's properties.</p>
+<p>We can setup custom stashes from outside the resource utilising the exported RegisterStash function. Firstly, we need to define the stashes properties.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Optional</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>no</td>
+<td>A unique name to identify the stash in the database</td>
+</tr>
+<tr>
+<td>label</td>
+<td>string</td>
+<td>no</td>
+<td>A display name when viewing the inventory</td>
+</tr>
+<tr>
+<td>slots</td>
+<td>integer</td>
+<td>no</td>
+<td>Number of slots</td>
+</tr>
+<tr>
+<td>weight</td>
+<td>integer</td>
+<td>no</td>
+<td>Maximum weight</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>str/bool</td>
+<td>yes</td>
+<td>See below</td>
+</tr>
+<tr>
+<td>job</td>
+<td>table</td>
+<td>yes</td>
+<td>Key-value pairs of job name and minimum grade to access</td>
+</tr>
+<tr>
+<td>coords</td>
+<td>vector</td>
+<td>yes</td>
+<td>A vector (or table) containing x, y, z coordinates</td>
+</tr>
+</tbody>
+</table>
+<p>The owner field will set permissions for stash access, with stashes registering to specific identifiers.
+    - true: Each player has their own unique stash, but can request to open the stash of another player
+    - false: Only a single stash exists and is shared between all players
+    - string: The stash explicitly belongs to the given owner, usually a player identifier</p>
+<p><del>You can set the stash coordinates to prevent the stash from being opened if the player isn't close enough.</del> (will be added in the next update)</p>
+</div>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">stash</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="c1">-- Personal stash</span>
-    <span class="n">id</span> <span class="o">=</span> <span class="s1">&#39;example_stash_3&#39;</span><span class="p">,</span>
-    <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Your Stash&#39;</span><span class="p">,</span>
+<p>Below the value is hardset, but it could be loaded from the database (especially if there are unknown fields, i.e. owner)
+<div class="highlight"><pre><span></span><code><span class="c1">-- Server</span>
+<span class="kd">local</span> <span class="n">stash</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">id</span> <span class="o">=</span> <span class="s1">&#39;42wallabyway&#39;</span><span class="p">,</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;42 Wallaby Way&#39;</span><span class="p">,</span>
     <span class="n">slots</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
     <span class="n">weight</span> <span class="o">=</span> <span class="mi">100000</span><span class="p">,</span>
-    <span class="n">owner</span> <span class="o">=</span> <span class="s1">&#39;bobsmith&#39;</span><span class="p">,</span>
+    <span class="n">owner</span> <span class="o">=</span> <span class="s1">&#39;char1:license&#39;</span>
 <span class="p">}</span>
-</code></pre></div>
-</div>
-<p><code>owner</code> should be set to the identifier of the stash owner, setting it to true
-would make the stash personal meaning that everyone would see their own items they put in into the stash.
-While setting owner to false will make the stash public.</p>
-<p>After creating a table for our stash it needs to be registered in the <code>server</code> script of your resource.</p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">GetCurrentResourceName</span> <span class="o">=</span> <span class="n">GetCurrentResourceName</span><span class="p">()</span>
+
 <span class="n">AddEventHandler</span><span class="p">(</span><span class="s1">&#39;onServerResourceStart&#39;</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">resourceName</span><span class="p">)</span>
-    <span class="kr">if</span> <span class="n">resourceName</span> <span class="o">==</span> <span class="s1">&#39;ox_inventory&#39;</span> <span class="ow">or</span> <span class="n">resourceName</span> <span class="o">==</span> <span class="n">GetCurrentResourceName</span> <span class="kr">then</span>
+    <span class="kr">if</span> <span class="n">resourceName</span> <span class="o">==</span> <span class="s1">&#39;ox_inventory&#39;</span> <span class="ow">or</span> <span class="n">resourceName</span> <span class="o">==</span> <span class="n">GetCurrentResourceName</span><span class="p">()</span> <span class="kr">then</span>
         <span class="n">Wait</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">RegisterStash</span><span class="p">(</span><span class="n">stash</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">stash</span><span class="p">.</span><span class="n">label</span><span class="p">,</span> <span class="n">stash</span><span class="p">.</span><span class="n">slots</span><span class="p">,</span> <span class="n">stash</span><span class="p">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">stash</span><span class="p">.</span><span class="n">owner</span><span class="p">,</span> <span class="n">stash</span><span class="p">.</span><span class="n">jobs</span><span class="p">)</span>
+        <span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">RegisterStash</span><span class="p">(</span><span class="n">stash</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">stash</span><span class="p">.</span><span class="n">label</span><span class="p">,</span> <span class="n">stash</span><span class="p">.</span><span class="n">slots</span><span class="p">,</span> <span class="n">stash</span><span class="p">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">stash</span><span class="p">.</span><span class="n">owner</span><span class="p">)</span>
     <span class="kr">end</span>
 <span class="kr">end</span><span class="p">)</span>
+
+<span class="c1">-- Client</span>
+<span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">openInventory</span><span class="p">(</span><span class="s1">&#39;stash&#39;</span><span class="p">,</span> <span class="p">{</span><span class="n">id</span><span class="o">=</span><span class="s1">&#39;42wallabyway&#39;</span><span class="p">,</span> <span class="n">owner</span><span class="o">=</span><span class="n">property</span><span class="p">.</span><span class="n">owner</span><span class="p">})</span>
+</code></pre></div></p>
+<p>The following sample is based on esx_property's db data.
+<div class="highlight"><pre><span></span><code><span class="c1">-- Server</span>
+<span class="kd">local</span> <span class="n">properties</span>
+
+<span class="n">MySQL</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM `properties`&#39;</span><span class="p">,</span> <span class="p">{},</span> <span class="kr">function</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">properties</span> <span class="o">=</span> <span class="n">result</span>
+<span class="kr">end</span>
+
+<span class="n">RegisterNetEvent</span><span class="p">(</span><span class="s1">&#39;ox:loadStashes&#39;</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">stash</span> <span class="o">=</span> <span class="n">properties</span><span class="p">[</span><span class="n">id</span><span class="p">]</span>
+    <span class="kr">if</span> <span class="n">stash</span> <span class="kr">then</span>
+        <span class="c1">-- id: 1, name: WhispymoundDrive, label: 2677 Whispymound Drive, coords: {&quot;x&quot;:118.748,&quot;y&quot;:566.573,&quot;z&quot;:175.697}</span>
+        <span class="n">ox_inventory</span><span class="p">:</span><span class="n">RegisterStash</span><span class="p">(</span><span class="n">stash</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">stash</span><span class="p">.</span><span class="n">label</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="n">json</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="n">stash</span><span class="p">.</span><span class="n">room_menu</span><span class="p">))</span>
+    <span class="kr">end</span>
+<span class="kr">end</span><span class="p">)</span>
+
+<span class="c1">-- Client</span>
+<span class="kr">if</span> <span class="n">ox_inventory</span><span class="p">:</span><span class="n">openInventory</span><span class="p">(</span><span class="s1">&#39;stash&#39;</span><span class="p">,</span> <span class="n">property</span><span class="p">.</span><span class="n">id</span><span class="p">)</span> <span class="o">==</span> <span class="kc">false</span> <span class="kr">then</span>
+    <span class="n">TriggerServerEvent</span><span class="p">(</span><span class="s1">&#39;ox:loadStashes&#39;</span><span class="p">)</span>
+    <span class="n">ox_inventory</span><span class="p">:</span><span class="n">openInventory</span><span class="p">(</span><span class="s1">&#39;stash&#39;</span><span class="p">,</span> <span class="n">property</span><span class="p">.</span><span class="n">id</span><span class="p">)</span>
+<span class="kr">end</span>
 </code></pre></div>
+For our actual implementation of esx_property support, you can refer to these files
+    - <a href="https://github.com/overextended/esx-legacy/blob/main/%5Besx_addons%5D/esx_property/client/main.lua#L588-L619">client</a>
+    - <a href="https://github.com/overextended/esx-legacy/blob/main/[esx_addons]/esx_property/server/main.lua#L62-L151">server</a></p>
 </div>
-<p>We have the <code>onServerResourceStart</code> event handler to make sure we register the stash when ox_inventory starts or restarts to avoid
-no such export issues.</p>
-<p>Now that we have the stash registered we can open it with the <code>openInventory</code> export:</p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<div class="highlight"><pre><span></span><code><span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">openInventory</span><span class="p">(</span><span class="s1">&#39;stash&#39;</span><span class="p">,</span> <span class="s1">&#39;example_stash_3&#39;</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<p>First param being the inventory type and the second being our unique stash id we have set.</p>
-<p>Ideally you would have a distance or zone check paired with a key check to trigger the export to open the stash.</p>
 
               
             </article>
