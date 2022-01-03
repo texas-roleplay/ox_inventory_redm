@@ -13,15 +13,15 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.4">
     
     
       
-        <title>Guides - 🐂 Inventory</title>
+        <title>Overview - 🐂 Inventory</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.edf004c2.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.bb3983ee.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
@@ -67,11 +67,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#guides" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -103,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Guides
+              Overview
             
           </span>
         </div>
@@ -213,11 +208,15 @@
   
 
 
-  <li class="md-tabs__item">
-    <a href="./" class="md-tabs__link md-tabs__link--active">
-      Guides
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        Guides
+      </a>
+    </li>
+  
 
       
         
@@ -1078,56 +1077,79 @@
     
   
   
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
           Guides
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
-        Guides
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
+      <nav class="md-nav" aria-label="Guides" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Guides
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
   
   
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <li class="md-nav__item md-nav__item--active">
       
-        <li class="md-nav__item">
-  <a href="#building-the-inventory-ui" class="md-nav__link">
-    Building the inventory UI
-  </a>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Overview
+      </a>
+      
+    </li>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#creating-custom-property-stashes" class="md-nav__link">
-    Creating custom property stashes
-  </a>
+
+            
+          
+            
+              
   
-</li>
-      
-    </ul>
   
-</nav>
-      
+  
+    <li class="md-nav__item">
+      <a href="inventory_ui/" class="md-nav__link">
+        Building inventory UI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="stashes/" class="md-nav__link">
+        Creating custom property stashes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1240,88 +1262,13 @@
               
                 
 
-<h1 id="guides">Guides<a class="headerlink" href="#guides" title="Permanent link">&para;</a></h1>
+  <h1>Overview</h1>
+
 <div class="admonition info">
-<p class="admonition-title">Example resource</p>
-<p>If you have trouble understanding how some of the inventory API works, we have created
-an examples <a href="https://github.com/overextended/ox_inventory_examples/blob/main">resource</a> you can reference to get an idea of how some of it may work.</p>
+<p class="admonition-title">Info</p>
+<p>Providing examples and explaining certain inventory API into more detail.</p>
+<p>If you have trouble understanding how some of the API works check out our <a href="https://github.com/overextended/ox_inventory_examples">example resource</a>.</p>
 </div>
-<h2 id="building-the-inventory-ui">Building the inventory UI<a class="headerlink" href="#building-the-inventory-ui" title="Permanent link">&para;</a></h2>
-<div class="admonition info">
-<p class="admonition-title">Requirements to build:</p>
-<ul>
-<li>Node.js</li>
-<li>Yarn</li>
-</ul>
-</div>
-<div class="admonition info">
-<p class="admonition-title">Installing Node.js:</p>
-<ul>
-<li>Download the LTS version of Node.js from <a href="https://www.nodejs.org">here</a>.</li>
-<li>Go through the install and make sure you install all of the features.</li>
-<li>Run node --version in cmd and make sure that it gives you the version number. If it doesn't then you didn't install it correctly.</li>
-</ul>
-</div>
-<div class="admonition info">
-<p class="admonition-title">Installing Yarn:</p>
-<ul>
-<li>Now that you've installed Node.js you can install Yarn by running <code>npm install --global yarn</code> in cmd.</li>
-</ul>
-</div>
-<div class="admonition info">
-<p class="admonition-title">Building the inventory UI:</p>
-<ul>
-<li>cd into the web directory of ox_inventory</li>
-<li>In your cmd type <code>yarn</code> and in will start downloading the node modules.</li>
-<li>After it's done downloading node modules you can run <code>yarn build</code> to build the UI.</li>
-</ul>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Hot reloads</p>
-<p>When working in the browser you can run <code>yarn start</code>, which supports hot reloads meaning that
-you will see your changes after saving your file.</p>
-<p>If you want to work in game you can run <code>yarn start:game</code> which writes changes to disk, so
-the only thing you have to do is restart the resource for it take affect. </p>
-</div>
-<h2 id="creating-custom-property-stashes">Creating custom property stashes<a class="headerlink" href="#creating-custom-property-stashes" title="Permanent link">&para;</a></h2>
-<p>First we must define our stash and it's properties.</p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">stash</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="c1">-- Personal stash</span>
-    <span class="n">id</span> <span class="o">=</span> <span class="s1">&#39;example_stash_3&#39;</span><span class="p">,</span>
-    <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Your Stash&#39;</span><span class="p">,</span>
-    <span class="n">slots</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
-    <span class="n">weight</span> <span class="o">=</span> <span class="mi">100000</span><span class="p">,</span>
-    <span class="n">owner</span> <span class="o">=</span> <span class="s1">&#39;bobsmith&#39;</span><span class="p">,</span>
-<span class="p">}</span>
-</code></pre></div>
-</div>
-<p><code>owner</code> should be set to the identifier of the stash owner, setting it to true
-would make the stash personal meaning that everyone would see their own items they put in into the stash.
-While setting owner to false will make the stash public.</p>
-<p>After creating a table for our stash it needs to be registered in the <code>server</code> script of your resource.</p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">GetCurrentResourceName</span> <span class="o">=</span> <span class="n">GetCurrentResourceName</span><span class="p">()</span>
-<span class="n">AddEventHandler</span><span class="p">(</span><span class="s1">&#39;onServerResourceStart&#39;</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">resourceName</span><span class="p">)</span>
-    <span class="kr">if</span> <span class="n">resourceName</span> <span class="o">==</span> <span class="s1">&#39;ox_inventory&#39;</span> <span class="ow">or</span> <span class="n">resourceName</span> <span class="o">==</span> <span class="n">GetCurrentResourceName</span> <span class="kr">then</span>
-        <span class="n">Wait</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">RegisterStash</span><span class="p">(</span><span class="n">stash</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">stash</span><span class="p">.</span><span class="n">label</span><span class="p">,</span> <span class="n">stash</span><span class="p">.</span><span class="n">slots</span><span class="p">,</span> <span class="n">stash</span><span class="p">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">stash</span><span class="p">.</span><span class="n">owner</span><span class="p">,</span> <span class="n">stash</span><span class="p">.</span><span class="n">jobs</span><span class="p">)</span>
-    <span class="kr">end</span>
-<span class="kr">end</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<p>We have the <code>onServerResourceStart</code> event handler to make sure we register the stash when ox_inventory starts or restarts to avoid
-no such export issues.</p>
-<p>Now that we have the stash registered we can open it with the <code>openInventory</code> export:</p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<div class="highlight"><pre><span></span><code><span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">openInventory</span><span class="p">(</span><span class="s1">&#39;stash&#39;</span><span class="p">,</span> <span class="s1">&#39;example_stash_3&#39;</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<p>First param being the inventory type and the second being our unique stash id we have set.</p>
-<p>Ideally you would have a distance or zone check paired with a key check to trigger the export to open the stash.</p>
 
               
             </article>
@@ -1356,13 +1303,13 @@ no such export issues.</p>
       
       
         
-        <a href="../misc/" class="md-footer__link md-footer__link--next" aria-label="Next: Index" rel="next">
+        <a href="inventory_ui/" class="md-footer__link md-footer__link--next" aria-label="Next: Building inventory UI" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Index
+              Building inventory UI
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -1418,10 +1365,10 @@ no such export issues.</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["tabs", "navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["tabs", "navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.361d90f1.min.js"}</script>
     
     
-      <script src="../assets/javascripts/bundle.e1a181d9.min.js"></script>
+      <script src="../assets/javascripts/bundle.289a2a4b.min.js"></script>
       
     
   </body>
