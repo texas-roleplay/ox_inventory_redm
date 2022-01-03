@@ -1456,80 +1456,60 @@ You will need to enable compatibility manually by adjusting your config - more i
 <p>Default inventory settings are stored in <code>config.lua</code>, however the recommended method of overriding them is through convars.<br />
 You can either add these directly to your <code>server.cfg</code>, or create a file called <code>.cfg</code> in the resource folder.<br />
 You can add these settings directly to your 'server.cfg', or create a new (or multiple) file to load with 'exec'
-<div class="highlight"><pre><span></span><code>setr ox_inventory {
-    &quot;esx&quot;: true,
-    &quot;trimplate&quot;: true,
-    &quot;qtarget&quot;: false,
-    &quot;playerslots&quot;: 50,
-    &quot;blurscreen&quot;: true,
-    &quot;autoreload&quot;: true,
-    &quot;keys&quot;: [
-        &quot;F2&quot;, &quot;K&quot;, &quot;TAB&quot;
-    ],
-    &quot;enablekeys&quot;: [
-        249
-    ],
-    &quot;playerweight&quot;: 30000,
-    &quot;police&quot;: &quot;police&quot;,
-    &quot;locale&quot;: &quot;en&quot;
-}
-
-set ox_inventory_server {
-    &quot;versioncheck&quot;: true,
-    &quot;clearstashes&quot;: &quot;6 MONTH&quot;,
-    &quot;logs&quot;: false,
-    &quot;randomprice&quot;: true,
-    &quot;evidencegrade&quot;: 2,
-    &quot;randomloot&quot;: true
-}
-
-set ox_inventory_loot {
-    &quot;vehicle&quot;: [
-        [&quot;cola&quot;, 1, 1],
-        [&quot;water&quot;, 1, 1],
-        [&quot;garbage&quot;, 1, 2, 50],
-        [&quot;panties&quot;, 1, 1, 5],
-        [&quot;money&quot;, 1, 50],
-        [&quot;money&quot;, 200, 400, 5],
-        [&quot;bandage&quot;, 1, 1]
-    ],
-
-    &quot;dumpster&quot;: [
-        [&quot;mustard&quot;, 1, 1],
-        [&quot;garbage&quot;, 1, 3],
-        [&quot;money&quot;, 1, 10],
-        [&quot;burger&quot;, 1, 1]
-    ]
-}
-
-add_principal group.admin ox_inventory
-add_ace resource.ox_inventory command.add_principal allow
-add_ace resource.ox_inventory command.remove_principal allow
-
-ensure ox_inventory
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="__codelineno-0-1"></a>setr ox_inventory {
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="__codelineno-0-2"></a>    &quot;esx&quot;: true,
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="__codelineno-0-3"></a>    &quot;trimplate&quot;: true,
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="__codelineno-0-4"></a>    &quot;qtarget&quot;: false,
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="__codelineno-0-5"></a>    &quot;playerslots&quot;: 50,
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="__codelineno-0-6"></a>    &quot;blurscreen&quot;: true,
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="__codelineno-0-7"></a>    &quot;autoreload&quot;: true,
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="__codelineno-0-8"></a>    &quot;keys&quot;: [
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="__codelineno-0-9"></a>        &quot;F2&quot;, &quot;K&quot;, &quot;TAB&quot;
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="__codelineno-0-10"></a>    ],
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="__codelineno-0-11"></a>    &quot;enablekeys&quot;: [
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="__codelineno-0-12"></a>        249
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="__codelineno-0-13"></a>    ],
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="__codelineno-0-14"></a>    &quot;playerweight&quot;: 30000,
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="__codelineno-0-15"></a>    &quot;police&quot;: &quot;police&quot;,
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="__codelineno-0-16"></a>    &quot;locale&quot;: &quot;en&quot;
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="__codelineno-0-17"></a>}
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="__codelineno-0-19"></a>set ox_inventory_server {
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="__codelineno-0-20"></a>    &quot;versioncheck&quot;: true,
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="__codelineno-0-21"></a>    &quot;clearstashes&quot;: &quot;6 MONTH&quot;,
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="__codelineno-0-22"></a>    &quot;logs&quot;: false,
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="__codelineno-0-23"></a>    &quot;randomprice&quot;: true,
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="__codelineno-0-24"></a>    &quot;evidencegrade&quot;: 2,
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="__codelineno-0-25"></a>    &quot;randomloot&quot;: true
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="__codelineno-0-26"></a>}
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="__codelineno-0-27"></a>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="__codelineno-0-28"></a>set ox_inventory_loot {
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="__codelineno-0-29"></a>    &quot;vehicle&quot;: [
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="__codelineno-0-30"></a>        [&quot;cola&quot;, 1, 1],
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="__codelineno-0-31"></a>        [&quot;water&quot;, 1, 1],
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="__codelineno-0-32"></a>        [&quot;garbage&quot;, 1, 2, 50],
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="__codelineno-0-33"></a>        [&quot;panties&quot;, 1, 1, 5],
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="__codelineno-0-34"></a>        [&quot;money&quot;, 1, 50],
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="__codelineno-0-35"></a>        [&quot;money&quot;, 200, 400, 5],
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="__codelineno-0-36"></a>        [&quot;bandage&quot;, 1, 1]
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="__codelineno-0-37"></a>    ],
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="__codelineno-0-38"></a>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="__codelineno-0-39"></a>    &quot;dumpster&quot;: [
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="__codelineno-0-40"></a>        [&quot;mustard&quot;, 1, 1],
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="__codelineno-0-41"></a>        [&quot;garbage&quot;, 1, 3],
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="__codelineno-0-42"></a>        [&quot;money&quot;, 1, 10],
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="__codelineno-0-43"></a>        [&quot;burger&quot;, 1, 1]
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="__codelineno-0-44"></a>    ]
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="__codelineno-0-45"></a>}
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="__codelineno-0-46"></a>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="__codelineno-0-47"></a>add_principal group.admin ox_inventory
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="__codelineno-0-48"></a>add_ace resource.ox_inventory command.add_principal allow
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="__codelineno-0-49"></a>add_ace resource.ox_inventory command.remove_principal allow
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="__codelineno-0-50"></a>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="__codelineno-0-51"></a>ensure ox_inventory
 </code></pre></div></p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>=== &quot;Fresh ESX&quot;
+<div class="highlight"><pre><span></span><code>=== &quot;Fresh ESX&quot;
 
     - Download [our fork of ESX](#esx-framework)
     - Execute the query inside [install.sql](https://github.com/overextended/ox_inventory/blob/main/setup/install.sql)
@@ -1551,7 +1531,6 @@ ensure ox_inventory
 
 This will not update your items file and old items may be incompatible; refer to documentation for item creation
 </code></pre></div>
-</td></tr></table>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>You should restart your server after the first startup to ensure everything has been correctly setup</p>
@@ -1571,24 +1550,24 @@ This will not update your items file and old items may be incompatible; refer to
 <div class="admonition example">
 <p class="admonition-title">xPlayer.getInventoryItem and xPlayer.removeInventoryItem</p>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">ESX</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="kr">if</span> <span class="n">xPlayer</span><span class="p">.</span><span class="n">getInventoryItem</span><span class="p">(</span><span class="s1">&#39;acetone&#39;</span><span class="p">).</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">xPlayer</span><span class="p">.</span><span class="n">getInventoryItem</span><span class="p">(</span><span class="s1">&#39;antifreeze&#39;</span><span class="p">).</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">xPlayer</span><span class="p">.</span><span class="n">getInventoryItem</span><span class="p">(</span><span class="s1">&#39;sudo&#39;</span><span class="p">).</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">9</span> <span class="kr">then</span> 
-    <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;acetone&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-    <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;antifreeze&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-    <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;sudo&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="kr">end</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="__codelineno-1-1"></a><span class="kr">if</span> <span class="n">xPlayer</span><span class="p">.</span><span class="n">getInventoryItem</span><span class="p">(</span><span class="s1">&#39;acetone&#39;</span><span class="p">).</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">xPlayer</span><span class="p">.</span><span class="n">getInventoryItem</span><span class="p">(</span><span class="s1">&#39;antifreeze&#39;</span><span class="p">).</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">xPlayer</span><span class="p">.</span><span class="n">getInventoryItem</span><span class="p">(</span><span class="s1">&#39;sudo&#39;</span><span class="p">).</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">9</span> <span class="kr">then</span> 
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="__codelineno-1-2"></a>    <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;acetone&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="__codelineno-1-3"></a>    <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;antifreeze&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="__codelineno-1-4"></a>    <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;sudo&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="__codelineno-1-5"></a><span class="kr">end</span>
 </code></pre></div>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Inventory</label><div class="tabbed-content">
 <p>Add the following code somewhere in your resource to cache the exports metatable.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">ox_inventory</span> <span class="o">=</span> <span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="__codelineno-2-1"></a><span class="kd">local</span> <span class="n">ox_inventory</span> <span class="o">=</span> <span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span>
 </code></pre></div>
 <p>You will be able to reference any functions exposed through the export.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">items</span> <span class="o">=</span> <span class="n">ox_inventory</span><span class="p">:</span><span class="n">Search</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;acetone&#39;</span><span class="p">,</span> <span class="s1">&#39;antifreeze&#39;</span><span class="p">,</span> <span class="s1">&#39;sudo&#39;</span><span class="p">})</span>
-<span class="kr">if</span> <span class="n">items</span> <span class="ow">and</span> <span class="n">items</span><span class="p">.</span><span class="n">acetone</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">items</span><span class="p">.</span><span class="n">antifreeze</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">items</span><span class="p">.</span><span class="n">sudo</span> <span class="o">&gt;</span> <span class="mi">9</span> <span class="kr">then</span>
-    <span class="n">ox_inventory</span><span class="p">:</span><span class="n">RemoveItem</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;acetone&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-    <span class="n">ox_inventory</span><span class="p">:</span><span class="n">RemoveItem</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;antifreeze&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-    <span class="n">ox_inventory</span><span class="p">:</span><span class="n">RemoveItem</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;sudo&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<span class="kr">end</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="__codelineno-3-1"></a><span class="kd">local</span> <span class="n">items</span> <span class="o">=</span> <span class="n">ox_inventory</span><span class="p">:</span><span class="n">Search</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;acetone&#39;</span><span class="p">,</span> <span class="s1">&#39;antifreeze&#39;</span><span class="p">,</span> <span class="s1">&#39;sudo&#39;</span><span class="p">})</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="__codelineno-3-2"></a><span class="kr">if</span> <span class="n">items</span> <span class="ow">and</span> <span class="n">items</span><span class="p">.</span><span class="n">acetone</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">items</span><span class="p">.</span><span class="n">antifreeze</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">items</span><span class="p">.</span><span class="n">sudo</span> <span class="o">&gt;</span> <span class="mi">9</span> <span class="kr">then</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="__codelineno-3-3"></a>    <span class="n">ox_inventory</span><span class="p">:</span><span class="n">RemoveItem</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;acetone&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="__codelineno-3-4"></a>    <span class="n">ox_inventory</span><span class="p">:</span><span class="n">RemoveItem</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;antifreeze&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="__codelineno-3-5"></a>    <span class="n">ox_inventory</span><span class="p">:</span><span class="n">RemoveItem</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;sudo&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="__codelineno-3-6"></a><span class="kr">end</span>
 </code></pre></div>
 </div>
 </div>
@@ -1660,7 +1639,7 @@ This will not update your items file and old items may be incompatible; refer to
       
       
     
-    <a href="https://discord.io/overextended" target="_blank" rel="noopener" title="discord.io" class="md-social__link">
+    <a href="https://discord.gg/overextended" target="_blank" rel="noopener" title="discord.gg" class="md-social__link">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M524.531 69.836a1.5 1.5 0 0 0-.764-.7A485.065 485.065 0 0 0 404.081 32.03a1.816 1.816 0 0 0-1.923.91 337.461 337.461 0 0 0-14.9 30.6 447.848 447.848 0 0 0-134.426 0 309.541 309.541 0 0 0-15.135-30.6 1.89 1.89 0 0 0-1.924-.91 483.689 483.689 0 0 0-119.688 37.107 1.712 1.712 0 0 0-.788.676C39.068 183.651 18.186 294.69 28.43 404.354a2.016 2.016 0 0 0 .765 1.375 487.666 487.666 0 0 0 146.825 74.189 1.9 1.9 0 0 0 2.063-.676A348.2 348.2 0 0 0 208.12 430.4a1.86 1.86 0 0 0-1.019-2.588 321.173 321.173 0 0 1-45.868-21.853 1.885 1.885 0 0 1-.185-3.126 251.047 251.047 0 0 0 9.109-7.137 1.819 1.819 0 0 1 1.9-.256c96.229 43.917 200.41 43.917 295.5 0a1.812 1.812 0 0 1 1.924.233 234.533 234.533 0 0 0 9.132 7.16 1.884 1.884 0 0 1-.162 3.126 301.407 301.407 0 0 1-45.89 21.83 1.875 1.875 0 0 0-1 2.611 391.055 391.055 0 0 0 30.014 48.815 1.864 1.864 0 0 0 2.063.7A486.048 486.048 0 0 0 610.7 405.729a1.882 1.882 0 0 0 .765-1.352c12.264-126.783-20.532-236.912-86.934-334.541zM222.491 337.58c-28.972 0-52.844-26.587-52.844-59.239s23.409-59.241 52.844-59.241c29.665 0 53.306 26.82 52.843 59.239 0 32.654-23.41 59.241-52.843 59.241zm195.38 0c-28.971 0-52.843-26.587-52.843-59.239s23.409-59.241 52.843-59.241c29.667 0 53.307 26.82 52.844 59.239 0 32.654-23.177 59.241-52.844 59.241z"/></svg>
     </a>
   
