@@ -1270,7 +1270,9 @@
 The item table defines a basic template to reference when working with an instance of that item type, and can contain custom data.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Standard Burger</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Standard Burger</label><label for="__tabbed_1_2">Custom Burger</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <p>A normal burger item, as it appears in data/items.lua
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="__codelineno-0-1"></a><span class="p">[</span><span class="s1">&#39;burger&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="__codelineno-0-2"></a>    <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Burger&#39;</span><span class="p">,</span>
@@ -1286,7 +1288,7 @@ The item table defines a basic template to reference when working with an instan
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="__codelineno-0-12"></a><span class="p">}</span>
 </code></pre></div></p>
 </div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Custom Burger</label><div class="tabbed-content">
+<div class="tabbed-block">
 <p>A modified burger item, with a description and custom crafting table.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="__codelineno-1-1"></a><span class="p">[</span><span class="s1">&#39;burger&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="__codelineno-1-2"></a>    <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Burger&#39;</span><span class="p">,</span>
@@ -1316,9 +1318,12 @@ Combined with several new functions and events you could easily create your own 
 </div>
 </div>
 </div>
+</div>
 <div class="admonition summary">
 <p class="admonition-title">Standard options</p>
-<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Shared</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Shared</label><label for="__tabbed_2_2">Client</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table>
 <thead>
 <tr>
@@ -1380,7 +1385,7 @@ Combined with several new functions and events you could easily create your own 
 </tbody>
 </table>
 </div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Client</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table>
 <thead>
 <tr>
@@ -1419,6 +1424,7 @@ Combined with several new functions and events you could easily create your own 
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 </div>
 </div>

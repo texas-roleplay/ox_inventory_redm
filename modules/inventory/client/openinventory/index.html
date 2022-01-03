@@ -1300,18 +1300,21 @@
 </div>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Player</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Player</label><label for="__tabbed_1_2">Stash</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="__codelineno-1-1"></a><span class="n">TriggerEvent</span><span class="p">(</span><span class="s1">&#39;ox_inventory:openInventory&#39;</span><span class="p">,</span> <span class="s1">&#39;player&#39;</span><span class="p">,</span> <span class="n">targetId</span> <span class="p">[</span><span class="n">int</span><span class="p">])</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="__codelineno-1-2"></a><span class="n">TriggerClientEvent</span><span class="p">(</span><span class="s1">&#39;ox_inventory:openInventory&#39;</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="s1">&#39;player&#39;</span><span class="p">,</span> <span class="n">targetId</span> <span class="p">[</span><span class="n">int</span><span class="p">])</span>
 </code></pre></div>
 </div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Stash</label><div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="__codelineno-2-1"></a><span class="n">TriggerEvent</span><span class="p">(</span><span class="s1">&#39;ox_inventory:openInventory&#39;</span><span class="p">,</span> <span class="s1">&#39;stash&#39;</span><span class="p">,</span> <span class="s1">&#39;police_stash&#39;</span><span class="p">)</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="__codelineno-2-2"></a><span class="n">TriggerClientEvent</span><span class="p">(</span><span class="s1">&#39;ox_inventory:openInventory&#39;</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="s1">&#39;stash&#39;</span><span class="p">,</span> <span class="s1">&#39;police_stash&#39;</span><span class="p">)</span>
 </code></pre></div>
 <ul>
 <li>To open a stash you must first use <a href="../../customstash">RegisterStash</a> </li>
 </ul>
+</div>
 </div>
 </div>
 </div>
