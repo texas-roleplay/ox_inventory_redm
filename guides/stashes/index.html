@@ -1303,7 +1303,7 @@
 </tr>
 <tr>
 <td>owner</td>
-<td>str/bool</td>
+<td>string / boolean</td>
 <td>yes</td>
 <td>See below</td>
 </tr>
@@ -1329,7 +1329,8 @@
 </div>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<p>Below the value is hardset, but it could be loaded from the database (especially if there are unknown fields, i.e. owner)
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">1</label><div class="tabbed-content">
+<p>Below the value is hardset, but it could be loaded from the database (especially if there are unknown fields, i.e. owner)</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Server</span>
 <span class="kd">local</span> <span class="n">stash</span> <span class="o">=</span> <span class="p">{</span>
     <span class="n">id</span> <span class="o">=</span> <span class="s1">&#39;42wallabyway&#39;</span><span class="p">,</span>
@@ -1348,9 +1349,11 @@
 
 <span class="c1">-- Client</span>
 <span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span><span class="p">:</span><span class="n">openInventory</span><span class="p">(</span><span class="s1">&#39;stash&#39;</span><span class="p">,</span> <span class="p">{</span><span class="n">id</span><span class="o">=</span><span class="s1">&#39;42wallabyway&#39;</span><span class="p">,</span> <span class="n">owner</span><span class="o">=</span><span class="n">property</span><span class="p">.</span><span class="n">owner</span><span class="p">})</span>
-</code></pre></div></p>
-<p>The following sample is based on esx_property's db data.
-<div class="highlight"><pre><span></span><code><span class="c1">-- Server</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">2</label><div class="tabbed-content">
+<p>The following sample is based on esx_property's db data.</p>
+<p><div class="highlight"><pre><span></span><code><span class="c1">-- Server</span>
 <span class="kd">local</span> <span class="n">properties</span>
 
 <span class="n">MySQL</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM `properties`&#39;</span><span class="p">,</span> <span class="p">{},</span> <span class="kr">function</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
@@ -1374,6 +1377,8 @@
 For our actual implementation of esx_property support, you can refer to these files
     - <a href="https://github.com/overextended/esx-legacy/blob/main/%5Besx_addons%5D/esx_property/client/main.lua#L588-L619">client</a>
     - <a href="https://github.com/overextended/esx-legacy/blob/main/[esx_addons]/esx_property/server/main.lua#L62-L151">server</a></p>
+</div>
+</div>
 </div>
 
               

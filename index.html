@@ -1509,31 +1509,49 @@ add_ace resource.ox_inventory command.remove_principal allow
 ensure ox_inventory
 </code></pre></div></p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Fresh ESX</label><div class="tabbed-content">
-<ul>
-<li>Download <a href="#esx-framework">our fork of ESX</a></li>
-<li>Execute the query inside <a href="https://github.com/overextended/ox_inventory/blob/main/setup/install.sql">install.sql</a></li>
-</ul>
-</div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Convert ESX</label><div class="tabbed-content">
-<ul>
-<li>Download <a href="#esx-framework">our fork of ESX</a></li>
-<li>Execute the query inside <a href="https://github.com/overextended/ox_inventory/blob/main/setup/install.sql">install.sql</a></li>
-<li>Open <code>fxmanifest.lua</code> and uncomment <code>server_script 'setup/convert.lua'</code></li>
-<li>Start the server and execute the <code>convertinventory</code> command from the console</li>
-<li>Remove the conversion file</li>
-</ul>
-</div>
-<input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><label for="__tabbed_1_3">Upgrade from Linden Inventory</label><div class="tabbed-content">
-<ul>
-<li>Execute the query inside <a href="https://github.com/overextended/ox_inventory/blob/main/setup/upgrade.sql">upgrade.sql</a></li>
-<li>Open <code>fxmanifest.lua</code> and uncomment <code>server_script 'setup/convert.lua'</code></li>
-<li>Start the server and execute the <code>convertinventory linden</code> command from the console</li>
-<li>Remove the conversion file</li>
-</ul>
-<p>This will not update your items file and old items may be incompatible; refer to documentation for item creation</p>
-</div>
-</div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>=== &quot;Fresh ESX&quot;
+
+    - Download [our fork of ESX](#esx-framework)
+    - Execute the query inside [install.sql](https://github.com/overextended/ox_inventory/blob/main/setup/install.sql)
+
+=== &quot;Convert ESX&quot;
+
+    - Download [our fork of ESX](#esx-framework)
+    - Execute the query inside [install.sql](https://github.com/overextended/ox_inventory/blob/main/setup/install.sql)
+    - Open `fxmanifest.lua` and uncomment `server_script &#39;setup/convert.lua&#39;`
+    - Start the server and execute the `convertinventory` command from the console
+    - Remove the conversion file
+
+=== &quot;Upgrade from Linden Inventory&quot;
+
+    - Execute the query inside [upgrade.sql](https://github.com/overextended/ox_inventory/blob/main/setup/upgrade.sql)
+    - Open `fxmanifest.lua` and uncomment `server_script &#39;setup/convert.lua&#39;`
+    - Start the server and execute the `convertinventory linden` command from the console (you don&#39;t need the standard one)
+    - Remove the conversion file
+
+This will not update your items file and old items may be incompatible; refer to documentation for item creation
+</code></pre></div>
+</td></tr></table>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>You should restart your server after the first startup to ensure everything has been correctly setup</p>
@@ -1552,7 +1570,7 @@ ensure ox_inventory
 <p>You should read through the modules section for further information, but the following should give you a decent idea.</p>
 <div class="admonition example">
 <p class="admonition-title">xPlayer.getInventoryItem and xPlayer.removeInventoryItem</p>
-<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">ESX</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">ESX</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code><span class="kr">if</span> <span class="n">xPlayer</span><span class="p">.</span><span class="n">getInventoryItem</span><span class="p">(</span><span class="s1">&#39;acetone&#39;</span><span class="p">).</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">xPlayer</span><span class="p">.</span><span class="n">getInventoryItem</span><span class="p">(</span><span class="s1">&#39;antifreeze&#39;</span><span class="p">).</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">xPlayer</span><span class="p">.</span><span class="n">getInventoryItem</span><span class="p">(</span><span class="s1">&#39;sudo&#39;</span><span class="p">).</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">9</span> <span class="kr">then</span> 
     <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;acetone&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
     <span class="n">xPlayer</span><span class="p">.</span><span class="n">removeInventoryItem</span><span class="p">(</span><span class="s2">&quot;antifreeze&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
@@ -1560,18 +1578,18 @@ ensure ox_inventory
 <span class="kr">end</span>
 </code></pre></div>
 </div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Inventory</label><div class="tabbed-content">
-<p>Add the following code somewhere in your resource to cache the exports metatable.
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Inventory</label><div class="tabbed-content">
+<p>Add the following code somewhere in your resource to cache the exports metatable.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">ox_inventory</span> <span class="o">=</span> <span class="n">exports</span><span class="p">.</span><span class="n">ox_inventory</span>
-</code></pre></div></p>
-<p>You will be able to reference any functions exposed through the export.
+</code></pre></div>
+<p>You will be able to reference any functions exposed through the export.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">items</span> <span class="o">=</span> <span class="n">ox_inventory</span><span class="p">:</span><span class="n">Search</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;acetone&#39;</span><span class="p">,</span> <span class="s1">&#39;antifreeze&#39;</span><span class="p">,</span> <span class="s1">&#39;sudo&#39;</span><span class="p">})</span>
 <span class="kr">if</span> <span class="n">items</span> <span class="ow">and</span> <span class="n">items</span><span class="p">.</span><span class="n">acetone</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">items</span><span class="p">.</span><span class="n">antifreeze</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">items</span><span class="p">.</span><span class="n">sudo</span> <span class="o">&gt;</span> <span class="mi">9</span> <span class="kr">then</span>
     <span class="n">ox_inventory</span><span class="p">:</span><span class="n">RemoveItem</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;acetone&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
     <span class="n">ox_inventory</span><span class="p">:</span><span class="n">RemoveItem</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;antifreeze&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
     <span class="n">ox_inventory</span><span class="p">:</span><span class="n">RemoveItem</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;sudo&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="kr">end</span>
-</code></pre></div></p>
+</code></pre></div>
 </div>
 </div>
 </div>
