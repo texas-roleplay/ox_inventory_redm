@@ -1305,7 +1305,7 @@
 <p>Creates a new inventory from the given arguments. This is an <em>internal</em> function only.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="__codelineno-0-1"></a><span class="n">Inventory</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">slots</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">maxWeight</span><span class="p">,</span> <span class="n">owner</span><span class="p">,</span> <span class="n">items</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">Inventory</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">slots</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">maxWeight</span><span class="p">,</span> <span class="n">owner</span><span class="p">,</span> <span class="n">items</span><span class="p">)</span>
 </code></pre></div>
 <table>
 <thead>
@@ -1373,19 +1373,19 @@
 <p>These functions are self-referencing, and allow setting or getting data from other resources, or triggering effects when updating a value.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="__codelineno-1-1"></a><span class="n">Inventory</span><span class="p">:</span><span class="n">set</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">Inventory</span><span class="p">:</span><span class="n">set</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 </code></pre></div>
 Updates the key to reflect the new value. When closing an inventory it updates the time an inventory was last accessed, and deletes empty drops.</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="__codelineno-2-1"></a><span class="n">Inventory</span><span class="p">:</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">Inventory</span><span class="p">:</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 </code></pre></div>
 Gets the current value of a key. Generally not needed (you can reference Inventory.key instead).</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="__codelineno-3-1"></a><span class="n">Inventory</span><span class="p">:</span><span class="n">minimal</span><span class="p">()</span> 
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">Inventory</span><span class="p">:</span><span class="n">minimal</span><span class="p">()</span> 
 </code></pre></div>
 Returns a "minimal" inventory, with most data removed. Generally used when saving to the database.</p>
 </div>
