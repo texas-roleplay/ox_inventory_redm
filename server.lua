@@ -12,6 +12,16 @@ local Items = server.items
 local function setPlayerInventory(player, data)
 	while not shared.ready do Wait(0) end
 
+	player.identifier = player.getActiveCharacterId()
+	player.name = player.getFirstname() .." ".. player.getLastname()
+	player.source = player.getSource()
+
+	player.group = player.getGroup()
+
+	local playerInventoryConfig = shared.prime[player.group]
+
+	print(playerInventoryConfig.MaxSlots, playerInventoryConfig.MaxWeight)
+
 	if not data then
 		data = MySQL:loadPlayer(player.identifier)
 	end
@@ -38,7 +48,7 @@ local function setPlayerInventory(player, data)
 	end
 
 	player.source = tonumber(player.source)
-	local inv = Inventory.Create(player.source, player.name, 'player', shared.playerslots, totalWeight, shared.playerweight, player.identifier, inventory)
+	local inv = Inventory.Create(player.source, player.name, 'player', playerInventoryConfig.MaxSlots or shared.playerslots, totalWeight, playerInventoryConfig.MaxWeight or shared.playerweight, player.identifier, inventory)
 	inv.player = server.setPlayerData(player)
 
 	if shared.framework == 'esx' then Inventory.SyncInventory(inv) end
@@ -64,12 +74,16 @@ lib.callback.register('ox_inventory:openInventory', function(source, inv, data)
 		if inv == 'stash' then
 			right = Inventory(data, left)
 			if right == false then return false end
-		elseif type(data) == 'table' then
-			if data.class and data.model then
+		elseif type(data) == 'table' then			
+			if data.class or data.model then
 				right = Inventory(data.id)
 				if not right then
 					local vehicle = Vehicles[inv]['models'][data.model] or Vehicles[inv][data.class]
-					right = Inventory.Create(data.id, Inventory.GetPlateFromId(data.id), inv, vehicle[1], 0, vehicle[2], false)
+					if data.slots then
+						right = Inventory.Create(data.id, 'Alforge-'..Inventory.GetPlateFromId(data.id), inv, tonumber(data.slots), 0, vehicle[1], false)
+					else
+						right = Inventory.Create(data.id, 'Carroça-'..Inventory.GetPlateFromId(data.id), inv, vehicle[1], 0, vehicle[2], false)
+					end
 				end
 			elseif inv == 'drop' then
 				right = Inventory(data.id)

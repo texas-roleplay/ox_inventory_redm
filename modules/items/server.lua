@@ -8,16 +8,15 @@ TriggerEvent('ox_inventory:itemList', ItemList)
 -- Slot count and maximum weight for containers
 -- Whitelist and blacklist: ['item_name'] = true
 Items.containers = {
-	['paperbag'] = {
-		size = {5, 1000},
-		blacklist = {
-			['testburger'] = true -- No burgers!
-		}
-	},
-	['pizzabox'] = {
-		size = {1, 1000},
+	['ammo_case'] = {
+		size = {5, 3000},
 		whitelist = {
-			['pizza'] = true -- Pizza box for pizza only
+			['ammo_revolver'] = true,
+			['ammo_revolver_express_explosive'] = true,
+			['ammo_pistol'] = true,
+			['ammo_shotgun'] = true,
+			['ammo_repeater'] = true,
+			['ammo_rifle'] = true,
 		}
 	}
 }
@@ -33,6 +32,42 @@ local trash = {
 	{description = 'An empty coffee cup.', weight = 20, image = 'trash_coffee'},
 	{description = 'A crumpled up piece of paper.', weight = 5, image = 'trash_paper'},
 	{description = 'An empty chips bag.', weight = 5, image = 'trash_chips'},
+}
+
+allowlistWeaponsPickup = {
+	[`weapon_bow`] = 'weapon_bow',
+	[`weapon_melee_knife_hunter`] = 'weapon_melee_knife_hunter' ,
+	[`weapon_melee_lantern_electric`] = 'weapon_melee_lantern_electric' ,
+	[`weapon_melee_torch`] = 'weapon_melee_torch' ,
+	[`weapon_melee_broken_sword`] = 'weapon_melee_broken_sword' ,
+	[`weapon_melee_hatchet`] = 'weapon_melee_hatchet' ,
+	[`weapon_melee_cleaver`] = 'weapon_melee_cleaver' ,
+	[`weapon_melee_ancient_hatchet`] = 'weapon_melee_ancient_hatchet' ,
+	[`weapon_melee_hatchet_viking`] = 'weapon_melee_hatchet_viking' ,
+	[`weapon_melee_hatchet_hewing`] = 'weapon_melee_hatchet_hewing' ,
+	[`weapon_melee_hatchet_double_bit`] = 'weapon_melee_hatchet_double_bit' ,
+	[`weapon_melee_hatchet_double_bit_rusted`] = 'weapon_melee_hatchet_double_bit_rusted' ,
+	[`weapon_melee_hatchet_hunter`] = 'weapon_melee_hatchet_hunter' ,
+	[`weapon_melee_hatchet_hunter_rusted`] = 'weapon_melee_hatchet_hunter_rusted' ,
+	[`weapon_melee_knife_john`] = 'weapon_melee_knife_john' ,
+	[`weapon_melee_knife`] = 'weapon_melee_knife' ,
+	[`weapon_melee_knife_jawbone`] = 'weapon_melee_knife_jawbone' ,
+	[`weapon_melee_knife_miner`] = 'weapon_melee_knife_miner' ,
+	[`weapon_melee_knife_civil_war`] = 'weapon_melee_knife_civil_war' ,
+	[`weapon_melee_knife_bear`] = 'weapon_melee_knife_bear' ,
+	[`weapon_melee_knife_vampire`] = 'weapon_melee_knife_vampire' ,
+	[`weapon_melee_machete`] = 'weapon_melee_machete' ,
+	[`WEAPON_THROWN_BOLAS`] = 'WEAPON_THROWN_BOLAS' ,
+	[`WEAPON_THROWN_POISONBOTTLE`] = 'WEAPON_THROWN_POISONBOTTLE' ,
+	[`WEAPON_THROWN_BOLAS_HAWKMOTH`] = 'WEAPON_THROWN_BOLAS_HAWKMOTH' ,
+	[`WEAPON_THROWN_BOLAS_IRONSPIKED`] = 'WEAPON_THROWN_BOLAS_IRONSPIKED' ,
+	[`WEAPON_THROWN_BOLAS_INTERTWINED`] = 'WEAPON_THROWN_BOLAS_INTERTWINED' ,
+	[`WEAPON_KIT_BINOCULARS_IMPROVED`] = 'WEAPON_KIT_BINOCULARS_IMPROVED' ,
+	[`weapon_thrown_throwing_knives`] = 'weapon_thrown_throwing_knives' ,
+	[`weapon_thrown_dynamite`] = 'weapon_thrown_dynamite' ,
+	[`weapon_thrown_molotov`] = 'weapon_thrown_molotov' ,
+	[`weapon_thrown_tomahawk`] = 'weapon_thrown_tomahawk' ,
+	[`weapon_thrown_tomahawk_ancient`] = 'weapon_thrown_tomahawk_ancient' 
 }
 
 local function GetItem(item)
@@ -80,17 +115,17 @@ CreateThread(function()
 			if next(dump) then
 				local file = {string.strtrim(LoadResourceFile(shared.resource, 'data/items.lua'))}
 				file[1] = file[1]:gsub('}$', '')
-
 				local itemFormat = [[
 
-	['%s'] = {
-		label = '%s',
-		weight = %s,
-		stack = %s,
-		close = %s,
-		description = %s
-	},
-]]
+				['%s'] = {
+					label = '%s',
+					weight = %s,
+					stack = %s,
+					close = %s,
+					description = %s
+					},
+				]]
+
 				local fileSize = #file
 
 				for _, item in pairs(items) do
@@ -288,22 +323,22 @@ end
 -- Serverside item functions
 -----------------------------------------------------------------------------------------------
 
-Item('testburger', function(event, item, inventory, slot, data)
-	if event == 'usingItem' then
-		if Inventory.GetItem(inventory, item, inventory.items[slot].metadata, true) > 0 then
-			-- if we return false here, we can cancel item use
-			return {
-				inventory.label, event, 'external item use poggies'
-			}
-		end
+-- Item('testburger', function(event, item, inventory, slot, data)
+-- 	if event == 'usingItem' then
+-- 		if Inventory.GetItem(inventory, item, inventory.items[slot].metadata, true) > 0 then
+-- 			-- if we return false here, we can cancel item use
+-- 			return {
+-- 				inventory.label, event, 'external item use poggies'
+-- 			}
+-- 		end
 
-	elseif event == 'usedItem' then
-		print(('%s just ate a %s from slot %s'):format(inventory.label, item.label, slot))
+-- 	elseif event == 'usedItem' then
+-- 		print(('%s just ate a %s from slot %s'):format(inventory.label, item.label, slot))
 
-	elseif event == 'buying' then
-		print(data.id, data.coords, json.encode(data.items[slot], {indent=true}))
-	end
-end)
+-- 	elseif event == 'buying' then
+-- 		print(data.id, data.coords, json.encode(data.items[slot], {indent=true}))
+-- 	end
+-- end)
 
 -----------------------------------------------------------------------------------------------
 

@@ -12,6 +12,7 @@ import { createPortal } from 'react-dom';
 import useNuiEvent from '../../hooks/useNuiEvent';
 import useKeyPress from '../../hooks/useKeyPress';
 import { setClipboard } from '../../utils/setClipboard';
+import { isTypedArray } from 'lodash';
 import { debugData } from '../../utils/debugData';
 
 // debugData([
@@ -22,7 +23,10 @@ import { debugData } from '../../utils/debugData';
 // ]);
 
 const InventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
+
+
   const [currentItem, setCurrentItem] = React.useState<SlotWithItem>();
+  const [inventoryVisible, setInventoryVisible] = React.useState<boolean>(false);
   const [contextVisible, setContextVisible] = React.useState<boolean>(false);
   const [additionalMetadata, setAdditionalMetadata] = React.useState<{ [key: string]: any }>({});
 
@@ -33,7 +37,9 @@ const InventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
     () => (inventory.maxWeight !== undefined ? getTotalWeight(inventory.items) : 0),
     [inventory.maxWeight, inventory.items]
   );
-
+    useEffect(() => {        
+      checkInventoryNeedOpen()
+    })
   // Need to rebuild tooltip for items in a map
   useEffect(() => {
     ReactTooltip.rebuild();
@@ -43,7 +49,30 @@ const InventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
   // But have to rehover on item to get tooltip, there's probably a better solution?
   useEffect(() => {
     setCurrentItem(undefined);
+
   }, [contextVisible]);
+
+
+
+  const checkInventoryNeedOpen = function()
+  {
+    if (inventory.type == "player")
+    {
+      setInventoryVisible(true)
+    }
+    else
+    {
+      if ( !inventory.id )
+      {
+        setInventoryVisible(false)
+      }
+      else
+      {
+        setInventoryVisible(true)
+      }
+    }
+
+  }
 
   useEffect(() => {
     if (!currentItem || !isControlPressed || !isCopyPressed) return;
@@ -53,15 +82,28 @@ const InventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
   useNuiEvent('setupInventory', () => {
     setCurrentItem(undefined);
     ReactTooltip.rebuild();
+
+    console.log(JSON.stringify(inventory))
+
+    if ( !inventory.label || !inventory.id )
+    {
+      setInventoryVisible(false)
+    }
+    
+    if ( inventory.label || inventory.id )
+    {
+      setInventoryVisible(true)
+    }
   });
 
   useNuiEvent<{ [key: string]: any }>('displayMetadata', (data) =>
     setAdditionalMetadata((oldMetadata) => ({ ...oldMetadata, ...data }))
   );
 
+
   return (
     <>
-      <div className="column-wrapper">
+      <div className={`column_wrapper inventory_background ${inventoryVisible ? 'active' : ''}`} >
         <div className="inventory-label">
           <p>{inventory.label && `${inventory.label}`}</p>
           {inventory.maxWeight && (

@@ -39,8 +39,11 @@ local function onLogout()
 end
 
 if shared.framework == 'ox' then
+
 	RegisterNetEvent('ox:playerLogout', onLogout)
+
 elseif shared.framework == 'esx' then
+
 	local ESX = exports.es_extended:getSharedObject()
 
 	ESX = {
@@ -83,4 +86,55 @@ elseif shared.framework == 'esx' then
 	if ESX.PlayerLoaded then
 		TriggerServerEvent('ox_inventory:requestPlayerInventory')
 	end
+
+elseif shared.framework == 'redemrp' then
+
+	function client.setPlayerData(key, value)
+		PlayerData[key] = value
+		TriggerServerEvent("redemrp:SetPlayerData", key, value)
+	end
+	
+	RegisterNetEvent('net.setCharacterData', function(data)
+		print('recebi os dados')
+		
+		if PlayerData.loaded then
+			for key, data in pairs(data) do
+
+				if key == 'job' then
+					key = 'groups'
+					value = { [data.name] = data.grade }
+				end
+
+				PlayerData[key] = value
+				OnPlayerData(key, value)
+			end
+		end
+	end)
+	
+	AddEventHandler('client.playerHasLoaded', function()
+		PlayerData.loaded = true
+	end)
+
+	RegisterNetEvent('esx_policejob:handcuff', function()
+		PlayerData.cuffed = not PlayerData.cuffed
+		LocalPlayer.state:set('invBusy', PlayerData.cuffed, false)
+		if PlayerData.cuffed then
+			currentWeapon = Utils.Disarm(currentWeapon)
+		end
+	end)
+
+	RegisterNetEvent('esx_policejob:unrestrain', function()
+		PlayerData.cuffed = false
+		LocalPlayer.state:set('invBusy', PlayerData.cuffed, false)
+	end)
+
+	Citizen.CreateThread(function()
+		while not PlayerData.loaded do
+			Citizen.Wait(0)
+		end
+
+		if PlayerData.loaded then
+			TriggerServerEvent('ox_inventory:requestPlayerInventory')
+		end
+	end)
 end

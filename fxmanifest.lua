@@ -2,12 +2,14 @@
 fx_version   'cerulean'
 use_fxv2_oal 'yes'
 lua54        'yes'
-game         'gta5'
+game         'common'
 
 --[[ Resource Information ]]--
 name         'ox_inventory'
 author       'Overextended'
+
 version      '2.7.2'
+
 repository   'https://github.com/overextended/ox_inventory'
 description  'What even is an "ESX.Items" anyway?'
 
@@ -48,7 +50,7 @@ server_scripts {
 	'modules/shops/server.lua',
 	'server.lua',
 	-- 'setup/convert.lua',
-	'setup/dbcleanup.lua',
+	-- 'setup/dbcleanup.lua',
 }
 
 ui_page 'web/build/index.html'

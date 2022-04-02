@@ -74,3 +74,104 @@ if shared.framework == 'esx' then
 		end
 	end)
 end
+
+if shared.framework == 'redemrp' then
+	UsableItemsCallbacks = {}
+
+	function RegisterUsableItem(item, cb)
+		UsableItemsCallbacks[item] = cb
+	end
+	
+	function UseItem(source, item, data)
+		UsableItemsCallbacks[item](source, item, data)
+	end
+	
+	function GetItemLabel(item)	
+		item = exports.ox_inventory:Items(item)
+		if item then return item.label end
+	end
+	
+	function GetUsableItems()
+		local Usables = {}
+		for k in pairs(UsableItemsCallbacks) do
+			Usables[k] = true
+		end
+		return Usables
+	end
+
+	server.UseItem = UseItem
+	server.UsableItemsCallbacks = GetUsableItems
+	server.GetPlayerFromId = function(...)		
+		return exports['redemrp_roleplay']:getPlayerFromId(...)
+	end
+
+	
+	-- Accounts that need to be synced with physical items
+	server.accounts = {
+		money = 0,
+		gold = 0,
+	}
+
+	function server.setPlayerData(player)
+		if not player.job then			
+			player.job = {}
+			player.job.name = player.getJob()
+			player.job.grade = player.getJobgrade()
+		end
+
+		local groups = {
+			[player.job.name] = player.job.grade
+		}
+		return {
+			name = player.name,
+			groups = groups,
+			-- sex = player.sex or player.variables.sex,
+			-- dateofbirth = player.dateofbirth or player.variables.dateofbirth,
+		}
+	end
+
+	RegisterServerEvent('ox_inventory:requestPlayerInventory', function()
+		local source = source
+		local player = server.GetPlayerFromId(source)
+
+		if player then
+			exports.ox_inventory:setPlayerInventory(player, player?.inventory)
+		end
+	end)
+end
+
+
+
+--[[ Inicializar o 'Inventory Player' dos players que já estavam online enquanto o script foi reiniciado ]]
+--[[ Só server para debug, porque não verifica se o user tem um character ativo. ]]
+CreateThread(function()
+	Wait(2000)
+
+	for _, playerId in ipairs(GetPlayers()) do
+
+		local user = server.GetPlayerFromId(tonumber(playerId))
+
+		if user then
+
+			local playerData =
+			{
+				userId = user.getId(),
+
+				characterId = user.getCharacterId(),
+				name = user.getFirstname() .. ' ' .. user.getLastname(),
+
+				job =
+				{
+					name = user.getJob(),
+					grade = user.getJobgrade()
+				},
+
+				group = user.getGroup(),
+
+				money = user.getMoney(),
+			}
+			
+			TriggerClientEvent("net.setCharacterData", playerId, playerData)
+		end
+	end
+end)

@@ -2,6 +2,18 @@
 <div align='center'><h3><a href='https://overextended.github.io/docs/ox_inventory/'>Read the documentation for setup, installation, and integration</a></h3></div>
 
 
+# DataBade 
+```sql
+    CREATE TABLE IF NOT EXISTS `ox_inventory` (
+    `owner` varchar(60) DEFAULT NULL,
+    `name` varchar(100) NOT NULL,
+    `data` longtext DEFAULT NULL,
+    `lastupdated` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+    UNIQUE KEY `owner` (`owner`,`name`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+```
+
 # Framework
 
 The inventory was designed with the intention to move towards a more generic / standalone structure so it can be integrated into any framework without too much hassle. I will be writing a guide for manually setting up support _sometime soon™_. In the mean-time, it will work without any alterations if using the latest updates to **[ESX Legacy](https://github.com/esx-framework/esx-legacy)**.

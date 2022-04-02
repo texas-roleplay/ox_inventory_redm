@@ -32,16 +32,19 @@ const Notifications: React.FC = () => {
   });
 
   return (
-    <Toaster
-      toastOptions={{
-        // options defined here apply to all toasts
-        style: {
-          padding: 0,
-          borderRadius: '5px',
-          color: 'white',
-        },
-      }}
-    />
+    <div className={'toaster'}>
+      <Toaster
+        toastOptions={{
+          // options defined here apply to all toasts
+          style: {
+            marginTop: '0.8vh',
+            padding: 0,
+            borderRadius: '5px',
+            color: 'white',
+          },
+        }}
+      />
+    </div>
   );
 };
 

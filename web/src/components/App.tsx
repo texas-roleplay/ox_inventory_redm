@@ -23,9 +23,10 @@ debugData([
     action: 'setupInventory',
     data: {
       leftInventory: {
-        id: 'test',
+        // id: 'test',
+        // label: "player",
         type: 'player',
-        slots: 10,
+        slots: 50,
         maxWeight: 5000,
         items: [
           {
@@ -43,13 +44,14 @@ debugData([
             count: 5,
           },
           { slot: 2, name: 'money', weight: 0, count: 32000 },
-          { slot: 3, name: 'cola', weight: 100, count: 1 },
+          { slot: 3, name: 'cola', weight: 100, count: 3 },
           { slot: 4, name: 'water', weight: 100, count: 1 },
           { slot: 5, name: 'water', weight: 100, count: 1 },
         ],
       },
       rightInventory: {
         id: 'shop',
+        label: "shop",
         type: 'shop',
         slots: 10,
         items: [{ slot: 1, name: 'water', weight: 500 }],

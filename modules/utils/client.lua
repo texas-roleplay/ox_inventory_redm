@@ -57,34 +57,84 @@ function Utils.ItemNotify(data) SendNUIMessage({action = 'itemNotify', data = da
 RegisterNetEvent('ox_inventory:notify', Utils.Notify)
 exports('notify', Utils.Notify)
 
-function Utils.Disarm(currentWeapon, newSlot)
+function Utils.Disarm(currentWeapon, newSlot, keepHolstered, fallbackRemoveWeaponName)
 	SetWeaponsNoAutoswap(1)
 	SetWeaponsNoAutoreload(1)
-	SetPedCanSwitchWeapon(cache.ped, 0)
-	SetPedEnableWeaponBlocking(cache.ped, 1)
+	if IS_GTAV then
+		SetPedCanSwitchWeapon(cache.ped, 0)
+		SetPedEnableWeaponBlocking(cache.ped, 1)
+	end
 
-	if currentWeapon then
-		local ammo = currentWeapon.ammo and GetAmmoInPedWeapon(cache.ped, currentWeapon.hash)
-		SetPedAmmo(cache.ped, currentWeapon.hash, 0)
+	-- print('Utils.Disarm(currentWeapon, newSlot)', json.encode(currentWeapon, { indent = true }), newSlot)
+
+	if currentWeapon or fallbackRemoveWeaponName then
+		local playerPed = cache.ped
+
+		local useFallback = fallbackRemoveWeaponName ~= nil
+
+		local weaponName  = useFallback and fallbackRemoveWeaponName		 		  or currentWeapon?.name
+		local weaponHash  = useFallback and GetHashKey(fallbackRemoveWeaponName) 	  or currentWeapon?.hash
+		local weaponAmmo  = useFallback and GetAmmoInPedWeapon(playerPed, weaponHash) or currentWeapon?.ammo
+		local weaponLabel = useFallback and 'UNKNOWN' 								  or currentWeapon?.label
+
+		SetPedAmmo(playerPed, weaponHash, 0)
 
 		if not newSlot then
-			ClearPedSecondaryTask(cache.ped)
-			local sleep = (client.hasGroup(shared.police) and (GetWeapontypeGroup(currentWeapon.hash) == 416676503 or GetWeapontypeGroup(currentWeapon.hash) == 690389602)) and 450 or 1400
-			local coords = GetEntityCoords(cache.ped, true)
-			if currentWeapon.hash == `WEAPON_SWITCHBLADE` then
-				Utils.PlayAnimAdvanced(sleep, 'anim@melee@switchblade@holster', 'holster', coords.x, coords.y, coords.z, 0, 0, GetEntityHeading(cache.ped), 8.0, 3.0, -1, 48, 0)
-				Wait(600)
-			else
-				Utils.PlayAnimAdvanced(sleep, (sleep == 450 and 'reaction@intimidation@cop@unarmed' or 'reaction@intimidation@1h'), 'outro', coords.x, coords.y, coords.z, 0, 0, GetEntityHeading(cache.ped), 8.0, 3.0, -1, 50, 0)
-				Wait(sleep)
+			if IS_GTAV then
+				ClearPedSecondaryTask(playerPed)
+
+				local weapontypeGroup = GetWeapontypeGroup(weaponHash)
+
+				local sleep = (client.hasGroup(shared.police) and (weapontypeGroup == 416676503 or weapontypeGroup == 690389602)) and 450 or 1400
+				
+				local coords = GetEntityCoords(playerPed, true)
+
+				if currentWeapon.hash == `WEAPON_SWITCHBLADE` then
+					Utils.PlayAnimAdvanced(sleep, 'anim@melee@switchblade@holster', 'holster', coords.x, coords.y, coords.z, 0, 0, GetEntityHeading(playerPed), 8.0, 3.0, -1, 48, 0)
+					Wait(600)
+				else
+					Utils.PlayAnimAdvanced(sleep, (sleep == 450 and 'reaction@intimidation@cop@unarmed' or 'reaction@intimidation@1h'), 'outro', coords.x, coords.y, coords.z, 0, 0, GetEntityHeading(playerPed), 8.0, 3.0, -1, 50, 0)
+					Wait(sleep)
+				end
+
+			elseif IS_RDR3 and keepHolstered ~= true then
+				--[[ _REMOVE_AMMO_FROM_PED_BY_TYPE ]]
+				-- Citizen.InvokeNative(0xB6CFEC32E3742779, playerPed, ammoHash, weaponAmmo, GetHashKey('REMOVE_REASON_DROPPED'))
+
+				local ammoHash = GetPedAmmoTypeFromWeapon(playerPed, weaponHash)
+				Citizen.InvokeNative(0xB6CFEC32E3742779, playerPed, ammoHash, weaponAmmo, GetHashKey('REMOVE_REASON_DROPPED'))  --_REMOVE_AMMO_FROM_PED_BY_TYPE
+
+				RemoveWeaponFromPed(playerPed, weaponHash)
+
+	
+
+				-- print('Removing disarm ped weapon')
+
 			end
-			Utils.ItemNotify({currentWeapon.label, currentWeapon.name, shared.locale('holstered')})
+
+			Utils.ItemNotify({weaponLabel, weaponName, shared.locale('holstered')})
 		end
 
-		RemoveAllPedWeapons(cache.ped, true)
+		if IS_GTAV then
+			RemoveAllPedWeapons(playerPed, true)
+		elseif IS_RDR3 then
+
+			--[[ GetPedCurrentHeldWeapon]]
+			local heldWeapon = N_0x8425c5f057012dab(playerPed)
+
+			--[[ Só usar o Swap caso a arma atualmente carregada pelo ped é a mesma que a gente tá tentando desarmar. ]]
+			if heldWeapon == weaponHash then
+				--[[ HolsterPedWeapons ]]
+				N_0x94a3c1b804d291ec(playerPed, false, false, true, false)
+
+				TaskSwapWeapon(playerPed,  0, 0, 0, 0)
+
+				-- print('Swapping disarm ped weapon')
+			end
+		end
 
 		if newSlot then
-			TriggerServerEvent('ox_inventory:updateWeapon', ammo and 'ammo' or 'melee', ammo or currentWeapon.melee, newSlot)
+			TriggerServerEvent('ox_inventory:updateWeapon', weaponAmmo and 'ammo' or 'melee', weaponAmmo or currentWeapon?.melee, newSlot)
 		end
 
 		currentWeapon = nil
@@ -113,10 +163,14 @@ function Utils.WeaponWheel(state)
 	if state == nil then state = client.weaponWheel end
 
 	client.weaponWheel = state
+
 	SetWeaponsNoAutoswap(not state)
 	SetWeaponsNoAutoreload(not state)
-	SetPedCanSwitchWeapon(cache.ped, state)
-	SetPedEnableWeaponBlocking(cache.ped, not state)
+	if IS_GTAV then
+		SetPedCanSwitchWeapon(cache.ped, state)
+		SetPedEnableWeaponBlocking(cache.ped, not state)
+	end
+
 end
 exports('weaponWheel', Utils.WeaponWheel)
 

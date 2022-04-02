@@ -1,35 +1,38 @@
 local Inventory = {}
 
-Inventory.Dumpsters = {218085040, 666561306, -58485588, -206690185, 1511880420, 682791951}
+if IS_GTAV then
+	Inventory.Dumpsters = {218085040, 666561306, -58485588, -206690185, 1511880420, 682791951}
 
-if shared.qtarget then
-	local function OpenDumpster(entity)
-		local netId = NetworkGetEntityIsNetworked(entity) and NetworkGetNetworkIdFromEntity(entity)
+	if shared.qtarget then
+		local function OpenDumpster(entity)
+			local netId = NetworkGetEntityIsNetworked(entity) and NetworkGetNetworkIdFromEntity(entity)
 
-		if not netId then
-			NetworkRegisterEntityAsNetworked(entity)
-			SetEntityAsMissionEntity(entity)
-			netId = NetworkGetNetworkIdFromEntity(entity)
-			NetworkUseHighPrecisionBlending(netId, false)
-			SetNetworkIdExistsOnAllMachines(netId, true)
-			SetNetworkIdCanMigrate(netId, true)
+			if not netId then
+				
+				NetworkRegisterEntityAsNetworked(entity)
+				SetEntityAsMissionEntity(entity)
+				netId = NetworkGetNetworkIdFromEntity(entity)
+				NetworkUseHighPrecisionBlending(netId, false)
+				SetNetworkIdExistsOnAllMachines(netId, true)
+				SetNetworkIdCanMigrate(netId, true)
+			end
+
+			exports.ox_inventory:openInventory('dumpster', 'dumpster'..netId)
 		end
 
-		exports.ox_inventory:openInventory('dumpster', 'dumpster'..netId)
-	end
-
-	exports.qtarget:AddTargetModel(Inventory.Dumpsters, {
-		options = {
-			{
-				icon = 'fas fa-dumpster',
-				label = shared.locale('search_dumpster'),
-				action = function(entity)
-					OpenDumpster(entity)
-				end
+		exports.qtarget:AddTargetModel(Inventory.Dumpsters, {
+			options = {
+				{
+					icon = 'fas fa-dumpster',
+					label = shared.locale('search_dumpster'),
+					action = function(entity)
+						OpenDumpster(entity)
+					end
+				},
 			},
-		},
-		distance = 2
-	})
+			distance = 2
+		})
+	end	
 end
 
 local table = lib.table
@@ -139,3 +142,8 @@ Inventory.Stashes = setmetatable(data('stashes'), {
 })
 
 client.inventory = Inventory
+
+AddEventHandler("client.receivePickupType", function(pickupName)	
+	local weaponHash = Citizen.InvokeNative(0x08F96CA6C551AD51, pickupName, false) -- GET_WEAPON_TYPE_FROM_PICKUP_TYPE
+	TriggerServerEvent("ox_inventory:addWeaponFromPickup", weaponHash)
+end)

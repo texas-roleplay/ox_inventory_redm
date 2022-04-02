@@ -8,6 +8,7 @@ return {
 			{ name = 'water', price = 10 },
 			{ name = 'cola', price = 10 },
 		}, locations = {
+			vec3(-322.3138, 804.1727, 117.98),
 			vec3(25.7, -1347.3, 29.49),
 			vec3(-3038.71, 585.9, 7.9),
 			vec3(-3241.47, 1001.14, 12.83),
@@ -79,9 +80,10 @@ return {
 		}, inventory = {
 			{ name = 'ammo-9', price = 5, },
 			{ name = 'WEAPON_KNIFE', price = 200 },
-			{ name = 'WEAPON_BAT', price = 100 },
+			{ name = 'WEAPON_REVOLVER_LEMAT', price = 100 },
 			{ name = 'WEAPON_PISTOL', price = 1000, metadata = { registered = true }, license = 'weapon' }
 		}, locations = {
+			vec3(-282.0134, 780.7756, 119.627),
 			vec3(-662.180, -934.961, 21.829),
 			vec3(810.25, -2157.60, 29.62),
 			vec3(1693.44, 3760.16, 34.71),

@@ -1,8 +1,10 @@
 IsDuplicityVersion = IsDuplicityVersion()
+
+
 shared = {
 	resource = GetCurrentResourceName(),
-	framework = GetConvar('inventory:framework', 'esx'),
-	locale = GetConvar('inventory:locale', 'en'),
+	framework = GetConvar('inventory:framework', 'redemrp'),
+	locale = GetConvar('inventory:locale', 'pt-br'),
 	playerslots = GetConvarInt('inventory:slots', 50),
 	playerweight = GetConvarInt('inventory:weight', 30000),
 	autoreload = GetConvar('inventory:autoreload', 'false') == 'true',
@@ -10,6 +12,23 @@ shared = {
 	qtarget = GetConvar('inventory:qtarget', 'false') == 'true',
 	police = json.decode(GetConvar('inventory:police', '["police", "sheriff"]')),
 }
+
+shared.prime = {
+    ["user"]        = {     MaxWeight = 25000,  MaxSlots = 20    },
+    
+    ["bronze"]      = {     MaxWeight = 30000,  MaxSlots = 25    },
+    ["prata"]       = {     MaxWeight = 40000,  MaxSlots = 30    },
+    ["ouro"]        = {     MaxWeight = 50000,  MaxSlots = 40    },
+    ["platina"]     = {     MaxWeight = 55000,  MaxSlots = 45    },
+    ["texas"]       = {     MaxWeight = 60000,  MaxSlots = 50    },
+
+    ["admin"]       = {     MaxWeight = 60000,  MaxSlots = 50    },
+    ["superadmin"]  = {     MaxWeight = 60000,  MaxSlots = 50    },
+    ["support"]     = {     MaxWeight = 60000,  MaxSlots = 50    },
+    ["allowlist"]   = {     MaxWeight = 60000,  MaxSlots = 50    }
+}
+
+
 
 do
 	if type(shared.police) == 'string' then
@@ -25,6 +44,10 @@ do
 end
 
 if IsDuplicityVersion then
+
+	IS_RDR3 = GetConvar('gamename') == 'rdr3'
+	IS_GTAV = not IS_RDR3
+
 	server = {
 		randomprices = GetConvar('inventory:randomprices', 'false') == 'true',
 		versioncheck = GetConvar('inventory:versioncheck', 'true') == 'true',
@@ -51,7 +74,10 @@ if IsDuplicityVersion then
 			]
 		]])),
 	}
-else
+else		
+	IS_RDR3 = GetGameName() == 'redm'
+	IS_GTAV = not IS_RDR3
+
 	PlayerData = {}
 	client = {
 		screenblur = GetConvar('inventory:screenblur', 'true') == 'true',

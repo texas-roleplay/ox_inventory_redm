@@ -121,7 +121,9 @@ function Inventory.SyncInventory(inv)
 			money[v.name] += v.count
 		end
 	end
-
+	if shared.framework == 'esx' then
+		server.GetPlayerFromId(inv.id).SyncInventory(inv.weight, inv.maxWeight, inv.items, money)
+	end
 	server.GetPlayerFromId(inv.id).syncInventory(inv.weight, inv.maxWeight, inv.items, money)
 end
 
@@ -344,14 +346,27 @@ function Inventory.Load(id, invType, owner)
 			end
 		elseif invType == 'trunk' or invType == 'glovebox' then
 			result = invType == 'trunk' and MySQL:loadTrunk( Inventory.GetPlateFromId(id) ) or MySQL:loadGlovebox( Inventory.GetPlateFromId(id) )
-
+		
 			if not result then
 				if server.randomloot then
 					return generateItems(id, 'vehicle')
 				else
 					datastore = true
 				end
-			else result = result[invType] end
+			else 
+				print(IS_RDR3)
+				-- [[ Eu ainda não entendi a necessidade da variavel abaixo ]]
+				if IS_RDR3 then
+
+					print(result)
+
+					result.glovebox = result.inventory
+					result.plate = result.id
+				end
+
+				result = result[invType]
+				
+			end
 		else
 			result = MySQL:loadStash(owner or '', id)
 		end
@@ -359,8 +374,12 @@ function Inventory.Load(id, invType, owner)
 
 	local returnData, weight = {}, 0
 
+	-- print(result)
+
 	if result then
+		
 		result = json.decode(result)
+
 		for _, v in pairs(result) do
 			local item = Items(v.name)
 			if item then
@@ -754,6 +773,25 @@ function Inventory.CanSwapItem(inv, firstItem, firstItemCount, testItem, testIte
 	end
 end
 exports('CanSwapItem', Inventory.CanSwapItem)
+
+RegisterServerEvent('ox_inventory:addWeaponFromPickup', function(weaponHash)
+	local hasPermissionToGive = false
+	local inv = Inventory(source)
+
+	print(weaponHash)
+	print(allowlistWeaponsPickup[weaponHash])
+
+	if allowlistWeaponsPickup then
+		if allowlistWeaponsPickup[weaponHash] then
+			weaponHash = allowlistWeaponsPickup[weaponHash] 
+			hasPermissionToGive = true
+		end
+	end
+
+	if hasPermissionToGive then
+		Inventory.AddItem(inv, weaponHash, 1)
+	end
+end)
 
 RegisterServerEvent('ox_inventory:removeItem', function(name, count, metadata, slot, used)
 	local inv = Inventory(source)
@@ -1169,6 +1207,26 @@ local function prepareSave(inv)
 	end
 end
 
+local function saveInventories()
+	for id, inv in pairs(Inventories) do
+
+		if inv.player then
+			inv.open = true
+
+			if not inv.datastore and inv.changed then
+				Inventory.Save(inv)
+			end
+
+			inv.open = false
+		end
+	end
+end
+
+local function shutdownPlayersInventoryAndSave()
+	TriggerClientEvent('ox_inventory:closeInventory', -1, true)
+	saveInventories()
+end
+
 SetInterval(function()
 	local time = os.time()
 	local parameters = { {}, {}, {} }
@@ -1189,34 +1247,20 @@ SetInterval(function()
 	end
 
 	MySQL:saveInventories(parameters[1], parameters[2], parameters[3])
-end, 600000)
-
-local function saveInventories()
-	TriggerClientEvent('ox_inventory:closeInventory', -1, true)
-	for id, inv in pairs(Inventories) do
-		if not inv.player then
-			inv.open = true
-
-			if not inv.datastore and inv.changed then
-				Inventory.Save(inv)
-			end
-
-			inv.open = false
-		end
-	end
-end
+	-- saveInventories()
+end, 10000)
 
 AddEventHandler('txAdmin:events:scheduledRestart', function(eventData)
 	if eventData.secondsRemaining == 60 then
 		SetTimeout(50000, function()
-			saveInventories()
+			shutdownPlayersInventoryAndSave()
 		end)
 	end
 end)
 
 AddEventHandler('onResourceStop', function(resource)
 	if resource == shared.resource then
-		saveInventories()
+		shutdownPlayersInventoryAndSave()
 	end
 end)
 
@@ -1481,3 +1525,12 @@ end
 exports('RegisterStash', RegisterStash)
 
 server.inventory = Inventory
+
+
+AddEventHandler('entityRemoved', function(entity)
+	local netId = NetworkGetNetworkIdFromEntity(entity)
+
+	if Inventories['trunk'..netId] then
+		Inventories['trunk'..netId] = nil
+	end
+end)

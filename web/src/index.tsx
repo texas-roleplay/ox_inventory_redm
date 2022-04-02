@@ -5,7 +5,7 @@ import { DndProvider } from 'react-dnd';
 import { TouchBackend } from 'react-dnd-touch-backend';
 import { store } from './store';
 import App from './components/App';
-import './index.scss';
+import './main.scss';
 import { ItemNotificationsProvider } from './components/utils/ItemNotifications';
 
 ReactDOM.render(

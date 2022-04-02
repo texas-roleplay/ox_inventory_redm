@@ -125,7 +125,9 @@ const InventorySlot: React.FC<SlotProps> = ({ inventory, item, setCurrentItem })
             : item.name
             ? `url(${process.env.PUBLIC_URL + `/images/${item.name}.png`})`
             : 'none',
-          border: isOver ? '1px dashed rgba(255,255,255,0.4)' : '1px inset rgba(0,0,0,0.3)',
+          border: isOver ? '1px solid rgba(255,255,255,0.5)' : '1px inset rgba(200,200,200,0.1)',
+          borderColor: item.name == null ? 'rgba(255,255,255,0.03)' : 'rgba(200,200,200,0.1)',
+          backgroundColor: item.name == null ? 'rgba(40, 40, 40, 0.1)' : 'rgba(50, 50, 50, 0.40)',
         }}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
@@ -133,6 +135,12 @@ const InventorySlot: React.FC<SlotProps> = ({ inventory, item, setCurrentItem })
         {isSlotWithItem(item) && (
           <>
             <div className="item-count">
+              <span>
+                {/* {item.count?.toLocaleString('en-us')}x */}
+                {item.count > 1 ? item.count.toLocaleString('en-us') : ''}
+              </span>
+            </div>
+            <div className="item-weight">
               <span>
                 {item.weight > 0
                   ? item.weight >= 1000
@@ -143,8 +151,6 @@ const InventorySlot: React.FC<SlotProps> = ({ inventory, item, setCurrentItem })
                         minimumFractionDigits: 0,
                       })}g `
                   : ''}
-                {/* {item.count?.toLocaleString('en-us')}x */}
-                {item.count ? item.count.toLocaleString('en-us') + `x` : ''}
               </span>
             </div>
             {inventory.type !== 'shop' && item?.durability !== undefined && (
@@ -185,9 +191,9 @@ const InventorySlot: React.FC<SlotProps> = ({ inventory, item, setCurrentItem })
                 )}
               </>
             )}
-            <div className="item-label">
+            {/* <div className="item-label">
               {item.metadata?.label ? item.metadata.label : Items[item.name]?.label || item.name}
-            </div>
+            </div> */}
           </>
         )}
       </div>

@@ -9,6 +9,10 @@ local Query = {
 	UPDATE_PLAYER = 'UPDATE `characters` SET inventory = ? WHERE charid = ?',
 }
 
+--[[
+	Separar as colunas `glovebox` e `trunk` em tabelas diferentes.
+--]]
+
 local function replace(playerColumn, vehicleColumn)
 	for k, v in pairs(Query) do
 		if v:find('vehicles') then
@@ -23,13 +27,24 @@ if shared.framework == 'esx' then
 	replace('users', 'owned_vehicles')
 end
 
-function MySQL:loadPlayer(identifier)
-	local inventory = self.prepare.await(Query.SELECT_PLAYER, { identifier })
+if shared.framework == 'redemrp' then
+	Query.SELECT_PLAYER = 'SELECT inventory FROM `characters` WHERE id = ?'
+	Query.UPDATE_PLAYER = 'UPDATE `characters` SET inventory = ? WHERE id = ?'
+
+	Query.SELECT_GLOVEBOX = 'SELECT id, inventory FROM `horse` WHERE id = ?'
+	Query.UPDATE_GLOVEBOX = 'UPDATE `horse` SET inventory = ? WHERE id = ?'
+
+	Query.SELECT_TRUNK = 'SELECT id, trunk FROM `stagecoaches` WHERE id = ?'
+	Query.UPDATE_TRUNK = 'UPDATE `stagecoaches` SET trunk = ? WHERE id = ?'
+end
+
+function MySQL:loadPlayer(characterid)
+	local inventory = self.prepare.await(Query.SELECT_PLAYER, { characterid })
 	return inventory and json.decode(inventory)
 end
 
-function MySQL:savePlayer(owner, inventory)
-	return self.prepare(Query.UPDATE_PLAYER, { inventory, owner })
+function MySQL:savePlayer(characterid, inventory )
+	return self.prepare(Query.UPDATE_PLAYER, { inventory, characterid })
 end
 
 function MySQL:saveStash(owner, dbId, inventory)

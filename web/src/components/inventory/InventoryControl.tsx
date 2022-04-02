@@ -18,11 +18,11 @@ const InfoScreen: React.FC<{
 }> = ({ infoVisible, setInfoVisible }) => {
   return (
     <div className="info-main" style={{ visibility: infoVisible ? 'visible' : 'hidden' }}>
-      <FontAwesomeIcon
+      {/* <FontAwesomeIcon
         icon={faTimes}
         onClick={() => setInfoVisible(false)}
         className="info-exit-icon"
-      />
+      /> */}
       <h2>{Locale.ui_usefulcontrols}</h2>
       <p>[RMB] - {Locale.ui_rmb}</p>
       <p>[CTRL + LMB] - {Locale.ui_ctrl_lmb}</p>
@@ -75,7 +75,7 @@ const InventoryControl: React.FC = () => {
       <Fade visible={infoVisible} duration={0.25} className="info-fade">
         <InfoScreen infoVisible={infoVisible} setInfoVisible={setInfoVisible} />
       </Fade>
-      <div className="column-wrapper" style={{ margin: '1vh' }}>
+      <div className="column_wrapper inventory-background" >
         <input
           type="number"
           className="button input"
@@ -94,7 +94,7 @@ const InventoryControl: React.FC = () => {
         </button>
         <div className="misc-btns">
           <button onClick={() => setInfoVisible(true)}>
-            <FontAwesomeIcon icon={faInfoCircle} />
+            {/* <FontAwesomeIcon icon={faInfoCircle} /> */}
           </button>
         </div>
       </div>
