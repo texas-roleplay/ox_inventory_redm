@@ -69,7 +69,7 @@ for shopName, shopDetails in pairs(data('shops')) do
 	end
 end
 
-lib.callback.register('ox_inventory:openShop', function(source, data)
+lib.callback.register('nxt_inventory:openShop', function(source, data)
 	local left, shop = Inventory(source)
 	if data then
 		shop = data.id and Shops[data.type][data.id] or Shops[data.type]
@@ -100,7 +100,7 @@ local function comma_value(n)
 	return left..(num:reverse():gsub('(%d%d%d)','%1,'):reverse())..right
 end
 
-lib.callback.register('ox_inventory:buyItem', function(source, data)
+lib.callback.register('nxt_inventory:buyItem', function(source, data)
 	if data.toType == 'player' then
 		if data.count == nil then data.count = 1 end
 		local playerInv = Inventory(source)

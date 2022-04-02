@@ -54,7 +54,7 @@ end
 
 function Utils.Notify(data) SendNUIMessage({ action = 'showNotif', data = data }) end
 function Utils.ItemNotify(data) SendNUIMessage({action = 'itemNotify', data = data}) end
-RegisterNetEvent('ox_inventory:notify', Utils.Notify)
+RegisterNetEvent('nxt_inventory:notify', Utils.Notify)
 exports('notify', Utils.Notify)
 
 function Utils.Disarm(currentWeapon, newSlot, keepHolstered, fallbackRemoveWeaponName)
@@ -134,11 +134,11 @@ function Utils.Disarm(currentWeapon, newSlot, keepHolstered, fallbackRemoveWeapo
 		end
 
 		if newSlot then
-			TriggerServerEvent('ox_inventory:updateWeapon', weaponAmmo and 'ammo' or 'melee', weaponAmmo or currentWeapon?.melee, newSlot)
+			TriggerServerEvent('nxt_inventory:updateWeapon', weaponAmmo and 'ammo' or 'melee', weaponAmmo or currentWeapon?.melee, newSlot)
 		end
 
 		currentWeapon = nil
-		TriggerEvent('ox_inventory:currentWeapon')
+		TriggerEvent('nxt_inventory:currentWeapon')
 	end
 end
 

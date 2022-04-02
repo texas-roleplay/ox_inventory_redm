@@ -30,7 +30,7 @@ local function onLogout()
 			client.parachute = false
 		end
 
-		TriggerEvent('ox_inventory:closeInventory')
+		TriggerEvent('nxt_inventory:closeInventory')
 		PlayerData.loaded = false
 		ClearInterval(client.interval)
 		ClearInterval(client.tick)
@@ -84,7 +84,7 @@ elseif shared.framework == 'esx' then
 	end)
 
 	if ESX.PlayerLoaded then
-		TriggerServerEvent('ox_inventory:requestPlayerInventory')
+		TriggerServerEvent('nxt_inventory:requestPlayerInventory')
 	end
 
 elseif shared.framework == 'redemrp' then
@@ -134,7 +134,7 @@ elseif shared.framework == 'redemrp' then
 		end
 
 		if PlayerData.loaded then
-			TriggerServerEvent('ox_inventory:requestPlayerInventory')
+			TriggerServerEvent('nxt_inventory:requestPlayerInventory')
 		end
 	end)
 end

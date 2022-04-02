@@ -121,6 +121,7 @@ function Inventory.SyncInventory(inv)
 			money[v.name] += v.count
 		end
 	end
+	
 	if shared.framework == 'esx' then
 		server.GetPlayerFromId(inv.id).SyncInventory(inv.weight, inv.maxWeight, inv.items, money)
 	end
@@ -197,7 +198,7 @@ end
 ---@param owner string
 ---@param items? table
 --- This should only be utilised internally!
---- To create a stash, please use `exports.ox_inventory:RegisterStash` instead.
+--- To create a stash, please use `exports.nxt_inventory:RegisterStash` instead.
 function Inventory.Create(id, label, invType, slots, weight, maxWeight, owner, items, groups)
 	if maxWeight then
 		local self = {
@@ -243,7 +244,7 @@ end
 ---@param type string
 function Inventory.Remove(id, type)
 	if type == 'drop' then
-		TriggerClientEvent('ox_inventory:removeDrop', -1, id)
+		TriggerClientEvent('nxt_inventory:removeDrop', -1, id)
 		Inventory.Drops[id] = nil
 	end
 	Inventories[id] = nil
@@ -470,6 +471,7 @@ function Inventory.SetItem(inv, item, count, metadata)
 		end
 	end
 end
+exports('SetItem', Inventory.SetItem)
 
 ---@param inv string | number
 ---@return table item
@@ -508,7 +510,7 @@ function Inventory.SetDurability(inv, slot, durability)
 
 			if inv.type == 'player' then
 				if shared.framework == 'esx' then Inventory.SyncInventory(inv) end
-				TriggerClientEvent('ox_inventory:updateSlots', inv.id, {{item = slot, inventory = inv.type}}, {left=inv.weight, right=inv.open and Inventories[inv.open]?.weight})
+				TriggerClientEvent('nxt_inventory:updateSlots', inv.id, {{item = slot, inventory = inv.type}}, {left=inv.weight, right=inv.open and Inventories[inv.open]?.weight})
 			end
 		end
 	end
@@ -533,7 +535,7 @@ function Inventory.SetMetadata(inv, slot, metadata)
 
 			if inv.type == 'player' then
 				if shared.framework == 'esx' then Inventory.SyncInventory(inv) end
-				TriggerClientEvent('ox_inventory:updateSlots', inv.id, {{item = slot, inventory = inv.type}}, {left=inv.weight, right=inv.open and Inventories[inv.open]?.weight})
+				TriggerClientEvent('nxt_inventory:updateSlots', inv.id, {{item = slot, inventory = inv.type}}, {left=inv.weight, right=inv.open and Inventories[inv.open]?.weight})
 			end
 		end
 	end
@@ -549,10 +551,10 @@ exports('SetMetadata', Inventory.SetMetadata)
 -- todo: add parameter checks to remove need for nil args
 -- todo: add callback with several reasons for failure
 -- ```
--- exports.ox_inventory:AddItem(1, 'bread', 4, nil, nil, function(success, reason)
+-- exports.nxt_inventory:AddItem(1, 'bread', 4, nil, nil, function(success, reason)
 -- if not success then
 -- 	if reason == 'overburdened' then
--- 		TriggerClientEvent('ox_inventory:notify', source, {type = 'error', text = shared.locale('cannot_carry', count, data.label), duration = 2500})
+-- 		TriggerClientEvent('nxt_inventory:notify', source, {type = 'error', text = shared.locale('cannot_carry', count, data.label), duration = 2500})
 -- 	end
 -- end
 -- ```
@@ -592,7 +594,7 @@ function Inventory.AddItem(inv, item, count, metadata, slot, cb)
 
 				if inv.type == 'player' then
 					if shared.framework == 'esx' then Inventory.SyncInventory(inv) end
-					TriggerClientEvent('ox_inventory:updateSlots', inv.id, {{item = inv.items[slot], inventory = inv.type}}, {left=inv.weight, right=inv.open and Inventories[inv.open]?.weight}, count, false)
+					TriggerClientEvent('nxt_inventory:updateSlots', inv.id, {{item = inv.items[slot], inventory = inv.type}}, {left=inv.weight, right=inv.open and Inventories[inv.open]?.weight}, count, false)
 				end
 			else
 				reason = 'inventory_full'
@@ -725,7 +727,7 @@ function Inventory.RemoveItem(inv, item, count, metadata, slot)
 				end
 			end
 
-			TriggerClientEvent('ox_inventory:updateSlots', inv.id, array, {left=inv.weight, right=inv.open and Inventories[inv.open]?.weight}, removed, true)
+			TriggerClientEvent('nxt_inventory:updateSlots', inv.id, array, {left=inv.weight, right=inv.open and Inventories[inv.open]?.weight}, removed, true)
 		end
 	end
 end
@@ -747,7 +749,7 @@ function Inventory.CanCarryItem(inv, item, count, metadata)
 			local newWeight = inv.weight + (item.weight * count)
 
 			if newWeight >= inv.maxWeight then
-				TriggerClientEvent('ox_inventory:notify', inv.id, {type = 'error', text = shared.locale('cannot_carry')})
+				TriggerClientEvent('nxt_inventory:notify', inv.id, {type = 'error', text = shared.locale('cannot_carry')})
 				return false
 			end
 
@@ -774,7 +776,7 @@ function Inventory.CanSwapItem(inv, firstItem, firstItemCount, testItem, testIte
 end
 exports('CanSwapItem', Inventory.CanSwapItem)
 
-RegisterServerEvent('ox_inventory:addWeaponFromPickup', function(weaponHash)
+RegisterServerEvent('nxt_inventory:addWeaponFromPickup', function(weaponHash)
 	local hasPermissionToGive = false
 	local inv = Inventory(source)
 
@@ -793,7 +795,7 @@ RegisterServerEvent('ox_inventory:addWeaponFromPickup', function(weaponHash)
 	end
 end)
 
-RegisterServerEvent('ox_inventory:removeItem', function(name, count, metadata, slot, used)
+RegisterServerEvent('nxt_inventory:removeItem', function(name, count, metadata, slot, used)
 	local inv = Inventory(source)
 
 	if used then
@@ -828,9 +830,9 @@ local function CustomDrop(prefix, items, coords, slots, maxWeight, instance)
 	local inventory = Inventory.Create(drop, prefix..' '..drop, 'drop', slots or shared.playerslots, weight, maxWeight or shared.playerweight, false, items)
 	inventory.coords = coords
 	Inventory.Drops[drop] = {coords = inventory.coords, instance = instance}
-	TriggerClientEvent('ox_inventory:createDrop', -1, drop, Inventory.Drops[drop], inventory.open and source)
+	TriggerClientEvent('nxt_inventory:createDrop', -1, drop, Inventory.Drops[drop], inventory.open and source)
 end
-AddEventHandler('ox_inventory:customDrop', CustomDrop)
+AddEventHandler('nxt_inventory:customDrop', CustomDrop)
 exports('CustomDrop', CustomDrop)
 
 local Log = server.logs
@@ -864,7 +866,7 @@ local function dropItem(source, data)
 	inventory.coords = vec3(coords.x, coords.y, coords.z-0.2)
 	Inventory.Drops[dropId] = {coords = inventory.coords, instance = data.instance}
 
-	TriggerClientEvent('ox_inventory:createDrop', -1, dropId, Inventory.Drops[dropId], playerInventory.open and source, slot)
+	TriggerClientEvent('nxt_inventory:createDrop', -1, dropId, Inventory.Drops[dropId], playerInventory.open and source, slot)
 
 	Log(('%sx %s transferred from %s to %s'):format(data.count, toData.name, playerInventory.label, dropId),
 		playerInventory.owner,
@@ -876,7 +878,7 @@ local function dropItem(source, data)
 	return true, { weight = playerInventory.weight, items = items }
 end
 
-lib.callback.register('ox_inventory:swapItems', function(source, data)
+lib.callback.register('nxt_inventory:swapItems', function(source, data)
 	-- TODO: requires re-re-re-refactor and helper functions to reduce repetition
 	if data.count > 0 and data.toType ~= 'shop' then
 		if data.toType == 'newdrop' then
@@ -899,7 +901,7 @@ lib.callback.register('ox_inventory:swapItems', function(source, data)
 				if not group then return end
 
 				if server.evidencegrade > rank then
-					return TriggerClientEvent('ox_inventory:notify', source, {type = 'error', text = shared.locale('evidence_cannot_take')})
+					return TriggerClientEvent('nxt_inventory:notify', source, {type = 'error', text = shared.locale('evidence_cannot_take')})
 				end
 			end
 
@@ -917,7 +919,7 @@ lib.callback.register('ox_inventory:swapItems', function(source, data)
 						fromInventory.weapon = data.toSlot
 						fromInventory.weapon = data.fromSlot
 						if fromInventory.type == 'otherplayer' then movedWeapon = false end
-						TriggerClientEvent('ox_inventory:disarm', fromInventory.id)
+						TriggerClientEvent('nxt_inventory:disarm', fromInventory.id)
 					end
 
 					local container = (not sameInventory and playerInventory.containerSlot) and (fromInventory.type == 'container' and fromInventory or toInventory)
@@ -1051,7 +1053,7 @@ lib.callback.register('ox_inventory:swapItems', function(source, data)
 					if toInventory.changed ~= nil then toInventory.changed = true end
 
 					if sameInventory and fromInventory.type == 'otherplayer' then
-						TriggerClientEvent('ox_inventory:updateSlots', fromInventory.id,{
+						TriggerClientEvent('nxt_inventory:updateSlots', fromInventory.id,{
 							{
 								item = fromInventory.items[data.toSlot] or {slot=data.toSlot},
 								inventory = fromInventory.type
@@ -1063,7 +1065,7 @@ lib.callback.register('ox_inventory:swapItems', function(source, data)
 						}, { left = fromInventory.weight })
 
 					elseif toInventory.type == 'otherplayer' then
-						TriggerClientEvent('ox_inventory:updateSlots', toInventory.id,{
+						TriggerClientEvent('nxt_inventory:updateSlots', toInventory.id,{
 							{
 								item = toInventory.items[data.toSlot] or {slot=data.toSlot},
 								inventory = toInventory.type
@@ -1071,7 +1073,7 @@ lib.callback.register('ox_inventory:swapItems', function(source, data)
 						}, { left = toInventory.weight })
 
 					elseif fromInventory.type == 'otherplayer' then
-						TriggerClientEvent('ox_inventory:updateSlots', fromInventory.id,{
+						TriggerClientEvent('nxt_inventory:updateSlots', fromInventory.id,{
 							{
 								item = fromInventory.items[data.fromSlot] or {slot=data.fromSlot},
 								inventory = fromInventory.type
@@ -1103,7 +1105,7 @@ function Inventory.Confiscate(source)
 		MySQL:saveStash(inv.owner, inv.owner, json.encode(minimal(inv)))
 		table.wipe(inv.items)
 		inv.weight = 0
-		TriggerClientEvent('ox_inventory:inventoryConfiscated', inv.id)
+		TriggerClientEvent('nxt_inventory:inventoryConfiscated', inv.id)
 		if shared.framework == 'esx' then Inventory.SyncInventory(inv) end
 	end
 end
@@ -1135,7 +1137,7 @@ function Inventory.Return(source)
 				inv.items = inventory
 
 				if shared.framework == 'esx' then Inventory.SyncInventory(inv) end
-				TriggerClientEvent('ox_inventory:inventoryReturned', source, {inventory, totalWeight})
+				TriggerClientEvent('nxt_inventory:inventoryReturned', source, {inventory, totalWeight})
 			end
 		end)
 	end
@@ -1153,7 +1155,7 @@ function Inventory.Clear(inv, keep)
 			table.wipe(inv.items)
 			inv.weight = 0
 			if inv.player then
-				TriggerClientEvent('ox_inventory:inventoryConfiscated', inv.id)
+				TriggerClientEvent('nxt_inventory:inventoryConfiscated', inv.id)
 				if shared.framework == 'esx' then Inventory.SyncInventory(inv) end
 				inv.weapon = nil
 			end
@@ -1223,7 +1225,7 @@ local function saveInventories()
 end
 
 local function shutdownPlayersInventoryAndSave()
-	TriggerClientEvent('ox_inventory:closeInventory', -1, true)
+	TriggerClientEvent('nxt_inventory:closeInventory', -1, true)
 	saveInventories()
 end
 
@@ -1264,7 +1266,7 @@ AddEventHandler('onResourceStop', function(resource)
 	end
 end)
 
-RegisterServerEvent('ox_inventory:closeInventory', function()
+RegisterServerEvent('nxt_inventory:closeInventory', function()
 	local inventory = Inventories[source]
 	if inventory?.open then
 		if type(inventory.open) ~= 'boolean' then
@@ -1278,7 +1280,7 @@ RegisterServerEvent('ox_inventory:closeInventory', function()
 	end
 end)
 
-RegisterServerEvent('ox_inventory:giveItem', function(slot, target, count)
+RegisterServerEvent('nxt_inventory:giveItem', function(slot, target, count)
 	local fromInventory = Inventories[source]
 	local toInventory = Inventories[target]
 	if count <= 0 then count = 1 end
@@ -1297,12 +1299,12 @@ RegisterServerEvent('ox_inventory:giveItem', function(slot, target, count)
 
 			end
 		else
-			TriggerClientEvent('ox_inventory:notify', source, {type = 'error', text = shared.locale('cannot_give', count, data.label), duration = 2500})
+			TriggerClientEvent('nxt_inventory:notify', source, {type = 'error', text = shared.locale('cannot_give', count, data.label), duration = 2500})
 		end
 	end
 end)
 
-RegisterServerEvent('ox_inventory:updateWeapon', function(action, value, slot)
+RegisterServerEvent('nxt_inventory:updateWeapon', function(action, value, slot)
 	local inventory = Inventories[source]
 	local syncInventory = false
 	local type = type(value)
@@ -1316,7 +1318,7 @@ RegisterServerEvent('ox_inventory:updateWeapon', function(action, value, slot)
 					if v == value.component then
 						table.remove(item.metadata.components, k)
 						Inventory.AddItem(inventory, value.component, 1)
-						return TriggerClientEvent('ox_inventory:updateSlots', source, {{item = item}}, {left=inventory.weight})
+						return TriggerClientEvent('nxt_inventory:updateSlots', source, {{item = item}}, {left=inventory.weight})
 					end
 				end
 			end
@@ -1369,10 +1371,10 @@ RegisterServerEvent('ox_inventory:updateWeapon', function(action, value, slot)
 				Inventory.SyncInventory(inventory)
 			end
 
-			if action ~= 'throw' then TriggerClientEvent('ox_inventory:updateSlots', source, {{item = weapon}}, {left=inventory.weight}) end
+			if action ~= 'throw' then TriggerClientEvent('nxt_inventory:updateSlots', source, {{item = weapon}}, {left=inventory.weight}) end
 
 			if weapon.metadata.durability and weapon.metadata.durability < 1 and action ~= 'load' and action ~= 'component' then
-				TriggerClientEvent('ox_inventory:disarm', source)
+				TriggerClientEvent('nxt_inventory:disarm', source)
 			end
 		end
 	end
@@ -1457,12 +1459,12 @@ end)
 
 lib.addCommand('group.admin', 'viewinv', function(source, args)
 	local inventory = Inventories[args.target] or Inventories[tonumber(args.target)]
-	TriggerClientEvent('ox_inventory:viewInventory', source, inventory)
+	TriggerClientEvent('nxt_inventory:viewInventory', source, inventory)
 end, {'target'})
 
 Inventory.accounts = server.accounts
 
-TriggerEvent('ox_inventory:loadInventory', Inventory)
+TriggerEvent('nxt_inventory:loadInventory', Inventory)
 
 --- Takes traditional item data and updates it to support ox_inventory, i.e.\
 --- ```

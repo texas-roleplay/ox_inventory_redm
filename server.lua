@@ -52,14 +52,16 @@ local function setPlayerInventory(player, data)
 	inv.player = server.setPlayerData(player)
 
 	if shared.framework == 'esx' then Inventory.SyncInventory(inv) end
-	TriggerClientEvent('ox_inventory:setPlayerInventory', player.source, Inventory.Drops, inventory, totalWeight, server.UsableItemsCallbacks, inv.player, player.source)
+	TriggerClientEvent('nxt_inventory:setPlayerInventory', player.source, Inventory.Drops, inventory, totalWeight, server.UsableItemsCallbacks, inv.player, player.source)
+
+	exports.nxt_inventory:SetItem(player.source, 'money', server.accounts.money, nil)
 end
 exports('setPlayerInventory', setPlayerInventory)
-AddEventHandler('ox_inventory:setPlayerInventory', setPlayerInventory)
+AddEventHandler('nxt_inventory:setPlayerInventory', setPlayerInventory)
 
 local Vehicles = data 'vehicles'
 
-lib.callback.register('ox_inventory:openInventory', function(source, inv, data)
+lib.callback.register('nxt_inventory:openInventory', function(source, inv, data)
 	local left = Inventory(source)
 	local right = left.open and Inventory(left.open)
 
@@ -143,7 +145,7 @@ end)
 
 local Licenses = data 'licenses'
 
-lib.callback.register('ox_inventory:buyLicense', function(source, id)
+lib.callback.register('nxt_inventory:buyLicense', function(source, id)
 	if shared.framework == 'esx' then
 		local license = Licenses[id]
 		if license then
@@ -166,12 +168,12 @@ lib.callback.register('ox_inventory:buyLicense', function(source, id)
 	end
 end)
 
-lib.callback.register('ox_inventory:getItemCount', function(source, item, metadata, target)
+lib.callback.register('nxt_inventory:getItemCount', function(source, item, metadata, target)
 	local inventory = target and Inventory(target) or Inventory(source)
 	return (inventory and Inventory.GetItem(inventory, item, metadata, true)) or 0
 end)
 
-lib.callback.register('ox_inventory:getInventory', function(source, id)
+lib.callback.register('nxt_inventory:getInventory', function(source, id)
 	local inventory = Inventory(id or source)
 	return inventory and {
 		id = inventory.id,
@@ -185,7 +187,7 @@ lib.callback.register('ox_inventory:getInventory', function(source, id)
 	}
 end)
 
-lib.callback.register('ox_inventory:useItem', function(source, item, slot, metadata)
+lib.callback.register('nxt_inventory:useItem', function(source, item, slot, metadata)
 	local inventory = Inventory(source)
 	if inventory.type == 'player' then
 		local item, type = Items(item)
@@ -196,11 +198,11 @@ lib.callback.register('ox_inventory:useItem', function(source, item, slot, metad
 			if durability > 100 then
 				if os.time() > durability then
 					inventory.items[slot].metadata.durability = 0
-					TriggerClientEvent('ox_inventory:notify', source, {type = 'error', text = shared.locale('no_durability', data.label), duration = 2500})
+					TriggerClientEvent('nxt_inventory:notify', source, {type = 'error', text = shared.locale('no_durability', data.label), duration = 2500})
 					return
 				end
 			elseif durability <= 0 then
-				TriggerClientEvent('ox_inventory:notify', source, {type = 'error', text = shared.locale('no_durability', data.label), duration = 2500})
+				TriggerClientEvent('nxt_inventory:notify', source, {type = 'error', text = shared.locale('no_durability', data.label), duration = 2500})
 				return
 			end
 		end
@@ -240,7 +242,7 @@ lib.callback.register('ox_inventory:useItem', function(source, item, slot, metad
 
 					return data
 				else
-					TriggerClientEvent('ox_inventory:notify', source, {type = 'error', text = shared.locale('item_not_enough', item.name), duration = 2500})
+					TriggerClientEvent('nxt_inventory:notify', source, {type = 'error', text = shared.locale('item_not_enough', item.name), duration = 2500})
 				end
 			end
 		end

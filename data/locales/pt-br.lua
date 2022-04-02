@@ -21,7 +21,7 @@ return {
 	['ui_alt_lmb'] = "Uso rápido de um item",
 	['ui_ctrl_c'] = "When hovering over a weapon, copies it's serial number",
 	--
-	['$'] = "R$",
+	['$'] = "$",
 	['male'] = "Homem",
 	['female'] = "Mulher",
 	['used'] = "Usou",

@@ -65,12 +65,12 @@ if shared.framework == 'esx' then
 		}
 	end
 
-	RegisterServerEvent('ox_inventory:requestPlayerInventory', function()
+	RegisterServerEvent('nxt_inventory:requestPlayerInventory', function()
 		local source = source
 		local player = server.GetPlayerFromId(source)
 
 		if player then
-			exports.ox_inventory:setPlayerInventory(player, player?.inventory)
+			exports.nxt_inventory:setPlayerInventory(player, player?.inventory)
 		end
 	end)
 end
@@ -78,29 +78,30 @@ end
 if shared.framework == 'redemrp' then
 	UsableItemsCallbacks = {}
 
-	function RegisterUsableItem(item, cb)
-		UsableItemsCallbacks[item] = cb
-	end
+	-- function RegisterUsableItem(item, cb)
+	-- 	UsableItemsCallbacks[item] = cb
+	-- end
 	
-	function UseItem(source, item, data)
-		UsableItemsCallbacks[item](source, item, data)
-	end
+	-- function UseItem(source, item, data)
+	-- 	UsableItemsCallbacks[item](source, item, data)
+	-- end
 	
-	function GetItemLabel(item)	
-		item = exports.ox_inventory:Items(item)
-		if item then return item.label end
-	end
+	-- function GetItemLabel(item)	
+	-- 	item = exports.nxt_inventory:Items(item)
+	-- 	if item then return item.label end
+	-- end
 	
-	function GetUsableItems()
-		local Usables = {}
-		for k in pairs(UsableItemsCallbacks) do
-			Usables[k] = true
-		end
-		return Usables
-	end
+	-- function GetUsableItems()
+	-- 	local Usables = {}
+	-- 	for k in pairs(UsableItemsCallbacks) do
+	-- 		Usables[k] = true
+	-- 	end
+	-- 	return Usables
+	-- end
 
-	server.UseItem = UseItem
-	server.UsableItemsCallbacks = GetUsableItems
+	-- server.UseItem = UseItem
+	-- server.UsableItemsCallbacks = GetUsableItems
+
 	server.GetPlayerFromId = function(...)		
 		return exports['redemrp_roleplay']:getPlayerFromId(...)
 	end
@@ -130,12 +131,20 @@ if shared.framework == 'redemrp' then
 		}
 	end
 
-	RegisterServerEvent('ox_inventory:requestPlayerInventory', function()
+	RegisterServerEvent('nxt_inventory:requestPlayerInventory', function()
 		local source = source
 		local player = server.GetPlayerFromId(source)
 
+		server.accounts.money = player.getMoney()
+		server.accounts.gold = player.getGold()
+
+		print('money', server.accounts.money)
+		print('gold', server.accounts.gold)
+		
+		exports.nxt_inventory:SetItem(source, 'money', server.accounts.money, nil)
+
 		if player then
-			exports.ox_inventory:setPlayerInventory(player, player?.inventory)
+			exports.nxt_inventory:setPlayerInventory(player, player?.inventory)
 		end
 	end)
 end

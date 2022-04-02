@@ -26,17 +26,17 @@ local ox_inventory = exports[shared.resource]
 -- Item('bandage', function(data, slot)
 -- 	local maxHealth = GetEntityMaxHealth(cache.ped)
 -- 	local health = GetEntityHealth(cache.ped)
--- 	ox_inventory:useItem(data, function(data)
+-- 	nxt_inventory:useItem(data, function(data)
 -- 		if data then
 -- 			SetEntityHealth(cache.ped, math.min(maxHealth, math.floor(health + maxHealth / 16)))
--- 			ox_inventory:notify({text = 'You feel better already'})
+-- 			nxt_inventory:notify({text = 'You feel better already'})
 -- 		end
 -- 	end)
 -- end)
 
 -- Item('armour', function(data, slot)
 -- 	if GetPedArmour(cache.ped) < 100 then
--- 		ox_inventory:useItem(data, function(data)
+-- 		nxt_inventory:useItem(data, function(data)
 -- 			if data then
 -- 				SetPlayerMaxArmour(PlayerData.id, 100)
 -- 				SetPedArmour(cache.ped, 100)
@@ -48,7 +48,7 @@ local ox_inventory = exports[shared.resource]
 -- client.parachute = false
 -- Item('parachute', function(data, slot)
 -- 	if not client.parachute then
--- 		ox_inventory:useItem(data, function(data)
+-- 		nxt_inventory:useItem(data, function(data)
 -- 			if data then
 -- 				local chute = `GADGET_PARACHUTE`
 -- 				SetPlayerParachuteTintIndex(PlayerData.id, -1)

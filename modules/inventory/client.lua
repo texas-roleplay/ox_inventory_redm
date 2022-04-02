@@ -17,7 +17,7 @@ if IS_GTAV then
 				SetNetworkIdCanMigrate(netId, true)
 			end
 
-			exports.ox_inventory:openInventory('dumpster', 'dumpster'..netId)
+			exports.nxt_inventory:openInventory('dumpster', 'dumpster'..netId)
 		end
 
 		exports.qtarget:AddTargetModel(Inventory.Dumpsters, {
@@ -72,7 +72,7 @@ end
 exports('Search', Inventory.Search)
 
 local function OpenEvidence()
-	exports.ox_inventory:openInventory('policeevidence')
+	exports.nxt_inventory:openInventory('policeevidence')
 end
 
 Inventory.Evidence = setmetatable(data('evidence'), {
@@ -106,7 +106,7 @@ Inventory.Evidence = setmetatable(data('evidence'), {
 })
 
 local function OpenStash(data)
-	exports.ox_inventory:openInventory('stash', data)
+	exports.nxt_inventory:openInventory('stash', data)
 end
 
 Inventory.Stashes = setmetatable(data('stashes'), {
@@ -145,5 +145,5 @@ client.inventory = Inventory
 
 AddEventHandler("client.receivePickupType", function(pickupName)	
 	local weaponHash = Citizen.InvokeNative(0x08F96CA6C551AD51, pickupName, false) -- GET_WEAPON_TYPE_FROM_PICKUP_TYPE
-	TriggerServerEvent("ox_inventory:addWeaponFromPickup", weaponHash)
+	TriggerServerEvent("nxt_inventory:addWeaponFromPickup", weaponHash)
 end)

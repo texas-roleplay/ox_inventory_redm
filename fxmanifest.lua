@@ -5,7 +5,7 @@ lua54        'yes'
 game         'common'
 
 --[[ Resource Information ]]--
-name         'ox_inventory'
+name         'nxt_inventory'
 author       'Overextended'
 
 version      '2.7.2'
