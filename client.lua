@@ -60,7 +60,7 @@ local plyState = LocalPlayer.state
 ---@param inv string inventory type
 ---@param data table id and owner
 ---@return boolean
-local function openInventory(inv, data)
+function openInventory(inv, data)
 	if invOpen then
 		if not inv and currentInventory.type == 'newdrop' then
 			return TriggerEvent('nxt_inventory:closeInventory')

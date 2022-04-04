@@ -17,7 +17,7 @@ if IS_GTAV then
 				SetNetworkIdCanMigrate(netId, true)
 			end
 
-			exports.nxt_inventory:openInventory('dumpster', 'dumpster'..netId)
+			openInventory('dumpster', 'dumpster'..netId)
 		end
 
 		exports.qtarget:AddTargetModel(Inventory.Dumpsters, {
@@ -72,7 +72,7 @@ end
 exports('Search', Inventory.Search)
 
 local function OpenEvidence()
-	exports.nxt_inventory:openInventory('policeevidence')
+	openInventory('policeevidence')
 end
 
 Inventory.Evidence = setmetatable(data('evidence'), {
@@ -106,7 +106,7 @@ Inventory.Evidence = setmetatable(data('evidence'), {
 })
 
 local function OpenStash(data)
-	exports.nxt_inventory:openInventory('stash', data)
+	openInventory('stash', data)
 end
 
 Inventory.Stashes = setmetatable(data('stashes'), {
