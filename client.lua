@@ -401,8 +401,27 @@ local function useSlot(slot)
 			local playerPed = cache.ped
 			if data.ammo then
 				if client.weaponWheel or currentWeapon.metadata.durability <= 0 then return end
-				local maxAmmo = GetMaxAmmoInClip(playerPed, currentWeapon.hash, true)
+
+				local currentWeaponHash = currentWeapon.hash
+
+				local maxAmmo = GetMaxAmmoInClip(playerPed, currentWeaponHash, true)
 				local currentAmmo = GetAmmoInPedWeapon(playerPed, currentWeapon.hash)
+
+				local isABow = currentWeaponHash == `WEAPON_BOW`
+
+				if IS_RDR3 then
+					if isABow then
+						--[[ 
+							Permitir usar até o máximo de munições possiveis quando estiver usando um arco, ao inves
+							de usar só o máximo possivo no clip, que no arco é 1
+						--]]
+
+						--[[
+							A rockstar também define o máximo de munição manualmente nos scripts dela ;)
+						--]]
+						maxAmmo = 5
+					end
+				end
 
 				if currentAmmo ~= maxAmmo and currentAmmo < maxAmmo then
 					useItem(data, function(data)
@@ -411,15 +430,27 @@ local function useSlot(slot)
 							if data.name == currentWeapon.ammo then
 								local missingAmmo = 0
 								local newAmmo = 0
+
 								missingAmmo = maxAmmo - currentAmmo
-								if missingAmmo > data.count then newAmmo = currentAmmo + data.count else newAmmo = maxAmmo end
-								if newAmmo < 0 then newAmmo = 0 end
+
+								if missingAmmo > data.count then
+									newAmmo = currentAmmo + data.count
+								else
+									--[[ Overflow ]]
+									newAmmo = maxAmmo
+								end
+
+								if newAmmo < 0 then
+									newAmmo = 0
+								end
+
 								SetPedAmmo(playerPed, currentWeapon.hash, newAmmo)
 
 								local makePedReload = IS_GTAV and MakePedReload or N_0x79e1e511ff7efb13
 								makePedReload(playerPed)
 
 								currentWeapon.metadata.ammo = newAmmo
+								
 								TriggerServerEvent('nxt_inventory:updateWeapon', 'load', currentWeapon.metadata.ammo)
 							end
 						end
