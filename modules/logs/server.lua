@@ -34,7 +34,7 @@ if key ~= '' then
 		})
 	end
 else
-	local webhook = GetConvar('inventory:discordWebhook', 'https://discord.com/api/webhooks/937404305831526440/1qApWnXZrKEj7FQJwaSJ84ow8HgqaEZm2O7xhBZkHB2fmfMWXOl7Jm_35iWgMqJRO5RT')
+	local webhook = GetConvar('inventory:discordWebhook', '')
 
 	if webhook ~= '' then
 		function server.logs(message, source, ...)

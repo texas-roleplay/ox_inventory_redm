@@ -3,14 +3,14 @@ IsDuplicityVersion = IsDuplicityVersion()
 
 shared = {
 	resource = GetCurrentResourceName(),
-	framework = GetConvar('inventory:framework', 'redemrp'),
-	locale = GetConvar('inventory:locale', 'pt-br'),
+	framework = GetConvar('inventory:framework', 'esx'),
+	locale = GetConvar('inventory:locale', 'en'),
 	playerslots = GetConvarInt('inventory:slots', 50),
 	playerweight = GetConvarInt('inventory:weight', 30000),
 	autoreload = GetConvar('inventory:autoreload', 'false') == 'true',
 	trimplate = GetConvar('inventory:trimplate', 'true') == 'true',
 	qtarget = GetConvar('inventory:qtarget', 'false') == 'true',
-	police = json.decode(GetConvar('inventory:police', '["oficial", "oficialsenior"]')),
+	police = json.decode(GetConvar('inventory:police', '["police", "sheriff"]')),
 }
 
 shared.prime = {
