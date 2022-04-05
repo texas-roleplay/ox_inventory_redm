@@ -89,7 +89,6 @@ function openInventory(inv, data)
 			--[[ Veicúlos também é aqui ]]
 
 			if inv == 'policeevidence' then
-				print('estouaqui')
 				local input = Interface.Keyboard(shared.locale('police_evidence'), {shared.locale('locker_number')})
 
 				if input then
@@ -104,7 +103,6 @@ function openInventory(inv, data)
 					data = input
 				end
 			end
-			print('nãocheguei')
 			left, right = lib.callback.await('nxt_inventory:openInventory', false, inv, data)
 		end
 
@@ -260,7 +258,10 @@ local function useSlot(slot)
 			useItem(data, function(result)
 				if result then
 					if currentWeapon?.slot == result.slot then
-						currentWeapon = Utils.Disarm(currentWeapon, nil, true --[[ keepHolstered ]])
+						--[[ Só manter no coldre caso não seja um throwable ]]
+						local keepHolstered = data.throwable ~= true
+
+						currentWeapon = Utils.Disarm(currentWeapon, nil, keepHolstered)
 						return
 					end
 
@@ -300,8 +301,6 @@ local function useSlot(slot)
 
 						if not HasPedGotWeapon(playerPed, data.hash, 0, false) then
 							--[[ GiveWeaponToPed ]]
-
-							print(data.throwable, data.hash, item.count)
 
 							if data.throwable then
 								Citizen.InvokeNative(0xB282DC6EBD803C75, playerPed, data.hash, tonumber(item.count), true, 0) -- GIVE_DELAYED_WEAPON_TO_PED
@@ -788,13 +787,9 @@ local function registerCommands()
 								if Entity(vehicle).state.wagonId then 
 									vehicleUUID = Entity(vehicle).state.wagonId
 									vehicleUUID = vehicleUUID .. 000
-									print('encontrei aqui')
 								else
 									vehicleUUID = netId
-									print('não encontrei')
 								end
-
-								print(vehicleUUID)
 
 								openInventory('trunk', {id='trunk'..vehicleUUID, model=vehHash, label="Carroça"})
 								repeat Wait(50)
@@ -1414,6 +1409,7 @@ RegisterNetEvent('nxt_inventory:setPlayerInventory', function(currentDrops, inve
 					DisableControlAction(0, 80, true)
 					DisableControlAction(0, 140, true)
 				end
+
 				if IS_RDR3 then					
 					DisableControlAction(0, `INPUT_MELEE_ATTACK`, true)
 				end
@@ -1434,64 +1430,54 @@ RegisterNetEvent('nxt_inventory:setPlayerInventory', function(currentDrops, inve
 						TriggerServerEvent('nxt_inventory:updateWeapon', 'melee', currentWeapon.melee)
 						currentWeapon.melee = 0
 					end
-				elseif currentWeapon.metadata.ammo then
+				elseif currentWeapon.metadata.ammo or currentWeapon.throwable then
+
 					if IsPedShooting(playerPed) then
-						local currentAmmo
 
-						if currentWeapon.hash == `WEAPON_PETROLCAN` or currentWeapon.hash == `WEAPON_HAZARDCAN` or currentWeapon.hash == `WEAPON_FIREEXTINGUISHER` then
-							currentAmmo = currentWeapon.metadata.ammo - 0.05
-
-							if currentAmmo <= 0 then
-								SetPedInfiniteAmmo(playerPed, false, currentWeapon.hash)
-							end
-
-						else currentAmmo = GetAmmoInPedWeapon(playerPed, currentWeapon.hash) end
-						currentWeapon.metadata.ammo = (currentWeapon.metadata.ammo < currentAmmo) and 0 or currentAmmo
-
-						if currentAmmo <= 0 then
-							ClearPedTasks(playerPed)
-							SetCurrentPedWeapon(playerPed, currentWeapon.hash, true)
-							SetPedCurrentWeaponVisible(playerPed, true, false, false, false)
-							if currentWeapon?.ammo and shared.autoreload and not Interface.ProgressActive and not IsPedRagdoll(playerPed) and not IsPedFalling(playerPed) then
-								currentWeapon.timer = 0
-								local ammo = Inventory.Search(1, currentWeapon.ammo)
-
-								if ammo[1] then
-									TriggerServerEvent('nxt_inventory:updateWeapon', 'ammo', currentWeapon.metadata.ammo)
-									useSlot(ammo[1].slot)
-								end
-							else currentWeapon.timer = GetGameTimer() + 400 end
-						else currentWeapon.timer = GetGameTimer() + 400 end
-					end
-				elseif IsControlJustReleased(0, `INPUT_ATACK`) then
-					print('estou')
-					if currentWeapon.throwable then
-						plyState.invBusy = true
-
-						print('cheguei aqui')
-
-						SetTimeout(700, function()
-							ClearPedSecondaryTask(playerPed)
-							
-							if IS_GTAV then
-								RemoveWeaponFromPed(playerPed, currentWeapon.hash)
-								currentWeapon = nil
-							end
-
-							if IS_RDR3 then								
-								Citizen.InvokeNative(0xF4823C813CB8277D, playerPed, currentWeapon.hash, 1, GetHashKey('REMOVE_REASON_DROPPED'))
-								if tonumber(currentWeapon.count) == 1 then
-									RemoveWeaponFromPed(playerPed, currentWeapon.hash)
-									currentWeapon = nil
-								end
-							end
+						if currentWeapon.throwable then
+							RemoveWeaponFromPed(playerPed, currentWeapon.hash)
 
 							TriggerServerEvent('nxt_inventory:updateWeapon', 'throw')
+							currentWeapon = nil
 							TriggerEvent('nxt_inventory:currentWeapon')
-							plyState.invBusy = false
-						end)
+						else
+							local currentAmmo
 
-					elseif IsPedPerformingMeleeAction(playerPed) then
+							if currentWeapon.hash == `WEAPON_PETROLCAN` or currentWeapon.hash == `WEAPON_HAZARDCAN` or currentWeapon.hash == `WEAPON_FIREEXTINGUISHER` then
+								currentAmmo = currentWeapon.metadata.ammo - 0.05
+
+								if currentAmmo <= 0 then
+									SetPedInfiniteAmmo(playerPed, false, currentWeapon.hash)
+								end
+
+							else
+								currentAmmo = GetAmmoInPedWeapon(playerPed, currentWeapon.hash)
+							end
+
+							currentWeapon.metadata.ammo = (currentWeapon.metadata.ammo < currentAmmo) and 0 or currentAmmo
+
+							if currentAmmo <= 0 then
+								ClearPedTasks(playerPed)
+								SetCurrentPedWeapon(playerPed, currentWeapon.hash, true)
+								SetPedCurrentWeaponVisible(playerPed, true, false, false, false)
+								if currentWeapon?.ammo and shared.autoreload and not Interface.ProgressActive and not IsPedRagdoll(playerPed) and not IsPedFalling(playerPed) then
+									currentWeapon.timer = 0
+									local ammo = Inventory.Search(1, currentWeapon.ammo)
+
+									if ammo[1] then
+										TriggerServerEvent('nxt_inventory:updateWeapon', 'ammo', currentWeapon.metadata.ammo)
+										useSlot(ammo[1].slot)
+									end
+								else
+									currentWeapon.timer = GetGameTimer() + 400
+								end
+							else
+								currentWeapon.timer = GetGameTimer() + 400
+							end
+						end
+					end
+				elseif IsControlJustReleased(0, `INPUT_ATTACK`) then
+					if IsPedPerformingMeleeAction(playerPed) then
 						currentWeapon.melee += 1
 						currentWeapon.timer = GetGameTimer() + 400
 					end

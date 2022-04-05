@@ -79,7 +79,9 @@ function Utils.Disarm(currentWeapon, newSlot, keepHolstered, fallbackRemoveWeapo
 
 		SetPedAmmo(playerPed, weaponHash, 0)
 
-		if not newSlot then
+		local removeWeaponCompletly = not newSlot
+
+		if removeWeaponCompletly then
 			if IS_GTAV then
 				ClearPedSecondaryTask(playerPed)
 
@@ -105,11 +107,6 @@ function Utils.Disarm(currentWeapon, newSlot, keepHolstered, fallbackRemoveWeapo
 				Citizen.InvokeNative(0xB6CFEC32E3742779, playerPed, ammoHash, weaponAmmo, GetHashKey('REMOVE_REASON_DROPPED'))  --_REMOVE_AMMO_FROM_PED_BY_TYPE
 
 				RemoveWeaponFromPed(playerPed, weaponHash)
-
-	
-
-				-- print('Removing disarm ped weapon')
-
 			end
 
 			Utils.ItemNotify({weaponLabel, weaponName, shared.locale('holstered')})
@@ -127,7 +124,7 @@ function Utils.Disarm(currentWeapon, newSlot, keepHolstered, fallbackRemoveWeapo
 				--[[ HolsterPedWeapons ]]
 				N_0x94a3c1b804d291ec(playerPed, false, false, true, false)
 
-				TaskSwapWeapon(playerPed,  0, 0, 0, 0)
+				TaskSwapWeapon(playerPed, 0, 0, 0, 0)
 
 				-- print('Swapping disarm ped weapon')
 			end
