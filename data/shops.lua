@@ -227,15 +227,6 @@ return {
 			-- { loc = vec3(1134.9, -982.34, 46.41), length = 0.5, width = 0.5, heading = 96.0, minZ = 46.4, maxZ = 46.8, distance = 1.5 },
 		}
 	},
-	1 = "aspirante"
-	2 = "oficial" 
-	3 = "oficialsenior" 
-	4 = "Texas Ranger"
-	5 = "Sheriff" 
-	6 = "Deputy Sheriff" 
-	7 = "assistentedomarechal" 
-	8 = "marechal"
-
 	PoliceArmoury = {
 		name = 'Armário de Sheriff',
 		groups = shared.police,
