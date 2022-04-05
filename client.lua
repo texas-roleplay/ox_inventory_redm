@@ -1088,11 +1088,16 @@ end
 RegisterNetEvent('nxt_inventory:updateSlots', function(items, weights, count, removed)
 	if count then
 		local item = items[1].item
-		if item.name == "money" then			
-			Utils.ItemNotify({item.label, item.name, shared.locale(removed and 'removed' or 'added', (count/100))})
-		else
-			Utils.ItemNotify({item.label, item.name, shared.locale(removed and 'removed_money' or 'added_money', count)})
+
+		local localeKey = removed and 'removed' or 'added'
+
+		if item.name == "money" then
+			localeKey = localeKey .. '_money'
+
+			count = count / 100
 		end
+
+		Utils.ItemNotify({item.label, item.name, shared.locale(localeKey, count)})
 	end
 
 	updateInventory(items, weights)
