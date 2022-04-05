@@ -43,7 +43,7 @@ debugData([
             },
             count: 5,
           },
-          { slot: 2, name: 'money', weight: 0, count: 32000 },
+          { slot: 2, name: 'money', weight: 0, count: 32050 },
           { slot: 3, name: 'cola', weight: 100, count: 3 },
           { slot: 4, name: 'water', weight: 100, count: 1 },
           { slot: 5, name: 'water', weight: 100, count: 1 },

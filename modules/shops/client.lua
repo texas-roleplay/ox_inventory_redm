@@ -39,6 +39,17 @@ client.shops = setmetatable(data('shops'), {
 
 			if not shop.groups or client.hasGroup(shop.groups) then
 				if shop.blip then blipId += 1 end
+
+				if shop.prompt  then
+					for i = 1, #shop.locations do
+						exports.prompts:createPrompt(shop.name .. type .. "_" ..i, shop.locations[i], 0xF3830D8E, 'Abrir ' .. shop.name, {
+							type = 'client',
+							event = 'nxt_inventory:openShop',
+							args = {{id=i, type=type}},
+						})
+					end
+				end
+
 				if shared.qtarget then
 					if shop.model then
 						exports.qtarget:AddTargetModel(shop.model, {
@@ -90,3 +101,10 @@ client.shops = setmetatable(data('shops'), {
 		end
 	end
 })
+
+
+
+AddEventHandler('nxt_inventory:openShop', function(data)
+	print(json.encode(data))
+	OpenShop(data)
+end)

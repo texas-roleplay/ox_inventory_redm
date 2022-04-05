@@ -89,6 +89,7 @@ local function openInventory(inv, data)
 			--[[ Veicúlos também é aqui ]]
 
 			if inv == 'policeevidence' then
+				print('estouaqui')
 				local input = Interface.Keyboard(shared.locale('police_evidence'), {shared.locale('locker_number')})
 
 				if input then
@@ -103,7 +104,7 @@ local function openInventory(inv, data)
 					data = input
 				end
 			end
-
+			print('nãocheguei')
 			left, right = lib.callback.await('nxt_inventory:openInventory', false, inv, data)
 		end
 
@@ -266,6 +267,7 @@ local function useSlot(slot)
 					local playerPed = cache.ped
 					ClearPedSecondaryTask(playerPed)
 					if data.throwable then item.throwable = true end
+
 					if IS_GTAV then
 						if currentWeapon then
 							currentWeapon = Utils.Disarm(currentWeapon)
@@ -566,7 +568,7 @@ local function registerCommands()
 	end)
 
 	function tryOpenInventory()
-		if closestMarker[1] and closestMarker[3] ~= 'license' and closestMarker[3] ~= 'policeevidence' then
+		if closestMarker[1] and closestMarker[3] ~= 'license' then
 			openInventory(closestMarker[3], {id=closestMarker[2], type=closestMarker[4]})
 		else openInventory() end
 	end
@@ -575,7 +577,6 @@ local function registerCommands()
 	TriggerEvent('chat:removeSuggestion', '/inv')
 
 	local Vehicles = data 'vehicles'
-
 	
 	RegisterCommand('inv2', function()
 		tryOpenVehicleInventory()
@@ -922,8 +923,15 @@ if IS_RDR3 then
 				end
 
 				:: skip_hotkey_processing ::
-	
+				
+				-- DisableControlAction(0, 0xE6F612E4)
+				-- DisableControlAction(0, 0x1CE6D9EB)
+				-- DisableControlAction(0, 0x1CE6D9EB)
+				-- DisableControlAction(0, 0x8F9F9E58)
+				-- DisableControlAction(0, 0xAB62E997)
+				-- DisableControlAction(0, 0xA1FDE2A6)
 				DisableControlAction(0, `INPUT_OPEN_WHEEL_MENU`)
+				
 				if IsDisabledControlJustPressed(0, `INPUT_OPEN_WHEEL_MENU`) then -- tab
 					if not client.weaponWheel and not IsPauseMenuActive() then
 						SendNUIMessage({ action = 'toggleHotbar' })
@@ -1049,7 +1057,11 @@ end
 RegisterNetEvent('nxt_inventory:updateSlots', function(items, weights, count, removed)
 	if count then
 		local item = items[1].item
-		Utils.ItemNotify({item.label, item.name, shared.locale(removed and 'removed' or 'added', count)})
+		if item.name == "money" then			
+			Utils.ItemNotify({item.label, item.name, shared.locale(removed and 'removed' or 'added', (count/100))})
+		else
+			Utils.ItemNotify({item.label, item.name, shared.locale(removed and 'removed_money' or 'added_money', count)})
+		end
 	end
 
 	updateInventory(items, weights)
@@ -1342,7 +1354,9 @@ RegisterNetEvent('nxt_inventory:setPlayerInventory', function(currentDrops, inve
 				if IS_GTAV then
 					DrawMarker(2, coords.x, coords.y, coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, rgb.x, rgb.y, rgb.z, 222, false, false, false, true, false, false, false)
 				elseif IS_RDR3 then
-					Citizen.InvokeNative(0x2A32FAA57B937173, 0x94FDAE17, coords.x, coords.y, coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, rgb.x, rgb.y, rgb.z, 222, false, false, false, true, false, false, false)
+					DrawText3D(vec3(coords.x, coords.y, coords.z-0.5), "Aperte I para interagir")					
+					Citizen.InvokeNative(0x2A32FAA57B937173,0x07DCE236,coords.x, coords.y, coords.z-0.80, 0,0,0,0,0,0,0.15, 0.15,1.0, rgb.x, rgb.y, rgb.z, 150,0, 0, 2, 0, 0, 0, 0)
+					-- Citizen.InvokeNative(0x2A32FAA57B937173, 0x94FDAE17, coords.x, coords.y, coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, rgb.x, rgb.y, rgb.z, 222, false, false, false, true, false, false, false)
 				end
 			end
 
@@ -1414,8 +1428,11 @@ RegisterNetEvent('nxt_inventory:setPlayerInventory', function(currentDrops, inve
 						else currentWeapon.timer = GetGameTimer() + 400 end
 					end
 				elseif IsControlJustReleased(0, `INPUT_ATACK`) then
+					print('estou')
 					if currentWeapon.throwable then
 						plyState.invBusy = true
+
+						print('cheguei aqui')
 
 						SetTimeout(700, function()
 							ClearPedSecondaryTask(playerPed)
@@ -1593,3 +1610,26 @@ RegisterNUICallback('buyItem', function(data, cb)
 	if message then Utils.Notify(message) end
 	cb(response)
 end)
+
+function DrawText3D(coords, text)
+    local onScreen, _x, _y = GetScreenCoordFromWorldCoord(coords.x, coords.y, coords.z)
+    
+    if onScreen then
+
+        local camCoords = GetGameplayCamCoord()
+        local distance = #(coords - camCoords)
+        local fov = (1 / GetGameplayCamFov()) * 75
+        local scale = (1 / distance) * (4) * fov * (0.23)
+        
+        SetTextScale(0.32, scale)
+
+        SetTextFontForCurrentCommand(2)
+
+        SetTextColor(255, 255, 255, 215)
+        local str = CreateVarString(10, "LITERAL_STRING", text, Citizen.ResultAsLong())
+
+        SetTextCentre(1)
+        DisplayText(str, _x, _y)
+        SetTextDropshadow(1, 255, 0, 0, 200)
+    end
+end

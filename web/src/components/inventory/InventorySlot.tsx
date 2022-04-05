@@ -126,7 +126,7 @@ const InventorySlot: React.FC<SlotProps> = ({ inventory, item, setCurrentItem })
             ? `url(${process.env.PUBLIC_URL + `/images/${item.name}.png`})`
             : 'none',
           border: isOver ? '1px solid rgba(255,255,255,0.5)' : '1px inset rgba(200,200,200,0.1)',
-          borderColor: item.name == null ? 'rgba(255,255,255,0.03)' : 'rgba(200,200,200,0.1)',
+          borderColor: item.name == null ? 'rgba(200,200,200,0.1)' : 'rgba(200,200,200,0.1)',
           backgroundColor: item.name == null ? 'rgba(40, 40, 40, 0.1)' : 'rgba(50, 50, 50, 0.40)',
         }}
         onMouseEnter={onMouseEnter}
@@ -137,7 +137,7 @@ const InventorySlot: React.FC<SlotProps> = ({ inventory, item, setCurrentItem })
             <div className="item-count">
               <span>
                 {/* {item.count?.toLocaleString('en-us')}x */}
-                {item.count > 1 ? item.count.toLocaleString('en-us') : ''}
+                {item.count > 1 ? item.name == "money" ? (item.count / 100).toFixed(2) : item.count : ''}
               </span>
             </div>
             <div className="item-weight">

@@ -27,6 +27,8 @@ return {
 	['used'] = "Usou",
 	['removed'] = "Removido %sx",
 	['added'] = "Adicionado %sx",
+	['added_money'] = "Adicionado $%s",
+	['removed_money'] = "Removido $%s",
 	['holstered'] = "Guardado",
 	['equipped'] = "Equipado",
 	['using'] = "Usando %s",

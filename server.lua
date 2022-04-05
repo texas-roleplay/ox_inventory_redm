@@ -20,8 +20,6 @@ local function setPlayerInventory(player, data)
 
 	local playerInventoryConfig = shared.prime[player.group]
 
-	print(playerInventoryConfig.MaxSlots, playerInventoryConfig.MaxWeight)
-
 	if not data then
 		data = MySQL:loadPlayer(player.identifier)
 	end
@@ -72,10 +70,18 @@ lib.callback.register('nxt_inventory:openInventory', function(source, inv, data)
 		right = nil
 	end
 
+	print(inv)
+
 	if data then
-		if inv == 'stash' then
+		if inv == 'stash' then			
 			right = Inventory(data, left)
-			if right == false then return false end
+			if right == false then 
+				if data.slots then
+					right = Inventory.Create(data.name, 'Casa-'..data.id, inv, tonumber(data.slots), 0, tonumber(data.weight), false)
+				else
+					return false 
+				end
+			end
 		elseif type(data) == 'table' then			
 			if data.class or data.model then
 				right = Inventory(data.id)
@@ -94,7 +100,9 @@ lib.callback.register('nxt_inventory:openInventory', function(source, inv, data)
 			end
 
 		elseif inv == 'policeevidence' then
+			print('policeevidence')
 			if server.hasGroup(left, shared.police) then
+				print('é policial')
 				data = ('evidence-%s'):format(data)
 				right = Inventory(data)
 				if not right then

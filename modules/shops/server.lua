@@ -149,7 +149,10 @@ lib.callback.register('nxt_inventory:buyItem', function(source, data)
 						playerInv.weight = newWeight
 					end
 
-					Inventory.RemoveItem(source, currency, price)
+					if currency == "money" and shared.framework == "redemrp" then
+						Inventory.RemoveItem(source, currency, (price * 100))
+					end
+
 					if shared.framework == 'esx' then Inventory.SyncInventory(playerInv) end
 					local message = shared.locale('purchased_for', count, fromItem.label, (currency == 'money' and shared.locale('$') or comma_value(price)), (currency == 'money' and comma_value(price) or ' '..Items(currency).label))
 

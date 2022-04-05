@@ -559,6 +559,7 @@ exports('SetMetadata', Inventory.SetMetadata)
 -- end
 -- ```
 function Inventory.AddItem(inv, item, count, metadata, slot, cb)
+
 	if type(item) ~= 'table' then item = Items(item) end
 	if type(inv) ~= 'table' then inv = Inventory(inv) end
 	count = math.floor(count + 0.5)
@@ -594,6 +595,17 @@ function Inventory.AddItem(inv, item, count, metadata, slot, cb)
 
 				if inv.type == 'player' then
 					if shared.framework == 'esx' then Inventory.SyncInventory(inv) end
+
+					if shared.framework == 'redemrp' then
+						if item == "money" then					
+							local user = exports['redemrp_roleplay']:getPlayerFromId(inv.id)
+							if user then
+								user.UserCurrencyComponentAdd(count)
+							end
+
+						end
+					end
+
 					TriggerClientEvent('nxt_inventory:updateSlots', inv.id, {{item = inv.items[slot], inventory = inv.type}}, {left=inv.weight, right=inv.open and Inventories[inv.open]?.weight}, count, false)
 				end
 			else
@@ -676,11 +688,17 @@ exports('GetItemSlots', Inventory.GetItemSlots)
 ---@param metadata? table | string
 ---@param slot number
 function Inventory.RemoveItem(inv, item, count, metadata, slot)
+	if item == 'money' then
+		print('money')
+	end
+	
 	if type(item) ~= 'table' then item = Items(item) end
+	print('executei aqui')
 	count = math.floor(count + 0.5)
 	if item and count > 0 then
 		inv = Inventory(inv)
 
+		
 		if metadata ~= nil then
 			metadata = type(metadata) == 'string' and {type=metadata} or metadata
 		end
@@ -724,6 +742,15 @@ function Inventory.RemoveItem(inv, item, count, metadata, slot)
 					array[k] = {item = {slot = v, label = metadata?.label or item.label, name = metadata?.image or item.name}, inventory = inv.type}
 				else
 					array[k] = {item = v, inventory = inv.type}
+				end
+			end
+
+			if shared.framework == 'redemrp' then
+				if item == "money" then					
+					local user = exports['redemrp_roleplay']:getPlayerFromId(inv.id)
+					if user then
+						user.UserCurrencyComponentRemove(count)
+					end
 				end
 			end
 
@@ -866,9 +893,17 @@ local function dropItem(source, data)
 	inventory.coords = vec3(coords.x, coords.y, coords.z-0.2)
 	Inventory.Drops[dropId] = {coords = inventory.coords, instance = data.instance}
 
+	if shared.framework == 'redemrp' then
+		if data.name == "money" then					
+			local user = exports['redemrp_roleplay']:getPlayerFromId(source)
+			if user then
+				user.UserCurrencyComponentRemove(data.count)
+			end
+		end
+	end
 	TriggerClientEvent('nxt_inventory:createDrop', -1, dropId, Inventory.Drops[dropId], playerInventory.open and source, slot)
 
-	Log(('%sx %s transferred from %s to %s'):format(data.count, toData.name, playerInventory.label, dropId),
+	Log(('%sx %s transferiu de %s para %s'):format(data.count, toData.name, playerInventory.label, dropId),
 		playerInventory.owner,
 		'swapSlots', playerInventory.owner, dropId
 	)
@@ -950,7 +985,7 @@ lib.callback.register('nxt_inventory:swapItems', function(source, data)
 
 								toData, fromData = Inventory.SwapSlots(fromInventory, toInventory, data.fromSlot, data.toSlot)
 
-								Log(('%sx %s transferred from %s to %s for %sx %s'):format(fromData.count, fromData.name, fromInventory.owner and fromInventory.label or fromInventory.id, toInventory.owner and toInventory.label or toInventory.id, toData.count, toData.name),
+								Log(('%sx %s transferiu de %s para %s por %sx %s'):format(fromData.count, fromData.name, fromInventory.owner and fromInventory.label or fromInventory.id, toInventory.owner and toInventory.label or toInventory.id, toData.count, toData.name),
 									playerInventory.owner,
 									'swapSlots', fromInventory.owner or fromInventory.id, toInventory.owner or toInventory.id
 								)
@@ -976,7 +1011,7 @@ lib.callback.register('nxt_inventory:swapItems', function(source, data)
 									Inventory.ContainerWeight(containerItem, toInventory.type == 'container' and toInventory.weight or fromInventory.weight, playerInventory)
 								end
 
-								Log(('%sx %s transferred from %s to %s'):format(data.count, fromData.name, fromInventory.owner and fromInventory.label or fromInventory.id, toInventory.owner and toInventory.label or toInventory.id),
+								Log(('%sx %s transferiu de %s para %s'):format(data.count, fromData.name, fromInventory.owner and fromInventory.label or fromInventory.id, toInventory.owner and toInventory.label or toInventory.id),
 									playerInventory.owner,
 									'swapSlots', fromInventory.owner or fromInventory.id, toInventory.owner or toInventory.id
 								)
@@ -1016,7 +1051,7 @@ lib.callback.register('nxt_inventory:swapItems', function(source, data)
 									Inventory.ContainerWeight(containerItem, toContainer and toInventory.weight or fromInventory.weight, playerInventory)
 								end
 
-								Log(('%sx %s transferred from %s to %s'):format(data.count, fromData.name, fromInventory.owner and fromInventory.label or fromInventory.id, toInventory.owner and toInventory.label or toInventory.id),
+								Log(('%sx %s transferiu de %s para %s'):format(data.count, fromData.name, fromInventory.owner and fromInventory.label or fromInventory.id, toInventory.owner and toInventory.label or toInventory.id),
 									playerInventory.owner,
 									'swapSlots', fromInventory.owner or fromInventory.id, toInventory.owner or toInventory.id
 								)
@@ -1292,7 +1327,7 @@ RegisterServerEvent('nxt_inventory:giveItem', function(slot, target, count)
 				Inventory.RemoveItem(fromInventory, item, count, data.metadata, slot)
 				Inventory.AddItem(toInventory, item, count, data.metadata)
 
-				Log(('%s gave %sx %s to %s'):format(fromInventory.label, count, data.name, toInventory.label),
+				Log(('%s deu %sx %s para %s'):format(fromInventory.label, count, data.name, toInventory.label),
 					fromInventory.owner,
 					'giveItem', toInventory.owner
 				)
@@ -1387,7 +1422,7 @@ lib.addCommand('group.admin', {'additem', 'giveitem'}, function(source, args)
 		local inventory = Inventories[args.target]
 		source = Inventories[source] or {label = 'console', owner = 'console'}
 
-		Log(('%s gave %sx %s to %s'):format(source.label, args.count, args.item.name, inventory.label),
+		Log(('%s Givou %sx %s para %s'):format(source.label, args.count, args.item.name, inventory.label),
 			source.owner,
 			'admin', inventory.owner
 		)
@@ -1402,7 +1437,7 @@ lib.addCommand('group.admin', 'removeitem', function(source, args)
 		local inventory = Inventories[args.target]
 		source = Inventories[source] or {label = 'console', owner = 'console'}
 
-		Log(('%s took %sx %s from %s'):format(source.label, args.count, args.item.name, inventory.label),
+		Log(('%s removeu %sx %s de %s'):format(source.label, args.count, args.item.name, inventory.label),
 			source.owner,
 			'admin', inventory.owner
 		)
@@ -1417,11 +1452,10 @@ lib.addCommand('group.admin', 'setitem', function(source, args)
 		local inventory = Inventories[args.target]
 		source = Inventories[source] or {label = 'console', owner = 'console'}
 
-		Log(('%s set %s\' %s count to %sx'):format(source.label, inventory.label, args.item.name, args.count),
+		Log(('%s setou %s\' %s para %sx'):format(source.label, inventory.label, args.item.name, args.count),
 			source.owner,
 			'admin', inventory.owner
 		)
-
 	end
 end, {'target:number', 'item:string', 'count:number', 'metatype:?string'})
 

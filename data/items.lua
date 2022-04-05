@@ -52,7 +52,7 @@ return {
 		},
 	},
 	['ammo_case'] = {
-		label = 'Caixa de Munições de Revolver',
+		label = 'Caixa de Munições',
 		weight = 220,
 		client = {
 			status = { hunger = 200000 },

@@ -10,7 +10,7 @@ shared = {
 	autoreload = GetConvar('inventory:autoreload', 'false') == 'true',
 	trimplate = GetConvar('inventory:trimplate', 'true') == 'true',
 	qtarget = GetConvar('inventory:qtarget', 'false') == 'true',
-	police = json.decode(GetConvar('inventory:police', '["police", "sheriff"]')),
+	police = json.decode(GetConvar('inventory:police', '["oficial", "oficialsenior"]')),
 }
 
 shared.prime = {

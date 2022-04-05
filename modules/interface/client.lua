@@ -2,6 +2,7 @@ local Interface = {}
 local input
 
 function Interface.Keyboard(header, rows)
+	print('keyboard')
 	if input then return end
 	input = promise.new()
 

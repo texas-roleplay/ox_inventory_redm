@@ -149,8 +149,6 @@ if shared.framework == 'redemrp' then
 	end)
 end
 
-
-
 --[[ Inicializar o 'Inventory Player' dos players que já estavam online enquanto o script foi reiniciado ]]
 --[[ Só server para debug, porque não verifica se o user tem um character ativo. ]]
 CreateThread(function()
@@ -176,10 +174,12 @@ CreateThread(function()
 				},
 
 				group = user.getGroup(),
-
-				money = user.getMoney(),
+				accounts = {}
 			}
-			
+
+			playerData.accounts.money = user.getMoney()
+			playerData.accounts.gold = user.getGold()
+
 			TriggerClientEvent("net.setCharacterData", playerId, playerData)
 		end
 	end
