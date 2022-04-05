@@ -70,7 +70,7 @@ if shared.framework == 'esx' then
 		local player = server.GetPlayerFromId(source)
 
 		if player then
-			exports.nxt_inventory:setPlayerInventory(player, player?.inventory)
+			setPlayerInventory(player, player?.inventory)
 		end
 	end)
 end
@@ -141,10 +141,10 @@ if shared.framework == 'redemrp' then
 		print('money', server.accounts.money)
 		print('gold', server.accounts.gold)
 		
-		exports.nxt_inventory:SetItem(source, 'money', server.accounts.money, nil)
+		Inventory.SetItem(source, 'money', server.accounts.money, nil)
 
 		if player then
-			exports.nxt_inventory:setPlayerInventory(player, player?.inventory)
+			setPlayerInventory(player, player?.inventory)
 		end
 	end)
 end

@@ -2,14 +2,14 @@ if not lib then return end
 
 lib.versionCheck('overextended/ox_inventory')
 
-local Inventory = server.inventory
+Inventory = server.inventory
 local Items = server.items
 
 ---@param player table
 ---@param data table
 --- player requires source, identifier, and name
 --- optionally, it should contain jobs/groups, sex, and dateofbirth
-local function setPlayerInventory(player, data)
+function setPlayerInventory(player, data)
 	while not shared.ready do Wait(0) end
 
 	player.identifier = player.getActiveCharacterId()
@@ -52,7 +52,7 @@ local function setPlayerInventory(player, data)
 	if shared.framework == 'esx' then Inventory.SyncInventory(inv) end
 	TriggerClientEvent('nxt_inventory:setPlayerInventory', player.source, Inventory.Drops, inventory, totalWeight, server.UsableItemsCallbacks, inv.player, player.source)
 
-	exports.nxt_inventory:SetItem(player.source, 'money', server.accounts.money, nil)
+	Inventory.SetItem(player.source, 'money', server.accounts.money, nil)
 end
 exports('setPlayerInventory', setPlayerInventory)
 AddEventHandler('nxt_inventory:setPlayerInventory', setPlayerInventory)

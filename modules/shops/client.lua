@@ -19,7 +19,7 @@ if IS_RDR3 then
 end
 
 local function OpenShop(data)
-	exports.nxt_inventory:openInventory('shop', data)
+	openInventory('shop', data)
 end
 
 client.shops = setmetatable(data('shops'), {
@@ -58,7 +58,7 @@ client.shops = setmetatable(data('shops'), {
 									icon = 'fas fa-shopping-basket',
 									label = shop.label or shared.locale('open_shop', shop.name),
 									action = function()
-										exports.nxt_inventory:openInventory('shop', {type=type})
+										openInventory('shop', {type=type})
 									end
 								},
 							},
