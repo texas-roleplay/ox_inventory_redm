@@ -70,8 +70,6 @@ lib.callback.register('nxt_inventory:openInventory', function(source, inv, data)
 		right = nil
 	end
 
-	print(inv)
-
 	if data then
 		if inv == 'stash' then			
 			right = Inventory(data, left)
@@ -100,9 +98,7 @@ lib.callback.register('nxt_inventory:openInventory', function(source, inv, data)
 			end
 
 		elseif inv == 'policeevidence' then
-			print('policeevidence')
 			if server.hasGroup(left, shared.police) then
-				print('é policial')
 				data = ('evidence-%s'):format(data)
 				right = Inventory(data)
 				if not right then
