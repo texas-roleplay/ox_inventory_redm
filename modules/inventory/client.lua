@@ -143,7 +143,6 @@ Inventory.Stashes = setmetatable(data('stashes'), {
 
 client.inventory = Inventory
 
-AddEventHandler("client.receivePickupType", function(pickupName)	
-	local weaponHash = Citizen.InvokeNative(0x08F96CA6C551AD51, pickupName, false) -- GET_WEAPON_TYPE_FROM_PICKUP_TYPE
-	TriggerServerEvent("nxt_inventory:addWeaponFromPickup", weaponHash)
+AddEventHandler("client.receivePickupType", function(pickupHash)
+	TriggerServerEvent("nxt_inventory:addWeaponFromPickup", pickupHash)
 end)

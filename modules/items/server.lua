@@ -34,42 +34,6 @@ local trash = {
 	{description = 'An empty chips bag.', weight = 5, image = 'trash_chips'},
 }
 
-allowlistWeaponsPickup = {
-	[`weapon_bow`] = 'weapon_bow',
-	[`weapon_melee_knife_hunter`] = 'weapon_melee_knife_hunter' ,
-	[`weapon_melee_lantern_electric`] = 'weapon_melee_lantern_electric' ,
-	[`weapon_melee_torch`] = 'weapon_melee_torch' ,
-	[`weapon_melee_broken_sword`] = 'weapon_melee_broken_sword' ,
-	[`weapon_melee_hatchet`] = 'weapon_melee_hatchet' ,
-	[`weapon_melee_cleaver`] = 'weapon_melee_cleaver' ,
-	[`weapon_melee_ancient_hatchet`] = 'weapon_melee_ancient_hatchet' ,
-	[`weapon_melee_hatchet_viking`] = 'weapon_melee_hatchet_viking' ,
-	[`weapon_melee_hatchet_hewing`] = 'weapon_melee_hatchet_hewing' ,
-	[`weapon_melee_hatchet_double_bit`] = 'weapon_melee_hatchet_double_bit' ,
-	[`weapon_melee_hatchet_double_bit_rusted`] = 'weapon_melee_hatchet_double_bit_rusted' ,
-	[`weapon_melee_hatchet_hunter`] = 'weapon_melee_hatchet_hunter' ,
-	[`weapon_melee_hatchet_hunter_rusted`] = 'weapon_melee_hatchet_hunter_rusted' ,
-	[`weapon_melee_knife_john`] = 'weapon_melee_knife_john' ,
-	[`weapon_melee_knife`] = 'weapon_melee_knife' ,
-	[`weapon_melee_knife_jawbone`] = 'weapon_melee_knife_jawbone' ,
-	[`weapon_melee_knife_miner`] = 'weapon_melee_knife_miner' ,
-	[`weapon_melee_knife_civil_war`] = 'weapon_melee_knife_civil_war' ,
-	[`weapon_melee_knife_bear`] = 'weapon_melee_knife_bear' ,
-	[`weapon_melee_knife_vampire`] = 'weapon_melee_knife_vampire' ,
-	[`weapon_melee_machete`] = 'weapon_melee_machete' ,
-	[`WEAPON_THROWN_BOLAS`] = 'WEAPON_THROWN_BOLAS' ,
-	[`WEAPON_THROWN_POISONBOTTLE`] = 'WEAPON_THROWN_POISONBOTTLE' ,
-	[`WEAPON_THROWN_BOLAS_HAWKMOTH`] = 'WEAPON_THROWN_BOLAS_HAWKMOTH' ,
-	[`WEAPON_THROWN_BOLAS_IRONSPIKED`] = 'WEAPON_THROWN_BOLAS_IRONSPIKED' ,
-	[`WEAPON_THROWN_BOLAS_INTERTWINED`] = 'WEAPON_THROWN_BOLAS_INTERTWINED' ,
-	[`WEAPON_KIT_BINOCULARS_IMPROVED`] = 'WEAPON_KIT_BINOCULARS_IMPROVED' ,
-	[`weapon_thrown_throwing_knives`] = 'weapon_thrown_throwing_knives' ,
-	[`weapon_thrown_dynamite`] = 'weapon_thrown_dynamite' ,
-	[`weapon_thrown_molotov`] = 'weapon_thrown_molotov' ,
-	[`weapon_thrown_tomahawk`] = 'weapon_thrown_tomahawk' ,
-	[`weapon_thrown_tomahawk_ancient`] = 'weapon_thrown_tomahawk_ancient' 
-}
-
 local function GetItem(item)
 	if item then
 		item = string.lower(item)

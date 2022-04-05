@@ -803,22 +803,15 @@ function Inventory.CanSwapItem(inv, firstItem, firstItemCount, testItem, testIte
 end
 exports('CanSwapItem', Inventory.CanSwapItem)
 
-RegisterServerEvent('nxt_inventory:addWeaponFromPickup', function(weaponHash)
-	local hasPermissionToGive = false
+local PickupToItem = data 'pickup_to_item'
+
+RegisterServerEvent('nxt_inventory:addWeaponFromPickup', function(pickupHash)
 	local inv = Inventory(source)
 
-	print(weaponHash)
-	print(allowlistWeaponsPickup[weaponHash])
+	local item = PickupToItem[pickupHash]
 
-	if allowlistWeaponsPickup then
-		if allowlistWeaponsPickup[weaponHash] then
-			weaponHash = allowlistWeaponsPickup[weaponHash] 
-			hasPermissionToGive = true
-		end
-	end
-
-	if hasPermissionToGive then
-		Inventory.AddItem(inv, weaponHash, 1)
+	if item then
+		Inventory.AddItem(inv, item, 1)
 	end
 end)
 
