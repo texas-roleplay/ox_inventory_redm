@@ -1385,8 +1385,8 @@ RegisterNetEvent('nxt_inventory:setPlayerInventory', function(currentDrops, inve
 				if IS_GTAV then
 					DrawMarker(2, coords.x, coords.y, coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, rgb.x, rgb.y, rgb.z, 222, false, false, false, true, false, false, false)
 				elseif IS_RDR3 then
-					DrawText3D(vec3(coords.x, coords.y, coords.z-0.5), "Aperte I para interagir")					
-					Citizen.InvokeNative(0x2A32FAA57B937173,0x07DCE236,coords.x, coords.y, coords.z-0.80, 0,0,0,0,0,0,0.15, 0.15,1.0, rgb.x, rgb.y, rgb.z, 150,0, 0, 2, 0, 0, 0, 0)
+					DrawText3D(vec3(coords.x, coords.y, coords.z-0.6), "Aperte I para interagir")					
+					Citizen.InvokeNative(0x2A32FAA57B937173,0x07DCE236,coords.x, coords.y, coords.z-0.97, 0,0,0,0,0,0,0.15, 0.15,1.0, rgb.x, rgb.y, rgb.z, 150,0, 0, 2, 0, 0, 0, 0)
 					-- Citizen.InvokeNative(0x2A32FAA57B937173, 0x94FDAE17, coords.x, coords.y, coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, rgb.x, rgb.y, rgb.z, 222, false, false, false, true, false, false, false)
 				end
 			end
