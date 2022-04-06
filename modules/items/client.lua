@@ -155,7 +155,7 @@ Item('lockpickr', function(data, slot)
 end)
 
 Item('idcard', function(data, slot)
-    TriggerServerEvent("idcard:show",PlayerId(), data.metadata)
+    TriggerServerEvent("idcard:show",slot.metadata)
 end)
 
 Item('water', function(data, slot)
