@@ -117,12 +117,12 @@ return {
             {name = "WEAPON_RIFLE_VARMINT", price = 20},
             {name = "WEAPON_REPEATER_CARBINE", price = 40},	
 
-            {name = "22_ammo", price = 0.03},
-            {name = "revolver_ammo", price = 0.04},
-            {name = "pistol_ammo", price = 0.05},
-            {name = "rifle_ammo", price = 0.06},
-            {name = "repeater_ammo", price = 0.04},
-            {name = "arrow_ammo", price = 0.13},
+            {name = "ammo_22", price = 0.03},
+            {name = "ammo_revolver", price = 0.04},
+            {name = "ammo_pistol", price = 0.05},
+            {name = "ammo_rifle", price = 0.06},
+            {name = "ammo_repeater", price = 0.04},
+            {name = "ammo_arrow", price = 0.13},
 
 			-- { name = 'WEAPON_PISTOL', price = 1000, metadata = { registered = true }, license = 'weapon' }
 		}, locations = {
@@ -257,7 +257,7 @@ return {
 
 			{ name = 'weapon_rifle_springfield', price = 0, metadata = { registered = true, serial = 'OFICIAL' } },
 			{ name = 'weapon_rifle_boltaction', price = 0, metadata = { registered = true, serial = 'OFICIAL' } },
-
+		
 			-- { name = 'WEAPON_CARBINERIFLE', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 3 },			
 		}, locations = {
 			vec3(2494.307, -1304.298, 48.953), -- saint dennis
