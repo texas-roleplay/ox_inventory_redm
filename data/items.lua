@@ -85,6 +85,18 @@ return {
 		},
 	},
 
+	['handcuffs'] = {
+		label = 'Algemas',
+		weight = 220,
+		description = "Usado para algemar pessoas"
+	},
+
+	['handcuffs_keys'] = {
+		label = 'Chaves de algemas',
+		weight = 220,
+		description = "Usado para abrir algemas pessoas"
+	},
+
 	['burger'] = {
 		label = 'Burger',
 		weight = 220,
@@ -109,7 +121,6 @@ return {
 			notification = 'You ate a delicious burger'
 		},
 	},
-
 
 		-- ITENS GERAIS
 		["money"]                                                   = {  ["label"] = "Dólar",                                            ["description"] = "Uma nota de valor, pode ser usada para comprar diversos itens. É a moeda da economia." },
