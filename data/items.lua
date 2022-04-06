@@ -97,6 +97,12 @@ return {
 		description = "Usado para abrir algemas pessoas"
 	},
 
+	['balses'] = {
+		label = 'Balde Fechado',
+		weight = 220,
+		description = "Usado para por na cabeça de algum player"
+	},
+
 	['burger'] = {
 		label = 'Burger',
 		weight = 220,
