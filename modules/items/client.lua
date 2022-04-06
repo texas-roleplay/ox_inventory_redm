@@ -23,16 +23,33 @@ local ox_inventory = exports[shared.resource]
 -- Clientside item use functions
 -----------------------------------------------------------------------------------------------
 
--- Item('bandage', function(data, slot)
--- 	local maxHealth = GetEntityMaxHealth(cache.ped)
--- 	local health = GetEntityHealth(cache.ped)
--- 	nxt_inventory:useItem(data, function(data)
--- 		if data then
--- 			SetEntityHealth(cache.ped, math.min(maxHealth, math.floor(health + maxHealth / 16)))
--- 			nxt_inventory:notify({text = 'You feel better already'})
--- 		end
--- 	end)
--- end)
+Item('bandage', function(data, slot)
+	local maxHealth = GetEntityMaxHealth(cache.ped)
+	local health = GetEntityHealth(cache.ped)
+	nxt_inventory:useItem(data, function(data)
+		if data then
+			SetEntityHealth(cache.ped, math.min(maxHealth, math.floor(health + maxHealth / 16)))
+			nxt_inventory:notify({text = 'You feel better already'})
+		end
+	end)
+end)
+
+Item('badge_deputy', function(data, slot)
+	TriggerEvent('police:client:applyBadgeInPlayer', 's_badgedeputy01x')
+end)
+Item('badge_pinkerton', function(data, slot)
+	TriggerEvent('police:client:applyBadgeInPlayer', 's_badgepinkerton01x')
+end)
+Item('badge_sheriff', function(data, slot)
+	TriggerEvent('police:client:applyBadgeInPlayer', 's_badgesherif01x')
+end)
+Item('badge_marshal', function(data, slot)
+	TriggerEvent('police:client:applyBadgeInPlayer', 's_badgeusmarshal01x')
+end)
+Item('badge_police', function(data, slot)
+	TriggerEvent('police:client:applyBadgeInPlayer', 's_badgepolice01x')
+end)
+
 
 -- Item('armour', function(data, slot)
 -- 	if GetPedArmour(cache.ped) < 100 then
