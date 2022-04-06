@@ -118,6 +118,14 @@ Item('roupaspreso', function(data, slot)
 	end)
 end)
 
+Item('handcuffs', function(data, slot)
+	TriggerEvent("police:client:CuffPlayerSoft")
+end)
+
+Item('handcuffs_keys', function(data, slot)
+	TriggerEvent("police:client:CuffPlayerForceRemove")
+end)
+
 Item('compass', function(data, slot)
 	TriggerEvent("HUD:Client:UsedCompass")
 end)
