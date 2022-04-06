@@ -234,9 +234,12 @@ return {
 			id = 110, colour = 84, scale = 0.8
 		}, 
 		inventory = {
-			{ name = 'badge_item_oficer', price = 0, grade = 1 },
-			{ name = 'badge_item_deputy', price = 0, grade = 3 },
-			{ name = 'badge_item_marshal', price = 0, grade = 7},
+			{ name = 'badge_deputy', price = 0, grade = 0 },
+			-- { name = 'badge_pinkerton', price = 0, grade = 3 },
+			{ name = 'badge_sheriff', price = 0, grade = 4 },
+			{ name = 'badge_marshal', price = 0, grade = 7 },
+			{ name = 'badge_police', price = 0, grade = 3 },
+
 			{ name = 'ammo_revolver', price = 0 },
 			{ name = 'ammo_rifle', price = 0 },
 			{ name = 'ammo_repeater', price = 0 },

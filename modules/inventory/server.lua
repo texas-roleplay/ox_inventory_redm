@@ -1243,9 +1243,9 @@ local function saveInventories()
 		if inv.player then
 			inv.open = true
 
-			if not inv.datastore and inv.changed then
+			--if not inv.datastore and inv.changed then
 				Inventory.Save(inv)
-			end
+			--end
 
 			inv.open = false
 		end
