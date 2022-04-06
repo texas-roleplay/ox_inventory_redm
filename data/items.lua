@@ -29,6 +29,63 @@ return {
 			}
 		}
 	},
+	['badge_deputy'] = {
+		label = 'Distintivo Deputy',
+		weight = 220,
+		client = {
+			status = { hunger = 200000 },
+			anim = 'eating',
+			prop = 'pizza',
+			usetime = 2500,
+			notification = 'You ate a delicious burger'
+		},
+	},
+	['badge_pinkerton'] = {
+		label = 'Distintivo Pinkerton',
+		weight = 220,
+		client = {
+			status = { hunger = 200000 },
+			anim = 'eating',
+			prop = 'pizza',
+			usetime = 2500,
+			notification = 'You ate a delicious burger'
+		},
+	},
+	['badge_sheriff'] = {
+		label = 'Distintivo Sheriff',
+		weight = 220,
+		client = {
+			status = { hunger = 200000 },
+			anim = 'eating',
+			prop = 'pizza',
+			usetime = 2500,
+			notification = 'You ate a delicious burger'
+		},
+	},
+	['badge_marshal'] = {
+		label = 'Distintivo Marshal',
+		weight = 220,
+		client = {
+			status = { hunger = 200000 },
+			anim = 'eating',
+			prop = 'pizza',
+			usetime = 2500,
+			notification = 'You ate a delicious burger'
+		},
+	},
+	['badge_police'] = {
+		label = 'Distintivo Oficial',
+		weight = 220,
+		client = {
+			status = { hunger = 200000 },
+			anim = 'eating',
+			prop = 'pizza',
+			usetime = 2500,
+			notification = 'You ate a delicious burger'
+		},
+	},
+
+	
 	['pizza'] = {
 		label = 'Pizza',
 		weight = 220,
