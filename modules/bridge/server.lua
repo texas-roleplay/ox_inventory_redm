@@ -116,8 +116,8 @@ if shared.framework == 'redemrp' then
 	function server.setPlayerData(player)
 		if not player.job then			
 			player.job = {}
-			player.job.name = player.getJob()
-			player.job.grade = player.getJobgrade()
+			player.job.name = player.getJobName()
+			player.job.grade = player.getJobGrade().level
 		end
 
 		local groups = {
@@ -167,12 +167,8 @@ CreateThread(function()
 				characterId = user.getCharacterId(),
 				name = user.getFirstname() .. ' ' .. user.getLastname(),
 
-				job =
-				{
-					name = user.getJob(),
-					grade = user.getJobgrade()
-				},
-
+				job = user.getJob(),
+				
 				group = user.getGroup(),
 				accounts = {}
 			}
