@@ -11,9 +11,9 @@ return {
 			label = 'Open personal locker'
 		},
 		name = 'policelocker',
-		label = 'Personal locker',
+		label = 'Armário pessoal',
 		owner = true,
-		slots = 70,
+		slots = 50,
 		weight = 70000,
 		groups = shared.police
 	},
@@ -30,10 +30,10 @@ return {
 			label = 'Open personal locker'
 		},
 		name = 'emslocker',
-		label = 'Personal Locker',
+		label = 'Armário pessoal',
 		owner = true,
-		slots = 70,
+		slots = 50,
 		weight = 70000,
-		groups = {['ambulance'] = 0}
+		groups = {'doctor', 'doctorchefe'}
 	},
 }

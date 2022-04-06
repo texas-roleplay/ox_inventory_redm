@@ -330,6 +330,6 @@ end
 
 -- Support both names
 exports('Items', GetItem)
-exports('ItemList', GetItem)
+exports('ItemsList', GetItem)
 
 server.items = Items
