@@ -702,7 +702,8 @@ local function registerCommands()
 					local vehHash = GetEntityModel(vehicle)
 					
 					if vehicle and Vehicles.trunk['models'][vehHash] or Vehicles.trunk[class] or Vehicles.glovebox['models'][vehHash] or Vehicles.glovebox[class] and #(playerCoords - position) < 6 and NetworkGetEntityIsNetworked(vehicle) then
-						if IS_GTAV then		
+
+						if IS_GTAV then
 							local locked = GetVehicleDoorLockStatus(vehicle)
 
 							if locked == 0 or locked == 1 then
@@ -767,15 +768,12 @@ local function registerCommands()
 						end
 
 						if IS_RDR3 then
+							
 
 							local netId = NetworkGetNetworkIdFromEntity(vehicle)
 
 							if not netId then
-								NetworkRegisterEntityAsNetworked(entity)
-								netId = NetworkGetNetworkIdFromEntity(entity)
-								NetworkUseHighPrecisionBlending(netId, false)
-								SetNetworkIdExistsOnAllMachines(netId, true)
-								SetNetworkIdCanMigrate(netId, true)
+								return
 							end
 
 							local vehicleUUID 
@@ -786,19 +784,21 @@ local function registerCommands()
 
 								if Entity(vehicle).state.wagonId then 
 									vehicleUUID = Entity(vehicle).state.wagonId
-									vehicleUUID = vehicleUUID .. 000
 								else
-									vehicleUUID = netId
+									vehicleUUID = "temp:" .. netId
 								end
 
 								openInventory('trunk', {id='trunk'..vehicleUUID, model=vehHash, label="Carroça"})
 								repeat Wait(50)
 									timeout -= 1
 								until (currentInventory and currentInventory.type == 'trunk') or timeout == 0
+								
 							elseif Vehicles.glovebox['models'][vehHash] then
-								vehicleUUID = Entity(vehicle).state.horseUUID 
+								
+								vehicleUUID = Entity(vehicle).state.horseUUID 								
 
 								if not vehicleUUID then
+									print('não achei o UUID')
 									return
 								end
 								openInventory('glovebox', {id='glove'..vehicleUUID, model=vehHash, label="Alforge"})
@@ -1386,7 +1386,7 @@ RegisterNetEvent('nxt_inventory:setPlayerInventory', function(currentDrops, inve
 					DrawMarker(2, coords.x, coords.y, coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, rgb.x, rgb.y, rgb.z, 222, false, false, false, true, false, false, false)
 				elseif IS_RDR3 then
 					DrawText3D(vec3(coords.x, coords.y, coords.z-0.6), "Aperte I para interagir")					
-					Citizen.InvokeNative(0x2A32FAA57B937173,0x07DCE236,coords.x, coords.y, coords.z-0.97, 0,0,0,0,0,0,0.15, 0.15,1.0, rgb.x, rgb.y, rgb.z, 150,0, 0, 2, 0, 0, 0, 0)
+					Citizen.InvokeNative(0x2A32FAA57B937173,0x07DCE236,coords.x, coords.y, coords.z-0.95, 0,0,0,0,0,0,0.15, 0.15,1.0, rgb.x, rgb.y, rgb.z, 150,0, 0, 2, 0, 0, 0, 0)
 					-- Citizen.InvokeNative(0x2A32FAA57B937173, 0x94FDAE17, coords.x, coords.y, coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, rgb.x, rgb.y, rgb.z, 222, false, false, false, true, false, false, false)
 				end
 			end
