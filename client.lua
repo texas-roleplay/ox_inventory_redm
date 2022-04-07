@@ -1637,21 +1637,11 @@ RegisterNUICallback('swapItems', function(data, cb)
 		updateInventory(response.items, response.weight)
 
 		if response.items and (response.items[data.toSlot] or response.items[data.fromSlot]) then
-			local item = response?.items[data?.toSlot]
-			if string.find(string.lower(item.name), "weapon") then
-				if data.toType == "player" then
-					if data.fromSlot > 0 and data.fromSlot < 6 then
-						
-						local playerPed = PlayerPedId()
-						local weaponHash = GetHashKey(item.name)
-						local ammoHash = GetPedAmmoTypeFromWeapon(playerPed, weaponHash)
-						Citizen.InvokeNative(0xB6CFEC32E3742779, playerPed, ammoHash, weaponAmmo, GetHashKey('REMOVE_REASON_DROPPED'))  --_REMOVE_AMMO_FROM_PED_BY_TYPE
-						RemoveWeaponFromPed(playerPed, weaponHash)
-					end
-					if data.toSlot > 0 and data.toSlot < 6 then
-						useSlot(data.toSlot)
-					end
-				end
+
+			local item = response?.items[(data?.toSlot or data?.fromSlot)] 
+
+			if item then 
+				swapWeaponHotbar(item)
 			end
 		end
 	end
@@ -1670,6 +1660,29 @@ RegisterNUICallback('swapItems', function(data, cb)
 
 	cb(success or false)
 end)
+
+function swapWeaponHotbar(item)
+	if string.find(string.lower(item.name), "weapon") then
+
+		if data.toType == "player" then
+
+			if data.fromSlot > 0 and data.fromSlot < 6 then
+				
+				local playerPed = PlayerPedId()
+				local weaponHash = GetHashKey(item.name)
+				local ammoHash = GetPedAmmoTypeFromWeapon(playerPed, weaponHash)
+
+				Citizen.InvokeNative(0xB6CFEC32E3742779, playerPed, ammoHash, weaponAmmo, GetHashKey('REMOVE_REASON_DROPPED'))  --_REMOVE_AMMO_FROM_PED_BY_TYPE
+
+				RemoveWeaponFromPed(playerPed, weaponHash)
+			end
+
+			if data.toSlot > 0 and data.toSlot < 6 then
+				useSlot(data.toSlot)
+			end
+		end
+	end
+end
 
 RegisterNUICallback('buyItem', function(data, cb)
 	local input = Interface.Keyboard(shared.locale('buy_title_confirmation'), {shared.locale('amount_items_to_buy')})
