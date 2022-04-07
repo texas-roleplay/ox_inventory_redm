@@ -98,7 +98,7 @@ return {
             label = 'Rifle Anti-Pragas Model 1890',
             weight = 5000,
             durability = 0.20,
-            ammoname = 'ammo_rifle',
+            ammoname = 'ammo_22',
         },
         ['WEAPON_RIFLE_SPRINGFIELD'] = {
             label = 'Rifle Springfield Model 1873',
@@ -428,7 +428,7 @@ return {
     },
 
     Ammo = {
-        ['AMMO_22'] = {
+        ['ammo_22'] = {
             label = 'Munição anti-pragas',
             weight = 3,
         },    
