@@ -125,7 +125,6 @@ function Inventory.SyncInventory(inv)
 	if shared.framework == 'esx' then
 		server.GetPlayerFromId(inv.id).SyncInventory(inv.weight, inv.maxWeight, inv.items, money)
 	end
-	server.GetPlayerFromId(inv.id).syncInventory(inv.weight, inv.maxWeight, inv.items, money)
 end
 
 ---@param inv string | number
@@ -1112,7 +1111,7 @@ lib.callback.register('nxt_inventory:swapItems', function(source, data)
 					local resp
 					if next(items) then
 						resp = { weight = playerInventory.weight, items = items }
-						if shared.framework == 'esx' and fromInventory.type == 'player' or fromInventory.type == 'otherplayer' then
+						if shared.framework == 'esx' and (fromInventory.type == 'player' or fromInventory.type == 'otherplayer') then
 							Inventory.SyncInventory(fromInventory)
 						end
 						if shared.framework == 'esx' and not sameInventory and (toInventory.type == 'player' or toInventory.type == 'otherplayer') then
