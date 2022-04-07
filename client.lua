@@ -512,6 +512,8 @@ local function useButton(id, slot)
 	end
 end
 
+
+
 ---@param ped number
 ---@return boolean
 local function canOpenTarget(ped)
@@ -526,12 +528,12 @@ end
 
 local function openNearbyInventory()
 	if canOpenInventory() then
-		local closestPlayer = Utils.GetClosestPlayer()
-		if closestPlayer.x < 2 and (client.hasGroup(shared.police) or canOpenTarget(closestPlayer.z)) then
+		local closestPlayer, dist = Utils.GetClosestPlayer()
+		if dist < 2 and (client.hasGroup(shared.police) or canOpenTarget(GetPlayerPed(closestPlayer))) then
 			if IS_GTAV then
 				Utils.PlayAnim(2000, 'mp_common', 'givetake1_a', 1.0, 1.0, -1, 50, 0.0, 0, 0, 0)
 			end
-			openInventory('player', GetPlayerServerId(closestPlayer.y))
+			openInventory('player', GetPlayerServerId(closestPlayer))
 		end
 	end
 end

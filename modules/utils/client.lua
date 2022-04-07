@@ -36,21 +36,64 @@ function Utils.Raycast(flag)
 	end
 end
 
+
+
+function GetPlayers()
+	local players = {}
+
+	for _, player in ipairs(GetActivePlayers()) do
+		local ped = GetPlayerPed(player)
+
+		if DoesEntityExist(ped) then
+			table.insert(players, player)
+		end
+	end
+	return players
+end
+
 function Utils.GetClosestPlayer()
-	local closestPlayer, playerId, playerCoords = vec3(10, 0, 0), PlayerId(), GetEntityCoords(cache.ped)
-	local coords
-	for k, player in pairs(GetActivePlayers()) do
-		if player ~= playerId then
-			local ped = GetPlayerPed(player)
-			coords = GetEntityCoords(ped)
-			local distance = #(playerCoords - coords)
-			if distance < closestPlayer.x then
-				closestPlayer = vec3(distance, player, ped)
+	local players, closestDistance, closestPlayer = GetPlayers(), -1, -1
+
+	local coords, usePlayerPed = coords, false
+	local playerPed, playerId = PlayerPedId(), PlayerId()
+
+	if coords then
+		coords = vector3(coords.x, coords.y, coords.z)
+	else
+		usePlayerPed = true
+		coords = GetEntityCoords(playerPed)
+	end
+	for i = 1, #players, 1 do
+		local target = GetPlayerPed(players[i])
+
+		if not usePlayerPed or (usePlayerPed and players[i] ~= playerId) then
+			local targetCoords = GetEntityCoords(target)
+			local distance = #(coords - targetCoords)
+
+			if closestDistance == -1 or closestDistance > distance then
+				closestPlayer = players[i]
+				closestDistance = distance
 			end
 		end
 	end
-	return closestPlayer, coords
+	return closestPlayer, closestDistance
 end
+
+-- function Utils.GetClosestPlayer()
+-- 	local closestPlayer, playerId, playerCoords = vec3(10, 0, 0), PlayerId(), GetEntityCoords(cache.ped)
+-- 	local coords
+-- 	for k, player in pairs(GetActivePlayers()) do
+-- 		if player ~= playerId then
+-- 			local ped = GetPlayerPed(player)
+-- 			coords = GetEntityCoords(ped)
+-- 			local distance = #(playerCoords - coords)
+-- 			if distance < closestPlayer.x then
+-- 				closestPlayer = vec3(distance, player, ped)
+-- 			end
+-- 		end
+-- 	end
+-- 	return closestPlayer, coords
+-- end
 
 function Utils.Notify(data) SendNUIMessage({ action = 'showNotif', data = data }) end
 function Utils.ItemNotify(data) SendNUIMessage({action = 'itemNotify', data = data}) end
