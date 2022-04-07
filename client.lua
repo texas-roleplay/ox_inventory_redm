@@ -1641,7 +1641,7 @@ RegisterNUICallback('swapItems', function(data, cb)
 			local item = response?.items[(data?.toSlot or data?.fromSlot)] 
 
 			if item then 
-				swapWeaponHotbar(item)
+				swapWeaponHotbar(item, data)
 			end
 		end
 	end
@@ -1661,9 +1661,8 @@ RegisterNUICallback('swapItems', function(data, cb)
 	cb(success or false)
 end)
 
-function swapWeaponHotbar(item)
+function swapWeaponHotbar(item, data)
 	if string.find(string.lower(item.name), "weapon") then
-
 		if data.toType == "player" then
 
 			if data.fromSlot > 0 and data.fromSlot < 6 then
