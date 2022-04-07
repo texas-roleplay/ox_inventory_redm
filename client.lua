@@ -151,6 +151,7 @@ exports('openInventory', openInventory)
 ---@param data table
 ---@param cb function
 local function useItem(data, cb)
+	
 	if invOpen and data.close then TriggerEvent('nxt_inventory:closeInventory') end
 	if not invBusy and not PlayerData.dead and not Interface.ProgressActive and not IsPedRagdoll(cache.ped) and not IsPedFalling(cache.ped) then
 		if currentWeapon and currentWeapon?.timer > 100 then
@@ -227,9 +228,12 @@ local Items = client.items
 ---@param slot number
 ---@return boolean
 local function useSlot(slot)
-	if PlayerData.loaded and not PlayerData.dead and not invBusy and not Interface.ProgressActive then
+	if PlayerData.loaded and not PlayerData.dead and not invBusy and not Interface.ProgressActive then		
+
 		local item = PlayerData.inventory[slot]
+
 		if not item then return end
+		
 		local data = item and Items[item.name]
 		if not data or not data.usable then return end
 
@@ -1605,7 +1609,7 @@ end)
 
 ---Synchronise and validate all item movement between the NUI and server.
 RegisterNUICallback('swapItems', function(data, cb)
-	
+
 	if data.toType == "newdrop" then
 		local input = Interface.Keyboard(shared.locale('split_title_confirmation'), {shared.locale('amount_items_to_split')})
 
@@ -1629,11 +1633,33 @@ RegisterNUICallback('swapItems', function(data, cb)
 
 	if response then
 		updateInventory(response.items, response.weight)
+
+		if response.items and (response.items[data.toSlot] or response.items[data.fromSlot]) then
+			local item = response?.items[data?.toSlot]
+			if string.find(string.lower(item.name), "weapon") then
+				if data.toType == "player" then
+					if data.fromSlot > 0 and data.fromSlot < 6 then
+						
+						local playerPed = PlayerPedId()
+						local weaponHash = GetHashKey(item.name)
+						local ammoHash = GetPedAmmoTypeFromWeapon(playerPed, weaponHash)
+						Citizen.InvokeNative(0xB6CFEC32E3742779, playerPed, ammoHash, weaponAmmo, GetHashKey('REMOVE_REASON_DROPPED'))  --_REMOVE_AMMO_FROM_PED_BY_TYPE
+						RemoveWeaponFromPed(playerPed, weaponHash)
+					end
+					if data.toSlot > 0 and data.toSlot < 6 then
+						useSlot(data.toSlot)
+					end
+				end
+			end
+		end
 	end
 
-	if weapon and currentWeapon then
-		currentWeapon.slot = weapon
-		TriggerEvent('nxt_inventory:currentWeapon', currentWeapon)
+
+	if weapon then		
+		if currentWeapon then
+			currentWeapon.slot = weapon
+			TriggerEvent('nxt_inventory:currentWeapon', currentWeapon)
+		end
 	end
 
 	if data.toType == 'newdrop' then
