@@ -33,6 +33,7 @@ const initialState: State = {
   },
   itemAmount: 0,
   shiftPressed: false,
+  ctrlPressed: false,
   isBusy: false,
 };
 
@@ -50,6 +51,9 @@ export const inventorySlice = createSlice({
     },
     setShiftPressed: (state, action: PayloadAction<boolean>) => {
       state.shiftPressed = action.payload;
+    },    
+    setCtrlPressed: (state, action: PayloadAction<boolean>) => {
+      state.ctrlPressed = action.payload;
     },
     setContainerWeight: (state, action: PayloadAction<number>) => {
       const container = state.leftInventory.items.find(
@@ -86,6 +90,7 @@ export const inventorySlice = createSlice({
 export const {
   setItemAmount,
   setShiftPressed,
+  setCtrlPressed,
   setupInventory,
   swapSlots,
   moveSlots,

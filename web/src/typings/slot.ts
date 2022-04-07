@@ -2,6 +2,7 @@ export type Slot = {
   slot: number;
   name?: string;
   count?: number;
+  image?: string;
   weight?: number;
   metadata?: {
     [key: string]: any;
@@ -14,6 +15,7 @@ export type SlotWithItem = Slot & {
   count: number;
   weight: number;
   durability?: number;
+  image?: string;
   price?: number;
   currency?: string; // string since I'm assuming it will just be item name?
 };

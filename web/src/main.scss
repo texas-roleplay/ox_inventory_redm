@@ -446,27 +446,38 @@ input[type='number'] {
     }
 }
 
-.keyboard-container {
-    height: fit-content;
+.keyboard-container {    
     z-index: 999;
-    width: 30vh;
-    background-color: $mainColor;
+    width: 217px;
+    height: 198px;    
+
+    background-image: url(./fundo-modal.svg);
+    background-size: 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important; 
     position: absolute;
+    padding: 2vh;
+
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
     border-radius: $borderRadius;
     text-shadow: $textShadow;
 
     .keyboard-header {
         text-shadow: none;
-        font-size: 2vh;
+        font-size: 2.2vh;
         display: flex;
+        font-family: Catalogue;
         justify-content: center;
         align-items: center;
         padding: 0.5vh;
         letter-spacing: 0.08vh;
         border-bottom: 0.3vh solid grey;
+        text-transform: uppercase;   
+        color:black;
+        margin-bottom: 10px;
     }
 
     .keyboard-component {
@@ -479,16 +490,20 @@ input[type='number'] {
         align-items: center;
         p {
             margin-left: 0.4vh;
-            font-size: 1.6vh;
+            font-size: 1.3vh;
             align-self: flex-start;
+            padding: 0.5vh 0.8vh;
+            color:black;
+            text-shadow: none;
         }
         input {
             border-radius: $borderRadius;
             background-color: $secondaryColor;
             height: 2.4vh;
-            width: 25vh;
+            width: 100%;
             font-size: 1.5vh;
-            padding: 0.4vh;
+            margin: 0.4vh;
+            padding: 0.5vh 0.8vh;
             border: none;
             outline: none;
         }
@@ -504,9 +519,25 @@ input[type='number'] {
             border: none;
             outline: none;
             font-size: 1.6vh;
-            padding: 0.6vh;
-            border-radius: $borderRadius;
-            background-color: #4caf50;
+            background: transparent !important;
+            background-color: transparent!important;
+            padding: 1vh;
+            width: 60%;
+            height: 40%;
+        
+            font-family: Catalogue;
+            text-transform: uppercase;    
+            font-size:1.3em;
+        
+            background-image: url(./button.svg) !important; 
+            background-size: 100% !important; 
+            background-position: center !important; 
+            background-repeat: no-repeat !important; 
+            color: white !important;
+            &:hover{
+                transform: scale(1.1);
+                transition: 0.2s;
+            }
         }
     }
 }

@@ -17,7 +17,7 @@ exports('setStashTarget', function(id, owner)
 end)
 
 local invBusy = true
-local invOpen = false
+invOpen = false
 
 local function canOpenInventory()
 	return PlayerData.loaded
@@ -1553,7 +1553,17 @@ RegisterNUICallback('useItem', function(slot, cb)
 end)
 
 RegisterNUICallback('giveItem', function(data, cb)
-	cb(1)
+	local input = Interface.Keyboard(shared.locale('send_title_confirmation'), {shared.locale('amount_items_to_give')})
+
+	if not input then
+		return
+	else
+		input = tonumber(input[1])
+		data.count = input
+	end
+
+	cb(input)
+
 	if cache.vehicle then
 		local seats = GetVehicleMaxNumberOfPassengers(cache.vehicle) - 1
 
@@ -1595,6 +1605,18 @@ end)
 
 ---Synchronise and validate all item movement between the NUI and server.
 RegisterNUICallback('swapItems', function(data, cb)
+	
+	if data.toType == "newdrop" then
+		local input = Interface.Keyboard(shared.locale('split_title_confirmation'), {shared.locale('amount_items_to_split')})
+
+		if not input then
+			return
+		else
+			input = tonumber(input[1])
+			data.count = input
+		end
+	end
+
 	if data.toType == 'newdrop' and cache.vehicle then
         return cb(false)
     end
@@ -1622,6 +1644,15 @@ RegisterNUICallback('swapItems', function(data, cb)
 end)
 
 RegisterNUICallback('buyItem', function(data, cb)
+	local input = Interface.Keyboard(shared.locale('buy_title_confirmation'), {shared.locale('amount_items_to_buy')})
+
+	if not input then
+		return
+	else
+		input = tonumber(input[1])
+		data.count = input
+	end
+
 	local response, data, message = lib.callback.await('nxt_inventory:buyItem', 100, data)
 	if data then
 		PlayerData.inventory[data[1]] = data[2]

@@ -36,7 +36,7 @@ const InventorySlot: React.FC<SlotProps> = ({ inventory, item, setCurrentItem })
                 name: item.name,
                 slot: item.slot,
               },
-              image: item.metadata?.image,
+              image: item.metadata?.image || item.image,
             }
           : null,
       canDrag: !isBusy,
@@ -120,8 +120,8 @@ const InventorySlot: React.FC<SlotProps> = ({ inventory, item, setCurrentItem })
         data-for="item-tooltip"
         style={{
           opacity: isDragging ? 0.4 : 1.0,
-          backgroundImage: item.metadata?.image
-            ? `url(${process.env.PUBLIC_URL + `/images/${item.metadata.image}.png`})`
+          backgroundImage: item.metadata?.image || item.image
+            ? `url(${process.env.PUBLIC_URL + `/images/${item.metadata?.image || item.image}.png`})`
             : item.name
             ? `url(${process.env.PUBLIC_URL + `/images/${item.name}.png`})`
             : 'none',

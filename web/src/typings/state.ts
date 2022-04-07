@@ -5,6 +5,7 @@ export type State = {
   rightInventory: Inventory;
   itemAmount: number;
   shiftPressed: boolean;
+  ctrlPressed: boolean;
   isBusy: boolean;
   history?: {
     leftInventory: Inventory;

@@ -86,5 +86,14 @@ return {
 	['no_durability'] = "A durabilidade do item está esgotada",
 	['cannot_give'] = "Incapaz de dar %s %s ao alvo",
 	['evidence_cannot_take'] = "Grau não alto o suficiente para tirar da evidência",
-	['dumpster'] = "Lixeira"
+	['dumpster'] = "Lixeira",
+
+	['send_title_confirmation'] = "Confirmar envio",
+	['amount_items_to_give'] = "Digite abaixo a quantidade que deseja enviar",
+
+	['buy_title_confirmation'] = "Confirmar compra",
+	['amount_items_to_buy'] = "Digite abaixo a quantidade que deseja comprar",
+	
+	['split_title_confirmation'] = "Confirmar",
+	['amount_items_to_split'] = "Digite abaixo a quantidade que deseja separar",
 }

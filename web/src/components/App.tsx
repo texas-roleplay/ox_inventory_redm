@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAppDispatch } from '../store';
 import useNuiEvent from '../hooks/useNuiEvent';
-import { setShiftPressed, setupInventory } from '../store/inventory';
+import { setShiftPressed, setCtrlPressed, setupInventory } from '../store/inventory';
 import DragPreview from './utils/DragPreview';
 import Notifications from './utils/Notifications';
 import ProgressBar from './utils/ProgressBar';
@@ -44,7 +44,7 @@ debugData([
             count: 5,
           },
           { slot: 2, name: 'money', weight: 0, count: 32050 },
-          { slot: 3, name: 'cola', weight: 100, count: 3 },
+          { slot: 3, name: 'nozcoca', weight: 100, count: 3, image: "consumable_crafted_super_meal" },
           { slot: 4, name: 'water', weight: 100, count: 1 },
           { slot: 5, name: 'water', weight: 100, count: 1 },
         ],
@@ -62,6 +62,7 @@ debugData([
 
 const App: React.FC = () => {
   const shiftPressed = useKeyPress('Shift');
+  const ctrlPressed = useKeyPress('Control');
   const dispatch = useAppDispatch();
 
   fetchNui('uiLoaded', {});
@@ -90,7 +91,8 @@ const App: React.FC = () => {
   //TODO: refactor
   React.useEffect(() => {
     dispatch(setShiftPressed(shiftPressed));
-  }, [shiftPressed, dispatch]);
+    dispatch(setCtrlPressed(ctrlPressed));
+  }, [shiftPressed, ctrlPressed, dispatch]);
 
   const manager = useDragDropManager();
 

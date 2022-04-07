@@ -55,7 +55,7 @@ const KeyboardInput: React.FC = () => {
           </form>
         ))}
       <div className="keyboard-buttons-div">
-        <button onClick={handleSubmit}>Submit</button>
+        <button onClick={handleSubmit}>Confirmar</button>
       </div>
     </div>
   );
