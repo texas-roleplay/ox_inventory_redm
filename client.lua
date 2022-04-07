@@ -1646,13 +1646,12 @@ RegisterNUICallback('swapItems', function(data, cb)
 		end
 	end
 
-
-	if weapon then		
-		if currentWeapon then
-			currentWeapon.slot = weapon
-			TriggerEvent('nxt_inventory:currentWeapon', currentWeapon)
-		end
-	end
+	-- if weapon then		
+	-- 	if currentWeapon then
+	-- 		currentWeapon.slot = weapon
+	-- 		TriggerEvent('nxt_inventory:currentWeapon', currentWeapon)
+	-- 	end
+	-- end
 
 	if data.toType == 'newdrop' then
 		Wait(50)
@@ -1675,10 +1674,14 @@ function swapWeaponHotbar(item, data)
 
 				RemoveWeaponFromPed(playerPed, weaponHash)
 			end
-
-			if data.toSlot > 0 and data.toSlot < 6 then
-				useSlot(data.toSlot)
-			end
+			
+			--[[
+				useSlot esta dando merda se usar ele por aqui, tem que usar pelo servidor
+			]]
+			
+			-- if data.toSlot > 0 and data.toSlot < 6 then
+			-- 	useSlot(data.toSlot)
+			-- end
 		end
 	end
 end
