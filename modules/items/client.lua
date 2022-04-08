@@ -23,28 +23,44 @@ local ox_inventory = exports[shared.resource]
 -- Clientside item use functions
 -----------------------------------------------------------------------------------------------
 
-Item('bandage', function(data, slot)
-	local maxHealth = GetEntityMaxHealth(cache.ped)
-	local health = GetEntityHealth(cache.ped)
-	nxt_inventory:useItem(data, function(data)
-		if data then
-			SetEntityHealth(cache.ped, math.min(maxHealth, math.floor(health + maxHealth / 16)))
-			nxt_inventory:notify({text = 'You feel better already'})
+-- Item('bandage', function(data, slot)
+-- 	local maxHealth = GetEntityMaxHealth(cache.ped)
+-- 	local health = GetEntityHealth(cache.ped)
+-- 	nxt_inventory:useItem(data, function(data)
+-- 		if data then
+-- 			SetEntityHealth(cache.ped, math.min(maxHealth, math.floor(health + maxHealth / 16)))
+-- 			nxt_inventory:notify({text = 'You feel better already'})
+-- 		end
+-- 	end)
+-- end)
+
+Item('badge_deputy', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then				
+			TriggerEvent('police:client:applyBadgeInPlayer', 's_badgedeputy01x')
 		end
 	end)
 end)
-
-Item('badge_deputy', function(data, slot)
-	TriggerEvent('police:client:applyBadgeInPlayer', 's_badgedeputy01x')
-end)
 Item('badge_pinkerton', function(data, slot)
-	TriggerEvent('police:client:applyBadgeInPlayer', 's_badgepinkerton01x')
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then				
+			TriggerEvent('police:client:applyBadgeInPlayer', 's_badgepinkerton01x')
+		end
+	end)
 end)
 Item('badge_sheriff', function(data, slot)
-	TriggerEvent('police:client:applyBadgeInPlayer', 's_badgesherif01x')
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then				
+			TriggerEvent('police:client:applyBadgeInPlayer', 's_badgesherif01x')
+		end
+	end)
 end)
 Item('badge_marshal', function(data, slot)
-	TriggerEvent('police:client:applyBadgeInPlayer', 's_badgeusmarshal01x')
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then				
+			TriggerEvent('police:client:applyBadgeInPlayer', 's_badgeusmarshal01x')
+		end
+	end)
 end)
 Item('badge_police', function(data, slot)
 	TriggerEvent('police:client:applyBadgeInPlayer', 's_badgepolice01x')
@@ -119,19 +135,35 @@ Item('roupaspreso', function(data, slot)
 end)
 
 Item('handcuffs', function(data, slot)
-	TriggerEvent("police:client:CuffPlayerSoft")
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("police:client:CuffPlayerSoft")
+		end
+	end)
 end)
 
 Item('handcuffs_keys', function(data, slot)
-	TriggerEvent("police:client:CuffPlayerForceRemove")
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("police:client:CuffPlayerForceRemove")
+		end
+	end)
 end)
 
 Item('compass', function(data, slot)
-	TriggerEvent("HUD:Client:UsedCompass")
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("HUD:Client:UsedCompass")
+		end
+	end)
 end)
 
 Item('apito', function(data, slot)
-	TriggerEvent("ricx_dogs:pegarcachorro")
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("ricx_dogs:pegarcachorro")
+		end
+	end)
 end)
 
 Item('escova', function(data, slot)
@@ -143,23 +175,41 @@ Item('balses', function(data, slot)
 end)
 
 Item('wheat', function(data, slot)
-	TriggerEvent("dar:trigo")
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("dar:trigo")
+		end
+	end)
 end)
 
 Item('corn', function(data, slot)
-	TriggerEvent("dar:maiz")
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("dar:maiz")
+		end
+	end)
 end)
+
 Item('destilador', function(data, slot)
 	TriggerEvent("cookfirecauldron")
 end)
 Item('barril', function(data, slot)
 	TriggerEvent("barril")
 end)
+
 Item('lockpick', function(data, slot)
-    TriggerEvent('tryLockpickingDoor', 50)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent('tryLockpickingDoor', 50)
+		end
+	end)
 end)
 Item('lockpickr', function(data, slot)
-    TriggerEvent('tryLockpickingDoor', 100)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent('tryLockpickingDoor', 100)
+		end
+	end)
 end)
 
 Item('idcard', function(data, slot)
@@ -275,13 +325,13 @@ Item('colacola', function(data, slot)
 		end
 	end)
 end)
--- Item('cantilcheio', function(data, slot)
--- 	exports.nxt_inventory:useItem(data, function(data)
--- 		if data then
--- 			TriggerServerEvent("HUD:Consumable:Item", 'cantilcheio')
--- 		end
--- 	end)
--- end)
+Item('cantilcheio', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'cantilcheio')
+		end
+	end)
+end)
 Item('vitamina', function(data, slot)
 	exports.nxt_inventory:useItem(data, function(data)
 		if data then
@@ -502,10 +552,6 @@ end)
 Item('cantil', function(data, slot)
 	TriggerEvent("cantil_encher")
 end)
-
-
-
-
 
 Item('bberryseed', function(data, slot)
 	exports.nxt_inventory:useItem(data, function(data)
