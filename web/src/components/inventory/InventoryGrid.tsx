@@ -165,6 +165,11 @@ const InventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
                   {Locale.ui_ammo}: {currentItem.metadata.ammo}
                 </p>
               )}
+              {currentItem.metadata?.registered && (
+                <p>
+                  {Locale.ui_registered}: {currentItem.metadata.registered}
+                </p>
+              )}
               {currentItem.metadata?.serial && (
                 <p>
                   {Locale.ui_serial}: {currentItem.metadata.serial}

@@ -8,6 +8,7 @@ return {
 	['ui_copy'] = "Copy serial number",
 	-- Tooltip
 	['ui_durability'] = "Durabilidade",
+	['ui_registered'] = "Registro",
 	['ui_ammo'] = "Munição",
 	['ui_serial'] = "Número de Série",
 	['ui_components'] = "Componentes",
