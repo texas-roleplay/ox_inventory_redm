@@ -1443,8 +1443,6 @@ RegisterCommand('giveitem', function(source, args)
 
 		local inventory = Inventories[tSource]
 
-		-- source = Inventories[source] or {label = 'console', owner = 'console'}
-
 		Log(('%s Givou %sx %s para %s'):format(GetPlayerName(source) or 'console', count, item, inventory.label),
 			GetPlayerName(source),
 			'admin', inventory.owner
