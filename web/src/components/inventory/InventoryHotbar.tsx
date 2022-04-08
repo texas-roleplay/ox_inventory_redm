@@ -30,6 +30,8 @@ const InventoryHotbar: React.FC<{ items: Slot[] }> = ({ items }) => {
             style={{
               backgroundImage: item.metadata?.image
                 ? `url(${process.env.PUBLIC_URL + `/images/${item.metadata.image}.png`})`
+                : item.image 
+                ? `url(${process.env.PUBLIC_URL + `/images/${item.image}.png`})`
                 : item.name
                 ? `url(${process.env.PUBLIC_URL + `/images/${item.name}.png`})`
                 : 'none',
