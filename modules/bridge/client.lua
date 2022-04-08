@@ -96,25 +96,26 @@ elseif shared.framework == 'redemrp' then
 	
 	RegisterNetEvent('net.setCharacterData', function(data)		
 		if PlayerData.loaded then
-			for key, data in pairs(data) do
-
-				if key == 'job' then
-					key = 'groups'
-					value = { [data.name] = data.grade.level }
-				end
-
-				PlayerData[key] = value
-				OnPlayerData(key, value)
-			end
+			updatePlayerData(data)
 		end
 	end)
+	
+	function updatePlayerData(data)
+		for key, data in pairs(data) do
 
-	RegisterNetEvent('JOB:Client:OnJobUpdate', function(data)		
-		if PlayerData.loaded then
-			local value = { [data.name] = data.grade.level }		
-			PlayerData['job'] = value
-			OnPlayerData('groups', value)
+			if key == 'job' then
+				key = 'groups'
+				value = { [data.name] = data.grade.level }
+			end
+
+			PlayerData[key] = value
+			OnPlayerData(key, value)
 		end
+	end
+
+	RegisterNetEvent('JOB:Client:OnJobUpdate', function(data)
+		PlayerData.job = data
+		updatePlayerData(data)
 	end)
 	
 	AddEventHandler('client.playerHasLoaded', function()
