@@ -170,6 +170,21 @@ const InventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
                   {Locale.ui_serial}: {currentItem.metadata.serial}
                 </p>
               )}
+              {currentItem.metadata?.firstname && currentItem.metadata?.lastname && (
+                <>
+                  <p>
+                    Nome: {currentItem.metadata?.firstname} 
+                  </p>
+                  <p>
+                    Sobrenome: {currentItem.metadata?.lastname}
+                  </p>
+                </>
+              )}  
+              {currentItem.metadata?.citizenid && (
+                <p>
+                  Nº do Registro: {currentItem.metadata?.citizenid} 
+                </p>
+              )}
               {currentItem.metadata?.components && currentItem.metadata?.components[0] && (
                 <p>
                   {Locale.ui_components}:{' '}
