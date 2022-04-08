@@ -5,7 +5,7 @@ return {
 	['ui_close'] = "Fechar",
 	['ui_drop'] = "Soltar",
 	['ui_removeattachments'] = "Remover acessórios",
-	['ui_copy'] = "Copy serial number",
+	['ui_copy'] = "Copiar numero de serial",
 	-- Tooltip
 	['ui_durability'] = "Durabilidade",
 	['ui_registered'] = "Registro",
