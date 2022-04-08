@@ -136,6 +136,7 @@ lib.callback.register('nxt_inventory:openInventory', function(source, inv, data)
 				right.open = source
 				left.open = right.id
 				if otherplayer then
+					TriggerClientEvent("texas:notify:native", right.id, "Você está sendo revistado", 5000)
 					right:set('type', 'otherplayer')
 				end
 
