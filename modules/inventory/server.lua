@@ -354,11 +354,8 @@ function Inventory.Load(id, invType, owner)
 					datastore = true
 				end
 			else 
-				print(IS_RDR3)
 				-- [[ Eu ainda não entendi a necessidade da variavel abaixo ]]
 				if IS_RDR3 then
-
-					print(result)
 
 					result.glovebox = result.inventory
 					result.plate = result.id
@@ -373,8 +370,6 @@ function Inventory.Load(id, invType, owner)
 	end
 
 	local returnData, weight = {}, 0
-
-	-- print(result)
 
 	if result then
 		
@@ -687,12 +682,9 @@ exports('GetItemSlots', Inventory.GetItemSlots)
 ---@param metadata? table | string
 ---@param slot number
 function Inventory.RemoveItem(inv, item, count, metadata, slot)
-	if item == 'money' then
-		print('money')
-	end
-	
+
 	if type(item) ~= 'table' then item = Items(item) end
-	print('executei aqui')
+	
 	count = math.floor(count + 0.5)
 	if item and count > 0 then
 		inv = Inventory(inv)
@@ -1796,16 +1788,18 @@ AddEventHandler('entityRemoved', function(entity)
 
 	if Inventories['trunk'..netId] then
 		Inventory.Save('trunk'..netId)
-		
+
 		Inventories['trunk'..netId] = nil
 	end
 
 	local entityBag = Entity(entity).state.horseUUID
 
-	if Inventories['glove'..entityBag] then
-		Inventory.Save('glove'..entityBag)
+	if entityBag then 
+		if Inventories['glove'..entityBag] then
+			Inventory.Save('glove'..entityBag)
 
-		Inventories['glove'..entityBag] = nil
-		Entity(entity).state.horseUUID = nil
+			Inventories['glove'..entityBag] = nil
+			Entity(entity).state.horseUUID = nil
+		end
 	end
 end)

@@ -78,34 +78,9 @@ end
 if shared.framework == 'redemrp' then
 	UsableItemsCallbacks = {}
 
-	-- function RegisterUsableItem(item, cb)
-	-- 	UsableItemsCallbacks[item] = cb
-	-- end
-	
-	-- function UseItem(source, item, data)
-	-- 	UsableItemsCallbacks[item](source, item, data)
-	-- end
-	
-	-- function GetItemLabel(item)	
-	-- 	item = exports.nxt_inventory:Items(item)
-	-- 	if item then return item.label end
-	-- end
-	
-	-- function GetUsableItems()
-	-- 	local Usables = {}
-	-- 	for k in pairs(UsableItemsCallbacks) do
-	-- 		Usables[k] = true
-	-- 	end
-	-- 	return Usables
-	-- end
-
-	-- server.UseItem = UseItem
-	-- server.UsableItemsCallbacks = GetUsableItems
-
 	server.GetPlayerFromId = function(...)		
 		return exports['redemrp_roleplay']:getPlayerFromId(...)
 	end
-
 	
 	-- Accounts that need to be synced with physical items
 	server.accounts = {
@@ -137,9 +112,6 @@ if shared.framework == 'redemrp' then
 
 		server.accounts.money = player.getMoney()
 		server.accounts.gold = player.getGold()
-
-		print('money', server.accounts.money)
-		print('gold', server.accounts.gold)
 		
 		Inventory.SetItem(source, 'money', server.accounts.money, nil)
 
