@@ -1585,9 +1585,11 @@ RegisterNUICallback('giveItem', function(data, cb)
 		input = tonumber(input[1])
 		data.count = input
 
-		if data.item.name == 'money' then
+		print(json.encode(data))
 
-		end
+		-- if data.item.name == 'money' then
+
+		-- end
 	end
 
 	cb(input)
