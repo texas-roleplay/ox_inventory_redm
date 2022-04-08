@@ -882,7 +882,7 @@ local function registerCommands()
 	RegisterKeyMapping('hotbar', shared.locale('disable_hotbar'), 'keyboard', client.keys[3])
 	TriggerEvent('chat:removeSuggestion', '/hotbar')
 
-	RegisterCommand('steal', function()
+	RegisterCommand('revistar', function()
 		openNearbyInventory()
 	end)
 
@@ -1584,6 +1584,10 @@ RegisterNUICallback('giveItem', function(data, cb)
 	else
 		input = tonumber(input[1])
 		data.count = input
+
+		if data.item.name == 'money' then
+
+		end
 	end
 
 	cb(input)
