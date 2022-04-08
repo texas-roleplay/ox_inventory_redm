@@ -113,7 +113,7 @@ elseif shared.framework == 'redemrp' then
 		if PlayerData.loaded then
 			local value = { [data.name] = data.grade.level }		
 			PlayerData['job'] = value
-			OnPlayerData(key, value)
+			OnPlayerData('groups', value)
 		end
 	end)
 	
