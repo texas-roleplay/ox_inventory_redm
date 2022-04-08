@@ -83,7 +83,7 @@ return {
 	['disable_hotbar'] = "Exibir hotbar de inventário~",
 	['reload_weapon'] = "Recarregar arma~",
 	['use_hotbar'] = "Usar item da hotbar %s~",
-	['no_durability'] = "A durabilidade do item está esgotada",
+	['no_durability'] = "Este item está ruim",
 	['cannot_give'] = "Incapaz de dar %s %s ao alvo",
 	['evidence_cannot_take'] = "Grau não alto o suficiente para tirar da evidência",
 	['dumpster'] = "Lixeira",
