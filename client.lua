@@ -3,6 +3,12 @@ if not lib then return end
 local Utils = client.utils
 local currentWeapon
 
+playerJob = {onduty = false}
+
+RegisterNetEvent('JOB:Client:OnJobUpdate', function(jobInfo)
+	playerJob = jobInfo
+end)
+
 RegisterNetEvent('nxt_inventory:disarm', function(newSlot)
 	currentWeapon = Utils.Disarm(currentWeapon, newSlot)
 end)
@@ -83,26 +89,36 @@ function openInventory(inv, data)
 		local left, right
 
 		if inv == 'shop' and invOpen == false then
+			if data.type == "PoliceArmoury" then
+				if not playerJob.onduty then
+					TriggerEvent("texas:notify:native", "Você precisa estar em serviço", 3000)
+					return
+				end
+			end
+			
 			left, right = lib.callback.await('nxt_inventory:openShop', 200, data)
 		elseif invOpen ~= nil then
 
 			--[[ Veicúlos também é aqui ]]
+				if inv == 'policeevidence' then					
+					if playerJob.onduty then
+						local input = Interface.Keyboard(shared.locale('police_evidence'), {shared.locale('locker_number')})
 
-			if inv == 'policeevidence' then
-				local input = Interface.Keyboard(shared.locale('police_evidence'), {shared.locale('locker_number')})
+						if input then
+							input = tonumber(input[1])
+						else
+							return Utils.Notify({text = shared.locale('locker_no_value'), type = 'error'})
+						end
 
-				if input then
-					input = tonumber(input[1])
-				else
-					return Utils.Notify({text = shared.locale('locker_no_value'), type = 'error'})
+						if type(input) ~= 'number' then
+							return Utils.Notify({text = shared.locale('locker_must_number'), type = 'error'})
+						else
+							data = input
+						end
+					else
+						TriggerEvent("texas:notify:native", "Você precisa estar em serviço", 3000)
+					end
 				end
-
-				if type(input) ~= 'number' then
-					return Utils.Notify({text = shared.locale('locker_must_number'), type = 'error'})
-				else
-					data = input
-				end
-			end
 			left, right = lib.callback.await('nxt_inventory:openInventory', false, inv, data)
 		end
 
@@ -170,7 +186,6 @@ local function useItem(data, cb)
 		if result and invBusy then
 			plyState.invBusy = true
 			if data.client then data = data.client end
-
 			if data.usetime then
 				p = promise.new()
 				Interface.Progress({
@@ -707,7 +722,7 @@ local function registerCommands()
 					
 					local vehHash = GetEntityModel(vehicle)
 					
-					if vehicle and Vehicles.trunk['models'][vehHash] or Vehicles.trunk[class] or Vehicles.glovebox['models'][vehHash] or Vehicles.glovebox[class] and #(playerCoords - position) < 6 and NetworkGetEntityIsNetworked(vehicle) then
+					if vehicle and (Vehicles.trunk['models'][vehHash] or Vehicles.trunk[class]) or (Vehicles.glovebox['models'][vehHash] or Vehicles.glovebox[class]) and #(playerCoords - position) < 6 and NetworkGetEntityIsNetworked(vehicle) then
 
 						if IS_GTAV then
 							local locked = GetVehicleDoorLockStatus(vehicle)
@@ -775,7 +790,6 @@ local function registerCommands()
 
 						if IS_RDR3 then
 							
-
 							local netId = NetworkGetNetworkIdFromEntity(vehicle)
 
 							if not netId then
@@ -1306,10 +1320,9 @@ RegisterNetEvent('nxt_inventory:setPlayerInventory', function(currentDrops, inve
 			markers(drops, 'drop', vec3(150, 30, 30), nil, vehicle)
 
 			if not shared.qtarget then
-				if client.hasGroup(shared.police) then
+				if client.hasGroup(shared.police) then		
 					markers(Inventory.Evidence, 'policeevidence', vec(30, 30, 150), nil, vehicle)
 				end
-
 				markers(Inventory.Stashes, 'stash', vec3(30, 30, 150), nil, vehicle)
 
 				for k, v in pairs(Shops) do
@@ -1391,24 +1404,29 @@ RegisterNetEvent('nxt_inventory:setPlayerInventory', function(currentDrops, inve
 				if IS_GTAV then
 					DrawMarker(2, coords.x, coords.y, coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, rgb.x, rgb.y, rgb.z, 222, false, false, false, true, false, false, false)
 				elseif IS_RDR3 then
-					DrawText3D(vec3(coords.x, coords.y, coords.z-0.6), "Aperte I para interagir")
-					Citizen.InvokeNative(0x2A32FAA57B937173,0x07DCE236,coords.x, coords.y, coords.z-0.90, 0,0,0,0,0,0,0.15, 0.15,1.0, rgb.x, rgb.y, rgb.z, 150,0, 0, 2, 0, 0, 0, 0)
+					local _, groundZ = GetGroundZAndNormalFor_3dCoord(coords.x, coords.y, coords.z)
+					if #(GetEntityCoords(cache.ped) - coords) <= 2 then
+						DrawText3D(vec3(coords.x, coords.y, coords.z-0.6), "Aperte I para interagir")
+					end
+					Citizen.InvokeNative(0x2A32FAA57B937173,0x07DCE236,coords.x, coords.y, groundZ+0.08, 0,0,0,0,0,0,0.15, 0.15,1.0, rgb.x, rgb.y, rgb.z, 150,0, 0, 2, 0, 0, 0, 0)
 					-- Citizen.InvokeNative(0x2A32FAA57B937173, 0x94FDAE17, coords.x, coords.y, coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, rgb.x, rgb.y, rgb.z, 222, false, false, false, true, false, false, false)
 				end
 			end
 
-			if closestMarker and IsControlJustReleased(0, `INPUT_PICKUP_CARRIABLE`) then
-				if closestMarker[3] == 'license' then
-					lib.callback('nxt_inventory:buyLicense', 1000, function(success, message)
-						if success == false then
-							Utils.Notify({type = 'error', text = shared.locale(message), duration = 2500})
-						else
-							Utils.Notify({text = shared.locale(message), duration = 2500})
-						end
-					end, closestMarker[2])
-				elseif closestMarker[3] == 'shop' then openInventory(closestMarker[3], {id=closestMarker[2], type=closestMarker[4]})
-				elseif closestMarker[3] == 'policeevidence' then openInventory(closestMarker[3]) end
-			end
+			-- if closestMarker and IsControlJustReleased(0, `INPUT_PICKUP_CARRIABLE`) then
+			-- 	if closestMarker[3] == 'license' then
+			-- 		lib.callback('nxt_inventory:buyLicense', 1000, function(success, message)
+			-- 			if success == false then
+			-- 				Utils.Notify({type = 'error', text = shared.locale(message), duration = 2500})
+			-- 			else
+			-- 				Utils.Notify({text = shared.locale(message), duration = 2500})
+			-- 			end
+			-- 		end, closestMarker[2])
+			-- 	elseif closestMarker[3] == 'shop' then openInventory(closestMarker[3], {id=closestMarker[2], type=closestMarker[4]})
+			-- 	elseif closestMarker[3] == 'policeevidence' then 
+			-- 		openInventory(closestMarker[3])
+			-- 	end
+			-- end
 
 			if currentWeapon then
 				if IS_GTAV then
