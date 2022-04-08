@@ -738,7 +738,7 @@ function Inventory.RemoveItem(inv, item, count, metadata, slot)
 
 			for k, v in pairs(slots) do
 				if type(v) == 'number' then
-					array[k] = {item = {slot = v, label = metadata?.label or item.label, name = metadata?.image or item.name}, inventory = inv.type}
+					array[k] = {item = {slot = v, label = metadata?.label or item.label, name = metadata?.image or item?.image or item.name}, inventory = inv.type}
 				else
 					array[k] = {item = v, inventory = inv.type}
 				end
@@ -1407,49 +1407,164 @@ RegisterServerEvent('nxt_inventory:updateWeapon', function(action, value, slot)
 	end
 end)
 
-lib.addCommand('group.admin', {'additem', 'giveitem'}, function(source, args)
-	args.item = Items(args.item)
-	if args.item and args.count > 0 then
-		Inventory.AddItem(args.target, args.item.name, args.count, args.metatype)
-		local inventory = Inventories[args.target]
-		source = Inventories[source] or {label = 'console', owner = 'console'}
+function hasAdminPermission(source)
+    local hasPermission = false
 
-		Log(('%s Givou %sx %s para %s'):format(source.label, args.count, args.item.name, inventory.label),
-			source.owner,
+	if source == 0 then
+		return true
+	end
+
+    TriggerEvent('redemrp:getPlayerFromId', source, function(user) 
+        if user then
+			local userGroup = user.getGroup()
+			if (userGroup == "superadmin" or userGroup == "admin") then
+                hasPermission = true
+            end
+        end
+    end)
+
+    return hasPermission
+end
+
+
+RegisterCommand('giveitem', function(source, args)
+	local targetId = tonumber(args[1])
+	local item = args[2]
+	local count = tonumber(args[3])
+	local meta = args[4]
+
+	if not targetId then
+		return
+	end
+
+	local targetUser = exports.redemrp_roleplay:getUserFromId(targetId)
+
+	if not hasAdminPermission(source) then
+		return
+	end
+
+	if targetUser and item and count > 0 then
+		local tSource = targetUser.getSource()
+
+		Inventory.AddItem(tSource, item, count, meta or nil)
+
+		local inventory = Inventories[tSource]
+
+		-- source = Inventories[source] or {label = 'console', owner = 'console'}
+
+		Log(('%s Givou %sx %s para %s'):format(GetPlayerName(source) or 'console', count, item, inventory.label),
+			GetPlayerName(source),
 			'admin', inventory.owner
 		)
-
 	end
-end, {'target:number', 'item:string', 'count:number', 'metatype:?string'})
+end)
 
-lib.addCommand('group.admin', 'removeitem', function(source, args)
-	args.item = Items(args.item)
-	if args.item and args.count > 0 then
-		Inventory.RemoveItem(args.target, args.item.name, args.count, args.metaType)
-		local inventory = Inventories[args.target]
-		source = Inventories[source] or {label = 'console', owner = 'console'}
+-- lib.addCommand('group.admin', {'additem', 'giveitem'}, function(source, args)
+-- 	args.item = Items(args.item)
+-- 	if args.item and args.count > 0 then
+-- 		Inventory.AddItem(args.target, args.item.name, args.count, args.metatype)
+-- 		local inventory = Inventories[args.target]
+-- 		source = Inventories[source] or {label = 'console', owner = 'console'}
 
-		Log(('%s removeu %sx %s de %s'):format(source.label, args.count, args.item.name, inventory.label),
-			source.owner,
+-- 		Log(('%s Givou %sx %s para %s'):format(source.label, args.count, args.item.name, inventory.label),
+-- 			source.owner,
+-- 			'admin', inventory.owner
+-- 		)
+
+-- 	end
+-- end, {'target:number', 'item:string', 'count:number', 'metatype:?string'})
+
+RegisterCommand('removeitem', function(source, args)
+	local targetId = tonumber(args[1])
+	local item = args[2]
+	local count = tonumber(args[3])
+	local meta = args[4]
+
+	if not targetId then
+		return
+	end
+
+	local targetUser = exports.redemrp_roleplay:getUserFromId(targetId)
+
+	if not hasAdminPermission(source) then
+		return
+	end
+
+	if targetUser and item and count > 0 then
+		local tSource = targetUser.getSource()
+
+		Inventory.RemoveItem(tSource, item, count, meta or nil)
+
+		local inventory = Inventories[tSource]
+
+		-- source = Inventories[source] or {label = 'console', owner = 'console'}
+
+		Log(('%s removeu %sx %s de %s'):format(GetPlayerName(source) or 'console', count, item, inventory.label),
+			GetPlayerName(source),
 			'admin', inventory.owner
 		)
-
 	end
-end, {'target:number', 'item:string', 'count:number', 'metatype:?string'})
+end)
 
-lib.addCommand('group.admin', 'setitem', function(source, args)
-	args.item = Items(args.item)
-	if args.item and args.count >= 0 then
-		Inventory.SetItem(args.target, args.item.name, args.count, args.metaType)
-		local inventory = Inventories[args.target]
-		source = Inventories[source] or {label = 'console', owner = 'console'}
+-- lib.addCommand('group.admin', 'removeitem', function(source, args)
+-- 	args.item = Items(args.item)
+-- 	if args.item and args.count > 0 then
+-- 		Inventory.RemoveItem(args.target, args.item.name, args.count, args.metaType)
+-- 		local inventory = Inventories[args.target]
+-- 		source = Inventories[source] or {label = 'console', owner = 'console'}
 
-		Log(('%s setou %s\' %s para %sx'):format(source.label, inventory.label, args.item.name, args.count),
-			source.owner,
+-- 		Log(('%s removeu %sx %s de %s'):format(source.label, args.count, args.item.name, inventory.label),
+-- 			source.owner,
+-- 			'admin', inventory.owner
+-- 		)
+
+-- 	end
+-- end, {'target:number', 'item:string', 'count:number', 'metatype:?string'})
+
+RegisterCommand('setitem', function(source, args)
+	local targetId = tonumber(args[1])
+	local item = args[2]
+	local count = tonumber(args[3])
+	local meta = args[4]
+
+	if not targetId then
+		return
+	end
+
+	local targetUser = exports.redemrp_roleplay:getUserFromId(targetId)
+
+	if not hasAdminPermission(source) then
+		return
+	end
+
+	if targetUser and item and count >= 0 then
+		local tSource = targetUser.getSource()
+
+		Inventory.SetItem(tSource, item, count, meta or nil)
+		local inventory = Inventories[tSource]
+
+		-- source = Inventories[source] or {label = 'console', owner = 'console'}
+		
+		Log(('%s setou %s\' %s para %sx'):format(GetPlayerName(source) or 'console', inventory.label, item, count),
+		GetPlayerName(source),
 			'admin', inventory.owner
 		)
 	end
-end, {'target:number', 'item:string', 'count:number', 'metatype:?string'})
+end)
+
+-- lib.addCommand('group.admin', 'setitem', function(source, args)
+-- 	args.item = Items(args.item)
+-- 	if args.item and args.count >= 0 then
+-- 		Inventory.SetItem(args.target, args.item.name, args.count, args.metaType)
+-- 		local inventory = Inventories[args.target]
+-- 		source = Inventories[source] or {label = 'console', owner = 'console'}
+
+-- 		Log(('%s setou %s\' %s para %sx'):format(source.label, inventory.label, args.item.name, args.count),
+-- 			source.owner,
+-- 			'admin', inventory.owner
+-- 		)
+-- 	end
+-- end, {'target:number', 'item:string', 'count:number', 'metatype:?string'})
 
 lib.addCommand(false, 'clearevidence', function(source, args)
 	local inventory = Inventories[source]
@@ -1467,26 +1582,148 @@ lib.addCommand(false, 'clearevidence', function(source, args)
 	end
 end, {'evidence:number'})
 
-lib.addCommand('group.admin', 'takeinv', function(source, args)
-	Inventory.Confiscate(args.target)
-end, {'target:number'})
+RegisterCommand('takeinv', function(source, args)
+	local targetId = tonumber(args[1])
+	if not targetId then
+		return
+	end
 
-lib.addCommand('group.admin', 'returninv', function(source, args)
-	Inventory.Return(args.target)
-end, {'target:number'})
+	local targetUser = exports.redemrp_roleplay:getUserFromId(targetId)
 
-lib.addCommand('group.admin', 'clearinv', function(source, args)
-	Inventory.Clear(args.target)
-end, {'target:number'})
+	if not hasAdminPermission(source) then
+		return
+	end
 
-lib.addCommand('group.admin', 'saveinv', function()
-	saveInventories()
+	if targetUser then
+		local tSource = targetUser.getSource()
+
+		Inventory.Confiscate(tSource)
+		local inventory = Inventories[tSource]
+		
+		Log(('%s confiscou o inventário de %s'):format(GetPlayerName(source) or 'console', inventory.label),
+		GetPlayerName(source),
+			'admin', inventory.owner
+		)
+	end
 end)
 
-lib.addCommand('group.admin', 'viewinv', function(source, args)
-	local inventory = Inventories[args.target] or Inventories[tonumber(args.target)]
-	TriggerClientEvent('nxt_inventory:viewInventory', source, inventory)
-end, {'target'})
+RegisterCommand('returninv', function(source, args)
+	local targetId = tonumber(args[1])
+
+	if not targetId then
+		return
+	end
+
+	local targetUser = exports.redemrp_roleplay:getUserFromId(targetId)
+
+	if not hasAdminPermission(source) then
+		return
+	end
+
+	if targetUser then
+		local tSource = targetUser.getSource()
+
+		Inventory.Return(tSource)
+		local inventory = Inventories[tSource]
+		
+		Log(('%s devolveu o inventário de %s'):format(GetPlayerName(source) or 'console', inventory.label),
+		GetPlayerName(source),
+			'admin', inventory.owner
+		)
+	end
+end)
+
+RegisterCommand('clearinv', function(source, args)
+	local targetId = tonumber(args[1])
+
+	if not targetId then
+		return
+	end
+
+	local targetUser = exports.redemrp_roleplay:getUserFromId(targetId)
+
+	if not hasAdminPermission(source) then
+		return
+	end
+
+	if targetUser then
+		local tSource = targetUser.getSource()
+
+		Inventory.Clear(tSource)
+		
+		Log(('%s limpou o inventário de %s'):format(GetPlayerName(source) or 'console', inventory.label),
+		GetPlayerName(source),
+			'admin', inventory.owner
+		)
+	end
+end)
+
+RegisterCommand('saveinv', function(source, args)
+	local targetId = tonumber(args[1])
+
+	if not targetId then
+		return
+	end
+
+
+	if not hasAdminPermission(source) then
+		return
+	end
+
+
+	saveInventories()
+	
+	Log(('%s forçou salvar o inventário de todos'):format(GetPlayerName(source) or 'console'),
+		GetPlayerName(source)
+	)
+end)
+
+RegisterCommand('showinv', function(source, args)
+	local targetId = tonumber(args[1])
+
+	if not targetId then
+		return
+	end
+
+	local targetUser = exports.redemrp_roleplay:getUserFromId(targetId)
+
+	if not hasAdminPermission(source) then
+		return
+	end
+
+	if targetUser then
+		local tSource = targetUser.getSource()
+
+		local inventory = Inventories[tSource] or Inventories[tonumber(tSource)]
+		TriggerClientEvent('nxt_inventory:viewInventory', source, inventory)
+		
+		Log(('%s abriu o inventário de %s'):format(GetPlayerName(source) or 'console', inventory.label),
+		GetPlayerName(source),
+			'admin', inventory.owner
+		)
+	end
+end)
+
+-- lib.addCommand('group.admin', 'takeinv', function(source, args)
+-- 	Inventory.Confiscate(args.target)
+-- end, {'target:number'})
+
+-- lib.addCommand('group.admin', 'returninv', function(source, args)
+-- 	Inventory.Return(args.target)
+-- end, {'target:number'})
+
+-- lib.addCommand('group.admin', 'clearinv', function(source, args)
+-- 	Inventory.Clear(args.target)
+-- end, {'target:number'})
+
+-- lib.addCommand('group.admin', 'saveinv', function()
+-- 	saveInventories()
+-- end)
+
+-- lib.addCommand('group.admin', 'viewinv', function(source, args)
+-- 	local inventory = Inventories[args.target] or Inventories[tonumber(args.target)]
+-- 	TriggerClientEvent('nxt_inventory:viewInventory', source, inventory)
+-- end, {'target'})
 
 Inventory.accounts = server.accounts
 
@@ -1554,11 +1791,21 @@ exports('RegisterStash', RegisterStash)
 
 server.inventory = Inventory
 
-
 AddEventHandler('entityRemoved', function(entity)
 	local netId = NetworkGetNetworkIdFromEntity(entity)
 
 	if Inventories['trunk'..netId] then
+		Inventory.Save('trunk'..netId)
+		
 		Inventories['trunk'..netId] = nil
+	end
+
+	local entityBag = Entity(entity).state.horseUUID
+
+	if Inventories['glove'..entityBag] then
+		Inventory.Save('glove'..entityBag)
+
+		Inventories['glove'..entityBag] = nil
+		Entity(entity).state.horseUUID = nil
 	end
 end)
