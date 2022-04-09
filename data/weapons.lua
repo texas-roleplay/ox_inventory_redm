@@ -437,12 +437,12 @@ return {
             label = 'Flechas',
             weight = 3,
         },
-        ['ammo_arrow_FIRE'] = {
+        ['ammo_arrow_fire'] = {
             label = 'Flechas Fogo',
             weight = 3,
         },
 
-        ['AMMO_BOLAS'] = {
+        ['ammo_bolas'] = {
             label = 'Bolas',
             weight = 3,
         },
