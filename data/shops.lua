@@ -242,6 +242,9 @@ return {
 			{ name = 'badge_marshal', price = 0, grade = 7 },
 			{ name = 'badge_police', price = 0, grade = 3 },
 
+			{ name = 'handcuffs', price = 0 },
+			{ name = 'handcuffs_keys', price = 0 },
+
 			{ name = 'ammo_revolver', price = 0 },
 			{ name = 'ammo_rifle', price = 0 },
 			{ name = 'ammo_repeater', price = 0 },
