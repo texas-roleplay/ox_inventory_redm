@@ -927,10 +927,15 @@ lib.callback.register('nxt_inventory:swapItems', function(source, data)
 			if toInventory and fromInventory and (fromInventory.id ~= toInventory.id or data.fromSlot ~= data.toSlot) then
 				local fromData = fromInventory.items[data.fromSlot]
 
+				if fromData.name == "money" then
+					data.count *= 100
+				end
+
 				if fromData and (not fromData.metadata.container or fromData.metadata.container and toInventory.type ~= 'container') then
 					if data.count > fromData.count then data.count = fromData.count end
 
 					local toData = toInventory.items[data.toSlot]
+				
 					local movedWeapon = false
 					if fromInventory.weapon == data.fromSlot or fromInventory.weapon == data.toSlot then movedWeapon = true end
 
