@@ -120,55 +120,55 @@ return {
         }, 
 
         -- SHOTGUN
-        ['weapon_shotgun_doublebarrel'] = {
+        ['WEAPON_SHOTGUN_DOUBLEBARREL'] = {
             label = 'Espingarda dupla ação Hammer 1878',
             weight = 2300,
             durability = 0.20,
             ammoname = 'ammo_shotgun',
         },
-        ['weapon_shotgun_doublebarrel_exotic'] = {
+        ['WEAPON_SHOTGUN_DOUBLEBARREL_EXOTIC'] = {
             label = 'Espingarda de dupla ação Decorada 1878',
             weight = 2300,
             durability = 0.20,
             ammoname = 'ammo_shotgun',
         },
-        ['weapon_shotgun_sawedoff'] = {
+        ['WEAPON_SHOTGUN_SAWEDOFF'] = {
             label = 'Espingarda Cerrada Hamerless 1883',
             weight = 2300,
             durability = 0.20,
             ammoname = 'ammo_shotgun',
         },
-        ['weapon_shotgun04'] = {
+        ['WEAPON_SHOTGUN04'] = {
             label = 'Espingarda Winchester Model 1887',
             weight = 1900,
             durability = 0.20,
             ammoname = 'ammo_shotgun',
         },
-        ['weapon_shotgun05'] = {
+        ['WEAPON_SHOTGUN05'] = {
             label = 'Espingarda Winchester Model 1897',
             weight = 2000,
             durability = 0.20,
             ammoname = 'ammo_shotgun',
         },
-        ['weapon_shotgun_semiauto'] = {
+        ['WEAPON_SHOTGUN_SEMIAUTO'] = {
             label = 'Espingarda Browning Semi-Automatic',
             weight = 2000,
             durability = 0.20,
             ammoname = 'ammo_shotgun',
         },
-        ['weapon_shotgun_pump'] = {
+        ['WEAPON_SHOTGUN_PUMP'] = {
             label = 'Espingarda Pump',
             weight = 2300,
             durability = 0.20,
             ammoname = 'ammo_shotgun',
         },
-        ['weapon_shotgun_repeating'] = {
+        ['WEAPON_SHOTGUN_REPEATING'] = {
             label = 'Espingarda de Repetição',
             weight = 2300,
             durability = 0.20,
             ammoname = 'ammo_shotgun',
         },
-        ['weapon_shotgun_repeating'] = {
+        ['WEAPON_SHOTGUN_REPEATING'] = {
             label = 'Espingarda de Repetição',
             weight = 2300,
             durability = 0.20,
@@ -176,19 +176,19 @@ return {
         },
 
         -- sniper
-        ['weapon_sniperrifle_rollingblock'] = {
+        ['WEAPON_SNIPERRIFLE_ROLLINGBLOCK'] = {
             label = 'Rifle Rolling Block Remington M1867',
             weight = 3200,
             durability = 0.20,
             ammoname = 'ammo_rifle',
         },
-        ['weapon_sniperrifle_rollingblock_exotic'] = {
+        ['WEAPON_SNIPERRIFLE_ROLLINGBLOCK_EXOTIC'] = {
             label = 'Rifle Steel Remington M1867',
             weight = 3200,
             durability = 0.20,
             ammoname = 'ammo_rifle',
         },
-        ['weapon_sniperrifle_carcano'] = {
+        ['WEAPON_SNIPERRIFLE_CARCANO'] = {
             label = 'Rifle Carcano 1891 Short',
             weight = 3500,
             durability = 0.20,
@@ -381,7 +381,7 @@ return {
             weight = 300,
             durability = 0.20,
 			throwable = true,
-        },        
+        },
 
         ['WEAPON_KIT_BINOCULARS'] = {
             label = 'Binoculos',
