@@ -799,6 +799,11 @@ local function registerCommands()
 							local vehicleUUID 
 
 							local timeout = 20
+							
+							local distance = #(playerCoords - position)
+
+							local closeToVehicle = distance < 2
+
 
 							if Vehicles.trunk['models'][vehHash] then
 
