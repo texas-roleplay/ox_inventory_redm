@@ -1584,12 +1584,6 @@ RegisterNUICallback('giveItem', function(data, cb)
 	else
 		input = tonumber(input[1])
 		data.count = input
-
-		print(json.encode(data))
-
-		-- if data.item.name == 'money' then
-
-		-- end
 	end
 
 	cb(input)
@@ -1687,7 +1681,7 @@ end)
 function swapWeaponHotbar(item, data)
 	if string.find(string.lower(item.name), "weapon") then
 		if data.toType == "player" then
-
+			
 			if data.fromSlot > 0 and data.fromSlot < 6 then
 				
 				local playerPed = PlayerPedId()
