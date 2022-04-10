@@ -63,7 +63,26 @@ Item('badge_marshal', function(data, slot)
 	end)
 end)
 Item('badge_police', function(data, slot)
-	TriggerEvent('police:client:applyBadgeInPlayer', 's_badgepolice01x')
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent('police:client:applyBadgeInPlayer', 's_badgepolice01x')
+		end
+	end)
+end)
+
+Item('badge_officer', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent('police:client:applyBadgeInPlayer', 's_badgedeputy01x')
+		end
+	end)
+end)
+Item('badge_texas_ranger', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent('police:client:applyBadgeInPlayer', 's_badgepinkerton01x')
+		end
+	end)
 end)
 
 Item('dogfood', function(data, slot)
@@ -170,7 +189,7 @@ Item('escova', function(data, slot)
 	TriggerEvent("ricx_horses:startbrush")
 end)
 
-Item('balses', function(data, slot)
+Item('baldes', function(data, slot)
 	TriggerEvent("lto_headbucket:Verification")
 end)
 

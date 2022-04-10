@@ -37,6 +37,7 @@ return {
 		},
 		image = 'consumable_strawberries_can'
 	},
+
 	['badge_deputy'] = {
 		label = 'Distintivo Deputy',
 		weight = 220,	
@@ -45,6 +46,15 @@ return {
 			usetime = 2500
 		},
 		consume = 0
+	},	
+	['badge_officer'] = {
+		label = 'Distintivo de Oficial',
+		weight = 220,	
+		description = 'Se você não for um policial ou oficial, devolva em um departamento mais próximo.',
+		client = {
+			usetime = 2500
+		},
+		consume = 0,
 	},
 	['badge_pinkerton'] = {
 		label = 'Distintivo Pinkerton',
@@ -74,7 +84,16 @@ return {
 		consume = 0
 	},
 	['badge_police'] = {
-		label = 'Distintivo Oficial',
+		label = 'Distintivo Policial',
+		weight = 220,
+		description = 'Se você não for um policial ou oficial, devolva em um departamento mais próximo.',
+		client = {
+			usetime = 2500
+		},
+		consume = 0
+	},
+	['badge_texas_ranger'] = {
+		label = 'Distintivo Texas Ranger',
 		weight = 220,
 		description = 'Se você não for um policial ou oficial, devolva em um departamento mais próximo.',
 		client = {

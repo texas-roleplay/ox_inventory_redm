@@ -166,6 +166,9 @@ return {
 			{name = "lockpick", price = 1},
 			{name = "lockpickr", price = 2},
 			{name = "baldes", price = 0.50},
+
+			{ name = 'handcuffs', price = 2 },
+			{ name = 'handcuffs_keys', price = 1 },
 		}, locations = {
 			vec3(2859.706,-1200.646,49.590), -- saint dennis
 			vec3(496.5856, 672.968, 121.0131)
@@ -243,18 +246,18 @@ return {
 			id = 110, colour = 84, scale = 0.8
 		}, 
 		inventory = {
-			{ name = 'badge_deputy', price = 0, grade = 0 },
-			-- { name = 'badge_pinkerton', price = 0, grade = 3 },
+			{ name = 'badge_officer', price = 0, grade = 0 },
+			{ name = 'badge_texas_ranger', price = 0, grade = 3 },
 			{ name = 'badge_sheriff', price = 0, grade = 4 },
+			{ name = 'badge_deputy', price = 0, grade = 5 },
 			{ name = 'badge_marshal', price = 0, grade = 7 },
-			{ name = 'badge_police', price = 0, grade = 3 },
 
 			{ name = 'handcuffs', price = 0 },
 			{ name = 'handcuffs_keys', price = 0 },
 
-			{ name = 'ammo_revolver', price = 0 },
-			{ name = 'ammo_rifle', price = 0 },
-			{ name = 'ammo_repeater', price = 0 },
+			{ name = 'ammo_revolver', price = 0.01 },
+			{ name = 'ammo_rifle', price = 0.01 },
+			{ name = 'ammo_repeater', price = 0.01 },
 
 			{ name = 'weapon_melee_knife', price = 0 },
 			{ name = 'weapon_lasso', price = 0 },
