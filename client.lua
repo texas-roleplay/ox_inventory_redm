@@ -800,9 +800,11 @@ local function registerCommands()
 
 							local timeout = 20
 							
-							local distance = #(playerCoords - position)
+							local distance = #(GetEntityCoords(PlayerPedId()) - position)
 
 							local closeToVehicle = distance < 2
+
+
 
 
 							if Vehicles.trunk['models'][vehHash] then
@@ -814,9 +816,7 @@ local function registerCommands()
 								end
 
 								openInventory('trunk', {id='trunk'..vehicleUUID, model=vehHash, label="Carroça"})
-								repeat Wait(50)
-									timeout -= 1
-								until (currentInventory and currentInventory.type == 'trunk') or timeout == 0
+						
 								
 							elseif Vehicles.glovebox['models'][vehHash] then
 								
@@ -826,29 +826,32 @@ local function registerCommands()
 									print('não achei o UUID')
 									return
 								end
-								openInventory('glovebox', {id='glove'..vehicleUUID, model=vehHash, label="Alforge"})
-
-								repeat Wait(50)
-									timeout -= 1
-								until (currentInventory and currentInventory.type == 'glovebox') or timeout == 0
-							end
-
-							if timeout == 0 then
-								lastVehicle = nil
-								return
+								openInventory('glovebox', {id='glove'..vehicleUUID, model=vehHash, label="Alforge"})					
 							end
 
 							Wait(200)
+
 							currentInventory.entity = lastVehicle
 
 							while true do
 								Wait(50)
 
+								print('tick')
+
+								distance = #(GetEntityCoords(PlayerPedId()) - position)
+								
+								print(distance, closeToVehicle)
+
 								if closeToVehicle and invOpen then
 									if #(GetEntityCoords(cache.ped) - position) >= 2 or not DoesEntityExist(vehicle) then
 										break
-									else TaskTurnPedToFaceCoord(cache.ped, position.x, position.y, position.z) end
-								else break end
+									else 
+										TaskTurnPedToFaceCoord(cache.ped, position.x, position.y, position.z) 
+									end
+								else 
+									break
+								end
+
 							end
 						
 							if lastVehicle then TriggerEvent('nxt_inventory:closeInventory') end
