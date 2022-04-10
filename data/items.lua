@@ -40,7 +40,7 @@ return {
 	['badge_deputy'] = {
 		label = 'Distintivo Deputy',
 		weight = 220,	
-		description = 'Se você não for um polícial, devolva no departamento de polícia mais próximo.',
+		description = 'Se você não for um policial ou oficial, devolva em um departamento mais próximo.',
 		client = {
 			usetime = 2500
 		},
@@ -49,7 +49,7 @@ return {
 	['badge_pinkerton'] = {
 		label = 'Distintivo Pinkerton',
 		weight = 220,
-		description = 'Se você não for um polícial, devolva no departamento de polícia mais próximo.',
+		description = 'Se você não for um policial ou oficial, devolva em um departamento mais próximo.',
 		client = {
 			usetime = 2500
 		},
@@ -58,7 +58,7 @@ return {
 	['badge_sheriff'] = {
 		label = 'Distintivo Sheriff',
 		weight = 220,
-		description = 'Se você não for um polícial, devolva no departamento de polícia mais próximo.',
+		description = 'Se você não for um policial ou oficial, devolva em um departamento mais próximo.',
 		client = {
 			usetime = 2500
 		},
@@ -67,7 +67,7 @@ return {
 	['badge_marshal'] = {
 		label = 'Distintivo Marshal',
 		weight = 220,
-		description = 'Se você não for um polícial, devolva no departamento de polícia mais próximo.',
+		description = 'Se você não for um policial ou oficial, devolva em um departamento mais próximo.',
 		client = {
 			usetime = 2500
 		},
@@ -76,7 +76,7 @@ return {
 	['badge_police'] = {
 		label = 'Distintivo Oficial',
 		weight = 220,
-		description = 'Se você não for um polícial, devolva no departamento de polícia mais próximo.',
+		description = 'Se você não for um policial ou oficial, devolva em um departamento mais próximo.',
 		client = {
 			usetime = 2500
 		},
