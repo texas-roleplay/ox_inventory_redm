@@ -800,7 +800,7 @@ local function registerCommands()
 
 							local timeout = 20
 							
-							local distance = #(GetEntityCoords(PlayerPedId()) - position)
+							local distance = #(playerCoords - position)
 
 							local closeToVehicle = distance < 2
 
@@ -825,8 +825,9 @@ local function registerCommands()
 									end
 									openInventory('glovebox', {id='glove'..vehicleUUID, model=vehHash, label="Alforge"})					
 								end
+
 							end
-							
+
 							Wait(200)
 
 							currentInventory.entity = lastVehicle
@@ -836,7 +837,7 @@ local function registerCommands()
 
 								print('tick')
 
-								distance = #(GetEntityCoords(PlayerPedId()) - position)
+								distance = #(playerCoords - position)
 
 								print(distance, closeToVehicle)
 
