@@ -31,6 +31,7 @@ for shopName, shopDetails in pairs(data('shops')) do
 						count = slot.count,
 						price = (server.randomprices and not currency or currency == 'money') and (math.ceil(slot.price * (math.random(80, 120)/100))) or slot.price,
 						metadata = slot.metadata,
+						image = Item.image,
 						license = slot.license,
 						currency = slot.currency,
 						grade = slot.grade
@@ -60,6 +61,7 @@ for shopName, shopDetails in pairs(data('shops')) do
 					price = (server.randomprices and not currency or currency == 'money') and (math.ceil(slot.price * (math.random(90, 110)/100))) or slot.price,
 					metadata = slot.metadata,
 					license = slot.license,
+					image = Item.image,
 					currency = slot.currency,
 					grade = slot.grade
 				}

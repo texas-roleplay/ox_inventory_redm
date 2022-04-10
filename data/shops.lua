@@ -44,6 +44,7 @@ return {
 
 	Saloon = {
 		name = 'Saloon',
+		prompt = true,
 		groups = {
 			['saloon'] = 0,
 			['sallon'] = 0,
@@ -71,6 +72,7 @@ return {
 
 	Pexeiro = {
 		name = 'Estação',
+		prompt = true,
 		blip = {
 			id = 402, colour = 69, scale = 0.8
 		}, inventory = {
@@ -98,6 +100,7 @@ return {
 
 	Ammunation = {
 		name = 'Ammunation',
+		prompt = true,
 		blip = {
 			id = 110, colour = 69, scale = 0.8
 		}, inventory = {
@@ -140,6 +143,7 @@ return {
 
 	Jornaleiro = {
 		name = 'Jornaleiro',
+		prompt = true,
 		blip = {
 			id = 93, colour = 69, scale = 0.8
 		}, inventory = {
@@ -154,6 +158,7 @@ return {
 
 	MercadoClandestino = {
 		name = 'Mercado Clandestino',
+		prompt = true,
 		blip = {
 			id = 93, colour = 69, scale = 0.8
 		}, inventory = {
@@ -172,6 +177,7 @@ return {
 		
 	Fazenda = {
 		name = 'Fazenda',
+		prompt = true,
 		blip = {
 			id = 93, colour = 69, scale = 0.8
 		}, inventory = {
@@ -231,6 +237,7 @@ return {
 	},
 	PoliceArmoury = {
 		name = 'Armário de Sheriff',
+		prompt = true,
 		groups = shared.police,
 		blip = {
 			id = 110, colour = 84, scale = 0.8

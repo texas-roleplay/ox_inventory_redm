@@ -38,11 +38,12 @@ client.shops = setmetatable(data('shops'), {
 			if shop.jobs then shop.groups = shop.jobs end
 
 			if not shop.groups or client.hasGroup(shop.groups) then
+
 				if shop.blip then blipId += 1 end
 
-				if shop.prompt  then
+				if shop.prompt then
 					for i = 1, #shop.locations do
-						exports.prompts:createPrompt(shop.name .. type .. "_" ..i, shop.locations[i], 0xF3830D8E, 'Abrir ' .. shop.name, {
+						exports.prompts:createPrompt(shop.name .. type .. "_" ..i, shop.locations[i], 0x8AAA0AD4, 'Abrir ' .. shop.name, {
 							type = 'client',
 							event = 'nxt_inventory:openShop',
 							args = {{id=i, type=type}},
