@@ -95,7 +95,12 @@ end
 -- 	return closestPlayer, coords
 -- end
 
-function Utils.Notify(data) SendNUIMessage({ action = 'showNotif', data = data }) end
+function Utils.Notify(data) 
+	-- SendNUIMessage({ action = 'showNotif', data = data }) 
+	TriggerEvent('texas:notify:Simple', data.text, data.duration)
+
+end
+
 function Utils.ItemNotify(data) SendNUIMessage({action = 'itemNotify', data = data}) end
 RegisterNetEvent('nxt_inventory:notify', Utils.Notify)
 exports('notify', Utils.Notify)
