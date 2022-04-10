@@ -1268,6 +1268,7 @@ RegisterNetEvent('nxt_inventory:setPlayerInventory', function(currentDrops, inve
 			stack = v.stack,
 			close = v.close,
 			description = v.description,
+			image = v.image,
 			buttons = buttons
 		}
 	end
@@ -1330,11 +1331,11 @@ RegisterNetEvent('nxt_inventory:setPlayerInventory', function(currentDrops, inve
 				end
 				markers(Inventory.Stashes, 'stash', vec3(30, 30, 150), nil, vehicle)
 
-				for k, v in pairs(Shops) do
-					if not v.groups or client.hasGroup(v.groups) then
-						markers(v.locations, 'shop', vec3(30, 150, 30), k, vehicle)
-					end
-				end
+				-- for k, v in pairs(Shops) do
+				-- 	if not v.groups or client.hasGroup(v.groups) then
+				-- 		markers(v.locations, 'shop', vec3(30, 150, 30), k, vehicle)
+				-- 	end
+				-- end
 			end
 
 			markers(Licenses, 'license', vec(30, 150, 30), nil, vehicle)
