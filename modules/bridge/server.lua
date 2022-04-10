@@ -110,7 +110,7 @@ if shared.framework == 'redemrp' then
 		local source = source
 		local player = server.GetPlayerFromId(source)
 
-		server.accounts.money = player.getMoney()
+		server.accounts.money = (player.getMoney() * 100)
 		server.accounts.gold = player.getGold()
 		
 		Inventory.SetItem(source, 'money', server.accounts.money, nil)
@@ -145,7 +145,7 @@ CreateThread(function()
 				accounts = {}
 			}
 
-			playerData.accounts.money = user.getMoney()
+			playerData.accounts.money = (user.getMoney() * 100)
 			playerData.accounts.gold = user.getGold()
 
 			TriggerClientEvent("net.setCharacterData", playerId, playerData)
