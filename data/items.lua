@@ -28,6 +28,14 @@ return {
 				end
 			}
 		}
+	},	
+	['dogfood'] = {
+		label = 'Comida para Cachorro',
+		weight = 220,	
+		client = {
+			usetime = 2500
+		},
+		image = 'consumable_strawberries_can'
 	},
 	['badge_deputy'] = {
 		label = 'Distintivo Deputy',
