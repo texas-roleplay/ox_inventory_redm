@@ -812,17 +812,21 @@ local function registerCommands()
 									else
 										vehicleUUID = "temp:" .. netId
 									end
+									
+									lastVehicle = vehicle
 
 									openInventory('trunk', {id='trunk'..vehicleUUID, model=vehHash, label="Carroça"})						
 									
 								elseif Vehicles.glovebox['models'][vehHash] then
 									
-									vehicleUUID = Entity(vehicle).state.horseUUID 								
-
+									vehicleUUID = Entity(vehicle).state.horseUUID 											
 									if not vehicleUUID then
 										print('não achei o UUID')
 										return
 									end
+									
+									lastVehicle = vehicle
+									
 									openInventory('glovebox', {id='glove'..vehicleUUID, model=vehHash, label="Alforge"})					
 								end
 
