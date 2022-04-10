@@ -100,6 +100,8 @@ function Interface.Progress(options, completed)
 			Interface.ProgressActive = true
 			progress.canCancel = options.canCancel or false
 
+			TriggerEvent("NUI:ProgressBar", options.duration, options.label)
+
 			SendNUIMessage({
 				action = 'startProgress',
 				data = {
