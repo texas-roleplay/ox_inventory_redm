@@ -829,21 +829,16 @@ local function registerCommands()
 
 									openInventory('glovebox', {id='glove'..vehicleUUID, model=vehHash, label="Alforge"})					
 								end
-
+								currentInventory.entity = lastVehicle
 							end
 
-							Wait(200)
 
-							currentInventory.entity = lastVehicle
+							Wait(200)
 
 							while true do
 								Wait(50)
 
-								print('tick')
-
 								distance = #(playerCoords - position)
-
-								print(distance, closeToVehicle)
 
 								if closeToVehicle and invOpen then
 									if #(GetEntityCoords(cache.ped) - GetEntityCoords(currentInventory.entity)) >= 2 or not DoesEntityExist(vehicle) then
