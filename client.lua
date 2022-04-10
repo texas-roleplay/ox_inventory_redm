@@ -804,27 +804,29 @@ local function registerCommands()
 
 							local closeToVehicle = distance < 2
 
-							if Vehicles.trunk['models'][vehHash] then
+							if closeToVehicle then
 
-								if Entity(vehicle).state.wagonId then 
-									vehicleUUID = Entity(vehicle).state.wagonId
-								else
-									vehicleUUID = "temp:" .. netId
+								if Vehicles.trunk['models'][vehHash] then
+									if Entity(vehicle).state.wagonId then 
+										vehicleUUID = Entity(vehicle).state.wagonId
+									else
+										vehicleUUID = "temp:" .. netId
+									end
+
+									openInventory('trunk', {id='trunk'..vehicleUUID, model=vehHash, label="Carroça"})						
+									
+								elseif Vehicles.glovebox['models'][vehHash] then
+									
+									vehicleUUID = Entity(vehicle).state.horseUUID 								
+
+									if not vehicleUUID then
+										print('não achei o UUID')
+										return
+									end
+									openInventory('glovebox', {id='glove'..vehicleUUID, model=vehHash, label="Alforge"})					
 								end
-
-								openInventory('trunk', {id='trunk'..vehicleUUID, model=vehHash, label="Carroça"})						
-								
-							elseif Vehicles.glovebox['models'][vehHash] then
-								
-								vehicleUUID = Entity(vehicle).state.horseUUID 								
-
-								if not vehicleUUID then
-									print('não achei o UUID')
-									return
-								end
-								openInventory('glovebox', {id='glove'..vehicleUUID, model=vehHash, label="Alforge"})					
 							end
-
+							
 							Wait(200)
 
 							currentInventory.entity = lastVehicle
