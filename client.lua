@@ -818,16 +818,18 @@ local function registerCommands()
 									openInventory('trunk', {id='trunk'..vehicleUUID, model=vehHash, label="Carroça"})						
 									
 								elseif Vehicles.glovebox['models'][vehHash] then
-									
-									vehicleUUID = Entity(vehicle).state.horseUUID 											
-									if not vehicleUUID then
-										print('não achei o UUID')
-										return
-									end
-									
-									lastVehicle = vehicle
+									if not Citizen.InvokeNative(0xAAB0FE202E9FC9F0, vehicle, -1) then -- _IS_MOUNT_SEAT_FREE
+										
+										vehicleUUID = Entity(vehicle).state.horseUUID 											
+										if not vehicleUUID then
+											print('não achei o UUID')
+											return
+										end
+										
+										lastVehicle = vehicle
 
-									openInventory('glovebox', {id='glove'..vehicleUUID, model=vehHash, label="Alforge"})					
+										openInventory('glovebox', {id='glove'..vehicleUUID, model=vehHash, label="Alforge"})		
+									end			
 								end
 								currentInventory.entity = lastVehicle
 							end
