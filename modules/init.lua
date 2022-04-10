@@ -56,21 +56,17 @@ if IsDuplicityVersion then
 		clearstashes = GetConvar('inventory:clearstashes', '6 MONTH'),
 		vehicleloot = json.decode(GetConvar('inventory:vehicleloot', [[
 			[
-				["cola", 1, 1],
+				["colacola", 1, 1],
 				["water", 1, 1],
-				["garbage", 1, 2, 50],
-				["panties", 1, 1, 5],
-				["money", 1, 50],
-				["money", 200, 400, 5],
+				["tonico", 1, 2, 50],
+				["balde", 1, 1, 5],
 				["bandage", 1, 1]
 			]
 		]])),
 		dumpsterloot = json.decode(GetConvar('inventory:dumpsterloot', [[
 			[
-				["mustard", 1, 1],
-				["garbage", 1, 3],
-				["money", 1, 10],
-				["burger", 1, 1]
+				["balde", 1, 1],
+				["tonico", 1, 3]
 			]
 		]])),
 	}

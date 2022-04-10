@@ -804,9 +804,6 @@ local function registerCommands()
 
 							local closeToVehicle = distance < 2
 
-
-
-
 							if Vehicles.trunk['models'][vehHash] then
 
 								if Entity(vehicle).state.wagonId then 
@@ -815,8 +812,7 @@ local function registerCommands()
 									vehicleUUID = "temp:" .. netId
 								end
 
-								openInventory('trunk', {id='trunk'..vehicleUUID, model=vehHash, label="Carroça"})
-						
+								openInventory('trunk', {id='trunk'..vehicleUUID, model=vehHash, label="Carroça"})						
 								
 							elseif Vehicles.glovebox['models'][vehHash] then
 								
@@ -839,7 +835,7 @@ local function registerCommands()
 								print('tick')
 
 								distance = #(GetEntityCoords(PlayerPedId()) - position)
-								
+
 								print(distance, closeToVehicle)
 
 								if closeToVehicle and invOpen then
