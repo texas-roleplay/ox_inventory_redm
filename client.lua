@@ -1658,6 +1658,7 @@ RegisterNUICallback('swapItems', function(data, cb)
 
 		if not input then
 			TriggerEvent("texas:notify:Simple", "Digite a quantidade que deseja dropar", 3000)
+			return
 		else
 			input = tonumber(input[1])
 			data.count = input
