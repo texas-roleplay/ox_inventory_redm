@@ -826,12 +826,10 @@ local function registerCommands()
 											return
 										end
 										
-										lastVehicle = vehicle
-
-										openInventory('glovebox', {id='glove'..vehicleUUID, model=vehHash, label="Alforge"})		
-									end			
+										lastVehicle = exports.horses:tryOpenSaddleInventory(vehicleUUID, vehicle)
+									end
 								end
-								if lastVehicle and currentInventory then
+								if lastVehicle then
 									currentInventory.entity = lastVehicle
 								end
 							end
