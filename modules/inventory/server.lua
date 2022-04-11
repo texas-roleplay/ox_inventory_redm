@@ -737,9 +737,12 @@ function Inventory.RemoveItem(inv, item, count, metadata, slot)
 			end
 
 			if shared.framework == 'redemrp' then
-				if item == "money" then					
+				print('sou redemrp')
+				if item.name == "money" then					
+					print('o item é dinheiro')
 					local user = exports['redemrp_roleplay']:getPlayerFromId(inv.id)
 					if user then
+						print('achei o User')
 						user.UserCurrencyComponentRemove(count)
 					end
 				end
