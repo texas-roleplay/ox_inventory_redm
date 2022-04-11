@@ -314,7 +314,97 @@ Item('biscoito', function(data, slot)
 	end)
 end)
 
-
+Item('absinto', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'absinto')
+		end
+	end)
+end)
+Item('vodka', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'vodka')
+		end
+	end)
+end)
+Item('arake', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'arake')
+		end
+	end)
+end)
+Item('licorchocolate', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'licorchocolate')
+		end
+	end)
+end)
+Item('licorcobra', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'licorcobra')
+		end
+	end)
+end)
+Item('champagne', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'champagne')
+		end
+	end)
+end)
+Item('hidromel', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'hidromel')
+		end
+	end)
+end)
+Item('bberrypie', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'bberrypie')
+		end
+	end)
+end)
+Item('washingtoncake', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'washingtoncake')
+		end
+	end)
+end)
+Item('raspberryjuice', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'raspberryjuice')
+		end
+	end)
+end)
+Item('sidra', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'sidra')
+		end
+	end)
+end)
+Item('gin', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'gin')
+		end
+	end)
+end)
+Item('vinho', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'vinho')
+		end
+	end)
+end)
 
 Item('sucodeamora', function(data, slot)
 	exports.nxt_inventory:useItem(data, function(data)
@@ -452,9 +542,6 @@ Item('flaky_meat_roasted', function(data, slot)
 		end
 	end)
 end)
-
-
-
 Item('succulent_meat_roasted', function(data, slot)
 	exports.nxt_inventory:useItem(data, function(data)
 		if data then
@@ -518,7 +605,6 @@ Item('mature_meat_roasted', function(data, slot)
 		end
 	end)
 end)
-
 Item('tender_meat_roasted', function(data, slot)
 	exports.nxt_inventory:useItem(data, function(data)
 		if data then
@@ -537,6 +623,112 @@ Item('big_meat_roasted', function(data, slot)
 	exports.nxt_inventory:useItem(data, function(data)
 		if data then
 			TriggerServerEvent("HUD:Consumable:Item", 'big_meat_roasted')
+		end
+	end)
+end)
+
+Item('stringy_meat_cooked', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'stringy_meat_cooked')
+		end
+	end)
+end)
+Item('flaky_meat_cooked', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'flaky_meat_cooked')
+		end
+	end)
+end)
+Item('succulent_meat_cooked', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'succulent_meat_cooked')
+		end
+	end)
+end)
+Item('gritty_meat_cooked', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'gritty_meat_cooked')
+		end
+	end)
+end)
+Item('herptile_meat_cooked', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'herptile_meat_cooked')
+		end
+	end)
+end)
+Item('plump_meat_cooked', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'plump_meat_cooked')
+		end
+	end)
+end)
+Item('game_meat_cooked', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'game_meat_cooked')
+		end
+	end)
+end)
+Item('gristly_meat_cooked', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'gristly_meat_cooked')
+		end
+	end)
+end)
+Item('crustacean_meat_cooked', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'crustacean_meat_cooked')
+		end
+	end)
+end)
+Item('prime_meat_cooked', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'prime_meat_cooked')
+		end
+	end)
+end)
+Item('mature_meat_cooked', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'mature_meat_cooked')
+		end
+	end)
+end)
+Item('tender_meat_cooked', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'tender_meat_cooked')
+		end
+	end)
+end)
+Item('exotic_meat_cooked', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'exotic_meat_cooked')
+		end
+	end)
+end)
+Item('big_meat_cooked', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'big_meat_cooked')
+		end
+	end)
+end)
+Item('big_meat_cooked', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'big_meat_cooked')
 		end
 	end)
 end)
