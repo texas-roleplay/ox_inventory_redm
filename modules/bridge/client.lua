@@ -136,12 +136,10 @@ elseif shared.framework == 'redemrp' then
 	end)
 
 	Citizen.CreateThread(function()
-		while not PlayerData.loaded do
+		while not LocalPlayer.state.isPlaying do
 			Citizen.Wait(0)
 		end
 
-		if PlayerData.loaded then
-			TriggerServerEvent('nxt_inventory:requestPlayerInventory')
-		end
+		TriggerServerEvent('nxt_inventory:requestPlayerInventory')
 	end)
 end
