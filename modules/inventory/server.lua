@@ -591,7 +591,7 @@ function Inventory.AddItem(inv, item, count, metadata, slot, cb)
 					if shared.framework == 'esx' then Inventory.SyncInventory(inv) end
 
 					if shared.framework == 'redemrp' then
-						if item == "money" then					
+						if item.name == "money" then
 							local user = exports['redemrp_roleplay']:getPlayerFromId(inv.id)
 							if user then
 								user.UserCurrencyComponentAdd(count)
