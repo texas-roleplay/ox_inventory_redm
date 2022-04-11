@@ -5,6 +5,8 @@ local currentWeapon
 
 playerJob = {onduty = false}
 
+gCanPlayerCloseInventory = true
+
 RegisterNetEvent('JOB:Client:OnJobUpdate', function(jobInfo)
 	playerJob = jobInfo
 end)
@@ -829,7 +831,8 @@ local function registerCommands()
 										lastVehicle = exports.horses:tryOpenSaddleInventory(vehicleUUID, vehicle)
 									end
 								end
-								if lastVehicle then
+
+								if lastVehicle and currentInventory then
 									currentInventory.entity = lastVehicle
 								end
 							end
@@ -845,7 +848,7 @@ local function registerCommands()
 									if #(GetEntityCoords(cache.ped) - GetEntityCoords(currentInventory.entity)) >= 2 or not DoesEntityExist(vehicle) then
 										break
 									else 
-										TaskTurnPedToFaceCoord(cache.ped, position.x, position.y, position.z) 
+										-- TaskTurnPedToFaceCoord(cache.ped, position.x, position.y, position.z) 
 									end
 								else 
 									break
@@ -1646,6 +1649,12 @@ RegisterNUICallback('useButton', function(data, cb)
 end)
 
 RegisterNUICallback('exit', function(_, cb)
+	
+	if not gCanPlayerCloseInventory then
+		cb(0)
+		return
+	end
+
 	TriggerEvent('nxt_inventory:closeInventory')
 	cb(1)
 end)
@@ -1673,33 +1682,35 @@ RegisterNUICallback('swapItems', function(data, cb)
 		data.instance = currentInstance
 	end
 
-	local success, response, weapon = lib.callback.await('nxt_inventory:swapItems', false, data)
+	StartInventoryAction('swap', data, function()
+		local success, response, weapon = lib.callback.await('nxt_inventory:swapItems', false, data)
 
-	if response then
-		updateInventory(response.items, response.weight)
-
-		if response.items and (response.items[data.toSlot] or response.items[data.fromSlot]) then
-
-			local item = response?.items[(data?.toSlot or data?.fromSlot)] 
-
-			if item then 
-				swapWeaponHotbar(item, data)
+		if response then
+			updateInventory(response.items, response.weight)
+	
+			if response.items and (response.items[data.toSlot] or response.items[data.fromSlot]) then
+	
+				local item = response?.items[(data?.toSlot or data?.fromSlot)]
+	
+				if item then
+					swapWeaponHotbar(item, data)
+				end
 			end
 		end
-	end
-
-	-- if weapon then		
-	-- 	if currentWeapon then
-	-- 		currentWeapon.slot = weapon
-	-- 		TriggerEvent('nxt_inventory:currentWeapon', currentWeapon)
-	-- 	end
-	-- end
-
-	if data.toType == 'newdrop' then
-		Wait(50)
-	end
-
-	cb(success or false)
+	
+		-- if weapon then
+		-- 	if currentWeapon then
+		-- 		currentWeapon.slot = weapon
+		-- 		TriggerEvent('nxt_inventory:currentWeapon', currentWeapon)
+		-- 	end
+		-- end
+	
+		if data.toType == 'newdrop' then
+			Wait(50)
+		end
+	
+		cb(success or false)
+	end)
 end)
 
 function swapWeaponHotbar(item, data)
@@ -1871,3 +1882,134 @@ CreateThread(function()
 		Wait(0)
 	end
 end)
+
+local SADDLEBAG_POINTS =
+{
+    {
+        boneName = 'SPR_L_Saddlebag',
+
+        lootAnimationDict = 'mech_pickup@loot@horse_saddlebags@live@lt'
+    },
+    {
+        boneName = 'SPR_R_Saddlebag',
+        
+        lootAnimationDict = 'mech_pickup@loot@horse_saddlebags@live@rt'
+    }
+}
+
+function StartInventoryAction(actionType, data, cb)
+	if IS_RDR3 and (data.fromType == 'glovebox' or data.toType == 'glovebox') then
+
+		--[[ Só bloquear o inventário caso esteja removendo item do cavalo ]]
+		local lockInventory = (data.fromType == 'glovebox' and data.toType == 'player')
+							-- true
+
+		if lockInventory then
+			gCanPlayerCloseInventory = false
+		else
+			cb()
+		end
+
+		local playerPed = PlayerPedId()
+		local horseEntity = currentInventory.entity
+
+		local closestSaddlebagPoint         = nil
+		local closestSaddlebagPointDistance = nil
+		local closestSaddlebagPointPosition = nil
+
+		local playerPos = GetEntityCoords(PlayerPedId())
+
+		for _, saddlebagPoint in ipairs(SADDLEBAG_POINTS) do
+
+			local boneName in saddlebagPoint
+
+			local boneIndex = GetEntityBoneIndexByName(horseEntity, boneName)
+
+			local bonePos = GetWorldPositionOfEntityBone(horseEntity, boneIndex)
+
+			local distanceToPlayer = #(playerPos - bonePos)
+
+			if not closestSaddlebagPoint or distanceToPlayer < closestSaddlebagPointDistance then
+				closestSaddlebagPoint         = saddlebagPoint
+				closestSaddlebagPointDistance = distanceToPlayer
+				closestSaddlebagPointPosition = bonePos
+			end
+		end
+
+		local DICT = closestSaddlebagPoint.lootAnimationDict
+		local ANIM = 'base'
+
+		RequestAnimDict(DICT)
+
+		while not HasAnimDictLoaded(DICT) do
+			Citizen.Wait(0)
+		end
+
+		ClearPedTasks(playerPed)
+		ClearPedTasks(horseEntity)
+
+        ClearPedSecondaryTask(playerPed)
+
+		local taskSequenceId = OpenSequenceTask()
+		--[[ 0 ]] TaskFollowNavMeshToCoord(0, closestSaddlebagPointPosition, 1.0, 20000, 0.1, 0, 40000.0)
+        --[[ 1 ]] TaskTurnPedToFaceCoord(0, closestSaddlebagPointPosition, 0)
+        --[[ 2 ]] TaskPlayAnim(0, DICT, ANIM, 4.0, -4.0, -1, 4, 0.0, false, 0, false, 0, false)
+		CloseSequenceTask(taskSequenceId)
+		TaskPerformSequence(playerPed, taskSequenceId)
+		ClearSequenceTask(playerPed)
+
+        CreateThread(function()
+            local sequenceProgress
+
+            local taskedHorse = false
+
+            while sequenceProgress ~= -1 do
+                Wait(0)
+
+                sequenceProgress = GetSequenceProgress(playerPed)
+
+                if sequenceProgress == 2 and not taskedHorse then
+                    TaskPlayAnim(horseEntity, DICT, 'base_horse', 4.0, -4.0, -1, 65552, 0.0, false, 0, false, 0, false)
+
+                    taskedHorse = true
+                end
+            end
+
+			if lockInventory then
+				if taskedHorse then
+					-- Animação acabou e tudo ocorreu como esperado, então a gente executa a ação do inventário
+					cb()
+				end
+
+				gCanPlayerCloseInventory = true
+			end
+
+			RemoveAnimDict(DICT)
+        end)
+
+        --[=[
+        do -- DEBUG
+            CreateThread(function()
+                while true do
+                    Wait(0)
+
+                    for _, saddlebagPoint in ipairs(SADDLEBAG_POINTS) do
+
+                        local boneName in saddlebagPoint
+
+                        local boneIndex = GetEntityBoneIndexByName(horseEntity, boneName)
+
+                        local bonePos = GetWorldPositionOfEntityBone(horseEntity, boneIndex)
+
+                        Citizen.InvokeNative(`DRAW_LINE` & 0xFFFFFFFF, bonePos, bonePos + vec3(0.0, 0.0, 0.5), 255, 0, 0, 255)
+                    end
+                end
+            end)
+        end
+        --]=]
+		
+		return
+	end
+
+	cb()
+end
