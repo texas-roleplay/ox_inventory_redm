@@ -118,7 +118,7 @@ elseif shared.framework == 'redemrp' then
 		updatePlayerData(data)
 	end)
 	
-	AddEventHandler('client.playerHasLoaded', function()
+	AddEventHandler('playerStartedPlaying', function()
 		PlayerData.loaded = true
 	end)
 
