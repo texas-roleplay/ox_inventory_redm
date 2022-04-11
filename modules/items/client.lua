@@ -186,7 +186,7 @@ Item('apito', function(data, slot)
 end)
 
 Item('escova', function(data, slot)
-	TriggerEvent("ricx_horses:startbrush")
+	TriggerEvent("HORSES:startbrush")
 end)
 
 Item('baldes', function(data, slot)
@@ -771,7 +771,6 @@ Item('bberryseed', function(data, slot)
 		end
 	end)
 end)
-
 
 Item('seedlingseed', function(data, slot)
 	exports.nxt_inventory:useItem(data, function(data)
