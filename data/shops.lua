@@ -28,7 +28,18 @@ return {
 			{name = "sacovazio", price = 0.05},
 			{name = "campfiremed", price = 6.0},
 			{name = "campfiresmall", price = 4.0},
-			{name = "apito", price =  5.0},
+			{name = "apito", price =  5.0},			
+			
+			{name = "pote", price =  0.01},
+			{name = "potesal", price =  0.05},
+			{name = "potefermento", price =  0.10},
+			{name = "potefarinha", price =  0.10},
+			{name = "poteacucar", price =  0.10},
+			{name = "butter", price =  0.15},
+			{name = "ovo", price =  0.05},
+			{name = "xaropechocolate", price =  0.30},
+			{name = "essbaun", price =  0.30},
+			{name = "whipcream", price =  0.30},
 		}, locations = {
 			vec3(2825.75, -1318.34, 46.76),
 			vec3( 1328.48, -1292.83, 77.02),
@@ -63,7 +74,7 @@ return {
 			{name = "scratch_ticket", price = 1.50},
 
 		}, locations = {
-			vec3(1135.808, -982.281, 46.415),
+			vec3(-1303.076, 395.0508, 95.12),
 		}, targets = {
 			-- { loc = vec3(1134.9, -982.34, 46.41), length = 0.5, width = 0.5, heading = 96.0, minZ = 46.4, maxZ = 46.8, distance = 1.5 },
 		}
