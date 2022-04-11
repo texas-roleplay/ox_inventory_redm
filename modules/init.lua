@@ -52,7 +52,7 @@ if IsDuplicityVersion then
 		randomprices = GetConvar('inventory:randomprices', 'false') == 'true',
 		versioncheck = GetConvar('inventory:versioncheck', 'true') == 'true',
 		randomloot = GetConvar('inventory:randomloot', 'true') == 'true',
-		evidencegrade = GetConvarInt('inventory:evidencegrade', 2),
+		evidencegrade = GetConvarInt('inventory:evidencegrade', 3),
 		clearstashes = GetConvar('inventory:clearstashes', '6 MONTH'),
 		vehicleloot = json.decode(GetConvar('inventory:vehicleloot', [[
 			[
