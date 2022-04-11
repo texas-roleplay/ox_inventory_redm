@@ -1602,6 +1602,7 @@ RegisterNUICallback('giveItem', function(data, cb)
 	local input = Interface.Keyboard(shared.locale('send_title_confirmation'), {shared.locale('amount_items_to_give')})
 
 	if not input then
+		TriggerEvent('texas:notify:Simple', "Insira um valor que deseja enviar", 3000)
 		return
 	else
 		input = tonumber(input[1])
@@ -1655,9 +1656,7 @@ RegisterNUICallback('swapItems', function(data, cb)
 	if data.toType == "newdrop" then
 		local input = Interface.Keyboard(shared.locale('split_title_confirmation'), {shared.locale('amount_items_to_split')})
 
-		if not input then
-			return
-		else
+		if input then
 			input = tonumber(input[1])
 			data.count = input
 		end
@@ -1730,6 +1729,7 @@ RegisterNUICallback('buyItem', function(data, cb)
 	local input = Interface.Keyboard(shared.locale('buy_title_confirmation'), {shared.locale('amount_items_to_buy')})
 
 	if not input then
+		TriggerEvent("texas:notify:Simple", "Digite a quantidade que deseja comprar", 3000)
 		return
 	else
 		input = tonumber(input[1])

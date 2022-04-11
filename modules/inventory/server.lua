@@ -1355,13 +1355,13 @@ RegisterServerEvent('nxt_inventory:giveItem', function(slot, target, count)
 	local fromInventory = Inventories[source]
 	local toInventory = Inventories[target]
 	if count <= 0 then count = 1 end
-
-	if data.name == 'money' then
-		count *= 100
-	end
-
 	if toInventory.type == 'player' then
 		local data = fromInventory.items[slot]
+			
+		if data.name == 'money' then
+			count *= 100
+		end
+
 		local item = Items(data.name)
 		if not toInventory.open and Inventory.CanCarryItem(toInventory, item, count, data.metadata) then
 			if data and data.count >= count then
@@ -1370,16 +1370,16 @@ RegisterServerEvent('nxt_inventory:giveItem', function(slot, target, count)
 				Inventory.AddItem(toInventory, item, count, data.metadata)
 
 				if shared.framework == 'redemrp' then
-					if fromData.name == "money" then		
+					if data.name == "money" then		
 						local userSource = exports['redemrp_roleplay']:getPlayerFromId(fromInventory.id)
 
 						if userSource then	
-							userSource.UserCurrencyComponentRemove(tonumber(fromData.count/100))
+							userSource.UserCurrencyComponentRemove(tonumber(count/100))
 						end
 
 						local userTarget = exports['redemrp_roleplay']:getPlayerFromId(toInventory.id)
 						if userTarget then	
-							userTarget.UserCurrencyComponentAdd(tonumber(fromData.count/100))
+							userTarget.UserCurrencyComponentAdd(tonumber(count/100))
 						end
 					end
 				end
