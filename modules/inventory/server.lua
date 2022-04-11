@@ -1366,7 +1366,23 @@ RegisterServerEvent('nxt_inventory:giveItem', function(slot, target, count)
 		if not toInventory.open and Inventory.CanCarryItem(toInventory, item, count, data.metadata) then
 			if data and data.count >= count then
 				Inventory.RemoveItem(fromInventory, item, count, data.metadata, slot)
+
 				Inventory.AddItem(toInventory, item, count, data.metadata)
+
+				if shared.framework == 'redemrp' then
+					if fromData.name == "money" then		
+						local userSource = exports['redemrp_roleplay']:getPlayerFromId(fromInventory.id)
+
+						if userSource then	
+							userSource.UserCurrencyComponentRemove(tonumber(fromData.count/100))
+						end
+
+						local userTarget = exports['redemrp_roleplay']:getPlayerFromId(toInventory.id)
+						if userTarget then	
+							userTarget.UserCurrencyComponentAdd(tonumber(fromData.count/100))
+						end
+					end
+				end
 
 				Log(('%s deu %sx %s para %s'):format(fromInventory.label, count, data.name, toInventory.label),
 					fromInventory.owner,
