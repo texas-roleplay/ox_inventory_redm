@@ -1045,6 +1045,9 @@ RegisterNetEvent('nxt_inventory:closeInventory', function(server)
 		currentInventory = false
 		plyState.invOpen = false
 		defaultInventory.coords = nil
+
+		--[[ Resetar, o inventário foi fechado pelo próprio script. ]]
+		gCanPlayerCloseInventory = true
 	end
 end)
 
@@ -1917,7 +1920,7 @@ function StartInventoryAction(actionType, data, cb)
 		local closestSaddlebagPointDistance = nil
 		local closestSaddlebagPointPosition = nil
 
-		local playerPos = GetEntityCoords(PlayerPedId())
+		local playerPos = GetEntityCoords(playerPed)
 
 		for _, saddlebagPoint in ipairs(SADDLEBAG_POINTS) do
 
@@ -1926,6 +1929,7 @@ function StartInventoryAction(actionType, data, cb)
 			local boneIndex = GetEntityBoneIndexByName(horseEntity, boneName)
 
 			local bonePos = GetWorldPositionOfEntityBone(horseEntity, boneIndex)
+			-- local bonePos = GetPedBoneCoords(horseEntity, 50064)
 
 			local distanceToPlayer = #(playerPos - bonePos)
 
@@ -1945,7 +1949,7 @@ function StartInventoryAction(actionType, data, cb)
 			Citizen.Wait(0)
 		end
 
-		ClearPedTasks(playerPed)
+		ClearPedTasks(playerPed, true, false) --[[ Flags de acordo com script da rockstar ]]
 		ClearPedTasks(horseEntity)
 
         ClearPedSecondaryTask(playerPed)
@@ -1956,7 +1960,7 @@ function StartInventoryAction(actionType, data, cb)
         --[[ 2 ]] TaskPlayAnim(0, DICT, ANIM, 4.0, -4.0, -1, 4, 0.0, false, 0, false, 0, false)
 		CloseSequenceTask(taskSequenceId)
 		TaskPerformSequence(playerPed, taskSequenceId)
-		ClearSequenceTask(playerPed)
+		ClearSequenceTask(taskSequenceId)
 
         CreateThread(function()
             local sequenceProgress
