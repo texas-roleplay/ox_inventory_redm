@@ -831,7 +831,7 @@ local function registerCommands()
 										openInventory('glovebox', {id='glove'..vehicleUUID, model=vehHash, label="Alforge"})		
 									end			
 								end
-								if lastVehicle then
+								if lastVehicle and currentInventory then
 									currentInventory.entity = lastVehicle
 								end
 							end
