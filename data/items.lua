@@ -371,8 +371,8 @@ return {
 		["herb_prairie_poppy"]                                      = {  ["label"] = "Papoula da Pradaria",                                              ["description"] = "",                                                                                                    ["weight"] = 40,           ["image"] = "Prairie_Poppy",                     	},
 	
 		-- REMÉDIOS                                 
-		["tonico"]                                                  = {  ["label"] = "Garrafa de Tonico",                                                ["description"] = "Garrafa cheia de Tonico",                                                                             ["weight"] = 500,          ["image"] = "tonico",    consume = 1 },
-		["tonicop"]                                                 = {  ["label"] = "Garrafa de Tonico Potente",                                        ["description"] = "Garrafa cheia de Tonico Potente",                                                                     ["weight"] = 700,          ["image"] = "tonicoP",   consume = 1 },
+		["tonico"]                                                  = {  ["label"] = "Garrafa de Tonico",                                                ["description"] = "Garrafa cheia de Tonico",                                                       degrade = 15000                  ["weight"] = 500,          ["image"] = "tonico",    consume = 1 },
+		["tonicop"]                                                 = {  ["label"] = "Garrafa de Tonico Potente",                                        ["description"] = "Garrafa cheia de Tonico Potente",                                               degrade = 15000                  ["weight"] = 700,          ["image"] = "tonicoP",   consume = 1 },
 	
 		-- CAVALO
 		["hay"]                                                     = {  ["label"] = "Feno",                                                             ["description"] = "Feno para cavalos",                                                             degrade = 15000,                      ["weight"] = 50,           ["image"] = "hay",      consume = 1        },
