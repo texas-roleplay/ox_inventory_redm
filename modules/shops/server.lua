@@ -106,6 +106,7 @@ lib.callback.register('nxt_inventory:buyItem', function(source, data)
 	if data.toType == 'player' then
 		if data.count == nil then data.count = 1 end
 		local playerInv = Inventory(source)
+		local user = exports.redemrp_roleplay:getPlayerFromId(source)
 		local split = playerInv.open:match('^.*() ')
 		local shop = split and Shops[playerInv.open:sub(0, split-1)][tonumber(playerInv.open:sub(split+1))] or Shops[playerInv.open]
 		local fromData = shop.items[data.fromSlot]
@@ -140,7 +141,7 @@ lib.callback.register('nxt_inventory:buyItem', function(source, data)
 			local price = count * fromData.price
 
 			if toData == nil or (fromItem.name == toItem.name and fromItem.stack and table.matches(toData.metadata, metadata)) then
-				local canAfford = Inventory.GetItem(source, currency, false, true) >= price
+				local canAfford = user.getMoney() >= price
 				if canAfford then
 					local newWeight = playerInv.weight + (fromItem.weight + (metadata?.weight or 0)) * count
 					if newWeight > playerInv.maxWeight then
