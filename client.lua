@@ -1656,7 +1656,9 @@ RegisterNUICallback('swapItems', function(data, cb)
 	if data.toType == "newdrop" then
 		local input = Interface.Keyboard(shared.locale('split_title_confirmation'), {shared.locale('amount_items_to_split')})
 
-		if input then
+		if not input then
+			TriggerEvent("texas:notify:Simple", "Digite a quantidade que deseja dropar", 3000)
+		else
 			input = tonumber(input[1])
 			data.count = input
 		end
