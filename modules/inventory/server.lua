@@ -1868,6 +1868,7 @@ AddEventHandler('entityRemoved', function(entity)
 
 			Inventories['glove'..entityBag] = nil
 			Entity(entity).state.horseUUID = nil
+			Entity(entity).state.saddleBag = nil
 		end
 	end
 end)
