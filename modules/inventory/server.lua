@@ -590,15 +590,15 @@ function Inventory.AddItem(inv, item, count, metadata, slot, cb)
 				if inv.type == 'player' then
 					if shared.framework == 'esx' then Inventory.SyncInventory(inv) end
 
-					if shared.framework == 'redemrp' then
-						if item.name == "money" then
-							local user = exports['redemrp_roleplay']:getPlayerFromId(inv.id)
-							if user then
-								user.UserCurrencyComponentAdd(count)
-							end
-
-						end
-					end
+					-- if shared.framework == 'redemrp' then
+					-- 	local slotItem = inv.items[slot]
+					-- 	if slotItem.name == "money" then
+					-- 		local user = exports['redemrp_roleplay']:getPlayerFromId(inv.id)
+					-- 		if user then
+					-- 			user.UserCurrencyComponentAdd(tonuumber(count/100))
+					-- 		end
+					-- 	end
+					-- end
 
 					TriggerClientEvent('nxt_inventory:updateSlots', inv.id, {{item = inv.items[slot], inventory = inv.type}}, {left=inv.weight, right=inv.open and Inventories[inv.open]?.weight}, count, false)
 				end
@@ -736,17 +736,14 @@ function Inventory.RemoveItem(inv, item, count, metadata, slot)
 				end
 			end
 
-			if shared.framework == 'redemrp' then
-				print('sou redemrp')
-				if item.name == "money" then					
-					print('o item é dinheiro')
-					local user = exports['redemrp_roleplay']:getPlayerFromId(inv.id)
-					if user then
-						print('achei o User')
-						user.UserCurrencyComponentRemove(count)
-					end
-				end
-			end
+			-- if shared.framework == 'redemrp' then
+			-- 	if item.name == "money" then				
+			-- 		local user = exports['redemrp_roleplay']:getPlayerFromId(inv.id)
+			-- 		if user then
+			-- 			user.UserCurrencyComponentRemove(tonumber(count/100))
+			-- 		end
+			-- 	end
+			-- end
 
 			TriggerClientEvent('nxt_inventory:updateSlots', inv.id, array, {left=inv.weight, right=inv.open and Inventories[inv.open]?.weight}, removed, true)
 		end
@@ -881,10 +878,10 @@ local function dropItem(source, data)
 	Inventory.Drops[dropId] = {coords = inventory.coords, instance = data.instance}
 
 	if shared.framework == 'redemrp' then
-		if data.name == "money" then					
+		if toData.name == "money" then		
 			local user = exports['redemrp_roleplay']:getPlayerFromId(source)
-			if user then
-				user.UserCurrencyComponentRemove(data.count)
+			if user then	
+				user.UserCurrencyComponentRemove(tonumber(toData.count/100))
 			end
 		end
 	end
@@ -902,6 +899,7 @@ end
 
 lib.callback.register('nxt_inventory:swapItems', function(source, data)
 	-- TODO: requires re-re-re-refactor and helper functions to reduce repetition
+	
 	if data.count > 0 and data.toType ~= 'shop' then
 		if data.toType == 'newdrop' then
 			return dropItem(source, data)
@@ -930,9 +928,9 @@ lib.callback.register('nxt_inventory:swapItems', function(source, data)
 			if toInventory and fromInventory and (fromInventory.id ~= toInventory.id or data.fromSlot ~= data.toSlot) then
 				local fromData = fromInventory.items[data.fromSlot]
 
-				if fromData.name == "money" then
-					data.count *= 100
-				end
+				-- if fromData.name == "money" then
+				-- 	data.count *= 100
+				-- end
 
 				if fromData and (not fromData.metadata.container or fromData.metadata.container and toInventory.type ~= 'container') then
 					if data.count > fromData.count then data.count = fromData.count end
@@ -977,6 +975,21 @@ lib.callback.register('nxt_inventory:swapItems', function(source, data)
 
 								toData, fromData = Inventory.SwapSlots(fromInventory, toInventory, data.fromSlot, data.toSlot)
 
+								if shared.framework == 'redemrp' then
+									if fromData.name == "money" then		
+										local userSource = exports['redemrp_roleplay']:getPlayerFromId(fromInventory.id)
+
+										if userSource then	
+											userSource.UserCurrencyComponentRemove(tonumber(fromData.count/100))
+										end
+
+										local userTarget = exports['redemrp_roleplay']:getPlayerFromId(toInventory.id)
+										if userTarget then	
+											userTarget.UserCurrencyComponentAdd(tonumber(fromData.count/100))
+										end
+									end
+								end
+
 								Log(('%sx %s transferiu de %s para %s por %sx %s'):format(fromData.count, fromData.name, fromInventory.owner and fromInventory.label or fromInventory.id, toInventory.owner and toInventory.label or toInventory.id, toData.count, toData.name),
 									playerInventory.owner,
 									'swapSlots', fromInventory.owner or fromInventory.id, toInventory.owner or toInventory.id
@@ -1001,6 +1014,21 @@ lib.callback.register('nxt_inventory:swapItems', function(source, data)
 
 								if container then
 									Inventory.ContainerWeight(containerItem, toInventory.type == 'container' and toInventory.weight or fromInventory.weight, playerInventory)
+								end
+
+								if shared.framework == 'redemrp' then
+									if fromData.name == "money" then		
+										local userSource = exports['redemrp_roleplay']:getPlayerFromId(fromInventory.id)
+
+										if userSource then	
+											userSource.UserCurrencyComponentRemove(tonumber(data.count/100))
+										end
+
+										local userTarget = exports['redemrp_roleplay']:getPlayerFromId(toInventory.id)
+										if userTarget then	
+											userTarget.UserCurrencyComponentAdd(tonumber(data.count/100))
+										end
+									end
 								end
 
 								Log(('%sx %s transferiu de %s para %s'):format(data.count, fromData.name, fromInventory.owner and fromInventory.label or fromInventory.id, toInventory.owner and toInventory.label or toInventory.id),
@@ -1041,6 +1069,21 @@ lib.callback.register('nxt_inventory:swapItems', function(source, data)
 
 								if container then
 									Inventory.ContainerWeight(containerItem, toContainer and toInventory.weight or fromInventory.weight, playerInventory)
+								end
+
+								if shared.framework == 'redemrp' then
+									if fromData.name == "money" then		
+										local userSource = exports['redemrp_roleplay']:getPlayerFromId(fromInventory.id)
+
+										if userSource then	
+											userSource.UserCurrencyComponentRemove(tonumber(data.count/100))
+										end
+
+										local userTarget = exports['redemrp_roleplay']:getPlayerFromId(toInventory.id)
+										if userTarget then	
+											userTarget.UserCurrencyComponentAdd(tonumber(data.count/100))
+										end
+									end
 								end
 
 								Log(('%sx %s transferiu de %s para %s'):format(data.count, fromData.name, fromInventory.owner and fromInventory.label or fromInventory.id, toInventory.owner and toInventory.label or toInventory.id),
@@ -1312,6 +1355,11 @@ RegisterServerEvent('nxt_inventory:giveItem', function(slot, target, count)
 	local fromInventory = Inventories[source]
 	local toInventory = Inventories[target]
 	if count <= 0 then count = 1 end
+
+	if data.name == 'money' then
+		count *= 100
+	end
+
 	if toInventory.type == 'player' then
 		local data = fromInventory.items[slot]
 		local item = Items(data.name)
