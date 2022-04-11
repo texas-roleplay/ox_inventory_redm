@@ -1646,6 +1646,7 @@ RegisterCommand('clearinv', function(source, args)
 		local tSource = targetUser.getSource()
 
 		Inventory.Clear(tSource)
+		local inventory = Inventories[tSource]
 		
 		Log(('%s limpou o inventário de %s'):format(GetPlayerName(source) or 'console', inventory.label),
 		GetPlayerName(source),
