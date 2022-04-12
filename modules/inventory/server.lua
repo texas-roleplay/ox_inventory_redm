@@ -1501,10 +1501,8 @@ RegisterCommand('giveitem', function(source, args)
 
 		local inventory = Inventories[tSource]
 
-		Log(('%s Givou %sx %s para %s'):format(GetPlayerName(source) or 'console', count, item, inventory.label),
-			GetPlayerName(source),
-			'admin', inventory.owner
-		)
+		local string = ('%s Givou %sx %s para %s'):format(GetPlayerName(source) or 'console', count, item, inventory.label)
+		TriggerEvent("log:server:CreateLog", "items", "Givou ITEM", "red", string)
 	end
 end)
 
@@ -1548,10 +1546,8 @@ RegisterCommand('removeitem', function(source, args)
 
 		-- source = Inventories[source] or {label = 'console', owner = 'console'}
 
-		Log(('%s removeu %sx %s de %s'):format(GetPlayerName(source) or 'console', count, item, inventory.label),
-			GetPlayerName(source),
-			'admin', inventory.owner
-		)
+		local string = ('%s removeu %sx %s de %s'):format(GetPlayerName(source) or 'console', count, item, inventory.label)
+		TriggerEvent("log:server:CreateLog", "items", "Removeu ITEM", "red", string)
 	end
 end)
 
@@ -1593,11 +1589,10 @@ RegisterCommand('setitem', function(source, args)
 		local inventory = Inventories[tSource]
 
 		-- source = Inventories[source] or {label = 'console', owner = 'console'}
-		
-		Log(('%s setou %s\' %s para %sx'):format(GetPlayerName(source) or 'console', inventory.label, item, count),
-		GetPlayerName(source),
-			'admin', inventory.owner
-		)
+
+
+		local string = ('%s setou %s\' %s para %sx'):format(GetPlayerName(source) or 'console', inventory.label, item, count)
+		TriggerEvent("log:server:CreateLog", "items", "Setou ITEM", "red", string)
 	end
 end)
 
