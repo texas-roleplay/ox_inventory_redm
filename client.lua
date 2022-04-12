@@ -134,7 +134,11 @@ function openInventory(inv, data)
 			plyState.invOpen = true
 			SetInterval(client.interval, 100)
 			SetNuiFocus(true, true)
-			SetNuiFocusKeepInput(true)
+
+			if IS_GTAV then
+				SetNuiFocusKeepInput(true)
+			end
+
 			if IS_GTAV then
 				if client.screenblur then TriggerScreenblurFadeIn(0) end
 			end
