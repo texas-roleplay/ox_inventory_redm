@@ -899,7 +899,7 @@ end
 
 lib.callback.register('nxt_inventory:swapItems', function(source, data)
 	-- TODO: requires re-re-re-refactor and helper functions to reduce repetition
-	
+		
 	if data.count > 0 and data.toType ~= 'shop' then
 		if data.toType == 'newdrop' then
 			return dropItem(source, data)
@@ -985,7 +985,6 @@ lib.callback.register('nxt_inventory:swapItems', function(source, data)
 										end
 									end
 								end
-
 								Log(('%sx %s transferiu de %s para %s por %sx %s'):format(fromData.count, fromData.name, fromInventory.owner and fromInventory.label or fromInventory.id, toInventory.owner and toInventory.label or toInventory.id, toData.count, toData.name),
 									playerInventory.owner,
 									'swapSlots', fromInventory.owner or fromInventory.id, toInventory.owner or toInventory.id
@@ -1278,16 +1277,7 @@ end
 
 local function saveInventories()
 	for id, inv in pairs(Inventories) do
-
-		if inv.player then
-			inv.open = true
-
-			--if not inv.datastore and inv.changed then
-				Inventory.Save(inv)
-			--end
-
-			inv.open = false
-		end
+		Inventory.Save(inv)
 	end
 end
 
