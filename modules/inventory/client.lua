@@ -111,12 +111,22 @@ end
 
 Inventory.Stashes = setmetatable(data('stashes'), {
 	__call = function(self)
+
+		Wait(0)
+
 		for id, stash in pairs(self) do
 			if stash.jobs then stash.groups = stash.jobs end
 
-			if shared.qtarget and stash.target then
-				exports.qtarget:RemoveZone(stash.name)
-				exports.qtarget:AddBoxZone(stash.name, stash.target.loc, stash.target.length or 0.5, stash.target.width or 0.5,
+			print('stash.name', stash.name, shared.qtarget, stash.target, stash.groups)
+
+			-- shared.qtarget = true
+
+			if --[[ shared.qtarget and ]] stash.target then
+
+				print('created qtarget')
+
+				exports.target:RemoveZone(stash.name)
+				exports.target:AddBoxZone(stash.name, stash.target.loc, stash.target.length or 0.5, stash.target.width or 0.5,
 				{
 					name = stash.name,
 					heading = stash.target.heading or 0.0,
@@ -128,12 +138,14 @@ Inventory.Stashes = setmetatable(data('stashes'), {
 						{
 							icon = stash.target.icon or 'fas fa-warehouse',
 							label = stash.target.label or shared.locale('open_stash'),
-							job = stash.groups,
 							action = function()
+
+								print('open stash', id)
 								OpenStash({id=id})
 							end
 						},
 					},
+					job = {"all"},
 					distance = stash.target.distance or 3.0
 				})
 			end

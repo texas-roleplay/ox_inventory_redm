@@ -1,14 +1,14 @@
 return {
-	{
+	['hotel:valentine'] = {
 		coords = vec3(-325.4, 767.02, 122.086),
 		name = 'hotel:valentine',
 		label = 'Baú do Hotel',
 		owner = true,
 		slots = 71,
 		weight = 2500000,
-		groups = {}
 	},
 
+	--[[
 	{
 		coords = vec3(451.25, -994.28, 30.69),
 		target = {
@@ -45,4 +45,5 @@ return {
 		weight = 70000,
 		groups = {'doctor', 'doctorchefe'}
 	},
+	--]]
 }
