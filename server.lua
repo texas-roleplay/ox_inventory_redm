@@ -70,13 +70,9 @@ lib.callback.register('nxt_inventory:openInventory', function(source, inv, data)
 		right = nil
 	end
 
-	print('openinventory 0', source, inv, data)
-
 	if data then
 		if inv == 'stash' then			
 			right = Inventory(data, left)
-
-			print('openinventory 0', right)
 
 			if right == false then 
 					return false

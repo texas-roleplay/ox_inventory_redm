@@ -1111,6 +1111,38 @@ lib.callback.register('nxt_inventory:swapItems', function(source, data)
 						end
 					end
 
+					--[[ Diminuir a durabilidade do item caso um dos inventários seja de player e o dono do inventário seja um policial. ]]
+					if toInventory.type == 'otherplayer' or fromInventory.type == 'otherplayer' then
+						local isWeapon = toData?.metadata?.durability ~= nil
+
+						if isWeapon then
+							local toPlayerId = toInventory.id
+							local fromPlayerId = fromInventory.id
+
+							local toUser = exports.redemrp_roleplay:getPlayerFromId(toPlayerId)
+							local fromUser = exports.redemrp_roleplay:getPlayerFromId(fromPlayerId)
+
+							local isACopToUser = toUser.getJobName() == 'sheriff'
+							local isACopFromUser = fromUser.getJobName() == 'sheriff'
+
+							local isSending = toInventory.type == 'otherplayer'
+							local isTaking = not isSending
+
+							local isAnyUserACop = isACopToUser or isACopFromUser
+
+							if isAnyUserACop then
+								local shouldDecreaseDurability = 
+																(isSending and isACopFromUser)
+																or
+																(isTaking and isACopFromUser)
+
+								if shouldDecreaseDurability then
+									toData.metadata.durability = 8.0 --[[ 8% ]]
+								end
+							end
+						end
+					end
+
 					fromInventory.items[data.fromSlot] = fromData
 					toInventory.items[data.toSlot] = toData
 
