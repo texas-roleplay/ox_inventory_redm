@@ -112,8 +112,6 @@ if shared.framework == 'redemrp' then
 
 		server.accounts.money = (player.getMoney() * 100)
 		server.accounts.gold = player.getGold()
-		
-		Inventory.SetItem(source, 'money', server.accounts.money, nil)
 
 		if player then
 			setPlayerInventory(player, player?.inventory)
