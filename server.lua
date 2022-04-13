@@ -63,7 +63,6 @@ lib.callback.register('nxt_inventory:openInventory', function(source, inv, data)
 	local left = Inventory(source)
 	local right = left.open and Inventory(left.open)
 
-
 	if right then
 		if right.open ~= source then return end
 		right:set('open', false)
@@ -73,14 +72,10 @@ lib.callback.register('nxt_inventory:openInventory', function(source, inv, data)
 
 	if data then
 		if inv == 'stash' then			
-			right = Inventory(data.id, left)
+			right = Inventory(data, left)
 
 			if right == false then 
-				if data.slots then
-					right = Inventory.Create(data.id, data.label, inv, tonumber(data.slots), 0, tonumber(data.weight), false)
-				else
-					return false 
-				end
+					return false
 			end
 		elseif type(data) == 'table' then			
 			if data.class or data.model then
