@@ -431,7 +431,7 @@ local function useSlot(slot)
 				local maxAmmo = GetMaxAmmoInClip(playerPed, currentWeaponHash, true)
 				local currentAmmo = GetAmmoInPedWeapon(playerPed, currentWeapon.hash)
 
-				local isABow = currentWeaponHash == `WEAPON_BOW`
+				local isABow = currentWeaponHash == `WEAPON_BOW` or currentWeaponHash == `WEAPON_BOW_IMPROVED`
 
 				if IS_RDR3 then
 					if isABow then
