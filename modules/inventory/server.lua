@@ -888,8 +888,8 @@ local function dropItem(source, data)
 	TriggerClientEvent('nxt_inventory:createDrop', -1, dropId, Inventory.Drops[dropId], playerInventory.open and source, slot)
 
 	Log(('%sx %s transferiu de %s para %s'):format(data.count, toData.name, playerInventory.label, dropId),
-		playerInventory.owner,
-		'swapSlots', playerInventory.owner, dropId
+		playerInventory.id,
+		'swapSlots', playerInventory.id, dropId
 	)
 
 	if shared.framework == 'esx' then Inventory.SyncInventory(playerInventory) end
@@ -986,8 +986,8 @@ lib.callback.register('nxt_inventory:swapItems', function(source, data)
 									end
 								end
 								Log(('%sx %s transferiu de %s para %s por %sx %s'):format(fromData.count, fromData.name, fromInventory.owner and fromInventory.label or fromInventory.id, toInventory.owner and toInventory.label or toInventory.id, toData.count, toData.name),
-									playerInventory.owner,
-									'swapSlots', fromInventory.owner or fromInventory.id, toInventory.owner or toInventory.id
+									playerInventory.id,
+									'swapSlots', fromInventory.id, toInventory.id
 								)
 
 							else return end
@@ -1027,8 +1027,8 @@ lib.callback.register('nxt_inventory:swapItems', function(source, data)
 								end
 
 								Log(('%sx %s transferiu de %s para %s'):format(data.count, fromData.name, fromInventory.owner and fromInventory.label or fromInventory.id, toInventory.owner and toInventory.label or toInventory.id),
-									playerInventory.owner,
-									'swapSlots', fromInventory.owner or fromInventory.id, toInventory.owner or toInventory.id
+									playerInventory.id,
+									'swapSlots', fromInventory.id, toInventory.id
 								)
 
 							end
@@ -1082,8 +1082,8 @@ lib.callback.register('nxt_inventory:swapItems', function(source, data)
 								end
 
 								Log(('%sx %s transferiu de %s para %s'):format(data.count, fromData.name, fromInventory.owner and fromInventory.label or fromInventory.id, toInventory.owner and toInventory.label or toInventory.id),
-									playerInventory.owner,
-									'swapSlots', fromInventory.owner or fromInventory.id, toInventory.owner or toInventory.id
+									playerInventory.id,
+									'swapSlots', fromInventory.id, toInventory.id
 								)
 
 							end
@@ -1403,8 +1403,8 @@ RegisterServerEvent('nxt_inventory:giveItem', function(slot, target, count)
 				end
 
 				Log(('%s deu %sx %s para %s'):format(fromInventory.label, count, data.name, toInventory.label),
-					fromInventory.owner,
-					'giveItem', toInventory.owner
+					fromInventory.id,
+					'giveItem', toInventory.id
 				)
 
 			end
@@ -1678,7 +1678,7 @@ RegisterCommand('takeinv', function(source, args)
 		
 		Log(('%s confiscou o inventário de %s'):format(GetPlayerName(source) or 'console', inventory.label),
 		GetPlayerName(source),
-			'admin', inventory.owner
+			'admin', inventory.id
 		)
 	end
 end)
@@ -1703,8 +1703,8 @@ RegisterCommand('returninv', function(source, args)
 		local inventory = Inventories[tSource]
 		
 		Log(('%s devolveu o inventário de %s'):format(GetPlayerName(source) or 'console', inventory.label),
-		GetPlayerName(source),
-			'admin', inventory.owner
+			source,
+			'admin', inventory.id
 		)
 	end
 end)
@@ -1729,8 +1729,8 @@ RegisterCommand('clearinv', function(source, args)
 		local inventory = Inventories[tSource]
 		
 		Log(('%s limpou o inventário de %s'):format(GetPlayerName(source) or 'console', inventory.label),
-		GetPlayerName(source),
-			'admin', inventory.owner
+			source,
+			'admin', inventory.id
 		)
 	end
 end)
@@ -1775,7 +1775,7 @@ RegisterCommand('showinv', function(source, args)
 		TriggerClientEvent('nxt_inventory:viewInventory', source, inventory)
 		
 		Log(('%s abriu o inventário de %s'):format(GetPlayerName(source) or 'console', inventory.label),
-		GetPlayerName(source),
+		 	source,
 			'admin', inventory.owner
 		)
 	end
@@ -1889,3 +1889,4 @@ AddEventHandler('entityRemoved', function(entity)
 		end
 	end
 end)
+

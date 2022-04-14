@@ -38,6 +38,10 @@ else
 
 	if webhook ~= '' then
 		function server.logs(message, source, ...)
+			print(source)
+			local user = exports.redemrp_roleplay:getPlayerFromId(source)			
+			local characterName = ('%s %s'):format(user?.getFirstname() or '?', user?.getLastname() or '?')
+
 			PerformHttpRequest(webhook, function(status)
 				if status ~= 204 then
 					if status == 429 then
@@ -50,11 +54,17 @@ else
 				username = shared.resource,
 				embeds = {{
 					color = 16705372,
-					title = source,
-					description = message,
+					title = string.strjoin(', ', string.tostringall(...)),
+
+					author =
+                    {
+                        name = ('%s ( %d )'):format(characterName, user?.getId() or 0),
+                        -- url = 'https://www.reddit.com/r/Pizza/',
+                        icon_url = 'https://camo.githubusercontent.com/06d7964b046d9a166e6b825789674e000ef2bdf88c2c1d35d1bdc75b84608795/687474703a2f2f66656d67612e636f6d2f696d616765732f73616d706c65732f75695f74657874757265732f67656e657269635f74657874757265732f74656d705f70656473686f742e706e67'
+                    },
 					fields = ... and {{
-						name = 'Tags',
-						value = string.strjoin(', ', string.tostringall(...))
+						name = 'Descrição',
+						value = message
 					}},
 					footer = {
 						text = os.date(),
