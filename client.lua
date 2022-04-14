@@ -1056,6 +1056,7 @@ RegisterNetEvent('nxt_inventory:closeInventory', function(server)
 end)
 
 local function updateInventory(items, weight)
+	
 	-- todo: combine iterators
 	local changes = {}
 	local itemCount = {}
@@ -1099,7 +1100,7 @@ local function updateInventory(items, weight)
 
 	for item, count in pairs(itemCount) do
 		local data = Items[item]
-
+		
 		if count < 0 then
 			data.count += count
 
@@ -1125,6 +1126,15 @@ local function updateInventory(items, weight)
 				data.client.add(data.count)
 			end
 		end
+
+		if item == 'compass' then 
+			if data.count >= 1 then
+				TriggerEvent("HUD:Client:UsedCompass", true)
+			else
+				TriggerEvent("HUD:Client:UsedCompass", false)
+			end
+		end
+
 	end
 
 	client.setPlayerData('inventory', PlayerData.inventory)
