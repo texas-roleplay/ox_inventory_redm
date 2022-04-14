@@ -89,12 +89,12 @@ elseif shared.framework == 'esx' then
 
 elseif shared.framework == 'redemrp' then
 
-	function client.setPlayerData(key, value)
-		PlayerData[key] = value
-		TriggerServerEvent("redemrp:SetPlayerData", key, value)
-	end
+	-- function client.setPlayerData(key, value)
+	-- 	PlayerData[key] = value
+	-- 	TriggerServerEvent("redemrp:SetPlayerData", key, value)
+	-- end
 	
-	RegisterNetEvent('net.setCharacterData', function(data)		
+	RegisterNetEvent('net.setCharacterData', function(data)
 		if PlayerData.loaded then
 			updatePlayerData(data)
 		end
@@ -102,7 +102,6 @@ elseif shared.framework == 'redemrp' then
 	
 	function updatePlayerData(data)
 		for key, data in pairs(data) do
-
 			if key == 'job' then
 				key = 'groups'
 				value = { [data.name] = data.grade.level }
@@ -115,6 +114,8 @@ elseif shared.framework == 'redemrp' then
 
 	RegisterNetEvent('JOB:Client:OnJobUpdate', function(data)
 		PlayerData.job = data
+
+		client.setPlayerData('groups',  { [data.name] = data.grade.level })
 		updatePlayerData(data)
 	end)
 	
