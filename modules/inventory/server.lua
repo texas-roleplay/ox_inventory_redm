@@ -1284,7 +1284,6 @@ if shared.framework == 'esx' then
 else
 	AddEventHandler('playerDropped', function()
 		Inventory.Save(source)
-		Wait(100)
 		playerDropped(source)
 	end)
 
