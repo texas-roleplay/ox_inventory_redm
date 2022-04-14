@@ -153,7 +153,7 @@ lib.callback.register('nxt_inventory:buyItem', function(source, data)
 					end
 
 					if currency == "money" and shared.framework == "redemrp" then
-						Inventory.RemoveItem(source, currency, (price * 100))
+						user.removeMoney(price)
 					end
 
 					if shared.framework == 'esx' then Inventory.SyncInventory(playerInv) end
