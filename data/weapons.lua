@@ -15,7 +15,7 @@ return {
         },
         ['WEAPON_REVOLVER_DOUBLEACTION_GAMBLER'] = {
             label = 'Revolver Double-action com Travamento',
-            weight = 15120000,
+            weight = 1200,
             durability = 0.03,
             ammoname = 'ammo_revolver',
         },
