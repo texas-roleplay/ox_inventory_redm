@@ -586,6 +586,7 @@ function Inventory.AddItem(inv, item, count, metadata, slot, cb)
 			if slot then
 				Inventory.SetSlot(inv, item, count, metadata, slot)
 				inv.weight = inv.weight + (item.weight + (metadata?.weight or 0)) * count
+				success = true
 
 				if inv.type == 'player' then
 					if shared.framework == 'esx' then Inventory.SyncInventory(inv) end
@@ -766,7 +767,7 @@ function Inventory.CanCarryItem(inv, item, count, metadata)
 			if count == nil then count = 1 end
 			local newWeight = inv.weight + (item.weight * count)
 
-			if newWeight >= inv.maxWeight then
+			if newWeight > inv.maxWeight then
 				TriggerClientEvent('nxt_inventory:notify', inv.id, {type = 'error', text = shared.locale('cannot_carry')})
 				return false
 			end
