@@ -159,11 +159,9 @@ function Inventory.SlotWeight(item, slot)
 	local weight = item.weight * slot.count
 	if not slot.metadata then slot.metadata = {} end
 
-	--[[
 	if item.ammoname and slot.metadata.ammo then
 		weight += (Items(item.ammoname).weight * slot.metadata.ammo)
 	end
-	--]]
 
 	if slot.metadata.components then
 		for i = 1, #slot.metadata.components do
