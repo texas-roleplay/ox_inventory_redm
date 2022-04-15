@@ -986,7 +986,6 @@ if IS_RDR3 then
 				
 				DisableControlAction(0, 0xE6F612E4)
 				DisableControlAction(0, 0x1CE6D9EB)
-				DisableControlAction(0, 0x1CE6D9EB)
 				DisableControlAction(0, 0x8F9F9E58)
 				DisableControlAction(0, 0xAB62E997)
 				DisableControlAction(0, 0xA1FDE2A6)
@@ -1018,7 +1017,6 @@ end
 Citizen.CreateThread(function()
 	while true do 
 		DisableControlAction(0, 0xE6F612E4)
-		DisableControlAction(0, 0x1CE6D9EB)
 		DisableControlAction(0, 0x1CE6D9EB)
 		DisableControlAction(0, 0x8F9F9E58)
 		DisableControlAction(0, 0xAB62E997)
