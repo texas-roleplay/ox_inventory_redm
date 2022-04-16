@@ -104,7 +104,7 @@ local function minimal(inv)
 				name = v.name,
 				count = v.count,
 				slot = k,
-				metadata = next(v.metadata) and v.metadata or nil
+				metadata = v?.metadata or nil -- next(v?.metadata) and v?.metadata or nil
 			}
 		end
 	end
