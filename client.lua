@@ -1617,13 +1617,16 @@ RegisterNUICallback('removeComponent', function(data, cb)
 	end
 end)
 
-RegisterNUICallback('inspectWeapon', function(data, cb)
-	useSlot(data.slot)
-	cb(1)
-	
+RegisterNUICallback('inspectWeapon', function(data, cb)	
 	TriggerEvent('nxt_inventory:closeInventory')
 
-	exports.gunsmith:weaponInspectTask()
+	if currentWeapon then
+		exports.gunsmith:weaponInspectTask()
+	else
+		TriggerClientEvent("texas:notify:Simple", "Você precisa estar com essa arma em mãos", 3200)
+	end
+	
+	cb(1)
 end)
 
 RegisterNUICallback('useItem', function(slot, cb)
