@@ -1756,12 +1756,6 @@ RegisterCommand('clearinv', function(source, args)
 end)
 
 RegisterCommand('saveinv', function(source, args)
-	local targetId = tonumber(args[1])
-
-	if not targetId then
-		return
-	end
-
 
 	if not hasAdminPermission(source) then
 		return
