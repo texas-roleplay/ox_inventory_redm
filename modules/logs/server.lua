@@ -38,7 +38,6 @@ else
 
 	if webhook ~= '' then
 		function server.logs(message, source, ...)
-			print(source)
 			local user = exports.redemrp_roleplay:getPlayerFromId(source)			
 			local characterName = ('%s %s'):format(user?.getFirstname() or '?', user?.getLastname() or '?')
 
