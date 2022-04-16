@@ -1617,8 +1617,8 @@ RegisterNUICallback('removeComponent', function(data, cb)
 	end
 end)
 
-RegisterNUICallback('inspectWeapon', function(slot, cb)
-	useSlot(slot)
+RegisterNUICallback('inspectWeapon', function(data, cb)
+	useSlot(data.slot)
 	cb(1)
 	
 	TriggerEvent('nxt_inventory:closeInventory')
