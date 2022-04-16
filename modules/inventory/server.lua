@@ -1360,13 +1360,22 @@ SetInterval(function()
 	MySQL:saveInventories(parameters[1], parameters[2], parameters[3])
 end, 600000)
 
+-- AddEventHandler('txAdmin:events:scheduledRestart', function(eventData)
+-- 	if eventData.secondsRemaining == 60 then
+-- 		SetTimeout(50000, function()
+-- 			saveInventories(true)
+-- 		end)
+-- 	end
+-- end)
 
 AddEventHandler('txAdmin:events:scheduledRestart', function(eventData)
-	if eventData.secondsRemaining == 60 then
-		SetTimeout(50000, function()
+    if eventData.secondsRemaining == 60 then
+        CreateThread(function()
+            Wait(45000)
+            print("Salvando inventário de todos!")
 			saveInventories(true)
-		end)
-	end
+        end)
+    end
 end)
 
 AddEventHandler('onResourceStop', function(resource)
