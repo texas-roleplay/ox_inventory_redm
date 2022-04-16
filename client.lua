@@ -1520,13 +1520,19 @@ RegisterNetEvent('nxt_inventory:setPlayerInventory', function(currentDrops, inve
 
 							currentWeapon.metadata.ammo = (currentWeapon.metadata.ammo < currentAmmo) and 0 or currentAmmo
 
+							local weaponObj = Citizen.InvokeNative(0x3B390A939AF0B5FC, playerPed, 0)
+							
+							Citizen.InvokeNative(0xA9EF4AD10BDDDB57, weaponObj, weaponDegradation, false) -- SetWeaponSoot
+							Citizen.InvokeNative(0xE22060121602493B, weaponObj, weaponDegradation, false) -- SetWeaponDamage
+							Citizen.InvokeNative(0xA7A57E89E965D839, weaponObj, weaponDegradation) -- SetWeaponDegradation
+
 							if currentAmmo <= 0 then
 								ClearPedTasks(playerPed)
 								SetCurrentPedWeapon(playerPed, currentWeapon.hash, true)
 								SetPedCurrentWeaponVisible(playerPed, true, false, false, false)
 								if currentWeapon?.ammo and shared.autoreload and not Interface.ProgressActive and not IsPedRagdoll(playerPed) and not IsPedFalling(playerPed) then
 									currentWeapon.timer = 0
-									local ammo = Inventory.Search(1, currentWeapon.ammo)
+									local ammo = Inventory.Search(1, currentWeapon.ammo)						
 
 									if ammo[1] then
 										TriggerServerEvent('nxt_inventory:updateWeapon', 'ammo', currentWeapon.metadata.ammo)
@@ -1609,6 +1615,15 @@ RegisterNUICallback('removeComponent', function(data, cb)
 	else
 		TriggerServerEvent('nxt_inventory:updateWeapon', 'component', data)
 	end
+end)
+
+RegisterNUICallback('inspectWeapon', function(slot, cb)
+	useSlot(slot)
+	cb(1)
+	
+	TriggerEvent('nxt_inventory:closeInventory')
+
+	exports.gunsmith:weaponInspectTask()
 end)
 
 RegisterNUICallback('useItem', function(slot, cb)

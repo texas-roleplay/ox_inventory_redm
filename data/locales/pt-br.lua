@@ -6,6 +6,7 @@ return {
 	['ui_drop'] = "Soltar",
 	['ui_removeattachments'] = "Remover acessórios",
 	['ui_copy'] = "Copiar numero de serial",
+	['ui_inspect'] = "Inspecionar arma",
 	-- Tooltip
 	['ui_durability'] = "Durabilidade",
 	['ui_registered'] = "Registro",

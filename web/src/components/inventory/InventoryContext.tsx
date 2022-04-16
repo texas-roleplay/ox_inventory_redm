@@ -32,6 +32,9 @@ const InventoryContext: React.FC<{
         break;
       case 'remove':
         fetchNui('removeComponent', { component: data?.component, slot: data?.slot });
+        break; 
+      case 'inspect':
+        fetchNui('inspectWeapon', { name: props.item.name, slot: props.item.slot });
         break;
       case 'copy':
         data?.serial && setClipboard(data.serial);
@@ -73,6 +76,9 @@ const InventoryContext: React.FC<{
                 data={{ action: 'copy', serial: props.item.metadata.serial }}
               >
                 {Locale.ui_copy}
+              </Item>
+              <Item onClick={handleClick} data={{ action: 'inspect' }}>
+                {Locale.ui_inspect}
               </Item>
               {props.item.metadata?.components?.length > 0 && (
                 <Submenu label={Locale.ui_removeattachments}>
