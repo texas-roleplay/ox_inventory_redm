@@ -1269,6 +1269,7 @@ local function playerDropped(source)
 		if openInventory then
 			openInventory.open = false
 		end
+		Inventory.Save(source)
 		Inventories[source] = nil
 	end
 end
@@ -1284,7 +1285,6 @@ if shared.framework == 'esx' then
 	end)
 else
 	AddEventHandler('playerDropped', function()
-		Inventory.Save(source)
 		playerDropped(source)
 	end)
 
@@ -1308,11 +1308,13 @@ local function prepareSave(inv)
 	end
 end
 
--- local function saveInventories()
--- 	for id, inv in pairs(Inventories) do
--- 		print('id', id)
--- 	end
--- end
+local function savePlayersInventories()
+	for id, inv in pairs(Inventories) do
+		if inv.player then
+			Inventory.Save(id)
+		end
+	end
+end
 
 function saveInventories(lock)
 	local parameters = { {}, {}, {} }
@@ -1326,11 +1328,10 @@ function saveInventories(lock)
 			local i, data = prepareSave(inv)
 			size[i] += 1
 			parameters[i][size[i]] = data
-			
-		elseif inv.player then
-			Inventory.Save(inv)
 		end
 	end
+
+	savePlayersInventories()
 
 	MySQL:saveInventories(parameters[1], parameters[2], parameters[3])
 end
@@ -1352,13 +1353,12 @@ SetInterval(function()
 			if (inv.datastore or inv.owner) and time - inv.time >= 3000 then
 				Inventory.Remove(inv.id, inv.type)
 			end
-		elseif inv.player then
-			Inventory.Save(inv)
 		end
 	end
+	savePlayersInventories()
 
 	MySQL:saveInventories(parameters[1], parameters[2], parameters[3])
-end, 10000)
+end, 600000)
 
 
 AddEventHandler('txAdmin:events:scheduledRestart', function(eventData)
@@ -1766,7 +1766,6 @@ RegisterCommand('saveinv', function(source, args)
 	if not hasAdminPermission(source) then
 		return
 	end
-
 
 	saveInventories()
 	

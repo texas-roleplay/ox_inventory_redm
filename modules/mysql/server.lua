@@ -72,6 +72,7 @@ function MySQL:loadTrunk(plate)
 end
 
 function MySQL:saveInventories(trunks, gloveboxes, stashes)
+
 	if #trunks > 0 then
 		self.prepare(Query.UPDATE_TRUNK, trunks)
 	end
