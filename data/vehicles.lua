@@ -202,6 +202,7 @@ if IS_RDR3 then
 				[`a_c_horse_ardennes_strawberryroan`] = {15000},
 				[`a_c_horse_ardennes_irongreyroan`] = {21000},
 				[`a_c_horse_ardennes_bayroan`] = {20000},
+				[`A_C_HORSE_GANG_BILL`] = {20000},
 			
 				-- Belga
 				[`a_c_horse_belgian_blondchestnut`] = {12000},
