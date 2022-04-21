@@ -984,13 +984,6 @@ if IS_RDR3 then
 
 				:: skip_hotkey_processing ::
 				
-				DisableControlAction(0, 0xE6F612E4)
-				DisableControlAction(0, 0x1CE6D9EB)
-				DisableControlAction(0, 0x8F9F9E58)
-				DisableControlAction(0, 0xAB62E997)
-				DisableControlAction(0, 0xA1FDE2A6)
-				DisableControlAction(0, `INPUT_OPEN_WHEEL_MENU`)
-				
 				if IsDisabledControlJustPressed(0, `INPUT_OPEN_WHEEL_MENU`) then -- tab
 					if not client.weaponWheel and not IsPauseMenuActive() then
 						SendNUIMessage({ action = 'toggleHotbar' })
@@ -1012,20 +1005,6 @@ if IS_RDR3 then
 		end
 	end)
 end
-
-
-Citizen.CreateThread(function()
-	while true do 
-		DisableControlAction(0, 0xE6F612E4)
-		DisableControlAction(0, 0x1CE6D9EB)
-		DisableControlAction(0, 0x8F9F9E58)
-		DisableControlAction(0, 0xAB62E997)
-		DisableControlAction(0, 0xA1FDE2A6)
-		DisableControlAction(0, `INPUT_OPEN_WHEEL_MENU`)
-		Wait(0)
-	end
-end)
-
 
 RegisterNetEvent('nxt_inventory:closeInventory', function(server)
 	if invOpen then
@@ -1474,9 +1453,14 @@ RegisterNetEvent('nxt_inventory:setPlayerInventory', function(currentDrops, inve
 					DisableControlAction(0, 140, true)
 				end
 
+				--[[
+				-- Remover coronhada? mas buga o prompt de 'Matar'
+				-- nos animais ao laçar eles.
+
 				if IS_RDR3 then					
 					DisableControlAction(0, `INPUT_MELEE_ATTACK`, true)
 				end
+				--]]
 
 				if currentWeapon.metadata.durability <= 0 then
 					DisablePlayerFiring(playerId, true)
