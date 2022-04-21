@@ -8,6 +8,26 @@ return {
 		weight = 2500000,
 	},
 
+	['Bau:Padeiro'] = {
+		coords = vec3(-1862.042, -1730.895, 89.25),
+		name = 'Bau:Padeiro',
+		label = 'Baú da Padaria',
+		owner = nil,
+		slots = 100,
+		weight = 5000000,
+		groups = {['padeiro'] = 0}
+	},
+
+	-- ['Padeiro:BlackWater'] = {
+	-- 	coords = vec3(-2778.04, -3048.852, -8.70),
+	-- 	name = 'Padeiro:BlackWater',
+	-- 	label = 'Baú da Padaria',
+	-- 	owner = false,
+	-- 	slots = 100,
+	-- 	weight = 5000000,
+	-- 	groups = {'padeiro'}
+	-- },
+
 	--[[
 	{
 		coords = vec3(451.25, -994.28, 30.69),
