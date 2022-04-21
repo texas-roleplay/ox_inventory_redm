@@ -59,8 +59,7 @@ if IsDuplicityVersion then
 				["corn", 1, 1],
 				["water", 1, 1],
 				["cotton", 1, 2, 50],
-				["balde", 1, 1, 5],
-				["bandage", 1, 1]
+				["balde", 1, 1, 5]
 			]
 		]])),
 		dumpsterloot = json.decode(GetConvar('inventory:dumpsterloot', [[
