@@ -1471,7 +1471,7 @@ RegisterServerEvent('nxt_inventory:updateWeapon', function(action, value, slot)
 
 			if action == 'load' and weapon.metadata.durability > 0 then
 				local ammo = Items(weapon.name).ammoname
-				local diff = value - weapon.metadata.ammo
+				local diff = value - weapon.metadata?.ammo
 				Inventory.RemoveItem(inventory, ammo, diff)
 				weapon.metadata.ammo = value
 				weapon.weight = Inventory.SlotWeight(item, weapon)
@@ -1773,7 +1773,7 @@ RegisterCommand('saveinv', function(source, args)
 	saveInventories()
 	
 	Log(('%s forçou salvar o inventário de todos'):format(GetPlayerName(source) or 'console'),
-		GetPlayerName(source)
+		source
 	)
 end)
 
