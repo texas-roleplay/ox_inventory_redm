@@ -127,14 +127,12 @@ return {
 
 	['ammo_case'] = {
 		label = 'Caixa de Munições',
+		description = 'Utilizado para armazenar suas munições.',
 		weight = 220,
 		stack = false,
 		client = {
-			status = { hunger = 200000 },
-			anim = 'eating',
-			prop = 'burger',
 			usetime = 2500,
-			notification = 'You ate a delicious burger'
+			notification = 'Abrindo as caixa'
 		},
 	},
 
