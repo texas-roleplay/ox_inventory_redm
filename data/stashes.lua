@@ -18,6 +18,15 @@ return {
 		groups = {['padeiro'] = 0}
 	},
 
+	['indio:reserva'] = {
+		coords = vec3(440.827, 2236.014, 248.43),
+		name = 'indio:reserva',
+		label = 'Baú da Reserva',
+		owner = nil,
+		slots = 100,
+		weight = 5000000,
+		groups = {['indio'] = 0}
+	},
 	-- ['Padeiro:BlackWater'] = {
 	-- 	coords = vec3(-2778.04, -3048.852, -8.70),
 	-- 	name = 'Padeiro:BlackWater',
