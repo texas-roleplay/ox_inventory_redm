@@ -27,6 +27,17 @@ return {
 		weight = 5000000,
 		groups = {['indio'] = 0}
 	},
+
+	['static:smuggling:chest'] = {
+		coords = vec3(2272.342, 1459.121, 84.290),
+		name = 'static:smuggling:chest',
+		label = 'Baú',
+		owner = nil,
+		slots = 100,
+		weight = 5000000,
+		groups = {['raven'] = 0}
+	},
+	
 	-- ['Padeiro:BlackWater'] = {
 	-- 	coords = vec3(-2778.04, -3048.852, -8.70),
 	-- 	name = 'Padeiro:BlackWater',

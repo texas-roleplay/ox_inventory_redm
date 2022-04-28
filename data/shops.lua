@@ -299,6 +299,44 @@ return {
 		}
 	},
 
+	Smuggling = {
+		name = 'Contrabando de Armas',
+		prompt = true,
+		groups = {'raven' = 0},
+		blip = {
+			id = 110, colour = 84, scale = 0.8
+		}, 
+		inventory = {
+			{ name = 'weapon_pistol_m1899', price = 42, metadata = { registered = false, serial = 'Numeração Raspada' } },
+			{ name = 'weapon_pistol_mauser', price = 35, metadata = { registered = false, serial = 'Numeração Raspada' } },
+			{ name = 'weapon_pistol_semiauto', price = 32, metadata = { registered = false, serial = 'Numeração Raspada' } },
+			{ name = 'weapon_pistol_volcanic', price = 75, metadata = { registered = false, serial = 'Numeração Raspada' } },
+
+			{ name = 'weapon_revolver_doubleaction', price = 14, metadata = { registered = false, serial = 'Numeração Raspada' } },
+			{ name = 'weapon_revolver_doubleaction_gambler', price = 14, metadata = { registered = false, serial = 'Numeração Raspada' } },
+			{ name = 'weapon_revolver_cattleman', price = 09, metadata = { registered = false, serial = 'Numeração Raspada' } },
+			{ name = 'weapon_revolver_cattleman_mexican', price = 12, metadata = { registered = false, serial = 'Numeração Raspada' } },
+			{ name = 'weapon_revolver_lemat', price = 20, metadata = { registered = false, serial = 'Numeração Raspada' } },
+			{ name = 'weapon_revolver_navy', price = 20, metadata = { registered = false, serial = 'Numeração Raspada' } },
+			{ name = 'weapon_revolver_schofield', price = 15, metadata = { registered = false, serial = 'Numeração Raspada' } },
+
+			{ name = 'weapon_repeater_winchester', price = 18, metadata = { registered = false, serial = 'Numeração Raspada' } },
+			{ name = 'weapon_repeater_carbine', price = 18, metadata = { registered = false, serial = 'Numeração Raspada' } },
+			{ name = 'weapon_repeater_evans', price = 20, metadata = { registered = false, serial = 'Numeração Raspada' } },
+			{ name = 'weapon_repeater_henry', price = 20, metadata = { registered = false, serial = 'Numeração Raspada' } },
+
+			{ name = 'weapon_rifle_springfield', price = 26, metadata = { registered = false, serial = 'Numeração Raspada' } },
+			{ name = 'weapon_rifle_boltaction', price = 32, metadata = { registered = false, serial = 'Numeração Raspada' } },
+		
+		}, locations = {
+			vec3(2275.67, 1460.301, 83.992), -- saint dennis
+		}, targets = {
+			-- { loc = vec3(453.21, -980.03, 30.68), length = 0.5, width = 3.0, heading = 270.0, minZ = 30.5, maxZ = 32.0, distance = 6 }
+		}
+	},
+
+
+
 	-- Medicine = {
 	-- 	name = 'Medicine Cabinet',
 	-- 	groups = {
