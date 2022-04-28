@@ -302,7 +302,7 @@ return {
 	Smuggling = {
 		name = 'Contrabando de Armas',
 		prompt = true,
-		groups = {'raven' = 0},
+		groups = { ['raven'] = 0 },
 		blip = {
 			id = 110, colour = 84, scale = 0.8
 		}, 
