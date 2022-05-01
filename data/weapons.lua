@@ -229,7 +229,7 @@ return {
             durability = 0.03,
         }, 
         ['WEAPON_MELEE_HAMMER'] = {
-            label = 'Hammer',
+            label = 'Martelo',
             weight = 300,
             durability = 0.03,
         }, 
@@ -244,7 +244,7 @@ return {
             durability = 0.03,
         }, 
         ['WEAPON_MELEE_KNIFE_VAMPIRE'] = {
-            label = 'Faca de mineração',
+            label = 'Faca de vampiro',
             weight = 300,
             durability = 0.03,
         }, 
@@ -277,40 +277,39 @@ return {
             label = 'Lâmpada elétrica',
             weight = 200,
             durability = 0.03,
-        }, 
-
+        },
         ['WEAPON_MELEE_MACHETE_COLLECTOR'] = {
-            label = 'WEAPON_MELEE_MACHETE_COLLECTOR',
+            label = 'Machete de Colecionador',
             weight = 200,
             durability = 0.03,
         }, 
         ['WEAPON_MELEE_KNIFE_TRADER'] = {
-            label = 'WEAPON_MELEE_KNIFE_TRADER',
+            label = 'Faca de Negociador',
             weight = 200,
             durability = 0.03,
         }, 
         ['WEAPON_MELEE_KNIFE_HORROR'] = {
-            label = 'WEAPON_MELEE_KNIFE_HORROR',
+            label = 'Faca Dupla',
             weight = 200,
             durability = 0.03,
         }, 
         ['WEAPON_MELEE_KNIFE_RUSTIC'] = {
-            label = 'WEAPON_MELEE_KNIFE_RUSTIC',
+            label = 'Faca Rustica',
             weight = 200,
             durability = 0.03,
         }, 
         ['WEAPON_MELEE_LANTERN_HALLOWEEN'] = {
-            label = 'WEAPON_MELEE_LANTERN_HALLOWEEN',
+            label = 'Lanterna de Caveira',
             weight = 200,
             durability = 0.03,
         }, 
         ['WEAPON_MELEE_MACHETE_HORROR'] = {
-            label = 'WEAPON_MELEE_MACHETE_HORROR',
+            label = 'Machete de Pirata',
             weight = 200,
             durability = 0.03,
         }, 
         ['WEAPON_MOONSHINEJUG_MP'] = {
-            label = 'WEAPON_MOONSHINEJUG_MP',
+            label = 'Galão de Moonshine',
             weight = 200,
             durability = 0.03,
         },
@@ -334,13 +333,13 @@ return {
 			throwable = true,
         }, 
         ['WEAPON_THROWN_TOMAHAWK'] = {
-            label = 'Machadinho de Arremeço',
+            label = 'Tomahawk de Arremeço ',
             weight = 300,
             durability = 0.03,
 			throwable = true,
         }, 
         ['WEAPON_THROWN_TOMAHAWK_ANCIENT'] = {
-            label = 'Machadinho de Arremeço OLD',
+            label = 'Machadinho de Arremeço',
             weight = 300,
             durability = 0.03,
 			throwable = true,
@@ -353,31 +352,31 @@ return {
         },
 
         ['WEAPON_THROWN_POISONBOTTLE'] = {
-            label = 'WEAPON_THROWN_POISONBOTTLE',
+            label = 'Garrafa de Veneno',
             weight = 300,
             durability = 0.03,
 			throwable = true,
         },     
         ['WEAPON_THROWN_BOLAS_HAWKMOTH'] = {
-            label = 'WEAPON_THROWN_BOLAS_HAWKMOTH',
+            label = 'Boleadeira de Borboleta',
             weight = 300,
             durability = 0.03,
 			throwable = true,
         },     
         ['WEAPON_THROWN_BOLAS_IRONSPIKED'] = {
-            label = 'WEAPON_THROWN_BOLAS_IRONSPIKED',
+            label = 'Boleadeira de Espinhos',
             weight = 300,
             durability = 0.03,
 			throwable = true,
         },    
         ['WEAPON_THROWN_BOLAS_INTERTWINED'] = {
-            label = 'WEAPON_THROWN_BOLAS_INTERTWINED',
+            label = 'Boleadeira de Ancora',
             weight = 300,
             durability = 0.03,
 			throwable = true,
         },       
         ['WEAPON_KIT_BINOCULARS_IMPROVED'] = {
-            label = 'WEAPON_KIT_BINOCULARS_IMPROVED',
+            label = 'Binóculos melhorado',
             weight = 300,
             durability = 0.03
         },
@@ -398,7 +397,7 @@ return {
             durability = 0.03,
         },    
         ['WEAPON_KIT_CAMERA_ADVANCED'] = {
-            label = 'WEAPON_KIT_CAMERA_ADVANCED',
+            label = 'Camera avançada',
             weight = 300,
             durability = 0.03,
         },    
@@ -408,7 +407,7 @@ return {
             durability = 0.03,
         },    
         ['WEAPON_REVOLVER_NAVY_CROSSOVER'] = {
-            label = 'WEAPON_REVOLVER_NAVY_CROSSOVER',
+            label = 'Revolver da Marinha Cruzamento',
             weight = 300,
             durability = 0.03,
         }

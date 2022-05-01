@@ -2,19 +2,19 @@ local Blips = {}
 
 if IS_RDR3 then
 	function CreateLocationBlip(blipId, name, blip, location, color)
-		Blips[blipId] = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, location.x, location.y, location.z)
+		-- Blips[blipId] = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, location.x, location.y, location.z)
 
-		SetBlipSprite(Blips[blipId], blip, 1)
-		SetBlipScale(Blips[blipId],0.2)
+		-- SetBlipSprite(Blips[blipId], blip, 1)
+		-- SetBlipScale(Blips[blipId],0.2)
 		
-		if color then
-			Citizen.InvokeNative(0x662D364ABF16DE2F, Blips[blipId], GetHashKey(color))
-		else 
-			Citizen.InvokeNative(0x662D364ABF16DE2F, Blips[blipId], `BLIP_MODIFIER_MP_COLOR_32`)
-		end
+		-- if color then
+		-- 	Citizen.InvokeNative(0x662D364ABF16DE2F, Blips[blipId], GetHashKey(color))
+		-- else 
+		-- 	Citizen.InvokeNative(0x662D364ABF16DE2F, Blips[blipId], `BLIP_MODIFIER_MP_COLOR_32`)
+		-- end
 		
-		local varString = CreateVarString(10, 'LITERAL_STRING', name)
-		Citizen.InvokeNative(0x9CB1A1623062F402, Blips[blipId], varString)
+		-- local varString = CreateVarString(10, 'LITERAL_STRING', name)
+		-- Citizen.InvokeNative(0x9CB1A1623062F402, Blips[blipId], varString)
 	end
 end
 

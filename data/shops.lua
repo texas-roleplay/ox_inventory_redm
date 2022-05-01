@@ -1,6 +1,6 @@
 return {
 	General = {
-		name = 'Shop',
+		name = 'Armazém Geral',
 		prompt = true,
 		blip = {
 			id = 59, colour = 69, scale = 0.8
@@ -28,7 +28,9 @@ return {
 			{name = "sacovazio", price = 0.05},
 			{name = "campfiremed", price = 6.0},
 			{name = "campfiresmall", price = 4.0},
-			{name = "apito", price =  5.0},			
+			{name = "apito", price =  5.0},
+			{name = "sabonete", price =  0.25},
+			{name = "relogio", price =  2.00},			
 			
 			{name = "pote", price =  0.01},
 			{name = "potesal", price =  0.05},
@@ -82,7 +84,7 @@ return {
 	
 
 	Pexeiro = {
-		name = 'Estação',
+		name = 'Acessorios de Pesca',
 		prompt = true,
 		blip = {
 			id = 402, colour = 69, scale = 0.8
@@ -110,7 +112,7 @@ return {
 	},
 
 	Ammunation = {
-		name = 'Ammunation',
+		name = 'Loja de Armas',
 		prompt = true,
 		blip = {
 			id = 110, colour = 69, scale = 0.8
@@ -157,10 +159,12 @@ return {
 		prompt = true,
 		blip = {
 			id = 93, colour = 69, scale = 0.8
-		}, inventory = {
+		},
+		 inventory = {
 			{name = "newspaper", price = 0.10},
 		}, locations = {
 			vec3(2699.525, -1381.241, 46.859),
+			vec3(-792.52, -1290.949, 43.63)
 		}, targets = {
 			-- { loc = vec3(1134.9, -982.34, 46.41), length = 0.5, width = 0.5, heading = 96.0, minZ = 46.4, maxZ = 46.8, distance = 1.5 },
 		}
@@ -172,7 +176,8 @@ return {
 		prompt = true,
 		blip = {
 			id = 93, colour = 69, scale = 0.8
-		}, inventory = {
+		}, 
+		inventory = {
 			{name = "alcool", price = 0.15},
 			{name = "lockpick", price = 1},
 			{name = "lockpickr", price = 2},
@@ -182,7 +187,7 @@ return {
 			{ name = 'handcuffs_keys', price = 1 },
 		}, locations = {
 			vec3(2859.706,-1200.646,49.590), -- saint dennis
-			vec3(496.5856, 672.968, 121.0131)
+			vec3(496.5856, 672.968, 121.0131) -- Blackwater
 		}, targets = {
 			-- { loc = vec3(1134.9, -982.34, 46.41), length = 0.5, width = 0.5, heading = 96.0, minZ = 46.4, maxZ = 46.8, distance = 1.5 },
 		}
@@ -290,7 +295,7 @@ return {
 			vec3(1361.17, -1305.839, 77.760), -- rhodes			
 			vec3(2906.925, 1315.27, 44.938), -- annesburg
 			vec3(-278.4373, 805.3104, 119.38), -- valentine
-			vec3(1813.964, -354.7716, 164.649), -- Strawberry
+			vec3(-1814.101, -354.86, 164.64), -- Strawberry
 			vec3(-764.753, -1272.402, 44.0413), -- blackwater
 			vec3(-3623.315, -2602.468, -13.342), -- armadillo
 			vec3(-5526.658, -2928.369, -1.3609), -- Thumbweed
@@ -298,44 +303,6 @@ return {
 			{ loc = vec3(453.21, -980.03, 30.68), length = 0.5, width = 3.0, heading = 270.0, minZ = 30.5, maxZ = 32.0, distance = 6 }
 		}
 	},
-
-	Smuggling = {
-		name = 'Contrabando de Armas',
-		prompt = true,
-		groups = { ['raven'] = 0 },
-		blip = {
-			id = 110, colour = 84, scale = 0.8
-		}, 
-		inventory = {
-			{ name = 'weapon_pistol_m1899', price = 42, metadata = { registered = false, serial = 'Numeração Raspada' } },
-			{ name = 'weapon_pistol_mauser', price = 35, metadata = { registered = false, serial = 'Numeração Raspada' } },
-			{ name = 'weapon_pistol_semiauto', price = 32, metadata = { registered = false, serial = 'Numeração Raspada' } },
-			{ name = 'weapon_pistol_volcanic', price = 75, metadata = { registered = false, serial = 'Numeração Raspada' } },
-
-			{ name = 'weapon_revolver_doubleaction', price = 14, metadata = { registered = false, serial = 'Numeração Raspada' } },
-			{ name = 'weapon_revolver_doubleaction_gambler', price = 14, metadata = { registered = false, serial = 'Numeração Raspada' } },
-			{ name = 'weapon_revolver_cattleman', price = 09, metadata = { registered = false, serial = 'Numeração Raspada' } },
-			{ name = 'weapon_revolver_cattleman_mexican', price = 12, metadata = { registered = false, serial = 'Numeração Raspada' } },
-			{ name = 'weapon_revolver_lemat', price = 20, metadata = { registered = false, serial = 'Numeração Raspada' } },
-			{ name = 'weapon_revolver_navy', price = 20, metadata = { registered = false, serial = 'Numeração Raspada' } },
-			{ name = 'weapon_revolver_schofield', price = 15, metadata = { registered = false, serial = 'Numeração Raspada' } },
-
-			{ name = 'weapon_repeater_winchester', price = 18, metadata = { registered = false, serial = 'Numeração Raspada' } },
-			{ name = 'weapon_repeater_carbine', price = 18, metadata = { registered = false, serial = 'Numeração Raspada' } },
-			{ name = 'weapon_repeater_evans', price = 20, metadata = { registered = false, serial = 'Numeração Raspada' } },
-			{ name = 'weapon_repeater_henry', price = 20, metadata = { registered = false, serial = 'Numeração Raspada' } },
-
-			{ name = 'weapon_rifle_springfield', price = 26, metadata = { registered = false, serial = 'Numeração Raspada' } },
-			{ name = 'weapon_rifle_boltaction', price = 32, metadata = { registered = false, serial = 'Numeração Raspada' } },
-		
-		}, locations = {
-			vec3(2275.67, 1460.301, 83.992), -- saint dennis
-		}, targets = {
-			-- { loc = vec3(453.21, -980.03, 30.68), length = 0.5, width = 3.0, heading = 270.0, minZ = 30.5, maxZ = 32.0, distance = 6 }
-		}
-	},
-
-
 
 	-- Medicine = {
 	-- 	name = 'Medicine Cabinet',
