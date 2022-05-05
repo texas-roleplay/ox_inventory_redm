@@ -582,8 +582,8 @@ function Inventory.AddItem(inv, item, count, metadata, slot, cb)
 				end
 				slot = toSlot
 			end
-
-			if slot then
+			
+			if slot and Inventory.CanCarryItem(inv, item, count, metadata) then
 				Inventory.SetSlot(inv, item, count, metadata, slot)
 				inv.weight = inv.weight + (item.weight + (metadata?.weight or 0)) * count
 				success = true
