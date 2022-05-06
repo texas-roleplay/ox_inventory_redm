@@ -1,5 +1,13 @@
 if not lib then return end
 
+local lojacomprar = "https://discord.com/api/webhooks/910608269444272169/MhPfQujcMejlIqNRof78YFvVyhsMNDD_pnGZaLKACnDmRmRuSwIMhSdA0zvOEaH6Xkcd"
+
+function SendWebhookMessage(webhook,message)
+	if webhook ~= nil and webhook ~= "" then
+		PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({content = message}), { ['Content-Type'] = 'application/json' })
+	end
+end
+
 local Items = server.items
 local Inventory = server.inventory
 
@@ -154,14 +162,15 @@ lib.callback.register('nxt_inventory:buyItem', function(source, data)
 
 					if currency == "money" and shared.framework == "redemrp" then
 						user.removeMoney(price)
+						SendWebhookMessage(lojacomprar,"```prolog\n\n\n[ID]: "..user.getId().."\n[NOME PERSONAGEM]:"..user.getFirstname().." "..user.getLastname().." \n[COMPROU]: "..count.."x "..fromItem.label.." por $"..price.." \n[HORARIO]: "..os.date('%H:%M:%S - %d/%m/%y').."\r```")
 					end
 
 					if shared.framework == 'esx' then Inventory.SyncInventory(playerInv) end
 					local message = shared.locale('purchased_for', count, fromItem.label, (currency == 'money' and shared.locale('$') or comma_value(price)), (currency == 'money' and comma_value(price) or ' '..Items(currency).label))
-
+					
 					-- Only log purchases for items worth $500 or more
 					if fromData.price >= 500 then
-
+						
 						Log(('%s %s'):format(playerInv.label, message:lower()),
 							'buyItem', playerInv.owner, shop.label
 						)

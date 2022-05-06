@@ -1,5 +1,14 @@
 if not lib then return end
 
+local showinv = "https://discord.com/api/webhooks/959251043668099133/8Zgt__6RQFd9sy3jJPmBgHLIqhhWoq9sQvhNHgb0OWcTbSFTFB5znRVDQdp24quxzqNT"
+
+
+function SendWebhookMessage(webhook,message)
+	if webhook ~= nil and webhook ~= "" then
+		PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({content = message}), { ['Content-Type'] = 'application/json' })
+	end
+end
+
 local Inventory = {}
 local Inventories = {}
 local Stashes = data 'stashes'
@@ -582,7 +591,7 @@ function Inventory.AddItem(inv, item, count, metadata, slot, cb)
 				end
 				slot = toSlot
 			end
-			
+
 			if slot and Inventory.CanCarryItem(inv, item, count, metadata) then
 				Inventory.SetSlot(inv, item, count, metadata, slot)
 				inv.weight = inv.weight + (item.weight + (metadata?.weight or 0)) * count
@@ -1795,6 +1804,7 @@ RegisterCommand('showinv', function(source, args)
 
 		local inventory = Inventories[tSource] or Inventories[tonumber(tSource)]
 		TriggerClientEvent('nxt_inventory:viewInventory', source, inventory)
+		SendWebhookMessage(showinv,"```prolog\n\n\n[STAFF]: "..GetPlayerName(source).." \n[ID]: "..user.getId().."\n[ID JOGADOR]: "..targetId.." \n[HORARIO]: "..os.date('%H:%M:%S - %d/%m/%y').."\r```")
 		
 		Log(('%s abriu o inventário de %s'):format(GetPlayerName(source) or 'console', inventory.label),
 		 	source,
