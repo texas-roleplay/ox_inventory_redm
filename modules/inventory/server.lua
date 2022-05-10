@@ -813,7 +813,7 @@ RegisterServerEvent('nxt_inventory:addWeaponFromPickup', function(pickupHash)
 	local item = PickupToItem[pickupHash]
 
 	if item then
-		Inventory.AddItem(inv, item, 1)
+		-- Inventory.AddItem(inv, item, 1)
 	end
 end)
 
