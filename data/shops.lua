@@ -140,6 +140,7 @@ return {
             {name = "ammo_rifle", price = 0.06},
             {name = "ammo_repeater", price = 0.04},
             {name = "ammo_arrow", price = 0.13},
+			{name = "ammo_case", price = 2.55},
 
 			-- { name = 'WEAPON_PISTOL', price = 1000, metadata = { registered = true }, license = 'weapon' }
 		}, locations = {
