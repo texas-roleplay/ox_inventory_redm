@@ -1708,7 +1708,15 @@ RegisterNUICallback('swapItems', function(data, cb)
 			if response.items and (response.items[data.toSlot] or response.items[data.fromSlot]) then
 	
 				local item = response?.items[(data?.toSlot or data?.fromSlot)]
-	
+
+				if item.name == 'compass' then 
+					if item.count >= 1 then
+						TriggerEvent("HUD:Client:UsedCompass", true)
+					else
+						TriggerEvent("HUD:Client:UsedCompass", false)
+					end
+				end
+
 				if item then
 					swapWeaponHotbar(item, data)
 				end
