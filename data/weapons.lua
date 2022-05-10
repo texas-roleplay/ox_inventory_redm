@@ -11,7 +11,7 @@ return {
             label = 'Revolver Steel Colt M1873',
             weight = 1200,
             durability = 0.03,
-            ammoname = 'ammo_revolver_express_explosive',
+            ammoname = 'ammo_revolver',
         },
         ['WEAPON_REVOLVER_DOUBLEACTION_GAMBLER'] = {
             label = 'Revolver Double-action com Travamento',
@@ -460,7 +460,7 @@ return {
         },
 
         ['ammo_shotgun'] = {
-            label = '.22 Long Rifle',
+            label = 'Munição de Escopeta',
             weight = 3,
         },
 
