@@ -38,6 +38,7 @@ return {
 	['inventory_player_access'] = "Você não pode abrir seu inventário agora",
 	['inventory_right_access'] = "Você não pode abrir este inventário",
 	['inventory_lost_access'] = "Não é mais possível acessar este inventário",
+	['inventory_full'] = "Bolsa está cheia.",
 	['wrong_ammo'] = "Você não pode carregar a %s com %s balas",
 	['weapon_license'] = "Licença de Porte de Armas",
 	['has_weapon_license'] = "Você já tem uma Licença de porte de armas",

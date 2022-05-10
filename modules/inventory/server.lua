@@ -613,6 +613,7 @@ function Inventory.AddItem(inv, item, count, metadata, slot, cb)
 					TriggerClientEvent('nxt_inventory:updateSlots', inv.id, {{item = inv.items[slot], inventory = inv.type}}, {left=inv.weight, right=inv.open and Inventories[inv.open]?.weight}, count, false)
 				end
 			else
+				TriggerClientEvent("texas:notify:Simple", inv.id, shared.locale('inventory_full'), 5000)
 				reason = 'inventory_full'
 			end
 		else
