@@ -242,6 +242,20 @@ Item('water', function(data, slot)
 		end
 	end)
 end)
+Item('chadewayuizena', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'chadewayuizena')
+		end
+	end)
+end)
+Item('pocaodeekichetu', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerServerEvent("HUD:Consumable:Item", 'pocaodeekichetu')
+		end
+	end)
+end)
 Item('apple', function(data, slot)
 	exports.nxt_inventory:useItem(data, function(data)
 		if data then
