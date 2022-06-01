@@ -325,8 +325,13 @@ local function useSlot(slot)
 					elseif IS_RDR3 then
 
 						if not HasPedGotWeapon(playerPed, data.hash, 0, false) then
-							--[[ GiveWeaponToPed ]]
 
+							local currentWeaponAmmo = GetAmmoInPedWeapon(playerPed, data.hash)
+
+							-- RemoveAmmoFromPed
+							N_0xf4823c813cb8277d(playerPed, data.hash, currentWeaponAmmo, `REMOVE_REASON_DEBUG`)
+
+							--[[ GiveWeaponToPed ]]
 							if data.throwable then
 								Citizen.InvokeNative(0xB282DC6EBD803C75, playerPed, data.hash, tonumber(item.count), true, 0) -- GIVE_DELAYED_WEAPON_TO_PED
 							else	
