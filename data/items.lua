@@ -373,17 +373,11 @@ return {
 		["herb_prairie_poppy"]                                      = {  ["label"] = "Papoula da Pradaria",                                              ["description"] = "",                                                                                                 					["weight"] = 40,           ["image"] = "Prairie_Poppy",                     	},
 	
 		-- REMÉDIOS                                 
-<<<<<<< Updated upstream
-		["tonico"]                                                  = {  ["label"] = "Garrafa de Tonico",                                                ["description"] = "Garrafa cheia de Tonico",                                                       				degrade = 15000,    ["weight"] = 500,          ["image"] = "tonico",    consume = 1 },
-		["tonicop"]                                                 = {  ["label"] = "Garrafa de Tonico Potente",                                        ["description"] = "Garrafa cheia de Tonico Potente",                                               				degrade = 15000,    ["weight"] = 700,          ["image"] = "tonicoP",   consume = 1 },
-
-=======
 		["tonico"]                                                  = {  ["label"] = "Garrafa de Tonico",                                                ["description"] = "Garrafa cheia de Tonico",                                                       				degrade = 180,    	["weight"] = 500,          ["image"] = "tonico",    consume = 0 },
 		["tonicop"]                                                 = {  ["label"] = "Garrafa de Tonico Potente",                                        ["description"] = "Garrafa cheia de Tonico Potente",                                               				degrade = 15000,    ["weight"] = 700,          ["image"] = "tonicoP",   consume = 0 },
 		["cocainepaste"]                                            = {  ["label"] = "Pasta de Cocaina",                                                 ["description"] = "",                                                         									    degrade = 2880,					["weight"] = 150,	consume = 0},
 		["balsamo"]                                           		= {  ["label"] = "Balsamo",                                                 	     ["description"] = "",                                                         									    degrade = 2880,					["weight"] = 150,	consume = 0},
 		
->>>>>>> Stashed changes
 		-- CAVALO				
 		["hay"]                                                     = {  ["label"] = "Feno",                                                             ["description"] = "Feno para cavalos",                                                             				degrade = 15000,    ["weight"] = 50,           ["image"] = "hay",      consume = 1        },
 		["apple"]                                                   = {  ["label"] = "Maçã",                                                             ["description"] = "Maça recem colhida",                                                            				degrade = 10000,    ["weight"] = 20,           ["image"] = "apple",    consume = 1         },
@@ -577,11 +571,8 @@ return {
 		["cigarette"]                                               = { ["label"] = "Cigarro",                                                          ["description"] = "Um gostinho de Cuba",                                                         					    				["weight"] = 150,       	["image"] = "cigarette",          				  consume = 1        },
 		["cigar"]                                                   = { ["label"] = "Charuto",                                                          ["description"] = "Um gostinho de Cuba",                                                         									    ["weight"] = 150,       	["image"] = "charuto",                   		  consume = 1        },
 		["pipe"]                                                    = { ["label"] = "Cachimbo",                                                         ["description"] = "Um gostinho de Cuba",                                                         									    ["weight"] = 150,       	["image"] = "cachimbo",                  		  consume = 1        },
-<<<<<<< Updated upstream
-=======
 		
 
->>>>>>> Stashed changes
 		-- NOVAS DRO
 		["bmoonshine"]                                              = { ["label"] = "Barril de moonshine", 																																										                ["weight"] = 150,       	["image"] = "charuto", },
 		["anfetamina"]                                              = { ["label"] = "Anfetamina",           																																									                ["weight"] = 150,       	["image"] = "cachimbo",},
