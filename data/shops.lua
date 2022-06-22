@@ -161,7 +161,11 @@ return {
 		blip = {
 			id = 93, colour = 69, scale = 0.8
 		},
+<<<<<<< Updated upstream
 		 inventory = {
+=======
+		inventory = {
+>>>>>>> Stashed changes
 			{name = "newspaper", price = 0.10},
 		}, locations = {
 			vec3(2699.525, -1381.241, 46.859),
@@ -305,22 +309,22 @@ return {
 		}
 	},
 
-	-- Medicine = {
-	-- 	name = 'Medicine Cabinet',
-	-- 	groups = {
-	-- 		['ambulance'] = 0
-	-- 	},
-	-- 	blip = {
-	-- 		id = 403, colour = 69, scale = 0.8
-	-- 	}, inventory = {
-	-- 		{ name = 'medikit', price = 26 },
-	-- 		{ name = 'bandage', price = 5 }
-	-- 	}, locations = {
-	-- 		vec3(306.3687, -601.5139, 43.28406)
-	-- 	}, targets = {
-
-	-- 	}
-	-- },
+	Medicine = {
+		name = 'Farmácia',
+		prompt = true,
+		blip = {
+			id = 403, colour = 69, scale = 0.8
+		}, inventory = {
+			{ name = 'tonicop', price = 15 },
+			{ name = 'cocainepaste', price = 5 }
+		}, locations = {
+			vec3(2719.536, -1231.608, 50.41718),
+			vec3(-1804.753, -430.5968, 158.8815),
+			vec3(-286.1612, 804.2397, 119.4359),
+		}, targets = {
+			{ loc = vec3(453.21, -980.03, 30.68), length = 0.5, width = 3.0, heading = 270.0, minZ = 30.5, maxZ = 32.0, distance = 6 }
+		}
+	},
 
 	-- BlackMarketArms = {
 	-- 	name = 'Black Market (Arms)',
