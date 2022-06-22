@@ -1923,3 +1923,23 @@ AddEventHandler('entityRemoved', function(entity)
 	end
 end)
 
+
+RegisterServerEvent("inventory:server:Setmetadata", function(slot, metadata)
+	local src = source
+
+	Inventory.SetMetadata(src, slot.slot, metadata)
+end)
+
+RegisterServerEvent("inventory:server:RemoveDurability", function(slot, durability)
+	local src = source
+
+	slot.metadata.durability = ((slot.metadata.durability - os.time()) / 3)
+
+	if (slot.metadata.durability / 60) <= 40 then
+		Inventory.RemoveItem(src, slot.name, 1, nil, slot.slot)
+	end
+
+	slot.metadata.durability = slot.metadata.durability + os.time()
+
+	Inventory.SetMetadata(src, slot.slot, slot.metadata)
+end)

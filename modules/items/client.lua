@@ -130,21 +130,42 @@ Item('peneira', function(data, slot)
 	TriggerEvent('goldpanner:StartPaning')
 end)
 
+Item('balsamo', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("RESPAWN:Curandeiro:Balsamo", slot)
+		end
+	end)
+end)
+
+Item('cocainepaste', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then
+			TriggerEvent("FRP:RESPAWN:CocainePasteUse")
+			TriggerServerEvent('inventory:server:RemoveDurability', slot, 2)
+		end
+	end)
+end)
 
 Item('tonico', function(data, slot)
 	exports.nxt_inventory:useItem(data, function(data)
 		if data then
-			TriggerEvent("ss_ambulancejob:setPHealth")
+			TriggerEvent("FRP:RESPAWN:Usetonico")
+
+			TriggerServerEvent('inventory:server:RemoveDurability', slot, 2)
 		end
 	end)
 end)
+
 Item('tonicop', function(data, slot)
 	exports.nxt_inventory:useItem(data, function(data)
 		if data then
-			TriggerEvent("ss_ambulancejob:setHealthC")
+			TriggerEvent("FRP:RESPAWN:PlayerUp")
+			TriggerServerEvent('inventory:server:RemoveDurability', slot, 2)
 		end
 	end)
 end)
+
 Item('roupaspreso', function(data, slot)
 	exports.nxt_inventory:useItem(data, function(data)
 		if data then
