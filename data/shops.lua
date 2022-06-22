@@ -161,11 +161,7 @@ return {
 		blip = {
 			id = 93, colour = 69, scale = 0.8
 		},
-<<<<<<< Updated upstream
-		 inventory = {
-=======
 		inventory = {
->>>>>>> Stashed changes
 			{name = "newspaper", price = 0.10},
 		}, locations = {
 			vec3(2699.525, -1381.241, 46.859),
@@ -324,7 +320,7 @@ return {
 		}, targets = {
 			{ loc = vec3(453.21, -980.03, 30.68), length = 0.5, width = 3.0, heading = 270.0, minZ = 30.5, maxZ = 32.0, distance = 6 }
 		}
-	},
+	}, 
 
 	-- BlackMarketArms = {
 	-- 	name = 'Black Market (Arms)',
