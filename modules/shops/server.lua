@@ -113,6 +113,10 @@ end
 lib.callback.register('nxt_inventory:buyItem', function(source, data)
 	if data.toType == 'player' then
 		if data.count == nil then data.count = 1 end
+
+		--[[ Não permitir quantidades negativas já que não pode comprar items negativos ]]
+		data.count = math.abs(data.count)
+
 		local playerInv = Inventory(source)
 		local user = exports.redemrp_roleplay:getPlayerFromId(source)
 		local split = playerInv.open:match('^.*() ')
