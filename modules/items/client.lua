@@ -206,13 +206,13 @@ Item('compass', function(data, slot)
 	end)
 end)
 
-Item('apito', function(data, slot)
-	exports.nxt_inventory:useItem(data, function(data)
-		if data then
-			TriggerEvent("ricx_dogs:pegarcachorro")
-		end
-	end)
-end)
+-- Item('apito', function(data, slot)
+-- 	exports.nxt_inventory:useItem(data, function(data)
+-- 		if data then
+-- 			TriggerEvent("ricx_dogs:pegarcachorro")
+-- 		end
+-- 	end)
+-- end)
 
 Item('escova', function(data, slot)
 	TriggerEvent("HORSES:startbrush")
