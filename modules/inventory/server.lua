@@ -158,6 +158,7 @@ function Inventory.SetSlot(inv, item, count, metadata, slot)
 		inv.changed = true
 	end
 end
+exports("SetSlot", Inventory.SetSlot)
 
 local Items
 CreateThread(function() Items = server.items end)
