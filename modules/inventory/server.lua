@@ -150,7 +150,7 @@ function Inventory.SetSlot(inv, item, count, metadata, slot)
 		count = currentSlot.count
 		inv.items[slot] = nil
 	else
-		inv.items[slot] = {name = item.name, label = item.label, weight = item.weight, slot = slot, count = newCount, description = item.description, metadata = metadata, stack = item.stack, close = item.close}
+		inv.items[slot] = {name = item.name, label = item.label, image = item?.image, weight = item.weight, slot = slot, count = newCount, description = item.description, metadata = metadata, stack = item.stack, close = item.close}
 		inv.items[slot].weight = Inventory.SlotWeight(item, inv.items[slot])
 	end
 
@@ -1933,7 +1933,7 @@ end)
 RegisterServerEvent("inventory:server:RemoveDurability", function(slot, durability)
 	local src = source
 
-	slot.metadata.durability = ((slot.metadata.durability - os.time()) / 3)
+	slot.metadata.durability = ((slot.metadata.durability - os.time()) / durability)
 
 	if (slot.metadata.durability / 60) <= 40 then
 		Inventory.RemoveItem(src, slot.name, 1, nil, slot.slot)

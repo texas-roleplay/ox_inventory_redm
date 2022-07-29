@@ -34,6 +34,14 @@ local ox_inventory = exports[shared.resource]
 -- 	end)
 -- end)
 
+Item('apito', function(data, slot)
+    exports.nxt_inventory:useItem(data, function(data)
+        if data then
+            TriggerEvent("tx_apitopolice")
+        end
+    end)
+end)
+
 Item('badge_deputy', function(data, slot)
 	exports.nxt_inventory:useItem(data, function(data)
 		if data then				
@@ -93,7 +101,6 @@ Item('dogfood', function(data, slot)
 	end)
 end)
 
-
 local baits = {
     'p_baitbread01x',
     'p_baitcorn01x',
@@ -103,6 +110,7 @@ local baits = {
     'p_crawdad01x',
     'p_finishedragonfly01x',
     'p_finishdcrawd01x',
+	'p_finisdfishlure01x',
     'p_finishedragonflylegendary01x',
     'p_finisdfishlurelegendary01x',
     'p_finishdcrawdlegendary01x',
@@ -792,7 +800,11 @@ Item('scratch_ticket', function(data, slot)
 end)
 
 Item('newspaper', function(data, slot)
-	TriggerEvent("newspaper:openNewspaper")
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then    
+			TriggerEvent("newspaper:openNewspaper")
+		end
+	end)
 end)
 
 Item('cantil', function(data, slot)

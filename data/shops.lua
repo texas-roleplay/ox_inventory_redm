@@ -28,7 +28,6 @@ return {
 			{name = "sacovazio", price = 0.05},
 			{name = "campfiremed", price = 6.0},
 			{name = "campfiresmall", price = 4.0},
-			{name = "apito", price =  5.0},
 			{name = "sabonete", price =  0.25},
 			{name = "relogio", price =  2.00},			
 			
@@ -268,6 +267,8 @@ return {
 			{ name = 'badge_sheriff', price = 0, grade = 4 },
 			{ name = 'badge_deputy', price = 0, grade = 5 },
 			{ name = 'badge_marshal', price = 0, grade = 7 },
+
+			{name = "apito", price =  0.0},
 
 			{ name = 'handcuffs', price = 0 },
 			{ name = 'handcuffs_keys', price = 0 },
