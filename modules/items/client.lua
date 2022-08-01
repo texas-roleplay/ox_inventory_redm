@@ -168,7 +168,7 @@ end)
 Item('tonicop', function(data, slot)
 	exports.nxt_inventory:useItem(data, function(data)
 		if data then
-			TriggerEvent("FRP:RESPAWN:PlayerUp")
+			TriggerEvent("FRP:RESPAWN:UsetonicoP")
 			TriggerServerEvent('inventory:server:RemoveDurability', slot, 2)
 		end
 	end)
@@ -241,6 +241,7 @@ end)
 Item('destilador', function(data, slot)
 	TriggerEvent("cookfirecauldron")
 end)
+
 Item('barril', function(data, slot)
 	TriggerEvent("barril")
 end)
@@ -1204,6 +1205,22 @@ Item('wateringcan', function(data, slot)
 	end)
 end)
 
+Item('relogio', function(data, slot)	
+    local playerPed = PlayerPedId()
+    local coords =  GetEntityCoords(playerPed)
+
+    local hash = GetHashKey('s_inv_pocketWatch01x')
+    
+    if not HasModelLoaded(hash) then
+		RequestModel(hash)
+		while not HasModelLoaded(hash) do
+			Citizen.Wait(10)
+		end
+	end
+
+    local object = CreateObject(hash, coords.x+0.5, coords.y+0.5, coords.z, true, false, false, false, true)
+	TaskItemInteraction_2(playerPed, GetHashKey("POCKETWATCH@D6-5_H1-5_InspectZ	"), object, GetHashKey("PrimaryItem"), GetHashKey("POCKET_WATCH_INSPECT_UNHOLSTER"), 1, 0, -1) -- this native requires an object    
+end)
 
 -- Item('armour', function(data, slot)
 -- 	if GetPedArmour(cache.ped) < 100 then
