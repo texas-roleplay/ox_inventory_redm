@@ -160,7 +160,7 @@ Item('tonico', function(data, slot)
 		if data then
 			TriggerEvent("FRP:RESPAWN:Usetonico")
 
-			TriggerServerEvent('inventory:server:RemoveDurability', slot, 2)
+			TriggerServerEvent('inventory:server:RemoveDurability', slot, 7.5)
 		end
 	end)
 end)
@@ -169,7 +169,8 @@ Item('tonicop', function(data, slot)
 	exports.nxt_inventory:useItem(data, function(data)
 		if data then
 			TriggerEvent("FRP:RESPAWN:UsetonicoP")
-			TriggerServerEvent('inventory:server:RemoveDurability', slot, 2)
+
+			TriggerServerEvent('inventory:server:RemoveDurability', slot, 7.5)
 		end
 	end)
 end)
