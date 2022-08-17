@@ -37,6 +37,16 @@ return {
 		weight = 5000000,
 		groups = {['raven'] = 0}
 	},
+
+	['Bau:Ferreiro'] = {
+		coords = vec3(-1831.234, -618.1906, 154.6345),
+		name = 'Bau:Ferreiro',
+		label = 'Baú do Ferreiro',
+		owner = nil,
+		slots = 100,
+		weight = 5000000,
+		groups = {['ferreiro'] = 0}
+	},
 	
 	-- ['Padeiro:BlackWater'] = {
 	-- 	coords = vec3(-2778.04, -3048.852, -8.70),
