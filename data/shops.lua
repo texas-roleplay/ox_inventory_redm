@@ -161,7 +161,7 @@ return {
 			id = 93, colour = 69, scale = 0.8
 		},
 		inventory = {
-			{name = "newspaper", price = 0.10},
+			{name = "newspaper", price = 0.35},
 		}, locations = {
 			vec3(2699.525, -1381.241, 46.859),
 			vec3(-792.52, -1290.949, 43.63)
