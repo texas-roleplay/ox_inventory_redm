@@ -52,7 +52,7 @@ function setPlayerInventory(player, data)
 	if shared.framework == 'esx' then Inventory.SyncInventory(inv) end
 	TriggerClientEvent('nxt_inventory:setPlayerInventory', player.source, Inventory.Drops, inventory, totalWeight, server.UsableItemsCallbacks, inv.player, player.source)
 
-	Inventory.SetItem(player.source, 'money', server.accounts.money, nil)
+	Inventory.SetItem(player.source, 'money', server.accounts.money, nil, true)
 end
 exports('setPlayerInventory', setPlayerInventory)
 AddEventHandler('nxt_inventory:setPlayerInventory', setPlayerInventory)

@@ -459,7 +459,7 @@ end
 ---@param item table | string
 ---@param count number
 ---@param metadata? table
-function Inventory.SetItem(inv, item, count, metadata)
+function Inventory.SetItem(inv, item, count, metadata, dontUpdatePlayerMoney)
 	if type(item) ~= 'table' then item = Items(item) end
 	if item and count >= 0 then
 		inv = Inventory(inv)
@@ -467,10 +467,10 @@ function Inventory.SetItem(inv, item, count, metadata)
 			local itemCount = Inventory.GetItem(inv, item.name, metadata, true)
 			if count > itemCount then
 				count -= itemCount
-				Inventory.AddItem(inv, item.name, count, metadata)
+				Inventory.AddItem(inv, item.name, count, metadata, nil, nil, dontUpdatePlayerMoney)
 			elseif count <= itemCount then
 				itemCount -= count
-				Inventory.RemoveItem(inv, item.name, itemCount, metadata)
+				Inventory.RemoveItem(inv, item.name, itemCount, metadata, nil, dontUpdatePlayerMoney)
 			end
 		end
 	end
@@ -562,7 +562,7 @@ exports('SetMetadata', Inventory.SetMetadata)
 -- 	end
 -- end
 -- ```
-function Inventory.AddItem(inv, item, count, metadata, slot, cb)
+function Inventory.AddItem(inv, item, count, metadata, slot, cb, dontUpdatePlayerMoney)
 
 	if type(item) ~= 'table' then item = Items(item) end
 	if type(inv) ~= 'table' then inv = Inventory(inv) end
@@ -601,15 +601,17 @@ function Inventory.AddItem(inv, item, count, metadata, slot, cb)
 				if inv.type == 'player' then
 					if shared.framework == 'esx' then Inventory.SyncInventory(inv) end
 
-					-- if shared.framework == 'redemrp' then
-					-- 	local slotItem = inv.items[slot]
-					-- 	if slotItem.name == "money" then
-					-- 		local user = exports['redemrp_roleplay']:getPlayerFromId(inv.id)
-					-- 		if user then
-					-- 			user.UserCurrencyComponentAdd(tonuumber(count/100))
-					-- 		end
-					-- 	end
-					-- end
+					if not dontUpdatePlayerMoney then
+						if shared.framework == 'redemrp' then
+							local slotItem = inv.items[slot]
+							if slotItem.name == "money" then
+								local user = exports['redemrp_roleplay']:getPlayerFromId(inv.id)
+								if user then
+									user.UserCurrencyComponentAdd(tonumber(count/100))
+								end
+							end
+						end
+					end
 
 					TriggerClientEvent('nxt_inventory:updateSlots', inv.id, {{item = inv.items[slot], inventory = inv.type}}, {left=inv.weight, right=inv.open and Inventories[inv.open]?.weight}, count, false)
 				end
@@ -693,7 +695,7 @@ exports('GetItemSlots', Inventory.GetItemSlots)
 ---@param count number
 ---@param metadata? table | string
 ---@param slot number
-function Inventory.RemoveItem(inv, item, count, metadata, slot)
+function Inventory.RemoveItem(inv, item, count, metadata, slot, dontUpdatePlayerMoney)
 
 	if type(item) ~= 'table' then item = Items(item) end
 	
@@ -748,14 +750,16 @@ function Inventory.RemoveItem(inv, item, count, metadata, slot)
 				end
 			end
 
-			-- if shared.framework == 'redemrp' then
-			-- 	if item.name == "money" then				
-			-- 		local user = exports['redemrp_roleplay']:getPlayerFromId(inv.id)
-			-- 		if user then
-			-- 			user.UserCurrencyComponentRemove(tonumber(count/100))
-			-- 		end
-			-- 	end
-			-- end
+			if not dontUpdatePlayerMoney then
+				if shared.framework == 'redemrp' then
+					if item.name == "money" then				
+						local user = exports['redemrp_roleplay']:getPlayerFromId(inv.id)
+						if user then
+							user.UserCurrencyComponentRemove(tonumber(count/100))
+						end
+					end
+				end
+			end
 
 			TriggerClientEvent('nxt_inventory:updateSlots', inv.id, array, {left=inv.weight, right=inv.open and Inventories[inv.open]?.weight}, removed, true)
 		end
@@ -1410,6 +1414,8 @@ RegisterServerEvent('nxt_inventory:closeInventory', function()
 end)
 
 RegisterServerEvent('nxt_inventory:giveItem', function(slot, target, count)
+	print('nxt_inventory:giveItem')
+
 	local fromInventory = Inventories[source]
 	local toInventory = Inventories[target]
 	if count <= 0 then count = 1 end
@@ -1426,21 +1432,6 @@ RegisterServerEvent('nxt_inventory:giveItem', function(slot, target, count)
 				Inventory.RemoveItem(fromInventory, item, count, data.metadata, slot)
 
 				Inventory.AddItem(toInventory, item, count, data.metadata)
-
-				if shared.framework == 'redemrp' then
-					if data.name == "money" then		
-						local userSource = exports['redemrp_roleplay']:getPlayerFromId(fromInventory.id)
-
-						if userSource then	
-							userSource.UserCurrencyComponentRemove(tonumber(count/100))
-						end
-
-						local userTarget = exports['redemrp_roleplay']:getPlayerFromId(toInventory.id)
-						if userTarget then	
-							userTarget.UserCurrencyComponentAdd(tonumber(count/100))
-						end
-					end
-				end
 
 				Log(('%s deu %sx %s para %s'):format(fromInventory.label, count, data.name, toInventory.label),
 					fromInventory.id,
