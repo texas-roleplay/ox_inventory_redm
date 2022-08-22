@@ -186,8 +186,8 @@ return {
 			{ name = 'handcuffs', price = 2 },
 			{ name = 'handcuffs_keys', price = 1 },
 		}, locations = {
-			vec3(2859.706,-1200.646,49.590), -- saint dennis
-			vec3(496.5856, 672.968, 121.0131) -- Blackwater
+			vec3(2859.706, -1200.646, 49.590), -- saint dennis
+			vec3(-1405.579, -2332.072, 42.50) -- Thieves Landing
 		}, targets = {
 			-- { loc = vec3(1134.9, -982.34, 46.41), length = 0.5, width = 0.5, heading = 96.0, minZ = 46.4, maxZ = 46.8, distance = 1.5 },
 		}
