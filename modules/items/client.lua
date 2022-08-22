@@ -199,14 +199,6 @@ Item('handcuffs_keys', function(data, slot)
 	end)
 end)
 
-Item('compass', function(data, slot)
-	exports.nxt_inventory:useItem(data, function(data)
-		if data then
-			TriggerEvent("HUD:Client:UsedCompass")
-		end
-	end)
-end)
-
 -- Item('apito', function(data, slot)
 -- 	exports.nxt_inventory:useItem(data, function(data)
 -- 		if data then

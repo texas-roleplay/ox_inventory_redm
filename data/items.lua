@@ -195,7 +195,20 @@ return {
 		["poteacucar"]                                              = { ["label"] = "Pote cheio de açúcar",                              ["description"] = "Pote cheio com farinha",                                                                            								["weight"] = 20,         ["image"] = "",                       			},
 	    ["campfiresmall"]                                           = { ["label"] = "Fogueira Pequena",                                 ["description"] = "",                                                                                                   								["weight"] = 900,        ["image"] = "campfiresmall",        consume = 1},
     	["campfiremed"]                                             = { ["label"] = "Fogueira Média",                                   ["description"] = "",                                                                                                   								["weight"] = 1500,       ["image"] = "campfiremed",          consume = 1},
-    	["compass"]                                                 = { ["label"] = "Bússola",                                          ["description"] = "",                                                                                                   								["weight"] = 120,        ["image"] = "provision_th_antique_brass_compass", 	consume = 0},
+    	["compass"]                                                 =
+		{
+			["label"] = "Bússola",                                          ["description"] = "",                                                                                                   								["weight"] = 120,        ["image"] = "provision_th_antique_brass_compass", 
+			consume = 0,
+			client = {
+				export = 'new_hud.inventoryUsedCompass',
+
+				remove = function(total)
+					if total <= 0 then
+						TriggerEvent('playerInventoryRemovedAllCompassItem')
+					end
+				end
+			}
+		},
     	["seda"]                                                    = { ["label"] = "Seda",                                             ["description"] = "Você está bem?",                                                                                     								["weight"] = 120,        ["image"] = "seda",                 consume = 1},
     	["scratch_ticket"]                                          = { ["label"] = "Raspadinha",                                       ["description"] = "Fique rico ou fique pobre tentando",                                                                 								["weight"] = 10,                    						 consume = 0},
     	["cantil"]                                                  = { ["label"] = "Cantil Vazio",                                     ["description"] = "Muito prático para armazenar diversos líquidos",                          						    								["weight"] = 300,     	 ["image"] = "cantil",               consume = 1}, 
