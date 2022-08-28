@@ -987,17 +987,28 @@ lib.callback.register('nxt_inventory:swapItems', function(source, data)
 
 								toData, fromData = Inventory.SwapSlots(fromInventory, toInventory, data.fromSlot, data.toSlot)
 
-								if shared.framework == 'redemrp' then
-									if fromData.name == "money" then		
-										local userSource = exports['redemrp_roleplay']:getPlayerFromId(fromInventory.id)
+								local isSwappingCurrency = fromData?.name == 'money' or toData?.name == 'money'
 
-										if userSource then	
-											userSource.UserCurrencyComponentRemove(tonumber(fromData.count/100))
+								if shared.framework == 'redemrp' then
+									if isSwappingCurrency then		
+
+										local currencyItemData = fromData?.name == 'money' and fromData or toData
+										local currencyItemAmount = currencyItemData.count
+
+										local currencyAmount = tonumber(currencyItemAmount / 100)
+
+										local inventoryIdAdd 	= currencyItemData == fromData and fromInventory.id or toInventory.id
+										local inventoryIdRemove = currencyItemData == fromData and toInventory.id 	or fromInventory.id
+
+										local userSource = exports['redemrp_roleplay']:getPlayerFromId(inventoryIdRemove)
+										local userTarget = exports['redemrp_roleplay']:getPlayerFromId(inventoryIdAdd)
+
+										if userSource then
+											userSource.UserCurrencyComponentRemove(currencyAmount)
 										end
 
-										local userTarget = exports['redemrp_roleplay']:getPlayerFromId(toInventory.id)
-										if userTarget then	
-											userTarget.UserCurrencyComponentAdd(tonumber(fromData.count/100))
+										if userTarget then
+											userTarget.UserCurrencyComponentAdd(currencyAmount)
 										end
 									end
 								end
