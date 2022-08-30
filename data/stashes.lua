@@ -1,8 +1,80 @@
 return {
 	['hotel:valentine'] = {
-		coords = vec3(-325.4, 767.02, 122.086),
+		coords = vec3(0.0, 0.0, 0.0),
 		name = 'hotel:valentine',
-		label = 'Baú do Hotel',
+		label = 'Baú do Hotel de Valentine',
+		owner = true,
+		slots = 71,
+		weight = 2500000,
+	},
+
+	['hotel:2'] = {
+		coords = vec3(0.0, 0.0, 0.0),
+		name = 'hotel:2',
+		label = 'Baú do Hotel de Rhodes',
+		owner = true,
+		slots = 71,
+		weight = 2500000,
+	},
+
+	['hotel:3'] = {
+		coords = vec3(0.0, 0.0, 0.0),
+		name = 'hotel:3',
+		label = 'Baú do Hotel de Thumbleweed',
+		owner = true,
+		slots = 71,
+		weight = 2500000,
+	},
+
+	['hotel:4'] = {
+		coords = vec3(0.0, 0.0, 0.0),
+		name = 'hotel:4',
+		label = 'Baú do Hotel de Blackwater',
+		owner = true,
+		slots = 71,
+		weight = 2500000,
+	},
+
+	['hotel:5'] = {
+		coords = vec3(0.0, 0.0, 0.0),
+		name = 'hotel:5',
+		label = 'Baú do Hotel de Strawberry',
+		owner = true,
+		slots = 71,
+		weight = 2500000,
+	},
+
+	['hotel:6'] = {
+		coords = vec3(0.0, 0.0, 0.0),
+		name = 'hotel:6',
+		label = 'Baú do Hotel de Van Horn',
+		owner = true,
+		slots = 71,
+		weight = 2500000,
+	},
+
+	['hotel:7'] = {
+		coords = vec3(0.0, 0.0, 0.0),
+		name = 'hotel:7',
+		label = 'Baú do Hotel de Saint Denis',
+		owner = true,
+		slots = 71,
+		weight = 2500000,
+	},
+
+	['hotel:8'] = {
+		coords = vec3(0.0, 0.0, 0.0),
+		name = 'hotel:8',
+		label = 'Baú do Hotel de Emerald',
+		owner = true,
+		slots = 71,
+		weight = 2500000,
+	},
+
+	['hotel:9'] = {
+		coords = vec3(0.0, 0.0, 0.0),
+		name = 'hotel:9',
+		label = 'Baú do Hotel de Armadillo',
 		owner = true,
 		slots = 71,
 		weight = 2500000,
