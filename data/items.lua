@@ -626,4 +626,14 @@ return {
 		["chadewayuizena"]                                       	= { ["label"] = "Chá de Wayúizena",                     							["description"] = "Chá Alucinógenos",                                                                       							["weight"] = 50,       	  ["image"] = "tigela_cuia",         	 consume = 1  },
 		["pocaodeekichetu"]                                       	= { ["label"] = "Poção de Ekichetu",                     							["description"] = "Usado para tratar ferimentos",                                                                       				["weight"] = 50,       	  ["image"] = "poteacucar",         	 consume = 1  },
 	
+		["reviver"] =
+		{
+			["label"] = "Reanimador",
+			["description"] = "Revive pessoas gravemente feridas",
+			["weight"] = 500,
+			["image"] = "reviver",
+			consume = 1,
+			client = { export = 'player_death_state_machine.reviverItem' },
+			server = { export = 'player_death_state_machine.reviverItem' },
+		},
 	}

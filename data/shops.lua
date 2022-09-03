@@ -313,7 +313,8 @@ return {
 			id = 403, colour = 69, scale = 0.8
 		}, inventory = {
 			{ name = 'tonicop', price = 15 },
-			{ name = 'cocainepaste', price = 5 }
+			{ name = 'cocainepaste', price = 5 },
+			{ name = 'reviver', price = 5 },
 		}, locations = {
 			vec3(2719.536, -1231.608, 50.41718),
 			vec3(-1804.753, -430.5968, 158.8815),
