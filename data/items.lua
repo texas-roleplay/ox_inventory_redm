@@ -386,10 +386,37 @@ return {
 		["herb_prairie_poppy"]                                      = {  ["label"] = "Papoula da Pradaria",                                              ["description"] = "",                                                                                                 					["weight"] = 40,           ["image"] = "Prairie_Poppy",                     	},
 	
 		-- REMÉDIOS                                 
-		["tonico"]                                                  = {  ["label"] = "Garrafa de Tonico",                                                ["description"] = "Garrafa cheia de Tonico",                                                       				degrade = 15000,    	["weight"] = 500,          ["image"] = "tonico",    consume = 0 },
-		["tonicop"]                                                 = {  ["label"] = "Garrafa de Tonico Potente",                                        ["description"] = "Garrafa cheia de Tonico Potente",                                               				degrade = 15000,    ["weight"] = 700,          ["image"] = "tonicoP",   consume = 0 },
+		["tonico"]  = {
+			["label"] = "Garrafa de Tonico",
+			["description"] = "Garrafa cheia de Tonico",
+			degrade = 15000,
+			["weight"] = 500,
+			["image"] = "tonico",
+			consume = 0,
+			server = { export = 'player_death_state_machine.itemTonic' },
+		},
+		["tonicop"] = {
+			["label"] = "Garrafa de Tonico Potente",
+			["description"] = "Garrafa cheia de Tonico Potente",
+			degrade = 15000,
+			["weight"] = 700,
+			["image"] = "tonicoP",
+			consume = 0,
+			server = { export = 'player_death_state_machine.itemTonic' },
+		},
 		["cocainepaste"]                                            = {  ["label"] = "Pasta de Cocaina",                                                 ["description"] = "",                                                         									    degrade = 2880,					["weight"] = 150,	consume = 0},
 		["balsamo"]                                           		= {  ["label"] = "Balsamo",                                                 	     ["description"] = "",                                                         									    degrade = 2880,					["weight"] = 150,	consume = 0},
+		["medicine"] =
+		{
+			["label"] = "Remédio",
+			["description"] = "Cura até os mais feridos",
+			["weight"] = 700,
+			["image"] = "medicine",
+			degrade = 15000,
+			consume = 1,
+			client = { export = 'player_death_state_machine.itemMedicine' },
+			server = { export = 'player_death_state_machine.itemMedicine' },
+		},
 		
 		-- CAVALO				
 		["hay"]                                                     = {  ["label"] = "Feno",                                                             ["description"] = "Feno para cavalos",                                                             				degrade = 15000,    ["weight"] = 50,           ["image"] = "hay",      consume = 1        },
@@ -578,7 +605,7 @@ return {
 		["big_meat_cooked"]                                         = { ["label"] = "Carne cozida de animal grande",                                    ["description"] = "",                                                                          						degrade = 2880,     ["weight"] = 300,           ["image"] = "big_meat_cooked",             	  consume = 1       },
 	
 		-- DROGAS                   
-		["opio"]                                                    = { ["label"] = "Ópio",                                                             ["description"] = "É uma mistura de alcaloides extraídos de uma espécie de papoila",                          			 				["weight"] = 300,       	["image"] = "opio",                       		  consume = 1        },
+		["opio"]                                                    = { ["label"] = "Ópio",                                                             ["description"] = "É uma mistura de alcaloides extraídos de uma espécie de papoila",                          			 				["weight"] = 300,       	["image"] = "opio",                       		  consume = 1, server = { export = 'player_death_state_machine.itemTonic' } },
 		["moonshine"]                                               = { ["label"] = "Garrafa de Moonshine",                                             ["description"] = "Whiskey claro como a lua, talvez daí venha o nome. Possui altíssimo teor alcoólico",         		 				["weight"] = 300,       	["image"] = "moonshine",                 		  consume = 1        },
 		["mostomoonshine"]                                          = { ["label"] = "Garrafa de Mosto",                                                 ["description"] = "Bebida de mosto",                                                             									    ["weight"] = 750,       	["image"] = "mostomoonshine",     						   			 },
 		["cigarette"]                                               = { ["label"] = "Cigarro",                                                          ["description"] = "Um gostinho de Cuba",                                                         					    				["weight"] = 150,       	["image"] = "cigarette",          				  consume = 1        },
