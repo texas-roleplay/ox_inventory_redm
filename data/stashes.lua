@@ -120,6 +120,16 @@ return {
 		groups = {['ferreiro'] = 0}
 	},
 	
+	['val:farmacia'] = {
+		coords = vector3(-290.3147, 816.2396, 119.0),
+		name = 'val:farmacia',
+		label = 'Baú da Farmácia',
+		owner = nil,
+		slots = 100,
+		weight = 5000000,
+		groups = { ['doctor'] = 0, ['doctorchefe'] = 0 }
+	},
+
 	-- ['Padeiro:BlackWater'] = {
 	-- 	coords = vec3(-2778.04, -3048.852, -8.70),
 	-- 	name = 'Padeiro:BlackWater',
@@ -168,4 +178,5 @@ return {
 		groups = {'doctor', 'doctorchefe'}
 	},
 	--]]
+
 }
