@@ -116,22 +116,22 @@ return {
 		blip = {
 			id = 110, colour = 69, scale = 0.8
 		}, inventory = {
-			{name = "weapon_melee_lantern", price = 3},
-            {name = "weapon_melee_davy_lantern", price = 3},
+			{name = "weapon_melee_lantern", price = 3.00},
+            {name = "weapon_melee_davy_lantern", price = 3.00},
 
-            {name = "WEAPON_KIT_BINOCULARS", price = 5},			
-            {name = "WEAPON_LASSO", price = 4},
-            {name = "WEAPON_MELEE_KNIFE", price = 5},
-            {name = "WEAPON_BOW", price = 25},
-            {name = "WEAPON_REVOLVER_DOUBLEACTION", price = 30},
-            {name = "WEAPON_REVOLVER_DOUBLEACTION_GAMBLER", price = 33},
-            {name = "WEAPON_REVOLVER_CATTLEMAN", price = 17},
-            {name = "WEAPON_REVOLVER_CATTLEMAN_MEXICAN", price = 28},
+            {name = "WEAPON_KIT_BINOCULARS", price = 3.00},
+            {name = "WEAPON_LASSO", price = 2.00},
+            {name = "WEAPON_MELEE_KNIFE", price = 2.00},
+            {name = "WEAPON_BOW", price = 20.00},
+            {name = "WEAPON_REVOLVER_DOUBLEACTION", price = 10.00},
+            {name = "WEAPON_REVOLVER_DOUBLEACTION_GAMBLER", price = 15.00},
+            {name = "WEAPON_REVOLVER_CATTLEMAN", price = 13.00},
+            {name = "WEAPON_REVOLVER_CATTLEMAN_MEXICAN", price = 20.00},
 
-            {name = "WEAPON_REVOLVER_NAVY", price = 35},
-            {name = "WEAPON_PISTOL_MAUSER", price = 100},
-            {name = "WEAPON_RIFLE_VARMINT", price = 20},
-            {name = "WEAPON_REPEATER_CARBINE", price = 40},	
+            {name = "WEAPON_REVOLVER_NAVY", price = 15.00},
+            {name = "WEAPON_PISTOL_MAUSER", price = 30.00},
+            {name = "WEAPON_RIFLE_VARMINT", price = 10.00},
+            {name = "WEAPON_REPEATER_CARBINE", price = 20.00},	
 
             {name = "ammo_22", price = 0.03},
             {name = "ammo_revolver", price = 0.04},
