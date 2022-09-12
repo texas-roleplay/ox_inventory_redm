@@ -937,7 +937,8 @@ lib.callback.register('nxt_inventory:swapItems', function(source, data)
 				if not group then return end
 
 				if server.evidencegrade > rank then
-					return TriggerClientEvent('nxt_inventory:notify', source, {type = 'error', text = shared.locale('evidence_cannot_take')})
+					TriggerClientEvent('nxt_inventory:notify', source, {type = 'error', text = shared.locale('evidence_cannot_take')})
+					return 
 				end
 			end
 
@@ -969,6 +970,19 @@ lib.callback.register('nxt_inventory:swapItems', function(source, data)
 
 						if not sameInventory then
 							if fromInventory.type == 'container' or (toWeight <= toInventory.maxWeight and fromWeight <= fromInventory.maxWeight) then
+								
+								--[[ Está tentando dar swap entre um item que está na evidencia da policia. ]]
+								if fromInventory.type == 'policeevidence' or toInventory.type == 'policeevidence' then
+									local group, rank = server.hasGroup(fromInventory, shared.police)
+					
+									if not group then return end
+					
+									if server.evidencegrade > rank then
+										TriggerClientEvent('nxt_inventory:notify', source, {type = 'error', text = shared.locale('evidence_cannot_take')})
+										return 
+									end
+								end
+
 								fromInventory.weight = fromWeight
 								toInventory.weight = toWeight
 
