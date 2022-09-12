@@ -1,4 +1,4 @@
-local key = GetConvar('datadog:key', '')
+local key = GetConvar('datadog:key', 'd353c117032f899b2b98eafb4ddf29a2')
 local response = {
 	[400] = 'bad request',
 	[401] = 'unauthorized',
