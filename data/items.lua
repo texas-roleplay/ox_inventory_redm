@@ -365,7 +365,6 @@ return {
 	
 		-- FLORES
 		["barack"]                                                  = {  ["label"] = "Rosa",                                                             ["description"] = "Uma bela flor para dar a pessoa amada",                                                            					["weight"] = 1,            ["image"] = "barack", 								},                        
-		["vanilla"]                                                 = {  ["label"] = "Flor de baunilha",                                                 ["description"] = "Uma flor com aroma suave, boa para receitas",                                                      					["weight"] = 1,            ["image"] = "barack", 								},
 	
 		-- NOVAS PLANTAS
 		["canadeacucar"]                                            = {  ["label"] = "Cana de açúcar",                                                   ["description"] = "Tão docinho!",                                                                                     					["weight"] = 1,            ["image"] = "barack",                              },
@@ -384,7 +383,8 @@ return {
 		["herb_desert_sage"]                                        = {  ["label"] = "Sálvia do Deserto",                                                ["description"] = "",                                                                                                 					["weight"] = 40,           ["image"] = "Desert_Sage",                       	},
 		["herb_oregano"]                                            = {  ["label"] = "Orégano",                                                          ["description"] = "Uma erva pequena, é utilizado como tempero.",                                                      					["weight"] = 60,           ["image"] = "Oregano",                           	},
 		["herb_prairie_poppy"]                                      = {  ["label"] = "Papoula da Pradaria",                                              ["description"] = "",                                                                                                 					["weight"] = 40,           ["image"] = "Prairie_Poppy",                     	},
-	
+		["herb_vanilla_flower"]                                     = {  ["label"] = "Flor de Baunilha",                                                 ["description"] = "Uma flor com aroma suave, boa para receitas",                                                      					["weight"] = 1,            ["image"] = "herb_vanilla_flower", 					},
+
 		-- REMÉDIOS                                 
 		["tonico"]  = {
 			["label"] = "Garrafa de Tonico",
