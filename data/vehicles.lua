@@ -290,9 +290,9 @@ if IS_RDR3 then
 				[`a_c_horse_norfolkroadster_spottedtricolor`] = {14000},
 			
 				-- Shire
-				[`a_c_horse_shire_darkbay`] = {30000},
-				[`a_c_horse_shire_lightgrey`] = {33000},
-				[`a_c_horse_shire_ravenblack`] = {35000},
+				[`a_c_horse_shire_darkbay`] = {40000},
+				[`a_c_horse_shire_lightgrey`] = {43000},
+				[`a_c_horse_shire_ravenblack`] = {50000},
 			
 				-- Suffolk
 				[`a_c_horse_suffolkpunch_sorrel`] = {35000},

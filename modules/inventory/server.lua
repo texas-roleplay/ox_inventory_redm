@@ -827,12 +827,15 @@ RegisterServerEvent('nxt_inventory:removeItem', function(name, count, metadata, 
 
 	if used then
 		slot = inv.items[inv.usingItem]
-		Inventory.RemoveItem(source, slot.name, count, slot.metadata, slot.slot)
 		local item = Items(slot.name)
 
 		if item?.cb then
-			item.cb('usedItem', item, inv, slot.slot)
+			if item.cb('usedItem', item, inv, slot.slot) == false then
+				return
+			end
 		end
+
+		Inventory.RemoveItem(source, slot.name, count, slot.metadata, slot.slot)
 	else
 		Inventory.RemoveItem(source, name, count, metadata, slot)
 	end
