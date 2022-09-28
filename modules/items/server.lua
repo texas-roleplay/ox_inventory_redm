@@ -272,10 +272,10 @@ function Items.CheckMetadata(metadata, item, name)
 		metadata.serial = nil
 	end
 
-	if name == 'tonico' or name == 'tonicop' then
-		metadata.durability = os.time() + (item.degrade * 60)
-		metadata.degrade = item.degrade
-	end
+	-- if name == 'tonico' or name == 'tonicop' then
+	-- 	metadata.durability = os.time() + (item.degrade * 60)
+	-- 	metadata.degrade = item.degrade
+	-- end
 
 	return metadata
 end

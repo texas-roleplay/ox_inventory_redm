@@ -1215,6 +1215,37 @@ Item('relogio', function(data, slot)
 	TaskItemInteraction_2(playerPed, GetHashKey("POCKETWATCH@D6-5_H1-5_InspectZ	"), object, GetHashKey("PrimaryItem"), GetHashKey("POCKET_WATCH_INSPECT_UNHOLSTER"), 1, 0, -1) -- this native requires an object    
 end)
 
+Item('robbery_dynamite', function(data, slot)
+	exports.nxt_inventory:useItem(data, function(data)
+		if data then    
+			TriggerEvent('BANK:initGameplayToTryOpenDoors')
+		end
+	end)
+end)
+
+
+Item("joint", function(data, slot)
+	local sort = math.random(1,100)
+
+	if sort >= 95 then
+		TriggerServerEvent('weed:interaction:giveSeed', 'femaleseed')
+	elseif sort <= 5 then
+		TriggerServerEvent('weed:interaction:giveSeed', 'maleseed')
+	end
+
+	nxt_inventory:useItem(data, function(data)
+		TriggerServerEvent("HUD:Consumable:Item", 'joint')
+    end)
+end)
+
+Item("rolling_paper", function(data, slot)
+    TriggerServerEvent("weed:interaction:tryCombineItem", 'rolling_paper')
+end)
+
+Item("empty_weed_bag", function(data, slot)
+    TriggerServerEvent("weed:interaction:tryCombineItem", 'empty_weed_bag')
+end)
+
 -- Item('armour', function(data, slot)
 -- 	if GetPedArmour(cache.ped) < 100 then
 -- 		nxt_inventory:useItem(data, function(data)
