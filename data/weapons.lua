@@ -267,16 +267,46 @@ return {
             label = 'Lanterna Silver',
             weight = 200,
             durability = 0.03,
+            buttons = 
+            {
+                {
+                    label = "Mudar posição",
+                    action = function(slot)
+                        TriggerEvent('Inventory:Weapon:ReplaceCurrentAttachPoint', slot)
+                    end
+                }
+            }
+
         }, 
         ['WEAPON_MELEE_DAVY_LANTERN'] = {
             label = 'Lanterna Golden',
             weight = 200,
             durability = 0.03,
+            buttons = 
+            {
+                {
+                    label = "Mudar posição",
+                    action = function(slot)
+                        TriggerEvent('Inventory:Weapon:ReplaceCurrentAttachPoint', slot)
+                    end
+                }
+            }
+
         }, 
         ['WEAPON_MELEE_LANTERN_ELECTRIC'] = {
             label = 'Lâmpada elétrica',
             weight = 200,
             durability = 0.03,
+                        buttons = 
+            {
+                {
+                    label = "Mudar posição",
+                    action = function(slot)
+                        TriggerEvent('Inventory:Weapon:ReplaceCurrentAttachPoint', slot)
+                    end
+                }
+            }
+
         },
         ['WEAPON_MELEE_MACHETE_COLLECTOR'] = {
             label = 'Machete de Colecionador',
@@ -302,6 +332,15 @@ return {
             label = 'Lanterna de Caveira',
             weight = 200,
             durability = 0.03,
+            buttons = 
+            {
+                {
+                    label = "Mudar posição",
+                    action = function(slot)
+                        TriggerEvent('Inventory:Weapon:ReplaceCurrentAttachPoint', slot)
+                    end
+                }
+            }
         }, 
         ['WEAPON_MELEE_MACHETE_HORROR'] = {
             label = 'Machete de Pirata',

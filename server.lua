@@ -250,3 +250,16 @@ lib.callback.register('nxt_inventory:useItem', function(source, item, slot, meta
 		end
 	end
 end)
+
+
+
+lib.callback.register('nxt_inventory:getItemBySlot', function(source, itemSlot)
+
+	local itemBySlot = exports.nxt_inventory:GetSlot(source, itemSlot)
+
+	if source and itemSlot then
+		if itemBySlot and itemBySlot.name then
+			return itemBySlot.name
+		end
+	end
+end)

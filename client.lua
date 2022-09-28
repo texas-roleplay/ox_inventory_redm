@@ -2026,4 +2026,21 @@ function StartInventoryAction(actionType, data, cb)
 	end
 
 	cb()
-end
+end	
+
+local attachOriginal = true
+
+AddEventHandler("Inventory:Weapon:ReplaceCurrentAttachPoint", function(itemSlot)
+	
+	local weapon = lib.callback.await('nxt_inventory:getItemBySlot', nil, itemSlot)
+	
+	local attachPoint = 0
+
+	if attachOriginal then
+		attachPoint = 12
+	end
+
+    Citizen.InvokeNative(0xADF692B254977C0C, PlayerPedId(), GetHashKey(weapon), true, attachPoint)
+
+	attachOriginal = not attachOriginal
+end)
