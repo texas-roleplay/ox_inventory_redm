@@ -262,19 +262,24 @@ return {
 			{ name = 'ammo_rifle', price = 0.01 },
 			{ name = 'ammo_repeater', price = 0.01 },
 
-			{ name = 'weapon_melee_knife', price = 0 },
-			{ name = 'weapon_lasso', price = 0 },
+			{ name = 'weapon_melee_knife', price = 0.30 },
+			{ name = 'weapon_melee_lantern', price = 0.70 },
+			{ name = 'weapon_lasso', price = 0.20 },
 
-			{ name = 'weapon_revolver_schofield', price = 0, metadata = { registered = true, serial = 'OFICIAL' } },
-			{ name = 'weapon_revolver_cattleman', price = 0, metadata = { registered = true, serial = 'OFICIAL' } },
-			{ name = 'weapon_revolver_navy', price = 0, metadata = { registered = true, serial = 'OFICIAL' } },
-			{ name = 'weapon_revolver_lemat', price = 0, metadata = { registered = true, serial = 'OFICIAL' } },
+			{ name = 'weapon_kit_binoculars', price = 0.80 },
 
-			{ name = 'weapon_repeater_carbine', price = 0, metadata = { registered = true, serial = 'OFICIAL' } },
-			{ name = 'weapon_repeater_winchester', price = 0, metadata = { registered = true, serial = 'OFICIAL' } },
+			{ name = 'pombocorreio', price = 0.15 },
+			
+			{ name = 'weapon_revolver_schofield', price = 12.00, metadata = { registered = true, serial = 'OFICIAL' } },
+			{ name = 'weapon_revolver_cattleman', price = 1.00, metadata = { registered = true, serial = 'OFICIAL' } },
+			{ name = 'weapon_revolver_navy', price = 3.00, metadata = { registered = true, serial = 'OFICIAL' } },
+			{ name = 'weapon_revolver_lemat', price = 5.00, metadata = { registered = true, serial = 'OFICIAL' } },
 
-			{ name = 'weapon_rifle_springfield', price = 0, metadata = { registered = true, serial = 'OFICIAL' } },
-			{ name = 'weapon_rifle_boltaction', price = 0, metadata = { registered = true, serial = 'OFICIAL' } },
+			{ name = 'weapon_repeater_carbine', price = 6.00, metadata = { registered = true, serial = 'OFICIAL' } },
+			{ name = 'weapon_repeater_winchester', price = 10.00, metadata = { registered = true, serial = 'OFICIAL' } },
+
+			{ name = 'weapon_rifle_springfield', price = 12.00, metadata = { registered = true, serial = 'OFICIAL' } },
+			{ name = 'weapon_rifle_boltaction', price = 15.00, metadata = { registered = true, serial = 'OFICIAL' } },
 		
 			-- { name = 'WEAPON_CARBINERIFLE', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 3 },			
 		}, locations = {
