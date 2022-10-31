@@ -132,7 +132,7 @@ return {
 
 	['blk:farmacia'] = {
 		coords = vector3(2730.213, -1232.068, 50.37042),
-		name = 'val:farmacia',
+		name = 'blk:farmacia',
 		label = 'Baú da Farmácia',
 		owner = nil,
 		slots = 100,
