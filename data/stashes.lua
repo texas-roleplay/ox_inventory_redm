@@ -102,14 +102,14 @@ return {
 
 	['indio:reserva_2'] = {
 		coords = vec3(-2063.554, -1444.125, 128.1867),
-		name = 'indio:reserva',
+		name = 'indio:reserva_2',
 		label = 'Baú da Reserva',
 		owner = nil,
 		slots = 100,
 		weight = 5000000,
 		groups = {['indio'] = 0}
 	},
-	
+
 	['static:smuggling:chest'] = {
 		coords = vec3(2272.342, 1459.121, 84.290),
 		name = 'static:smuggling:chest',
