@@ -107,7 +107,7 @@ return {
 		owner = nil,
 		slots = 100,
 		weight = 5000000,
-		groups = {['indio'] = 0}
+		groups = {['indio_2'] = 0}
 	},
 
 	['static:smuggling:chest'] = {

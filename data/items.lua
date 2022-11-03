@@ -651,7 +651,16 @@ return {
 		["carvalhorefinado"]                                        = { ["label"] = "Madeira de Carvalho Refinado",                     				["description"] = "Madeira de Carvalho Refinado",                                                                       				["weight"] = 1000,        ["image"] = "madeira_de_carvalho_refinada",         },
 		["sabonete"]                                       			= { ["label"] = "Sabonete",                     									["description"] = "Usado para higiene pessoal",                                                                       					["weight"] = 50,       	  ["image"] = "sabonete",         					  },
 		["chadewayuizena"]                                       	= { ["label"] = "Chá de Wayúizena",                     							["description"] = "Chá Alucinógenos",                                                                       							["weight"] = 50,       	  ["image"] = "tigela_cuia",         	 consume = 1  },
-		["pocaodeekichetu"]                                       	= { ["label"] = "Poção de Ekichetu",                     							["description"] = "Usado para tratar ferimentos",                                                                       				["weight"] = 50,       	  ["image"] = "poteacucar",         	 consume = 1  },
+		["pocaodeekichetu"] =
+		{
+			["label"] = "Poção de Ekichetu",
+			["description"] = "Usado para tratar ferimentos",
+			["weight"] = 50,
+			["image"] = "poteacucar",
+			consume = 0,
+			client = { export = 'player_death_state_machine.itemMedicine' },
+			server = { export = 'player_death_state_machine.itemMedicine' },
+		},
 	
 		["reviver"] =
 		{
