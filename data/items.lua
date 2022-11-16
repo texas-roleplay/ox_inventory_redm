@@ -28,7 +28,8 @@ return {
 				end
 			}
 		}
-	},	
+	},
+
 	['dogfood'] = {
 		label = 'Comida para Cachorro',
 		weight = 220,	
@@ -268,12 +269,12 @@ return {
 	
 	
 		-- BEBIDAS NÃO ALCOOLICAS                                                  
-		["vitamina"]                                                = {  ["label"] = "Vitamina",                                                         ["description"] = "Garrafa com vitamina",                                                            degrade = 15000,                  ["weight"] = 500,         ["image"] = "vitamina",    consume = 1     },
-		["water"]                                                   = {  ["label"] = "Garrafa de Agua",                                                  ["description"] = "Garrafa cheia de agua potavel",                                                   degrade = 15000,                  ["weight"] = 100,         ["image"] = "water",      consume = 1      },
-		["sucodeamora"]                                             = {  ["label"] = "Suco de Amora Silvestre",                                          ["description"] = "Garrafa com suco de Amora Silvestre",                                             degrade = 15000,                  ["weight"] = 300,         ["image"] = "sucoamora",    consume = 1    },
-		["sucomaca"]                                                = {  ["label"] = "Suco de Maça",                                                     ["description"] = "Garrafa com suco de Maça",                                                        degrade = 15000,                  ["weight"] = 300,         ["image"] = "sucomaca",     consume = 1    },
-		["garrafadeleite"]                                          = {  ["label"] = "Garrafa de Leite",                                                 ["description"] = "Garrafa cheia de leite",                                                          									["weight"] = 120,         ["image"] = "garrafadeleite",consume = 1 },
-	    ["colacola"]                                                = {  ["label"] = "ColaCola",                                        			     ["description"] = "Agua preta adocicada",                                                            degrade = 15000,                  ["weight"] = 600,         ["image"] = "colacola",   consume=  1},
+		["vitamina"]                                                = {  ["label"] = "Vitamina",                                                         ["description"] = "Garrafa com vitamina",                                                            degrade = 15000,                  ["weight"] = 500,         ["image"] = "vitamina",    	consume = 1     },
+		["water"]                                                   = {  ["label"] = "Garrafa de Agua",                                                  ["description"] = "Garrafa cheia de agua potavel",                                                   degrade = 15000,                  ["weight"] = 100,         ["image"] = "water",      	consume = 1      },
+		["sucodeamora"]                                             = {  ["label"] = "Suco de Amora Silvestre",                                          ["description"] = "Garrafa com suco de Amora Silvestre",                                             degrade = 15000,                  ["weight"] = 300,         ["image"] = "sucoamora",    	consume = 1    },
+		["sucomaca"]                                                = {  ["label"] = "Suco de Maça",                                                     ["description"] = "Garrafa com suco de Maça",                                                        degrade = 15000,                  ["weight"] = 300,         ["image"] = "sucomaca",     	consume = 1    },
+		["garrafadeleite"]                                          = {  ["label"] = "Garrafa de Leite",                                                 ["description"] = "Garrafa cheia de leite",                                                          									["weight"] = 1000,        ["image"] = "garrafadeleite",	consume = 1 	},
+	    ["colacola"]                                                = {  ["label"] = "ColaCola",                                        			     ["description"] = "Agua preta adocicada",                                                            degrade = 15000,                  ["weight"] = 600,         ["image"] = "colacola",   	consume=  1		},
 
 	
 		-- SEMENTES                                                 
@@ -672,4 +673,30 @@ return {
 			client = { export = 'player_death_state_machine.reviverItem' },
 			server = { export = 'player_death_state_machine.reviverItem' },
 		},
+		
+		["robbery_dynamite"] = 
+		{
+			label = "Dinamite",
+			description = "Cuidado, extremamente explosivo",
+			weight = 1500,
+			image = 'WEAPON_THROWN_DYNAMITE',
+			consume = 0
+		},
+
+		["joint"] 						 = {label = "Baseado", 					weight = 0, 		 		image = "joint", 				stack = true, 	     description = "Baseado feito com ervas medicinais.", consume = 1},
+		
+		---- ** WEED STUFF ** ----
+		['femaleseed'] 				 	= {label = 'Semente Fêmea',		 		weight = 200, 	description = 'Semente de Erva daninha'},
+		['maleseed'] 					 = {label = 'Semente Macho',		 	weight = 200, 	description = 'Semente de Erva daninha'},
+	
+		-- ** Wet Bud
+		['wetbud'] 						 = {label = 'Bud Úmidos', 				weight = 1000, 	stack = false,	 description = 'Broto Molhado', degrade = 360},
+		['fertilizer'] 				     = {label = 'Fertilizante', 			weight = 1000, 	description = '' },
+
+		['drybud'] 						 = {label = 'Bud Seco', 				weight = 1000, 	stack = false,	description = 'Broto Seco'},
+		['rolling_paper'] 			 	 = {label = 'Papel para enrolar', 		weight = 0, 	stack = true,   description = 'Seda pra bolar um baseado.'},
+	
+		['weed_bag'] 				 	 = {label = 'Saquinho de Erva', 	weight = 75, 		description = '7g de cannabis'},
+		["empty_weed_bag"] 				 = {label = "Saco para Ervas",		weight = 0, 		stack = true,  description = "Um saco vazio para botões de plantas daninhas."},
+	
 	}
