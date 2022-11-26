@@ -232,7 +232,7 @@ Item('corn', function(data, slot)
 end)
 
 Item('destilador', function(data, slot)
-	TriggerEvent("cookfirecauldron")
+	TriggerEvent("drugs.moonshine:client:RequestSpawnItem")
 end)
 
 Item('barril', function(data, slot)
@@ -1230,6 +1230,11 @@ Item("joint", function(data, slot)
 		TriggerServerEvent("HUD:Consumable:Item", 'joint')
     end)
 end)
+
+Item("femaleseed", function(data, slot)
+    TriggerEvent('plantation:tryPlantWeed', slot.name)
+end)
+
 
 Item("rolling_paper", function(data, slot)
     TriggerServerEvent("weed:interaction:tryCombineItem", 'rolling_paper')
