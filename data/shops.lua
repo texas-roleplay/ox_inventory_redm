@@ -138,7 +138,6 @@ return {
 		}
 	},
 
-
 	Jornaleiro = {
 		name = 'Jornaleiro',
 		prompt = true,
@@ -155,7 +154,6 @@ return {
 		}
 	},
 
-
 	MercadoClandestino = {
 		name = 'Mercado Clandestino',
 		prompt = true,
@@ -171,7 +169,7 @@ return {
 			{ name = 'handcuffs', price = 2, count = 5  },
 			{ name = 'handcuffs_keys', price = 1, count = 5 },
 
-			{ name = 'destilador', price = 500, count = 1 },
+			-- { name = 'destiller', price = 500, count = 1 },
 		}, locations = {
 			vec3(2859.706, -1200.646, 49.590), -- saint dennis
 			vec3(-1405.579, -2332.072, 42.50) -- Thieves Landing
@@ -325,6 +323,21 @@ return {
 			[2] = { name = "empty_weed_bag", price = 0.05 },
 		}, locations = {
 			-- vector3(-1171.88, -1572.05, 4.66)
+		}
+	},
+
+	IllegalShop = {
+		name = 'Vendedor Clandestino',
+		prompt = false,
+		blip = {
+			id = 403, colour = 69, scale = 0.8
+		}, inventory = {
+			{ name = 'destiller', price = 500, count = 1 },
+		}, locations = {
+			vector3(1978.15, 1796.535, 191.8331)
+		},
+		targets = {
+			-- { loc = vec3(453.21, -980.03, 30.68), length = 0.5, width = 3.0, heading = 270.0, minZ = 30.5, maxZ = 32.0, distance = 6 }
 		}
 	},
 
