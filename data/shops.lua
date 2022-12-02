@@ -26,6 +26,7 @@ return {
 			{name = "relogio", price = 1.70},
 			{name = "alcool", price = 0.30},
 			{name = "newspaper", price = 0.50},
+			{name = "xmastree", price = 50},
 		}, locations = {
 			vec3(2825.75, -1318.34, 46.76),
 			vec3( 1328.48, -1292.83, 77.02),

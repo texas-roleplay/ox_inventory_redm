@@ -699,4 +699,6 @@ return {
 		['weed_bag'] 				 	 = {label = 'Saquinho de Erva', 	weight = 75, 		description = '7g de cannabis'},
 		["empty_weed_bag"] 				 = {label = "Saco para Ervas",		weight = 0, 		stack = true,  description = "Um saco vazio para botões de plantas daninhas."},
 	
+
+		["xmastree"] = { label = "Arvore de Natal", description = "", weight = 1000},
 	}

@@ -235,6 +235,10 @@ Item('destilador', function(data, slot)
 	TriggerEvent("drugs.moonshine:client:RequestSpawnItem")
 end)
 
+Item('xmastree', function(data, slot)
+	TriggerEvent("xmas.client:RequestSpawnItem")
+end)
+
 Item('barril', function(data, slot)
 	TriggerEvent("barril")
 end)
